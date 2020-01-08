@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="线段树是一种以分治为主体思想的数据结构，主要对区间进行操作。 与之前所学习的树状数组相比，其好处在于更加通用，易扩展，不过码量较大。">
 <meta property="article:published_time" content="2020-01-02T15:27:54.000Z">
-<meta property="article:modified_time" content="2020-01-05T15:27:16.045Z">
+<meta property="article:modified_time" content="2020-01-08T15:22:47.800Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="线段树">
 <meta name="twitter:card" content="summary">
@@ -390,7 +390,7 @@
 <a id="more"></a>
 
 <h1 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h1><p>正如其名，线段树是一个二叉树形结构，其每个点其实是一个区间。</p>
-<p>根节点保存的区间为$[1,n]$，编号为$1$，其左节点编号为$1\times2=2$，保存区间为$[1, (1+n)/2]$;右节点编号为$1\times2+1=3$，保存区间为$[(1+n)/2,n]$。以此类推，直到区间长度为$1$为止(除法全部向下取整)。</p>
+<p>根节点保存的区间为$[1,n]$，编号为$1$，其左节点编号为$1\times2=2$，保存区间为$[1,\lfloor\frac{1+n}{2}\rfloor]$；右节点编号为$1\times2+1=3$，保存区间为$[\lfloor\frac{1+n}{2}\rfloor,n]$。以此类推，直到区间长度为$1$为止(除法全部向下取整)。</p>
 <p>根据此建立规则，发现编号最大可能到$4n$，所以数组至少要到$4n$。</p>
 <p>建立、修改、查询之类的一系列操作均递归实现。</p>
 <h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><h2 id="单点修改"><a href="#单点修改" class="headerlink" title="单点修改"></a>单点修改</h2><p>给定一个有$n$个数的序列，对其进行$m$个操作。</p>
