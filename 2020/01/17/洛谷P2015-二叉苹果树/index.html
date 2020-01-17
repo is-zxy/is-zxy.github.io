@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>洛谷P2015 二叉苹果树 | Zxyer&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="有一颗苹果树，如果树枝有分叉，一定是分$2$叉（就是说没有只有一个儿子的结点） 这棵树共有$n$个结点（叶子点或者树枝分叉点），编号为$1-n$，树根编号一定是$1$。 现在这棵树枝条太多了，需要剪枝，但是一些树枝上长有苹果。 给定需要保留的树枝的数量$q$，求出最多能留住多少苹果。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="洛谷P2015 二叉苹果树">
+<meta property="og:url" content="http://www.zxyer.xyz/2020/01/17/%E6%B4%9B%E8%B0%B7P2015-%E4%BA%8C%E5%8F%89%E8%8B%B9%E6%9E%9C%E6%A0%91/index.html">
+<meta property="og:site_name" content="Zxyer&#39;s Blog">
+<meta property="og:description" content="有一颗苹果树，如果树枝有分叉，一定是分$2$叉（就是说没有只有一个儿子的结点） 这棵树共有$n$个结点（叶子点或者树枝分叉点），编号为$1-n$，树根编号一定是$1$。 现在这棵树枝条太多了，需要剪枝，但是一些树枝上长有苹果。 给定需要保留的树枝的数量$q$，求出最多能留住多少苹果。">
+<meta property="article:published_time" content="2020-01-17T14:44:40.000Z">
+<meta property="article:modified_time" content="2020-01-17T15:07:16.503Z">
+<meta property="article:author" content="Yuzuriha_Inori">
+<meta property="article:tag" content="树形DP">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/is-zxy.github.io/atom.xml" title="Zxyer&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/is-zxy.github.io/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/is-zxy.github.io/" id="logo">Zxyer&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/is-zxy.github.io/">Home</a>
+        
+          <a class="main-nav-link" href="/is-zxy.github.io/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/is-zxy.github.io/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.zxyer.xyz"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-洛谷P2015-二叉苹果树" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/is-zxy.github.io/2020/01/17/%E6%B4%9B%E8%B0%B7P2015-%E4%BA%8C%E5%8F%89%E8%8B%B9%E6%9E%9C%E6%A0%91/" class="article-date">
+  <time datetime="2020-01-17T14:44:40.000Z" itemprop="datePublished">2020-01-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/is-zxy.github.io/categories/%E9%A2%98%E8%A7%A3/">题解</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      洛谷P2015 二叉苹果树
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>有一颗苹果树，如果树枝有分叉，一定是分$2$叉（就是说没有只有一个儿子的结点）</p>
+<p>这棵树共有$n$个结点（叶子点或者树枝分叉点），编号为$1-n$，树根编号一定是$1$。</p>
+<p>现在这棵树枝条太多了，需要剪枝，但是一些树枝上长有苹果。</p>
+<p>给定需要保留的树枝的数量$q$，求出最多能留住多少苹果。</p>
+<a id="more"></a>
+
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>今天才学的树形$DP$例题。</p>
+<p>定义$dp[i][j]$表示以第$i$ 号结点为根，保留$j$个树枝的最多能留住的苹果数量。</p>
+<p>那么最终答案即为$dp[1][q]$。</p>
+<p>先把$dp$数组初值赋为$-1$。</p>
+<p>然后利用分治(?)思想，对每个结点的左右子结点进行操作。</p>
+<p>若该结点$i$为叶子结点，则直接$dp[i][0]=0$，然后跳出该层搜索，因为以该结点为根的没有树枝。</p>
+<p>若不为，则对其左右子结点进行操作，然后将两个子节点的状态更新至该结点上。</p>
+<p>即若$dp[son][j]!=-1$的话，那么$dp[i][j+1]=max(dp[i][j+1],dp[son][j]+value[son])$，即增加这个连接该儿子的树枝。（其中$value$为边权值，即苹果数量。）</p>
+<p>同理，需要讨论连接两个儿子的数枝都增加的情况，即若$dp[son_{left}][j]!=-1$并且$dp[son_{right}][k]!=-1$的话，那么$dp[i][j+k+2]=max(dp[i][j+k+2],dp[son_{left}][j]+dp[son_{right}][k]+value[son_{left}]+value[son_{right}])$</p>
+<p>于是据此从根向下搜索然后向上上传状态最后输出$dp[1][q]$即可。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 110</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,q,dp[N][N];</span><br><span class="line"><span class="keyword">bool</span> vh[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> t,num;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">vector</span> &lt;node&gt; edge[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> root)</span> </span>&#123;</span><br><span class="line">	vh[root]=<span class="number">1</span>,dp[root][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> cnt=edge[root].size(),ln,rn,lid=<span class="number">0</span>,rid=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(!vh[edge[root][i].t]) &#123;	</span><br><span class="line">			<span class="keyword">if</span>(!lid) &#123;</span><br><span class="line">				ln=edge[root][i].num;</span><br><span class="line">				lid=edge[root][i].t;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				rn=edge[root][i].num;</span><br><span class="line">				rid=edge[root][i].t;</span><br><span class="line">			&#125;</span><br><span class="line">			dfs(edge[root][i].t);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(!lid) <span class="keyword">return</span> ;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(dp[lid][i]!=<span class="number">-1</span>) dp[root][i+<span class="number">1</span>]=dp[lid][i]+ln;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(dp[rid][i]!=<span class="number">-1</span>) dp[root][i+<span class="number">1</span>]=max(dp[root][i+<span class="number">1</span>],dp[rid][i]+rn);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;i+j+<span class="number">2</span>&lt;=n;j++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(dp[lid][i]!=<span class="number">-1</span>&amp;&amp;dp[rid][j]!=<span class="number">-1</span>) dp[root][i+j+<span class="number">2</span>]=max(dp[root][i+j+<span class="number">2</span>],dp[lid][i]+dp[rid][j]+ln+rn);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(dp,<span class="number">-1</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;q;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> x,y,z;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;x&gt;&gt;y&gt;&gt;z;</span><br><span class="line">		node p;</span><br><span class="line">		p.t=y,p.num=z;</span><br><span class="line">		edge[x].push_back(p);</span><br><span class="line">		p.t=x;</span><br><span class="line">		edge[y].push_back(p);	</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	dfs(<span class="number">1</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;dp[<span class="number">1</span>][q]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>细节较多，需格外注意，如树枝上可能没有苹果。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zxyer.xyz/2020/01/17/%E6%B4%9B%E8%B0%B7P2015-%E4%BA%8C%E5%8F%89%E8%8B%B9%E6%9E%9C%E6%A0%91/" data-id="ck5iar6hd0008o8vd0n1z5lt9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/is-zxy.github.io/tags/%E6%A0%91%E5%BD%A2DP/" rel="tag">树形DP</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/is-zxy.github.io/2020/01/08/%E6%B4%9B%E8%B0%B7P2568-GCD/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">洛谷P2568 GCD</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/is-zxy.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/is-zxy.github.io/categories/%E9%A2%98%E8%A7%A3/">题解</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/is-zxy.github.io/tags/CQOI/" rel="tag">CQOI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/is-zxy.github.io/tags/CodeForces/" rel="tag">CodeForces</a></li><li class="tag-list-item"><a class="tag-list-link" href="/is-zxy.github.io/tags/Floyd/" rel="tag">Floyd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/is-zxy.github.io/tags/SPOJ/" rel="tag">SPOJ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/is-zxy.github.io/tags/USACO/" rel="tag">USACO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/is-zxy.github.io/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li><li class="tag-list-item"><a class="tag-list-link" href="/is-zxy.github.io/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/is-zxy.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/is-zxy.github.io/tags/%E6%A0%91%E5%BD%A2DP/" rel="tag">树形DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/is-zxy.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" rel="tag">树状数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/is-zxy.github.io/tags/%E6%B4%9B%E8%B0%B7/" rel="tag">洛谷</a></li><li class="tag-list-item"><a class="tag-list-link" href="/is-zxy.github.io/tags/%E7%BA%BF%E6%80%A7%E7%AD%9B/" rel="tag">线性筛</a></li><li class="tag-list-item"><a class="tag-list-link" href="/is-zxy.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag">线段树</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/is-zxy.github.io/tags/CQOI/" style="font-size: 10px;">CQOI</a> <a href="/is-zxy.github.io/tags/CodeForces/" style="font-size: 15px;">CodeForces</a> <a href="/is-zxy.github.io/tags/Floyd/" style="font-size: 10px;">Floyd</a> <a href="/is-zxy.github.io/tags/SPOJ/" style="font-size: 10px;">SPOJ</a> <a href="/is-zxy.github.io/tags/USACO/" style="font-size: 10px;">USACO</a> <a href="/is-zxy.github.io/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 10px;">前缀和</a> <a href="/is-zxy.github.io/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 15px;">数学</a> <a href="/is-zxy.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/is-zxy.github.io/tags/%E6%A0%91%E5%BD%A2DP/" style="font-size: 10px;">树形DP</a> <a href="/is-zxy.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" style="font-size: 12.5px;">树状数组</a> <a href="/is-zxy.github.io/tags/%E6%B4%9B%E8%B0%B7/" style="font-size: 17.5px;">洛谷</a> <a href="/is-zxy.github.io/tags/%E7%BA%BF%E6%80%A7%E7%AD%9B/" style="font-size: 20px;">线性筛</a> <a href="/is-zxy.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 15px;">线段树</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/is-zxy.github.io/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/is-zxy.github.io/archives/2019/12/">December 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/is-zxy.github.io/2020/01/17/%E6%B4%9B%E8%B0%B7P2015-%E4%BA%8C%E5%8F%89%E8%8B%B9%E6%9E%9C%E6%A0%91/">洛谷P2015 二叉苹果树</a>
+          </li>
+        
+          <li>
+            <a href="/is-zxy.github.io/2020/01/08/%E6%B4%9B%E8%B0%B7P2568-GCD/">洛谷P2568 GCD</a>
+          </li>
+        
+          <li>
+            <a href="/is-zxy.github.io/2020/01/07/%E6%B4%9B%E8%B0%B7P3373-%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E7%BA%BF%E6%AE%B5%E6%A0%912-AHOI2009-%E7%BB%B4%E6%8A%A4%E5%BA%8F%E5%88%97/">洛谷P3373 【模板】线段树2/[AHOI2009]维护序列</a>
+          </li>
+        
+          <li>
+            <a href="/is-zxy.github.io/2020/01/05/CQOI2006-%E7%AE%80%E5%8D%95%E9%A2%98/">[CQOI2006]简单题</a>
+          </li>
+        
+          <li>
+            <a href="/is-zxy.github.io/2020/01/03/SP1716-GSS3-Can-you-answer-these-queries-III/">SP1716 GSS3 - Can you answer these queries III</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Yuzuriha_Inori<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/is-zxy.github.io/" class="mobile-nav-link">Home</a>
+  
+    <a href="/is-zxy.github.io/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/is-zxy.github.io/fancybox/jquery.fancybox.css">
+
+  
+<script src="/is-zxy.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/is-zxy.github.io/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
