@@ -389,14 +389,12 @@
         <p>线性筛法是一种$O(n)$的筛质数算法。</p>
 <p>然而最近我才知道，线性筛不仅仅是用来筛质数的，还能用来求积性函数。</p>
 <a id="more"></a>
-
 <h1 id="线性筛法"><a href="#线性筛法" class="headerlink" title="线性筛法"></a>线性筛法</h1><p>首先，之前学过的埃氏筛法是将合数标记的算法。</p>
 <p>但是埃氏筛法会将重复的合数标记，这就造成了效率不够高。</p>
 <p>而线性筛法就是不会重复标记合数的算法，因此使得效率由埃氏筛法的$O(n\log \log n)$变为$O(n)$。</p>
 <p>主题思想为，在生成一个需要标记的合数时，每次只向现有的数乘上一个质因子，并且让它是这个合数的最小质因子。</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>其中$v[i]$表示数$i$的最小质因子，$prime[i]$表示第$i$个质数，$m$代表质数个数。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> v[<span class="number">1000010</span>],prime[<span class="number">1000010</span>],m=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">primes</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(v,<span class="number">0</span>,<span class="keyword">sizeof</span>(v));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(!v[i]) &#123;</span><br><span class="line">			v[i]=i;</span><br><span class="line">			prime[++m]=i;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(prime[j]&gt;v[i]||prime[j]*i&gt;n) <span class="keyword">break</span>;</span><br><span class="line">			v[prime[j]*i]=prime[j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <hr>
 <p>这便是在我写下这笔记之前的对线性筛的全部认知。</p>
 <p>然而最近看到了线性筛求积性函数。</p>
@@ -409,7 +407,7 @@
 <p>定义$num[x]$表示$x$的最小质因子$p_i$对于因数个数的贡献，即$c_i$。</p>
 <p>定义$factor[x]$表示$x$的因子个数。</p>
 <p>定义$sum[x]$表示$x$的因子和。</p>
-<p>定义$pow_{sum}[x]$表示$x$的最小质因子$p_i$对于因数和的贡献，即$\sum_{i=0}^{c_i}p_i^j$。</p>
+<p>定义$pow<em>{sum}[x]$表示$x$的最小质因子$p_i$对于因数和的贡献，即$\sum</em>{i=0}^{c_i}p_i^j$。</p>
 <p>定义$euler[x]=\varphi(x)$。</p>
 <h2 id="因数个数"><a href="#因数个数" class="headerlink" title="因数个数"></a>因数个数</h2><p>由算术基本定理，任意一个大于$1$的正整数都可以分解为有限个质数的乘积。</p>
 <p>则$x=\prod_{i=1}^m {p_i}^{c_i}$，其中$c_i$都是正整数，$p_i$都是质数且严格递增。</p>
@@ -422,46 +420,44 @@
 </ul>
 <p>然后进入下面的枚举$j$。</p>
 <ul>
-<li><p>当$i% prime[j]=0$，即$i$与$prime[j]$不互质时</p>
+<li><p>当$i\% prime[j]=0$，即$i$与$prime[j]$不互质时</p>
 <p>此时</p>
-<p>$$factor[i<em>prime[j]]=factor[i]/(num[i]+1)</em>(num[i]+2)$$</p>
-<p>因为$prime[j]$为$i*prime[j]$的最小质因子</p>
+<script type="math/tex; mode=display">factor[i*prime[j]]=factor[i]/(num[i]+1)*(num[i]+2)</script><p>因为$prime[j]$为$i*prime[j]$的最小质因子</p>
 <p>则</p>
-<p>$$num[i*prime[j]]=num[i]+1$$</p>
-</li>
-<li><p>当$i% prime[j]!=0$，即$i$与$prime[j]$互质时</p>
+<script type="math/tex; mode=display">num[i*prime[j]]=num[i]+1</script></li>
+<li><p>当$i\% prime[j]!=0$，即$i$与$prime[j]$互质时</p>
 <p>此时</p>
-<p>$$factor[i<em>prime[j]]=factor[i]</em> factor[prime[j]]$$</p>
-<p>由于$prime[j]$即为$i*prime[j]$的最小质因子</p>
+<script type="math/tex; mode=display">factor[i*prime[j]]=factor[i]* factor[prime[j]]</script><p>由于$prime[j]$即为$i*prime[j]$的最小质因子</p>
 <p>则</p>
-<p>$$num[i*prime[j]]=1$$</p>
-</li>
+<script type="math/tex; mode=display">num[i*prime[j]]=1</script></li>
 </ul>
 <p>完成。</p>
 <h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">int v[<span class="number">1000010</span>],prime[<span class="number">1000010</span>],num[<span class="number">1000010</span>],<span class="built_in">factor</span>[<span class="number">1000010</span>],m=<span class="number">0</span>;</span><br><span class="line">void <span class="built_in">primes</span>(int n) &#123;</span><br><span class="line">	memset(v,<span class="number">0</span>,sizeof(v));</span><br><span class="line">	<span class="built_in">factor</span>[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(int <span class="built_in">i</span>=<span class="number">2</span>;<span class="built_in">i</span>&lt;=n;<span class="built_in">i</span>++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(!v[<span class="built_in">i</span>]) &#123;</span><br><span class="line">			v[<span class="built_in">i</span>]=<span class="built_in">i</span>;</span><br><span class="line">			prime[++m]=<span class="built_in">i</span>;</span><br><span class="line">			num[<span class="built_in">i</span>]=<span class="number">1</span>;</span><br><span class="line">			<span class="built_in">factor</span>[<span class="built_in">i</span>]=<span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(int <span class="built_in">j</span>=<span class="number">1</span>;<span class="built_in">j</span>&lt;=m;<span class="built_in">j</span>++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(prime[<span class="built_in">j</span>]&gt;v[<span class="built_in">i</span>]||prime[<span class="built_in">j</span>]*<span class="built_in">i</span>&gt;n) <span class="keyword">break</span>;</span><br><span class="line">			v[<span class="built_in">i</span>*prime[<span class="built_in">j</span>]]=prime[<span class="built_in">j</span>];</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">i</span><span class="comment">%prime[j]) &#123;</span></span><br><span class="line">				<span class="built_in">factor</span>[<span class="built_in">i</span>*prime[<span class="built_in">j</span>]]=<span class="built_in">factor</span>[<span class="built_in">i</span>]*<span class="built_in">factor</span>[prime[<span class="built_in">j</span>]];</span><br><span class="line">				num[<span class="built_in">i</span>*prime[<span class="built_in">j</span>]]=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="built_in">factor</span>[<span class="built_in">i</span>*prime[<span class="built_in">j</span>]]=<span class="built_in">factor</span>[<span class="built_in">i</span>]/(num[<span class="built_in">i</span>]+<span class="number">1</span>)*(num[<span class="built_in">i</span>]+<span class="number">2</span>);</span><br><span class="line">				num[<span class="built_in">i</span>*prime[<span class="built_in">j</span>]]=num[<span class="built_in">i</span>]+<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 <h2 id="因数和"><a href="#因数和" class="headerlink" title="因数和"></a>因数和</h2><p>同上，$x=\prod_{i=1}^m {p_i}^{c_i}$，其中$c_i$都是正整数，$p_i$都是质数且严格递增。</p>
-<p>$sum[x]=\prod_{i=1}^m(\sum_{j=0}^{c_i}p_i^{j})$，这个式子为后面实现的关键所在，同样，这玩意也是个积性函数。</p>
+<p>$sum[x]=\prod<em>{i=1}^m(\sum</em>{j=0}^{c_i}p_i^{j})$，这个式子为后面实现的关键所在，同样，这玩意也是个积性函数。</p>
 <p>那么，同上，线性筛，分类讨论。</p>
 <ul>
 <li>当$i$的最小质因子为$0$，即$i$为质数时，显然，因数和为$i+1$，此时$pow_{sum}[i]=i+1$。</li>
 </ul>
 <p>然后进入下面的枚举$j$。</p>
 <ul>
-<li><p>当$i% prime[j]=0$，即$i$与$prime[j]$不互质时</p>
-<p>此时<br>$$<br>sum[i<em>prime[j]]=sum[i]/pow_{sum}[i]</em>(pow_{sum}[i]<em>prime[j]+1)<br>$$<br>因为$prime[j]$为$i</em>prime[j]$的最小质因子</p>
-<p>则<br>$$<br>pow_{sum}[i<em>prime[j]]=pow_{sum}[i]</em>prime[j]+1<br>$$</p>
-</li>
-<li><p>当$i% prime[j]!=0$，即$i$与$prime[j]$互质时</p>
-<p>此时<br>$$<br>sum[i<em>prime[j]]=sum[i]</em>sum[prime[j]]<br>$$<br>因为$prime[j]$为$i*prime[j]$的最小质因子</p>
-<p>则<br>$$<br>pow_{sum}[i*prime[j]]=prime[j]+1<br>$$</p>
-</li>
+<li><p>当$i\% prime[j]=0$，即$i$与$prime[j]$不互质时</p>
+<p>此时</p>
+<script type="math/tex; mode=display">
+sum[i*prime[j]]=sum[i]/pow_{sum}[i]*(pow_{sum}[i]*prime[j]+1)</script><p>因为$prime[j]$为$i*prime[j]$的最小质因子</p>
+<p>则</p>
+<script type="math/tex; mode=display">
+pow_{sum}[i*prime[j]]=pow_{sum}[i]*prime[j]+1</script></li>
+<li><p>当$i\% prime[j]!=0$，即$i$与$prime[j]$互质时</p>
+<p>此时</p>
+<script type="math/tex; mode=display">
+sum[i*prime[j]]=sum[i]*sum[prime[j]]</script><p>因为$prime[j]$为$i*prime[j]$的最小质因子</p>
+<p>则</p>
+<script type="math/tex; mode=display">
+pow_{sum}[i*prime[j]]=prime[j]+1</script></li>
 </ul>
 <p>完成。</p>
 <h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> m=<span class="number">0</span>,v[<span class="number">1000010</span>],prime[<span class="number">1000010</span>],sum[<span class="number">1000010</span>],pow_sum[<span class="number">1000010</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">primes</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(v,<span class="number">0</span>,<span class="keyword">sizeof</span>(v));</span><br><span class="line">	sum[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(!v[i]) &#123;</span><br><span class="line">			v[i]=i;</span><br><span class="line">			prime[++m]=i;</span><br><span class="line">			pow_sum[i]=i+<span class="number">1</span>;</span><br><span class="line">			sum[i]=i+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(prime[j]&gt;v[i]||prime[j]*i&gt;n) <span class="keyword">break</span>;</span><br><span class="line">			v[i*prime[j]]=prime[j];</span><br><span class="line">			<span class="keyword">if</span>(i%prime[j]) &#123;</span><br><span class="line">				sum[i*prime[j]]=sum[i]*sum[prime[j]];</span><br><span class="line">				pow_sum[i*prime[j]]=prime[j]+<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				sum[i*prime[j]]=sum[i]/pow_sum[i]*(pow_sum[i]*prime[j]+<span class="number">1</span>);</span><br><span class="line">				pow_sum[i*prime[j]]=pow_sum[i]*prime[j]+<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h2><p>欧拉函数$\varphi(x)$表示对于正整数$x$，小于或等于$x$的正整数中与$x$互质的数的个数，其中$\varphi(1)=1$。</p>
 <p>同上，$x=\prod_{i=1}^m {p_i}^{c_i}$，其中$c_i$都是正整数，$p_i$都是质数且严格递增。</p>
 <p>$\varphi(x)=x\prod_{i=1}^m(1-\frac{1}{p_i})$，这个式子是后面实现的关键。这玩意依旧是个积性函数。</p>
@@ -472,16 +468,18 @@
 </ul>
 <p>然后进入下面的枚举$j$。</p>
 <ul>
-<li><p>当$i% prime[j]=0$，即$i$与$prime[j]$不互质时</p>
-<p>此时<br>$$<br>euler[i<em>prime[j]]=eular[i]</em>prime[j]<br>$$<br>(可由定义式推出)</p>
+<li><p>当$i\% prime[j]=0$，即$i$与$prime[j]$不互质时</p>
+<p>此时</p>
+<script type="math/tex; mode=display">
+euler[i*prime[j]]=eular[i]*prime[j]</script><p>(可由定义式推出)</p>
 </li>
-<li><p>当$i% prime[j]!=0$，即$i$与$prime[j]$互质时</p>
-<p>此时<br>$$<br>euler[i<em>prime[j]]=euler[i]</em>euler[prime[j]]<br>$$</p>
-</li>
+<li><p>当$i\% prime[j]!=0$，即$i$与$prime[j]$互质时</p>
+<p>此时</p>
+<script type="math/tex; mode=display">
+euler[i*prime[j]]=euler[i]*euler[prime[j]]</script></li>
 </ul>
 <p>完成。</p>
 <h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> m=<span class="number">0</span>,prime[<span class="number">40010</span>],v[<span class="number">40010</span>],euler[<span class="number">40010</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">primes</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(prime,<span class="number">0</span>,<span class="keyword">sizeof</span>(prime));</span><br><span class="line">	<span class="built_in">memset</span>(v,<span class="number">0</span>,<span class="keyword">sizeof</span>(v));</span><br><span class="line">	euler[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(!v[i]) &#123;</span><br><span class="line">			v[i]=i;</span><br><span class="line">			prime[++m]=i;</span><br><span class="line">			euler[i]=i<span class="number">-1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(prime[j]&gt;v[i]||prime[j]*i&gt;n) <span class="keyword">break</span>;</span><br><span class="line">			v[prime[j]*i]=prime[j];</span><br><span class="line">			<span class="keyword">if</span>(i%prime[j]) euler[prime[j]*i]=euler[prime[j]]*euler[i];</span><br><span class="line">			<span class="keyword">else</span> euler[prime[j]*i]=prime[j]*euler[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>只是举了几个积性函数的例子，以后遇到其他的积性函数要灵活运用，貌似还有个啥狄利克雷卷积啥的东西，那便是之后的事了。</p>
 
       
