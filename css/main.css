@@ -1823,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ddff7a;
+  background: #93fff0;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2995,14 +2995,15 @@ body {
   background: url("/images/b.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: 0% 0%;
+  background-position: 50% 50%;
   background-size: cover;
 }
-.header-inner {
-  opacity: 0.8;
-}
 .main-inner {
-  opacity: 0.8;
+  margin-top: 60px;
+  padding: 60px 60px 60px 60px;
+  background: #fff;
+  opacity: 0.9;
+  min-height: 500px;
 }
 .hitokoto-title {
   text-align: center;
