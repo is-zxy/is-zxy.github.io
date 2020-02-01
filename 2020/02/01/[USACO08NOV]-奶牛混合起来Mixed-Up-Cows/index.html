@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="状压DP,三进制," />
+  <meta name="keywords" content="状压DP,USACO," />
 
 
 
@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Tyvj 两周年庆典要到了，Sam 想为 Tyvj 做一个大蛋糕。蛋糕俯视图是一个$N\times M$的矩形，它被划分成$N\times M$个边长为$1\times 1$的小正方形区域（可以把蛋糕当成$N$行$M$列的矩阵）。蛋糕很快做好了，但光秃秃的蛋糕肯定不好看！所以，Sam 要在蛋糕的上表面涂抹果酱。果酱有三种，分别是红果酱、绿果酱、蓝果酱，三种果酱的编号分别为$1,2,3$ 。为了保">
+<meta name="description" content="约翰家有$N$头奶牛，第i头奶牛的编号是$S_i$，每头奶牛的编号都是唯一的。这些奶牛最近在闹脾气，为表达不满的情绪，她们在挤奶的时候一定要排成混乱的队伍。在一只混乱的队伍中，相邻奶牛的编号之差均超过$K$。比如当$K&#x3D;1$时，$1,3,5,2,6,4$就是一支混乱的队伍， 而$1,3,6,5,2,4$不是，因为$6$和$5$只差$1$。请数一数，有多少种队形是混乱的呢？">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[一本通] 涂抹果酱">
-<meta property="og:url" content="http://www.zxyer.xyz/2020/01/31/[%E4%B8%80%E6%9C%AC%E9%80%9A]-%E6%B6%82%E6%8A%B9%E6%9E%9C%E9%85%B1/index.html">
+<meta property="og:title" content="[USACO08NOV] 奶牛混合起来Mixed Up Cows">
+<meta property="og:url" content="http://www.zxyer.xyz/2020/02/01/[USACO08NOV]-%E5%A5%B6%E7%89%9B%E6%B7%B7%E5%90%88%E8%B5%B7%E6%9D%A5Mixed-Up-Cows/index.html">
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
-<meta property="og:description" content="Tyvj 两周年庆典要到了，Sam 想为 Tyvj 做一个大蛋糕。蛋糕俯视图是一个$N\times M$的矩形，它被划分成$N\times M$个边长为$1\times 1$的小正方形区域（可以把蛋糕当成$N$行$M$列的矩阵）。蛋糕很快做好了，但光秃秃的蛋糕肯定不好看！所以，Sam 要在蛋糕的上表面涂抹果酱。果酱有三种，分别是红果酱、绿果酱、蓝果酱，三种果酱的编号分别为$1,2,3$ 。为了保">
-<meta property="article:published_time" content="2020-01-31T14:48:37.000Z">
-<meta property="article:modified_time" content="2020-01-31T14:55:41.518Z">
+<meta property="og:description" content="约翰家有$N$头奶牛，第i头奶牛的编号是$S_i$，每头奶牛的编号都是唯一的。这些奶牛最近在闹脾气，为表达不满的情绪，她们在挤奶的时候一定要排成混乱的队伍。在一只混乱的队伍中，相邻奶牛的编号之差均超过$K$。比如当$K&#x3D;1$时，$1,3,5,2,6,4$就是一支混乱的队伍， 而$1,3,6,5,2,4$不是，因为$6$和$5$只差$1$。请数一数，有多少种队形是混乱的呢？">
+<meta property="article:published_time" content="2020-02-01T15:21:37.000Z">
+<meta property="article:modified_time" content="2020-02-01T15:29:48.552Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="状压DP">
-<meta property="article:tag" content="三进制">
+<meta property="article:tag" content="USACO">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zxyer.xyz/2020/01/31/[一本通]-涂抹果酱/"/>
+  <link rel="canonical" href="http://www.zxyer.xyz/2020/02/01/[USACO08NOV]-奶牛混合起来Mixed-Up-Cows/"/>
 
 
 
 
 
-  <title>[一本通] 涂抹果酱 | Zxyer's Blog</title>
+  <title>[USACO08NOV] 奶牛混合起来Mixed Up Cows | Zxyer's Blog</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/01/31/%5B%E4%B8%80%E6%9C%AC%E9%80%9A%5D-%E6%B6%82%E6%8A%B9%E6%9E%9C%E9%85%B1/">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/02/01/%5BUSACO08NOV%5D-%E5%A5%B6%E7%89%9B%E6%B7%B7%E5%90%88%E8%B5%B7%E6%9D%A5Mixed-Up-Cows/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yuzuriha_Inori">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[一本通] 涂抹果酱</h1>
+          <h1 class="post-title" itemprop="name headline">[USACO08NOV] 奶牛混合起来Mixed Up Cows</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-31T22:48:37+08:00">
-                2020-01-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-01T23:21:37+08:00">
+                2020-02-01
               </time>
             
 
@@ -386,15 +386,17 @@
       
 
       
-        <p> Tyvj 两周年庆典要到了，Sam 想为 Tyvj 做一个大蛋糕。蛋糕俯视图是一个$N\times M$的矩形，它被划分成$N\times M$个边长为$1\times 1$的小正方形区域（可以把蛋糕当成$N$行$M$列的矩阵）。蛋糕很快做好了，但光秃秃的蛋糕肯定不好看！所以，Sam 要在蛋糕的上表面涂抹果酱。果酱有三种，分别是红果酱、绿果酱、蓝果酱，三种果酱的编号分别为$1,2,3$ 。为了保证蛋糕的视觉效果，Admin 下达了死命令：相邻的区域严禁使用同种果酱。但 Sam 在接到这条命令之前，已经涂好了蛋糕第 $K$行的果酱，且无法修改。<br>现在 Sam 想知道：能令 Admin 满意的涂果酱方案有多少种。请输出方案数$mod 10^6$ 。若不存在满足条件的方案，请输出$0$。</p>
+        <p>约翰家有$N$头奶牛，第i头奶牛的编号是$S_i$，每头奶牛的编号都是唯一的。这些奶牛最近在闹脾气，为表达不满的情绪，她们在挤奶的时候一定要排成混乱的队伍。在一只混乱的队伍中，相邻奶牛的编号之差均超过$K$。比如当$K=1$时，$1,3,5,2,6,4$就是一支混乱的队伍， 而$1,3,6,5,2,4$不是，因为$6$和$5$只差$1$。请数一数，有多少种队形是混乱的呢？ </p>
 <a id="more"></a>
-<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://loj.ac/problem/10172" target="_blank" rel="noopener">「一本通 5.4 练习 1」涂抹果酱</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>三种果酱，且$m$较小，则考虑三进制状压。</p>
-<p>先判断其给的第$K$行涂抹的果酱是否合法，不合法直接输出$0$。</p>
-<p>定义$dp[i][j]$表示第$i$行状态为$j$的方案数，则易得（其中$check(l)$表示$l$是一个合法方案。）</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P2915" target="_blank" rel="noopener">[USACO08NOV]奶牛混合起来Mixed Up Cows</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>$n$较小，考虑状压。</p>
+<p>有些像Travelling那题。</p>
+<p>令二进制数中，第$i$位为$1$表示第$i$只奶牛在队伍中，反之则不在。</p>
+<p>定义$dp[i][j]$表示在状态$i$下，队尾为第$j$只奶牛的队伍数。</p>
+<p>易得（$check(j)$表示$2^j$对于$i$是一个合法状态。）</p>
 <script type="math/tex; mode=display">
-dp[i][j]=\sum_{l}^{check(l)}dp[i-1][l]</script><p>当$i-1=k$或$i=k$的情况需要单独考虑。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 1000000</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 10010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> add(x,y) x=(x+y)%mod</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,k,zk=<span class="number">0</span>,dp[N][<span class="number">310</span>],w[<span class="number">310</span>][<span class="number">10</span>],ans=<span class="number">0</span>,tot;</span><br><span class="line"><span class="keyword">bool</span> vh[<span class="number">310</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	tot=<span class="built_in">pow</span>(<span class="number">3</span>,m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tot;i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> b=i;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++) &#123;</span><br><span class="line">			w[i][j]=b%<span class="number">3</span>;</span><br><span class="line">			b/=<span class="number">3</span>;</span><br><span class="line">			<span class="keyword">if</span>(j&amp;&amp;w[i][j]==w[i][j<span class="number">-1</span>]) vh[i]=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(k!=<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tot;i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(vh[i]) <span class="keyword">continue</span>;</span><br><span class="line">			dp[<span class="number">1</span>][i]=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> dp[<span class="number">1</span>][zk]=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++) <span class="keyword">if</span>(w[x][i]==w[y][i]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;k;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> x;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;x;</span><br><span class="line">		zk=zk*<span class="number">3</span>+(x<span class="number">-1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	init();</span><br><span class="line">	<span class="keyword">if</span>(!vh[zk]) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(i==k) &#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;tot;j++) &#123;</span><br><span class="line">					<span class="keyword">if</span>(vh[j]||!check(j,zk)) <span class="keyword">continue</span>;</span><br><span class="line">					add(dp[i][zk],dp[i<span class="number">-1</span>][j]);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(i<span class="number">-1</span>==k) &#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;tot;j++) &#123;</span><br><span class="line">					<span class="keyword">if</span>(vh[j]||!check(j,zk)) <span class="keyword">continue</span>;</span><br><span class="line">					add(dp[i][j],dp[i<span class="number">-1</span>][zk]);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(i!=k&amp;&amp;i<span class="number">-1</span>!=k) &#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;tot;j++) &#123;</span><br><span class="line">					<span class="keyword">if</span>(vh[j]) <span class="keyword">continue</span>;</span><br><span class="line">					<span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;tot;l++) &#123;</span><br><span class="line">						<span class="keyword">if</span>(vh[l]||!check(j,l)) <span class="keyword">continue</span>;</span><br><span class="line">						add(dp[i][j],dp[i<span class="number">-1</span>][l]);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tot;i++) add(ans,dp[n][i]);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+dp[i+2^l][l]=\sum_{check(j)\&\&i\&2^j==1}dp[i][j]</script><p>最终答案即为$\sum_{i=0}^{n-1}dp[2^n-1][i]$</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 20</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> tot (1&lt;&lt;n)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,k,id[N],bits[N];</span><br><span class="line">ll dp[<span class="number">1</span>&lt;&lt;N][N],ans=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) <span class="built_in">cin</span>&gt;&gt;id[i];</span><br><span class="line">	</span><br><span class="line">	bits[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</span><br><span class="line">		dp[<span class="number">1</span>&lt;&lt;i][i]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(i) bits[i]=bits[i<span class="number">-1</span>]&lt;&lt;<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tot;i++) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(bits[j]&amp;i) &#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;n;l++) &#123;</span><br><span class="line">					<span class="keyword">if</span>((bits[l]&amp;i)||<span class="built_in">abs</span>(id[j]-id[l])&lt;=k) <span class="keyword">continue</span>;</span><br><span class="line">					dp[i+bits[l]][l]+=dp[i][j];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) ans+=dp[tot<span class="number">-1</span>][i];</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -414,7 +416,7 @@ dp[i][j]=\sum_{l}^{check(l)}dp[i-1][l]</script><p>当$i-1=k$或$i=k$的情况需
           
             <a href="/is-zxy.github.io/tags/%E7%8A%B6%E5%8E%8BDP/" rel="tag"># 状压DP</a>
           
-            <a href="/is-zxy.github.io/tags/%E4%B8%89%E8%BF%9B%E5%88%B6/" rel="tag"># 三进制</a>
+            <a href="/is-zxy.github.io/tags/USACO/" rel="tag"># USACO</a>
           
         </div>
       
@@ -427,8 +429,8 @@ dp[i][j]=\sum_{l}^{check(l)}dp[i-1][l]</script><p>当$i-1=k$或$i=k$的情况需
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/is-zxy.github.io/2020/01/31/%5Bhdu3001%5D-Travelling/" rel="next" title="[hdu3001] Travelling">
-                <i class="fa fa-chevron-left"></i> [hdu3001] Travelling
+              <a href="/is-zxy.github.io/2020/02/01/%5B%E4%B8%80%E6%9C%AC%E9%80%9A%5D-%E7%9A%87%E5%AE%AB%E7%9C%8B%E5%AE%88/" rel="next" title="[一本通] 皇宫看守">
+                <i class="fa fa-chevron-left"></i> [一本通] 皇宫看守
               </a>
             
           </div>
@@ -436,10 +438,6 @@ dp[i][j]=\sum_{l}^{check(l)}dp[i-1][l]</script><p>当$i-1=k$或$i=k$的情况需
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/is-zxy.github.io/2020/02/01/%5B%E4%B8%80%E6%9C%AC%E9%80%9A%5D-%E7%9A%87%E5%AE%AB%E7%9C%8B%E5%AE%88/" rel="prev" title="[一本通] 皇宫看守">
-                [一本通] 皇宫看守 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
