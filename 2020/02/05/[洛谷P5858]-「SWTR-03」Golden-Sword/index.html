@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="单调队列," />
 
 
 
@@ -79,15 +79,16 @@
 
 
 
-<meta name="description" content="长存不灭的过去，逐渐消逝的未来。">
+<meta name="description" content="制造一把金宝剑需要$n$种原料，编号为$1$到$n$，编号为$i$的原料的坚固值为$a_i$。 炼金是很讲究放入原料的顺序的，因此小$E$必须按照$1$到$n$的顺序依次将这些原料放入炼金锅。 但是，炼金锅的容量非常有限，它最多只能容纳$w$个原料。 所幸的是，每放入一个原料之前，小$E$可以从中取出一些原料，数量不能超过$s$个。  我们定义第$i$种原料的耐久度为：放入第$i$种原料时锅内的原">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[洛谷P5858] 「SWTR-03」Golden Sword">
 <meta property="og:url" content="http://www.zxyer.xyz/2020/02/05/[%E6%B4%9B%E8%B0%B7P5858]-%E3%80%8CSWTR-03%E3%80%8DGolden-Sword/index.html">
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
-<meta property="og:description" content="长存不灭的过去，逐渐消逝的未来。">
+<meta property="og:description" content="制造一把金宝剑需要$n$种原料，编号为$1$到$n$，编号为$i$的原料的坚固值为$a_i$。 炼金是很讲究放入原料的顺序的，因此小$E$必须按照$1$到$n$的顺序依次将这些原料放入炼金锅。 但是，炼金锅的容量非常有限，它最多只能容纳$w$个原料。 所幸的是，每放入一个原料之前，小$E$可以从中取出一些原料，数量不能超过$s$个。  我们定义第$i$种原料的耐久度为：放入第$i$种原料时锅内的原">
 <meta property="article:published_time" content="2020-02-05T13:00:25.000Z">
-<meta property="article:modified_time" content="2020-02-05T13:00:25.688Z">
+<meta property="article:modified_time" content="2020-02-05T16:03:20.558Z">
 <meta property="article:author" content="Yuzuriha_Inori">
+<meta property="article:tag" content="单调队列">
 <meta name="twitter:card" content="summary">
 
 
@@ -335,6 +336,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/is-zxy.github.io/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -362,7 +385,28 @@
       
 
       
-        
+        <p>制造一把金宝剑需要$n$种原料，编号为$1$到$n$，编号为$i$的原料的坚固值为$a_i$。</p>
+<p>炼金是很讲究放入原料的顺序的，因此小$E$必须按照$1$到$n$的顺序依次将这些原料放入炼金锅。</p>
+<p>但是，炼金锅的容量非常有限，它最多只能容纳$w$个原料。</p>
+<p>所幸的是，每放入一个原料之前，小$E$可以从中取出一些原料，数量不能超过$s$个。</p>
+<ul>
+<li>我们定义第$i$种原料的耐久度为：放入第$i$种原料时锅内的原料总数$\times a_i$，则宝剑的耐久度为<strong>所有原料</strong>的耐久度之和。</li>
+</ul>
+<p>小$E$当然想让他的宝剑的耐久度尽可能得大，这样他就可以带着它进行更多的战斗，请求出耐久度的最大值。</p>
+<p>注：这里的”放入第$i$种原料时锅内的原料总数“<strong>包括正在放入锅中的原料</strong>，详细信息请见样例。</p>
+<a id="more"></a>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P5858" target="_blank" rel="noopener">P5858 「SWTR-03」Golden Sword</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>定义$dp[i][j]$表示放入第$i$中原料时<strong>锅内的原料总数</strong>有$j$种的最大耐久值。</p>
+<p>易得</p>
+<script type="math/tex; mode=display">
+dp[i][j]=max\{d[i-1][k]+a[i]\times j\},k\in[j-1,min(j+s-1,w)]</script><p>于是可得一个$O(nws)$的算法。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5510</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,w,s;</span><br><span class="line">ll a[N],dp[N][N],ans;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;w&gt;&gt;s;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">memset</span>(dp,~<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	ans=dp[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">	dp[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=min(i,w);j++) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=j<span class="number">-1</span>;k&lt;=min(j+s<span class="number">-1</span>,w);k++) dp[i][j]=max(dp[i][j],dp[i<span class="number">-1</span>][k]+a[i]*j);</span><br><span class="line">			<span class="keyword">if</span>(i==n) ans=max(dp[i][j],ans);		</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>状转方程可以将$a[i]\times j$提出来，即</p>
+<script type="math/tex; mode=display">
+dp[i][j]=max\{d[i-1][k]\}+a[i]\times j,k\in[j-1,min(j+s-1,w)]</script><p>于是便可以用单调队列优化了。</p>
+<p>但细节较多，且$i=1$的情况需特判。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5510</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,w,s;</span><br><span class="line">ll a[N],dp[N][N],ans=LONG_LONG_MIN;</span><br><span class="line"><span class="built_in">deque</span> &lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;w&gt;&gt;s;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">	</span><br><span class="line">	dp[<span class="number">1</span>][<span class="number">1</span>]=a[<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		q.clear();</span><br><span class="line">		<span class="keyword">if</span>(i&gt;w) q.push_back(w);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=min(i,w);j&gt;=<span class="number">1</span>;j--) &#123;</span><br><span class="line">			<span class="keyword">while</span>(j&gt;<span class="number">1</span>&amp;&amp;!q.empty()&amp;&amp;dp[i<span class="number">-1</span>][j<span class="number">-1</span>]&gt;=dp[i<span class="number">-1</span>][q.back()]) q.pop_back();</span><br><span class="line">			<span class="keyword">if</span>(j&gt;<span class="number">1</span>) q.push_back(j<span class="number">-1</span>);</span><br><span class="line">			<span class="keyword">while</span>(!q.empty()&amp;&amp;(q.front()&lt;j<span class="number">-1</span>||q.front()&gt;min(j+s<span class="number">-1</span>,w))) q.pop_front();</span><br><span class="line">			dp[i][j]=dp[i<span class="number">-1</span>][q.front()]+a[i]*j;</span><br><span class="line">			<span class="keyword">if</span>(i==n) ans=max(ans,dp[i][j]);		 </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -376,6 +420,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/is-zxy.github.io/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" rel="tag"># 单调队列</a>
+          
+        </div>
       
 
       
@@ -446,8 +496,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -568,6 +627,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
