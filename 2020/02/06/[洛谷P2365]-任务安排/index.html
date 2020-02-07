@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="$n$个任务排成一个序列在一台机器上等待完成（顺序不得改变），这$n$个任务被分成若干批，每批包含相邻的若干任务。 从零时刻开始，这些任务被分批加工，第$i$个任务单独完成所需的时间为$t_i$。在每批任务开始前，机器需要启动时间$s$，而完成这批任务所需的时间是各个任务需要时间的总和（同一批任务将在同一时刻完成）。 每个任务的费用是它的完成时刻乘以一个费用系数$f_i$。请确定一个分组方案，使得">
 <meta property="article:published_time" content="2020-02-06T15:05:08.000Z">
-<meta property="article:modified_time" content="2020-02-07T05:33:26.628Z">
+<meta property="article:modified_time" content="2020-02-07T07:04:15.931Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="斜率优化DP">
 <meta name="twitter:card" content="summary">
@@ -388,6 +388,7 @@
         <p>$n$个任务排成一个序列在一台机器上等待完成（顺序不得改变），这$n$个任务被分成若干批，每批包含相邻的若干任务。</p>
 <p>从零时刻开始，这些任务被分批加工，第$i$个任务单独完成所需的时间为$t_i$。在每批任务开始前，机器需要启动时间$s$，而完成这批任务所需的时间是各个任务需要时间的总和（同一批任务将在同一时刻完成）。</p>
 <p>每个任务的费用是它的完成时刻乘以一个费用系数$f_i$。请确定一个分组方案，使得总费用最小。</p>
+<p> 对于$100\%$的数据，$1\le n\le5000$，$0 \le s\le50$，$1\le t_i,f_i \le 100$。 </p>
 <a id="more"></a>
 <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P2365" target="_blank" rel="noopener">P2365 任务安排</a></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>定义$dp[i][j]$表示前$i$个任务被分为$j$批的最小费用值。</p>
@@ -404,7 +405,7 @@ dp[i]=min\{dp[j]+sumt[i]\times (sumf[i]-sumf[j])+s\times (sumf[n]-sumf[j])\},j\i
 <p>再整理，可得</p>
 <script type="math/tex; mode=display">
 dp[i]=min\{dp[j]-(sumt[i]+s)\times sumf[j]\}+sumt[i]\times sumf[i]+s\times sumf[n],j\in[0,i)</script><p>对于每一个$i$，$min$外都是常量。</p>
-<p>观察$min$内的式子，$dp[j]-(sumt[i]+s)\times sumf[j]$，令$k=sumt[i]+s$原式变为$-k\times sumf[j]+dp[j]$。</p>
+<p>观察$min$内的式子：$dp[j]-(sumt[i]+s)\times sumf[j]$，令$k=sumt[i]+s$，则原式变为$-k\times sumf[j]+dp[j]$。</p>
 <p>这个形式像什么？一次函数。</p>
 <p>将其看做一条斜率为$k$，且过点$(sumf[j],dp[j])$的直线。</p>
 <p>那么其与$y$轴交点即为$(0,dp[j]-k\times sumf[j])$</p>
@@ -417,7 +418,7 @@ dp[i]=min\{dp[j]-(sumt[i]+s)\times sumf[j]\}+sumt[i]\times sumf[i]+s\times sumf[
 <p>$∴sumf[j]-sumf[k]&gt;0$</p>
 <p>$∴\frac{dp[j]-dp[k]}{sumf[j]-sumf[k]}&lt;sumt[i]+s$</p>
 <p>令$j_1&lt;j_2&lt;j_3$，若$j_2$有可能成为最优决策，则其满足下凸性，$j_1$与$j_2$连成线段的斜率要小于$j_2$与$j_3$连成线段的斜率。</p>
-<p>即$\frac{dp[j_2]-dp[j_1]}{sumf[j_2]-sumf{j_1}}&lt;\frac{dp[j_3]-dp[j_2]}{sumf[j_3]-sumf[j_2]}$。</p>
+<p>即$\frac{dp[j_2]-dp[j_1]}{sumf[j_2]-sumf[j_1]}&lt;\frac{dp[j_3]-dp[j_2]}{sumf[j_3]-sumf[j_2]}$。</p>
 <p>便可以以此建立单调队列，维护这个下凸壳。</p>
 <p>队头后一个更优则弹出队头，队尾在加入$i$后不符合下凸性则弹出队尾，然后将$i$加入队尾。每次状态转移直接用队头即可。</p>
 <p>每个元素只入队一次，时间复杂度$O(n)$。</p>
