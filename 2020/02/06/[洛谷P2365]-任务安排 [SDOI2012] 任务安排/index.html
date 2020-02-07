@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="斜率优化DP," />
+  <meta name="keywords" content="洛谷,斜率优化DP," />
 
 
 
@@ -82,12 +82,13 @@
 <meta name="description" content="$n$个任务排成一个序列在一台机器上等待完成（顺序不得改变），这$n$个任务被分成若干批，每批包含相邻的若干任务。 从零时刻开始，这些任务被分批加工，第$i$个任务单独完成所需的时间为$t_i$。在每批任务开始前，机器需要启动时间$s$，而完成这批任务所需的时间是各个任务需要时间的总和（同一批任务将在同一时刻完成）。 每个任务的费用是它的完成时刻乘以一个费用系数$f_i$。请确定一个分组方案，使得">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[洛谷P2365] 任务安排">
-<meta property="og:url" content="http://www.zxyer.xyz/2020/02/06/[%E6%B4%9B%E8%B0%B7P2365]-%E4%BB%BB%E5%8A%A1%E5%AE%89%E6%8E%92/index.html">
+<meta property="og:url" content="http://www.zxyer.xyz/2020/02/06/[%E6%B4%9B%E8%B0%B7P2365]-%E4%BB%BB%E5%8A%A1%E5%AE%89%E6%8E%92%20[SDOI2012]%20%E4%BB%BB%E5%8A%A1%E5%AE%89%E6%8E%92/index.html">
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="$n$个任务排成一个序列在一台机器上等待完成（顺序不得改变），这$n$个任务被分成若干批，每批包含相邻的若干任务。 从零时刻开始，这些任务被分批加工，第$i$个任务单独完成所需的时间为$t_i$。在每批任务开始前，机器需要启动时间$s$，而完成这批任务所需的时间是各个任务需要时间的总和（同一批任务将在同一时刻完成）。 每个任务的费用是它的完成时刻乘以一个费用系数$f_i$。请确定一个分组方案，使得">
 <meta property="article:published_time" content="2020-02-06T15:05:08.000Z">
-<meta property="article:modified_time" content="2020-02-07T07:04:15.931Z">
+<meta property="article:modified_time" content="2020-02-07T07:38:44.411Z">
 <meta property="article:author" content="Yuzuriha_Inori">
+<meta property="article:tag" content="洛谷">
 <meta property="article:tag" content="斜率优化DP">
 <meta name="twitter:card" content="summary">
 
@@ -119,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://www.zxyer.xyz/2020/02/06/[洛谷P2365]-任务安排/"/>
+  <link rel="canonical" href="http://www.zxyer.xyz/2020/02/06/[洛谷P2365]-任务安排 [SDOI2012] 任务安排/"/>
 
 
 
@@ -296,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/02/06/%5B%E6%B4%9B%E8%B0%B7P2365%5D-%E4%BB%BB%E5%8A%A1%E5%AE%89%E6%8E%92/">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/02/06/%5B%E6%B4%9B%E8%B0%B7P2365%5D-%E4%BB%BB%E5%8A%A1%E5%AE%89%E6%8E%92%20%5BSDOI2012%5D%20%E4%BB%BB%E5%8A%A1%E5%AE%89%E6%8E%92/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yuzuriha_Inori">
@@ -439,6 +440,8 @@ dp[i]=min\{dp[j]-(sumt[i]+s)\times sumf[j]\}+sumt[i]\times sumf[i]+s\times sumf[
     <footer class="post-footer">
       
         <div class="post-tags">
+          
+            <a href="/is-zxy.github.io/tags/%E6%B4%9B%E8%B0%B7/" rel="tag"># 洛谷</a>
           
             <a href="/is-zxy.github.io/tags/%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96DP/" rel="tag"># 斜率优化DP</a>
           
