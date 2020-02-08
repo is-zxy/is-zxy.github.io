@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="L 公司有$n$个工厂，由高到低分布在一座山上，工厂$1$在山顶，工厂$n$在山脚。 由于这座山处于高原内陆地区（干燥少雨），L公司一般把产品直接堆放在露天，以节省费用。突然有一天，L 公司的总裁 L 先生接到气象部门的电话，被告知三天之后将有一场暴雨，于是 L 先生决定紧急在某些工厂建立一些仓库以免产品被淋坏。 由于地形的不同，在不同工厂建立仓库的费用可能是不同的。第 ii 个工厂目前已有成品$">
 <meta property="article:published_time" content="2020-02-08T15:09:41.000Z">
-<meta property="article:modified_time" content="2020-02-08T16:17:59.862Z">
+<meta property="article:modified_time" content="2020-02-08T16:31:22.543Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="斜率优化DP">
 <meta property="article:tag" content="ZJOI">
@@ -429,7 +429,7 @@ dp[i]=min\{dp[j]+c[i]+x[i]\times(sump[i-1]-sump[j])-(sumf[i-1]-sumf[j])\},j\in[0
 <p>$x[i]\ge \frac{ds[k]-ds[j]}{sump[k]-sump[j]}$</p>
 <p>定义决策点$q$点坐标为$(sump[q],ds[q])$且斜率有斜率为$x[i]$的直线过$q$点，则该直线与$y$轴交点即为$ds[q]-sump[q]\times x[i]$，即为$min$内的非常量项。</p>
 <p>则可看成量决策点$k(sump[k],ds[k])$，$j(sump[j],ds[j])$，若两点的连线段的斜率小于等于$x[i]$，则转移决策$j$比转移决策$k$更优。</p>
-<p>因为求的是$min$，则要维护一个下凸壳，由于$sump$与$x$具有单调性，则用单调队列维护下凸性，若队头并非最优决策点则弹出，最后用队头作为被转移的决策点即可。</p>
+<p>因为求的是$min$，则为斜率为$x[i]$的过决策点直线在$y$轴的最小截距。则要维护一个下凸壳，由于$sump$与$x$具有单调性，则用单调队列维护下凸性，若队头并非最优决策点则弹出，最后用队头作为被转移的决策点即可。</p>
 <p>那么现在剩余的问题只剩下凸壳的维护。因为具有下凸性，所以对于$j_1&lt;j_2&lt;j_3$，决策点$j_1$与$j_2$之间连线段的斜率要小于决策点$j_2$与$j_3$之间连线段的斜率，即</p>
 <script type="math/tex; mode=display">
 \frac{ds[j_2]-ds[j_1]}{sump[j_2]-sump[j_1]}<\frac{ds[j_3]-ds[j_2]}{sump[j_3]-sump[j_2]}</script><p>则据此维护凸壳即可。</p>
