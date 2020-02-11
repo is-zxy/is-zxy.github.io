@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="斜率优化,洛谷," />
+  <meta name="keywords" content="卢卡斯定理," />
 
 
 
@@ -79,17 +79,16 @@
 
 
 
-<meta name="description" content="[洛谷P2365] 任务安排$n$个任务排成一个序列在一台机器上等待完成（顺序不得改变），这$n$个任务被分成若干批，每批包含相邻的若干任务。 从零时刻开始，这些任务被分批加工，第$i$个任务单独完成所需的时间为$t_i$。在每批任务开始前，机器需要启动时间$s$，而完成这批任务所需的时间是各个任务需要时间的总和（同一批任务将在同一时刻完成）。 每个任务的费用是它的完成时刻乘以一个费用系数$f_i">
+<meta name="description" content="卢卡斯（Lucas）定理可以用来求$C_m^n\ mod\ p$。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[洛谷P2365] 任务安排&#x2F;[SDOI2012] 任务安排">
-<meta property="og:url" content="http://www.zxyer.xyz/2020/02/06/[%E6%B4%9B%E8%B0%B7P2365]-%E4%BB%BB%E5%8A%A1%E5%AE%89%E6%8E%92%20[SDOI2012]-%E4%BB%BB%E5%8A%A1%E5%AE%89%E6%8E%92/index.html">
+<meta property="og:title" content="卢卡斯（Lucas）定理学习笔记">
+<meta property="og:url" content="http://www.zxyer.xyz/2020/02/11/%E5%8D%A2%E5%8D%A1%E6%96%AF%EF%BC%88Lucas%EF%BC%89%E5%AE%9A%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
-<meta property="og:description" content="[洛谷P2365] 任务安排$n$个任务排成一个序列在一台机器上等待完成（顺序不得改变），这$n$个任务被分成若干批，每批包含相邻的若干任务。 从零时刻开始，这些任务被分批加工，第$i$个任务单独完成所需的时间为$t_i$。在每批任务开始前，机器需要启动时间$s$，而完成这批任务所需的时间是各个任务需要时间的总和（同一批任务将在同一时刻完成）。 每个任务的费用是它的完成时刻乘以一个费用系数$f_i">
-<meta property="article:published_time" content="2020-02-06T15:05:08.000Z">
-<meta property="article:modified_time" content="2020-02-10T15:29:33.532Z">
+<meta property="og:description" content="卢卡斯（Lucas）定理可以用来求$C_m^n\ mod\ p$。">
+<meta property="article:published_time" content="2020-02-11T14:39:02.000Z">
+<meta property="article:modified_time" content="2020-02-11T15:55:49.613Z">
 <meta property="article:author" content="Yuzuriha_Inori">
-<meta property="article:tag" content="斜率优化">
-<meta property="article:tag" content="洛谷">
+<meta property="article:tag" content="卢卡斯定理">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zxyer.xyz/2020/02/06/[洛谷P2365]-任务安排 [SDOI2012]-任务安排/"/>
+  <link rel="canonical" href="http://www.zxyer.xyz/2020/02/11/卢卡斯（Lucas）定理学习笔记/"/>
 
 
 
 
 
-  <title>[洛谷P2365] 任务安排/[SDOI2012] 任务安排 | Zxyer's Blog</title>
+  <title>卢卡斯（Lucas）定理学习笔记 | Zxyer's Blog</title>
   
 
 
@@ -297,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/02/06/%5B%E6%B4%9B%E8%B0%B7P2365%5D-%E4%BB%BB%E5%8A%A1%E5%AE%89%E6%8E%92%20%5BSDOI2012%5D-%E4%BB%BB%E5%8A%A1%E5%AE%89%E6%8E%92/">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/02/11/%E5%8D%A2%E5%8D%A1%E6%96%AF%EF%BC%88Lucas%EF%BC%89%E5%AE%9A%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yuzuriha_Inori">
@@ -314,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[洛谷P2365] 任务安排/[SDOI2012] 任务安排</h1>
+          <h1 class="post-title" itemprop="name headline">卢卡斯（Lucas）定理学习笔记</h1>
         
 
         <div class="post-meta">
@@ -326,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-06T23:05:08+08:00">
-                2020-02-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-11T22:39:02+08:00">
+                2020-02-11
               </time>
             
 
@@ -349,8 +348,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/is-zxy.github.io/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
-                    <span itemprop="name">题解</span>
+                  <a href="/is-zxy.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
                   </a>
                 </span>
 
@@ -386,58 +385,44 @@
       
 
       
-        <h2 id="洛谷P2365-任务安排"><a href="#洛谷P2365-任务安排" class="headerlink" title="[洛谷P2365] 任务安排"></a>[洛谷P2365] 任务安排</h2><p>$n$个任务排成一个序列在一台机器上等待完成（顺序不得改变），这$n$个任务被分成若干批，每批包含相邻的若干任务。</p>
-<p>从零时刻开始，这些任务被分批加工，第$i$个任务单独完成所需的时间为$t_i$。在每批任务开始前，机器需要启动时间$s$，而完成这批任务所需的时间是各个任务需要时间的总和（同一批任务将在同一时刻完成）。</p>
-<p>每个任务的费用是它的完成时刻乘以一个费用系数$f_i$。请确定一个分组方案，使得总费用最小。</p>
-<p> 对于$100\%$的数据，$1\le n\le5000$，$0 \le s\le50$，$1\le t_i,f_i \le 100$。 </p>
+        <p>卢卡斯（Lucas）定理可以用来求$C_m^n\ mod\ p$。</p>
 <a id="more"></a>
-<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P2365" target="_blank" rel="noopener">P2365 任务安排</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>定义$dp[i][j]$表示前$i$个任务被分为$j$批的最小费用值。</p>
-<p>定义$sumt[i]$表示$t$的前缀和，$sumf[i]$表示$f$的前缀和。</p>
-<p>易得</p>
+<h1 id="定理内容"><a href="#定理内容" class="headerlink" title="定理内容"></a>定理内容</h1><p>令$n=sp+q,m=tp+r,(q,r\le p)$，则有</p>
 <script type="math/tex; mode=display">
-dp[i][j]=min\{dp[k][j-1]+(sumt[i]+s\times j)(sumf[i]-sumf[k])\},k\in[0,i)</script><p>初始化$dp[0][0]=0$，其余均为一个极大值。</p>
-<p>于是便可以照这个写出一个$O(n^3)$的TLE代码。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,s,t[N],f[N],sumt[N],sumf[N],dp[N][N],ans;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;s;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;t[i]&gt;&gt;f[i];</span><br><span class="line">		sumt[i]=sumt[i<span class="number">-1</span>]+t[i];</span><br><span class="line">		sumf[i]=sumf[i<span class="number">-1</span>]+f[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">memset</span>(dp,<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	ans=dp[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">	dp[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=i;j++) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;i;k++) &#123;</span><br><span class="line">				dp[i][j]=min(dp[i][j],dp[k][j<span class="number">-1</span>]+(sumt[i]+s*j)*(sumf[i]-sumf[k]));</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(i==n) ans=min(ans,dp[i][j]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>观察式子，发现$j$的作用仅是为了计算此前个过程中的启动时间和，但事实上，既然这个时间要乘上此后的所有$f$，不如提前加入其中。因为若分完前$j$个任务后，要等待$s$秒，则后续费用一定会加上$(sumf[n]-sumf[j])\times s$，于是可以提前加进去，这样dp数组可以省去一维，状转方程变为</p>
+C_n^m=C_{sp+q}^{tp+r} \equiv C_s^t\times C_q^r(mod\ p)</script><hr>
+<h1 id="简要证明"><a href="#简要证明" class="headerlink" title="简要证明"></a>简要证明</h1><p>定义</p>
 <script type="math/tex; mode=display">
-dp[i]=min\{dp[j]+sumt[i]\times (sumf[i]-sumf[j])+s\times (sumf[n]-sumf[j])\},j\in[0,i)</script><p>这样又可以写出一个$O(n^2)$的算法。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,s,t[N],f[N],sumt[N],sumf[N],dp[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;s;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;t[i]&gt;&gt;f[i];</span><br><span class="line">		sumt[i]=sumt[i<span class="number">-1</span>]+t[i];</span><br><span class="line">		sumf[i]=sumf[i<span class="number">-1</span>]+f[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">memset</span>(dp,<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	dp[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;j++) dp[i]=min(dp[i],dp[j]+sumt[i]*(sumf[i]-sumf[j])+s*(sumf[n]-sumf[j]));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;dp[n]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>再整理，可得</p>
+n=sp+q,m=tp+r,(q,r\le p)</script><p>组合数定义</p>
 <script type="math/tex; mode=display">
-dp[i]=min\{dp[j]-(sumt[i]+s)\times sumf[j]\}+sumt[i]\times sumf[i]+s\times sumf[n],j\in[0,i)</script><p>对于每一个$i$，$min$外都是常量。</p>
-<p>观察$min$内的式子：$dp[j]-(sumt[i]+s)\times sumf[j]$，令$k=sumt[i]+s$，则原式变为$-k\times sumf[j]+dp[j]$。</p>
-<p>这个形式像什么？一次函数。</p>
-<p>将其看做一条斜率为$k$，且过点$(sumf[j],dp[j])$的直线。</p>
-<p>那么其与$y$轴交点即为$(0,dp[j]-k\times sumf[j])$</p>
-<p>这是什么？这就是$min$内的东西。则问题就转化为找最小的截距。</p>
-<p>则对于每个$sumf[j],dp[j],j\in[0,i)$过点$(sumf[j],dp[j])$的直线，最小的截距明显就是下凸壳的顶点。</p>
-<p>令$k&lt;j&lt;i$，如果转移$j$比转移$k$要更优的话，则</p>
-<p>$dp[j]-(sumt[i]+s)\times sumf[j]&lt;dp[k]-(sumt[i]+s)\times sumf[k]$</p>
-<p>$dp[j]-dp[k]&lt;(sumt[i]+s)(sumf[j]-sumf[k])$</p>
-<p>$∵j&gt;k$</p>
-<p>$∴sumf[j]-sumf[k]&gt;0$</p>
-<p>$∴\frac{dp[j]-dp[k]}{sumf[j]-sumf[k]}&lt;sumt[i]+s$</p>
-<p>则相邻两点$j,k,k&lt;j$，若$j$与$k$的连线段的斜率小于$sumt[i]+s$的话，那么$k$不需要了。</p>
-<p>令$j_1&lt;j_2&lt;j_3$，若$j_2$有可能成为最优决策，则其满足下凸性，$j_1$与$j_2$连成线段的斜率要小于$j_2$与$j_3$连成线段的斜率。</p>
-<p>即$\frac{dp[j_2]-dp[j_1]}{sumf[j_2]-sumf[j_1]}&lt;\frac{dp[j_3]-dp[j_2]}{sumf[j_3]-sumf[j_2]}$。</p>
-<p>便可以以此建立单调队列，维护这个下凸壳。</p>
-<p>队头与队头后一个的连线段的斜率小于$sumt[i]+s$的话则直接弹出，因为$sumt[i]+s$具有单调性。队尾在加入$i$后不符合下凸性则弹出队尾，然后将$i$加入队尾。每次状态转移直接用队头即可。</p>
-<p>每个元素只入队一次，时间复杂度$O(n)$。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,s,f[N],t[N],sumf[N],sumt[N],dp[N],q[N],head=<span class="number">1</span>,tail=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;s;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;t[i]&gt;&gt;f[i];</span><br><span class="line">		sumf[i]=sumf[i<span class="number">-1</span>]+f[i];</span><br><span class="line">		sumt[i]=sumt[i<span class="number">-1</span>]+t[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">memset</span>(dp,<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	q[head]=<span class="number">0</span>;</span><br><span class="line">	dp[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="keyword">while</span>(head&lt;tail&amp;&amp;dp[q[head+<span class="number">1</span>]]-dp[q[head]]&lt;=(sumt[i]+s)*(sumf[q[head+<span class="number">1</span>]]-sumf[q[head]])) head++;</span><br><span class="line">		dp[i]=dp[q[head]]-(sumt[i]+s)*sumf[q[head]]+sumt[i]*sumf[i]+s*sumf[n];</span><br><span class="line">		<span class="keyword">while</span>(head&lt;tail&amp;&amp;(dp[q[tail]]-dp[q[tail<span class="number">-1</span>]])*(sumf[i]-sumf[q[tail]])&gt;=(dp[i]-dp[q[tail]])*(sumf[q[tail]]-sumf[q[tail<span class="number">-1</span>]])) tail--;</span><br><span class="line">		q[++tail]=i;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;dp[n]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="SDOI2012-任务安排"><a href="#SDOI2012-任务安排" class="headerlink" title="[SDOI2012] 任务安排"></a>[SDOI2012] 任务安排</h2><p>$n$个任务排成一个序列在一台机器上等待完成（顺序不得改变），这$n$个任务被分成若干批，每批包含相邻的若干任务。</p>
-<p>从零时刻开始，这些任务被分批加工，第$i$个任务单独完成所需的时间为$t_i$。在每批任务开始前，机器需要启动时间$s$，而完成这批任务所需的时间是各个任务需要时间的总和（同一批任务将在同一时刻完成）。</p>
-<p>每个任务的费用是它的完成时刻乘以一个费用系数$f_i$。请确定一个分组方案，使得总费用最小。</p>
-<p> 对于$100\%$的数据，$1\le n\le3\times 10^5$，$0 \le s\le2^8$，$|t_i|\le 2^8$，$0\le f_i\le2^8$。</p>
-<!--more-->
-<h3 id="链接-1"><a href="#链接-1" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P5785" target="_blank" rel="noopener">[SDOI2012]任务安排</a></p>
-<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>本题与之前的那道任务安排不同在于数据量增大了，且$t$的值可能为负的。</p>
-<p>因此上面的$O(n^3)$与$O(n^2)$的方法都过不了。</p>
-<p>斜率优化？</p>
-<p>而因为$t$值可能为负，所以$sumt[i]+s$不再具有单调性，那么上面的保存相邻两点连线段斜率大于$sumt[i]+s$的方法便不再适用。</p>
-<p>因此不能弹出队头，而是要维护整个凸壳。所维护的凸壳具有下凸性，因此最优的决策点一定是左侧的线段斜率小于$sumt[i]+s$，右侧的线段斜率大于$sumt[i]+s$，所以便可以用二分查找，来寻找这个最优的决策点。</p>
-<p>队尾的操作维护下凸性与上题相同，保持不变即可。</p>
-<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 300010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,s,head=<span class="number">1</span>,tail=<span class="number">1</span>,q[N];</span><br><span class="line">ll f[N],t[N],sumf[N],sumt[N],dp[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">binary_search</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(head==tail) <span class="keyword">return</span> q[head];</span><br><span class="line">	<span class="keyword">int</span> l=head,r=tail;</span><br><span class="line">	<span class="keyword">while</span>(l&lt;r) &#123;</span><br><span class="line">		<span class="keyword">int</span> mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(dp[q[mid+<span class="number">1</span>]]-dp[q[mid]]&lt;=(sumt[i]+s)*(sumf[q[mid+<span class="number">1</span>]]-sumf[q[mid]])) l=mid+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> r=mid;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> q[l];</span><br><span class="line">&#125;</span><br><span class="line">		</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;s;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;t[i]&gt;&gt;f[i];</span><br><span class="line">		sumf[i]=sumf[i<span class="number">-1</span>]+f[i];</span><br><span class="line">		sumt[i]=sumt[i<span class="number">-1</span>]+t[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">memset</span>(dp,<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	q[head]=<span class="number">0</span>;</span><br><span class="line">	dp[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> p=binary_search(i);</span><br><span class="line">		dp[i]=dp[p]-(sumt[i]+s)*sumf[p]+sumt[i]*sumf[i]+s*sumf[n];</span><br><span class="line">		<span class="keyword">while</span>(head&lt;tail&amp;&amp;(dp[q[tail]]-dp[q[tail<span class="number">-1</span>]])*(sumf[i]-sumf[q[tail]])&gt;=(dp[i]-dp[q[tail]])*(sumf[q[tail]]-sumf[q[tail<span class="number">-1</span>]])) tail--;</span><br><span class="line">		q[++tail]=i;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;dp[n]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+C_n^m=\frac{n!}{m!(n-m)!}</script><p>于是易得</p>
+<script type="math/tex; mode=display">
+C_p^d \equiv 0(mod\ p),d\in(0,p)\ ①</script><p>由二项式定理</p>
+<script type="math/tex; mode=display">
+(x+y)^n=\sum_{i=0}^nC_n^ix^{n-i}y^i</script><p>于是</p>
+<script type="math/tex; mode=display">
+(1+x)^n=(1+x)^{sp+q}=(1+x)^q\times[(1+x)^p]^s=(1+x)^q\times[\sum_{i=0}^pC_p^ix^i]^s</script><p>由式①，可得</p>
+<script type="math/tex; mode=display">
+\begin{align}
+(1+x)^n 
+&\equiv (1+x)^q\times[\sum_{i=0}^pC_p^ix^i]^s \\ 
+&\equiv (1+x)^q\times (1+x^p)^s\ (mod\ p) \\ 
+&\equiv \sum_{i=0}^qC_q^ix^i\times \sum_{j=0}^sC_s^jx^{jp}\ (mod\ p)
+\end{align}</script><p>则</p>
+<script type="math/tex; mode=display">
+\begin{align}
+(1+x)^{sp+q} &\equiv \sum_{i=0}^qC_q^ix^i\times \sum_{j=0}^sC_s^jx^{jp}\ (mod\ p) \\
+\sum_{k=0}^{sp+q}C_{sp+q}^kx^k &\equiv \sum_{i=0}^qC_q^ix^i\times \sum_{j=0}^sC_s^jx^{jp}\ (mod\ p) \\
+
+\end{align}</script><p>两边同时取$x^{sp+r}$项</p>
+<script type="math/tex; mode=display">
+C_{sp+q}^{tp+r}x^{tp+r} \equiv C_q^rx^r\times C_{s}^{t}x^{tp}\ (mod\ p)</script><p>而$n=sp+q,m=tp+r,(q,r\le p)$，则</p>
+<script type="math/tex; mode=display">
+\begin{align}
+C_n^mx^m &\equiv C_q^r\times C_s^tx^{tp+r}\ (mod\ p) \\
+&\equiv C_q^r\times C_s^tx^m\ (mod\ p)
+\end{align}</script><p>两边同时消去$x^m$，可得</p>
+<script type="math/tex; mode=display">
+C_n^m \equiv C_q^r\times C_s^t\ (mod\ p)</script><p>于是得证。</p>
 
       
     </div>
@@ -455,9 +440,7 @@ dp[i]=min\{dp[j]-(sumt[i]+s)\times sumf[j]\}+sumt[i]\times sumf[i]+s\times sumf[
       
         <div class="post-tags">
           
-            <a href="/is-zxy.github.io/tags/%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96/" rel="tag"># 斜率优化</a>
-          
-            <a href="/is-zxy.github.io/tags/%E6%B4%9B%E8%B0%B7/" rel="tag"># 洛谷</a>
+            <a href="/is-zxy.github.io/tags/%E5%8D%A2%E5%8D%A1%E6%96%AF%E5%AE%9A%E7%90%86/" rel="tag"># 卢卡斯定理</a>
           
         </div>
       
@@ -470,8 +453,8 @@ dp[i]=min\{dp[j]-(sumt[i]+s)\times sumf[j]\}+sumt[i]\times sumf[i]+s\times sumf[
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/is-zxy.github.io/2020/02/06/%5BPOI2014%5D-PTA-Little-Bird/" rel="next" title="[POI2014] PTA-Little Bird">
-                <i class="fa fa-chevron-left"></i> [POI2014] PTA-Little Bird
+              <a href="/is-zxy.github.io/2020/02/10/%5BHDU3507%5D-Print-Article/" rel="next" title="[HDU3507] Print Article">
+                <i class="fa fa-chevron-left"></i> [HDU3507] Print Article
               </a>
             
           </div>
@@ -479,10 +462,6 @@ dp[i]=min\{dp[j]-(sumt[i]+s)\times sumf[j]\}+sumt[i]\times sumf[i]+s\times sumf[
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/is-zxy.github.io/2020/02/07/%5BHNOI2008%5D-%E7%8E%A9%E5%85%B7%E8%A3%85%E7%AE%B1TOY/" rel="prev" title="[HNOI2008]玩具装箱TOY">
-                [HNOI2008]玩具装箱TOY <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -675,7 +654,7 @@ dp[i]=min\{dp[j]-(sumt[i]+s)\times sumf[j]\}+sumt[i]\times sumf[i]+s\times sumf[
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#洛谷P2365-任务安排"><span class="nav-number">1.</span> <span class="nav-text">[洛谷P2365] 任务安排</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">1.1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">1.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SDOI2012-任务安排"><span class="nav-number">2.</span> <span class="nav-text">[SDOI2012] 任务安排</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接-1"><span class="nav-number">2.1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-1"><span class="nav-number">2.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-1"><span class="nav-number">2.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定理内容"><span class="nav-number">1.</span> <span class="nav-text">定理内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简要证明"><span class="nav-number">2.</span> <span class="nav-text">简要证明</span></a></li></ol></div>
             
 
           </div>
