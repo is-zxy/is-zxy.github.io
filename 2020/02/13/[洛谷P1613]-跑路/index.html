@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="小A的工作不仅繁琐，更有苛刻的规定，要求小A每天早上在6：00之前到达公司，否则这个月工资清零。可是小A偏偏又有赖床的坏毛病。于是为了保住自己的工资，小A买了一个十分牛B的空间跑路器，每秒钟可以跑$2^k$千米（$k$是任意自然数）。当然，这个机器是用longint存的，所以总跑路长度不能超过maxlongint千米。小A的家到公司的路可以看做一个有向图，小A家为点$1$，公司为点$n$，每条边长">
 <meta property="article:published_time" content="2020-02-13T15:37:49.000Z">
-<meta property="article:modified_time" content="2020-02-13T15:42:22.455Z">
+<meta property="article:modified_time" content="2020-02-13T15:46:43.357Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="倍增">
 <meta property="article:tag" content="最短路">
@@ -389,7 +389,7 @@
         <p>小A的工作不仅繁琐，更有苛刻的规定，要求小A每天早上在6：00之前到达公司，否则这个月工资清零。可是小A偏偏又有赖床的坏毛病。于是为了保住自己的工资，小A买了一个十分牛B的空间跑路器，每秒钟可以跑$2^k$千米（$k$是任意自然数）。当然，这个机器是用longint存的，所以总跑路长度不能超过maxlongint千米。小A的家到公司的路可以看做一个有向图，小A家为点$1$，公司为点$n$，每条边长度均为一千米。小A想每天能醒地尽量晚，所以让你帮他算算，他最少需要几秒才能到公司。数据保证$1$到$n$至少有一条路径。 </p>
 <a id="more"></a>
 <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P1613" target="_blank" rel="noopener">P1613 跑路</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>读完题，我就想：这不就是最短路二进制下$1$的个数吗？</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>读完题，我就想：这不就是求最短路二进制下$1$的个数吗？</p>
 <p>严重的错误。</p>
 <p>可以绕着一个环一直跑，跑出个长为$2^k$的路出来，这样路程虽长，但只需一秒。</p>
 <p>于是先求出各个点之间是否有长为$2^k$的路，有的话将这两点之间距离变为$1$。</p>
