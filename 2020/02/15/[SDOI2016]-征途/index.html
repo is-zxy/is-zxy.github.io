@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="APIO,斜率优化," />
+  <meta name="keywords" content="斜率优化,SDOI," />
 
 
 
@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="你有一支由$n$名预备役士兵组成的部队，士兵从$1$到$n$编号，你要将他们拆分成若干特别行动队调入战场。出于默契的考虑，同一支特别行动队中队员的编号应该连续，即为形如$(i, i + 1, \cdots i + k)$的序列。所有的队员都应该属于且仅属于一支特别行动队。 编号为$i$的士兵的初始战斗力为$x_i$，一支特别行动队的初始战斗力$X$为队内士兵初始战斗力之和，即$X &#x3D; x_i +">
+<meta name="description" content="Pine开始了从S地到T地的征途。 从S地到T地的路可以划分成n段，相邻两段路的分界点设有休息站。 Pine计划用m天到达T地。除第m天外，每一天晚上Pine都必须在休息站过夜。所以，一段路必须在同一天中走完。 Pine希望每一天走的路长度尽可能相近，所以他希望每一天走的路的长度的方差尽可能小。 帮助Pine求出最小方差是多少。 设方差是$v$，可以证明，$v\times m^2$是一个整数。为了">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[APIO2010] 特别行动队">
-<meta property="og:url" content="http://www.zxyer.xyz/2020/02/09/[APIO2010]-%E7%89%B9%E5%88%AB%E8%A1%8C%E5%8A%A8%E9%98%9F/index.html">
+<meta property="og:title" content="[SDOI2016] 征途">
+<meta property="og:url" content="http://www.zxyer.xyz/2020/02/15/[SDOI2016]-%E5%BE%81%E9%80%94/index.html">
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
-<meta property="og:description" content="你有一支由$n$名预备役士兵组成的部队，士兵从$1$到$n$编号，你要将他们拆分成若干特别行动队调入战场。出于默契的考虑，同一支特别行动队中队员的编号应该连续，即为形如$(i, i + 1, \cdots i + k)$的序列。所有的队员都应该属于且仅属于一支特别行动队。 编号为$i$的士兵的初始战斗力为$x_i$，一支特别行动队的初始战斗力$X$为队内士兵初始战斗力之和，即$X &#x3D; x_i +">
-<meta property="article:published_time" content="2020-02-09T04:45:25.000Z">
-<meta property="article:modified_time" content="2020-02-10T15:29:53.697Z">
+<meta property="og:description" content="Pine开始了从S地到T地的征途。 从S地到T地的路可以划分成n段，相邻两段路的分界点设有休息站。 Pine计划用m天到达T地。除第m天外，每一天晚上Pine都必须在休息站过夜。所以，一段路必须在同一天中走完。 Pine希望每一天走的路长度尽可能相近，所以他希望每一天走的路的长度的方差尽可能小。 帮助Pine求出最小方差是多少。 设方差是$v$，可以证明，$v\times m^2$是一个整数。为了">
+<meta property="article:published_time" content="2020-02-15T04:42:53.000Z">
+<meta property="article:modified_time" content="2020-02-16T01:25:08.122Z">
 <meta property="article:author" content="Yuzuriha_Inori">
-<meta property="article:tag" content="APIO">
 <meta property="article:tag" content="斜率优化">
+<meta property="article:tag" content="SDOI">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zxyer.xyz/2020/02/09/[APIO2010]-特别行动队/"/>
+  <link rel="canonical" href="http://www.zxyer.xyz/2020/02/15/[SDOI2016]-征途/"/>
 
 
 
 
 
-  <title>[APIO2010] 特别行动队 | Zxyer's Blog</title>
+  <title>[SDOI2016] 征途 | Zxyer's Blog</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/02/09/%5BAPIO2010%5D-%E7%89%B9%E5%88%AB%E8%A1%8C%E5%8A%A8%E9%98%9F/">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/02/15/%5BSDOI2016%5D-%E5%BE%81%E9%80%94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yuzuriha_Inori">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[APIO2010] 特别行动队</h1>
+          <h1 class="post-title" itemprop="name headline">[SDOI2016] 征途</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-09T12:45:25+08:00">
-                2020-02-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-15T12:42:53+08:00">
+                2020-02-15
               </time>
             
 
@@ -386,43 +386,52 @@
       
 
       
-        <p>你有一支由$n$名预备役士兵组成的部队，士兵从$1$到$n$编号，你要将他们拆分成若干特别行动队调入战场。出于默契的考虑，同一支特别行动队中队员的编号<strong>应该连续</strong>，即为形如$(i, i + 1, \cdots i + k)$的序列。所有的队员都应该属于且仅属于一支特别行动队。</p>
-<p>编号为$i$的士兵的初始战斗力为$x_i$，一支特别行动队的初始战斗力$X$为队内士兵初始战斗力之和，即$X = x_i + x_{i+1} + \cdots + x_{i+k}$。</p>
-<p>通过长期的观察，你总结出对于一支初始战斗力为$X$的特别行动队，其修正战斗力$X’= aX^2+bX+c$，其中$a,b,c$是已知的系数$(a &lt; 0)$。 作为部队统帅，现在你要为这支部队进行编队，使得所有特别行动队的修正战斗力之和最大。试求出这个最大和。</p>
+        <p>Pine开始了从S地到T地的征途。</p>
+<p>从S地到T地的路可以划分成n段，相邻两段路的分界点设有休息站。</p>
+<p>Pine计划用m天到达T地。除第m天外，每一天晚上Pine都必须在休息站过夜。所以，一段路必须在同一天中走完。</p>
+<p>Pine希望每一天走的路长度尽可能相近，所以他希望每一天走的路的长度的方差尽可能小。</p>
+<p>帮助Pine求出最小方差是多少。</p>
+<p>设方差是$v$，可以证明，$v\times m^2$是一个整数。为了避免精度误差，输出结果时输出$v\times m^2$。</p>
 <a id="more"></a>
-<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P3628" target="_blank" rel="noopener">[APIO2010]特别行动队</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>由于<strong>同一支特别行动队中队员的编号应该连续</strong>，那么就比较好想了。</p>
-<p>定义$dp[i]$表示前$i$名队员已经分属于各自的行动队，目前所有行动队的修正战斗力之和的最大值。</p>
-<p>于是可以从$[0,i)$队员中枚举$j$，使得第$j+1$名队员到第$i$名队员属于一个行动队。</p>
-<p>那么</p>
-<script type="math/tex; mode=display">
-dp[i]=max\{dp[j]+a(sum[i]-sum[j])^2+b(sum[i]-sum[j])+c\},c\in[0,i)</script><p>其中$sum$为$x$的前缀和。初始化$dp[0]=0$，其余均为一个极小的负值。</p>
-<p>于是可以得到一个$O(n^2)$的算法，TLE。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1000010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line">ll a,b,c,x[N],sum[N],dp[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;c;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;x[i];</span><br><span class="line">		sum[i]=sum[i<span class="number">-1</span>]+x[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">memset</span>(dp,~<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	dp[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;j++) &#123;</span><br><span class="line">			ll X=(sum[i]-sum[j]);</span><br><span class="line">			dp[i]=max(dp[i],dp[j]+a*X*X+b*X+c);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;dp[n]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>将$max$内的式子单独提出来看看</p>
-<p>$dp[j]+a(sum[i]-sum[j])^2+b(sum[i]-sum[j])+c$</p>
-<p>$=dp[j]+a(sum[i]^2-2sum[i]sum[j]+sum[j]^2)+b(sum[i]-sum[j])+c$</p>
-<p>$=dp[j]+a\times sum[j]^2-b\times sum[j]-2a\times sum[i]sum[j]+a\times sum[i]^2+b\times sum[i]+c$</p>
-<p>剔除掉求状态$i$时的常量项，则为</p>
-<p>$dp[j]+a\times sum[j]^2-b\times sum[j]-2a\times sum[i]sum[j]$</p>
-<p>定义$f[i]=a\times sum[i]^2-b\times sum[i]$，则原式可化为</p>
-<p>$dp[j]+f[j]-2a\times sum[i]sum[j]$</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P4072" target="_blank" rel="noopener">[SDOI2016]征途</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>$v$是方差，则$v=\frac{\sum_{i=1}^m(S_i-\frac{sum[n]}{m})^2}{m}$</p>
 <p>则</p>
 <script type="math/tex; mode=display">
-dp[i]=max\{dp[j]+f[j]-2a\times sum[i]sum[j]\}+a\times sum[i]^2+b\times sum[i]+c</script><p>将$max$内提出来</p>
-<p>$dp[j]+f[j]-2a\times sum[i]sum[j]$，发现$sum[j]$这一项，其系数为常量。</p>
-<p>于是该式子可以看做一斜率为$2a\times sum[i]$的过点$(sum[j],dp[j]+f[j])$的直线与$y$轴的截距，于是定义决策点$i(sum[i],dp[i]+f[i])$。</p>
-<p>那么问题就转化为求一个最大的截距，于是需要维护一个上凸壳。</p>
-<p>明显$sum$具有单调性。</p>
-<p>于是令$k&lt;j&lt;i$，若转移决策$j$比转移决策$k$更优的话，则</p>
-<p>$dp[j]+f[j]-2a\times sum[i]sum[j] \ge dp[k]+f[k]-2a\times sum[i]sum[k] $</p>
-<p>$dp[j]+f[j]-(dp[k]+f[k]) \ge 2a\times sum[i]\times (sum[j]-sum[k])$</p>
-<p>因为$j&gt;k$且$sum$单调递增，则</p>
-<p>$\frac{dp[j]+f[j]-(dp[k]+f[k])}{sum[j]-sum[k]}\ge 2a$ 式①</p>
-<p>而若要维护上凸壳，则其具有上凸性，即满足$j_1&lt;j_2&lt;j_3$，则决策点$j_1$与$j_2$之间连线段的斜率大于决策点$j_2$与$j_3$之间的斜率，即</p>
-<p>$\frac{dp[j_2]+f[j_2]-(dp[j_1]+f[j_2])}{sum[j_2]-sum[j_1]}&gt;\frac{dp[j_3]+f[j_3]-(dp[j_2]+f[j_2])}{sum[j_3]-sum[j_2]}$ 式②</p>
-<p>于是用单调队列维护上凸壳，用式①保持队头为最优决策点，用式②维护上凸壳即可。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1000010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,q[N],head=<span class="number">1</span>,tail=<span class="number">1</span>;</span><br><span class="line">ll a,b,c,x[N],sum[N],dp[N],f[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;c;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;x[i];</span><br><span class="line">		sum[i]=sum[i<span class="number">-1</span>]+x[i];</span><br><span class="line">		f[i]=a*sum[i]*sum[i]-b*sum[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">memset</span>(dp,~<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	dp[<span class="number">0</span>]=<span class="number">0</span>,q[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="keyword">while</span>(head&lt;tail&amp;&amp;dp[q[head+<span class="number">1</span>]]+f[q[head+<span class="number">1</span>]]-dp[q[head]]-f[q[head]]&gt;=<span class="number">2</span>*a*sum[i]*(sum[q[head+<span class="number">1</span>]]-sum[q[head]])) head++;</span><br><span class="line">		dp[i]=dp[q[head]]+f[q[head]]<span class="number">-2</span>*a*sum[i]*sum[q[head]]+a*sum[i]*sum[i]+b*sum[i]+c;</span><br><span class="line">		<span class="keyword">while</span>(head&lt;tail&amp;&amp;(dp[q[tail]]+f[q[tail]]-dp[q[tail<span class="number">-1</span>]]-f[q[tail<span class="number">-1</span>]])*(sum[i]-sum[q[tail]])&lt;=(dp[i]+f[i]-dp[q[tail]]-f[q[tail]])*(sum[q[tail]]-sum[q[tail<span class="number">-1</span>]])) tail--;</span><br><span class="line">		q[++tail]=i;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;dp[n]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+\begin{align}
+v\times m^2 
+&= m\sum_{i=1}^m(S_i-\frac{sum[n]}{m})^2 \\
+&= m\sum_{i=1}^m(S_i^2-2\times S_i\times \frac{sum[n]}{m}+\frac{sum[n]^2}{m^2}) \\
+&= m\sum_{i=1}^mS_i^2-2\times sum[n]\sum_{i=1}^mS_i+sum[n]^2 \\
+&= m\sum_{i=1}^mS_i^2-2\times sum[n]^2+sum[n]^2 \\
+&= m\sum_{i=1}^mS_i^2-sum[n]^2
+
+\end{align}</script><p>于是最小化$m\sum_{i=1}^mS_i^2$即可。</p>
+<p>定义$dp[i][k]$表示前$i$段在第$k$天走到的最小$\sum_{i=1}^kS_i^2$的最小值。</p>
+<p>易得</p>
+<script type="math/tex; mode=display">
+dp[i][k]=\min\{dp[j][k-1]+m\times (sum[i]-sum[j])^2\},i\in[1,n],k\in[0,i)</script><p>最终答案即为$dp[n][m]-sum[n]^2$</p>
+<p>于是可以得到一个$O(mn^2)$的算法，TLE。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 3010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line">ll a[N],sum[N],dp[N][N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">		sum[i]=sum[i<span class="number">-1</span>]+a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">memset</span>(dp,<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	dp[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=n;k++) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;j++) dp[i][k]=min(dp[i][k],dp[j][k<span class="number">-1</span>]+m*(sum[i]-sum[j])*(sum[i]-sum[j]));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;dp[n][m]-sum[n]*sum[n]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将$\min$内的式子单独提出来看看。</p>
+<script type="math/tex; mode=display">
+\begin{align}
+dp[j][k-1]+m\times (sum[i]-sum[j])^2 
+&= dp[j][k-1]+m(sum[i]^2-2\times sum[i]\times sun[j]+sum[j]^2) \\
+&= dp[j][k-1]+m\times sun[i]^2-2m\times sum[i]\times sum[j]+m\times sum[j]^2
+\end{align}</script><p>将常量剔除，得</p>
+<script type="math/tex; mode=display">
+dp[j][k-1]-2m\times sum[i]\times sum[j]+m\times sum[j]^2</script><p>定义$sm[i]=m\times sum[i]^2$，则变为</p>
+<script type="math/tex; mode=display">
+dp[j][k-1]-2m\times sum[i]\times sum[j]+sm[j]</script><p>则原状转方程变为</p>
+<script type="math/tex; mode=display">
+dp[i][k]=\min\{dp[j][k-1]-2m\times sum[i]\times sum[j]+sm[j]\}+sm[i],i\in[1,n],k\in[0,i)</script><p>令$p&lt;j&lt;i$， 若转移决策点$j$比转移决策点$k$更优，则</p>
+<script type="math/tex; mode=display">
+\begin{align}
+dp[j][k-1]-2m\times sum[i]\times sum[j]+sm[j] &\le dp[p][k-1]-2m\times sum[i]\times sum[p]+sm[p] \\ \\
+dp[j][k-1]+sm[j]-(dp[p][k-1]+sm[p]) &\le 2m\times sum[i](sum[j]-sum[p]) \\ \\
+\frac{dp[j][k-1]+sm[j]-(dp[p][k-1]+sm[p])}{sum[j]-sum[p]} &\le 2m\times sum[i]
+\end{align}</script><p>看到这式子，明显可以斜率优化，维护下凸壳即可。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 3010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,q[N];</span><br><span class="line">ll a[N],sum[N],dp[N][N],sm[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">		sum[i]=sum[i<span class="number">-1</span>]+a[i];</span><br><span class="line">		sm[i]=m*sum[i]*sum[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) dp[i][<span class="number">1</span>]=sm[i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">2</span>;k&lt;=m;k++) &#123;</span><br><span class="line">		<span class="keyword">int</span> head=<span class="number">1</span>,tail=<span class="number">1</span>;</span><br><span class="line">		<span class="built_in">memset</span>(q,<span class="number">0</span>,<span class="keyword">sizeof</span>(q));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=k<span class="number">-1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">			<span class="keyword">while</span>(head&lt;tail&amp;&amp;dp[q[head+<span class="number">1</span>]][k<span class="number">-1</span>]+sm[q[head+<span class="number">1</span>]]-(dp[q[head]][k<span class="number">-1</span>]+sm[q[head]])&lt;=<span class="number">2</span>*m*sum[i]*(sum[q[head+<span class="number">1</span>]]-sum[q[head]])) head++;</span><br><span class="line">			dp[i][k]=dp[q[head]][k<span class="number">-1</span>]<span class="number">-2</span>*m*sum[i]*sum[q[head]]+sm[q[head]]+sm[i];</span><br><span class="line">			<span class="keyword">while</span>(head&lt;tail&amp;&amp;(dp[q[tail]][k<span class="number">-1</span>]+sm[q[tail]]-(dp[q[tail<span class="number">-1</span>]][k<span class="number">-1</span>]+sm[q[tail<span class="number">-1</span>]]))*(sum[i]-sum[q[tail]])&gt;=(dp[i][k<span class="number">-1</span>]+sm[i]-(dp[q[tail]][k<span class="number">-1</span>]+sm[q[tail]]))*(sum[q[tail]]-sum[q[tail<span class="number">-1</span>]])) tail--;</span><br><span class="line">			q[++tail]=i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;dp[n][m]-sum[n]*sum[n]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -440,9 +449,9 @@ dp[i]=max\{dp[j]+f[j]-2a\times sum[i]sum[j]\}+a\times sum[i]^2+b\times sum[i]+c<
       
         <div class="post-tags">
           
-            <a href="/is-zxy.github.io/tags/APIO/" rel="tag"># APIO</a>
-          
             <a href="/is-zxy.github.io/tags/%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96/" rel="tag"># 斜率优化</a>
+          
+            <a href="/is-zxy.github.io/tags/SDOI/" rel="tag"># SDOI</a>
           
         </div>
       
@@ -455,8 +464,8 @@ dp[i]=max\{dp[j]+f[j]-2a\times sum[i]sum[j]\}+a\times sum[i]^2+b\times sum[i]+c<
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/is-zxy.github.io/2020/02/08/%5BZJOI2007%5D-%E4%BB%93%E5%BA%93%E5%BB%BA%E8%AE%BE/" rel="next" title="[ZJOI2007] 仓库建设">
-                <i class="fa fa-chevron-left"></i> [ZJOI2007] 仓库建设
+              <a href="/is-zxy.github.io/2020/02/14/%5BPOI2015%5D-WIL-Wilcze-doly/" rel="next" title="[POI2015] WIL-Wilcze doły">
+                <i class="fa fa-chevron-left"></i> [POI2015] WIL-Wilcze doły
               </a>
             
           </div>
@@ -464,10 +473,6 @@ dp[i]=max\{dp[j]+f[j]-2a\times sum[i]sum[j]\}+a\times sum[i]^2+b\times sum[i]+c<
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/is-zxy.github.io/2020/02/09/%5B%E6%B4%9B%E8%B0%B7P6040%5D-%E8%AF%BE%E5%90%8E%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E6%BB%91%E6%BA%9C%E6%BB%91%E6%BA%9C%E8%A1%A5%E4%B9%A0%E7%8F%AD/" rel="prev" title="[洛谷P6040] 课后期末考试滑溜滑溜补习班">
-                [洛谷P6040] 课后期末考试滑溜滑溜补习班 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
