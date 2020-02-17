@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="约翰家有$N$头奶牛，第i头奶牛的编号是$S_i$，每头奶牛的编号都是唯一的。这些奶牛最近在闹脾气，为表达不满的情绪，她们在挤奶的时候一定要排成混乱的队伍。在一只混乱的队伍中，相邻奶牛的编号之差均超过$K$。比如当$K&#x3D;1$时，$1,3,5,2,6,4$就是一支混乱的队伍， 而$1,3,6,5,2,4$不是，因为$6$和$5$只差$1$。请数一数，有多少种队形是混乱的呢？">
 <meta property="article:published_time" content="2020-02-01T15:21:37.000Z">
-<meta property="article:modified_time" content="2020-02-01T15:29:48.552Z">
+<meta property="article:modified_time" content="2020-02-17T14:09:12.433Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="状压DP">
 <meta property="article:tag" content="USACO">
@@ -398,6 +398,8 @@
       
         <p>约翰家有$N$头奶牛，第i头奶牛的编号是$S_i$，每头奶牛的编号都是唯一的。这些奶牛最近在闹脾气，为表达不满的情绪，她们在挤奶的时候一定要排成混乱的队伍。在一只混乱的队伍中，相邻奶牛的编号之差均超过$K$。比如当$K=1$时，$1,3,5,2,6,4$就是一支混乱的队伍， 而$1,3,6,5,2,4$不是，因为$6$和$5$只差$1$。请数一数，有多少种队形是混乱的呢？ </p>
 <a id="more"></a>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$ (4 &lt;= N &lt;= 16) $</p>
+<p>$(1 &lt;= K &lt;= 3400) $</p>
 <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P2915" target="_blank" rel="noopener">[USACO08NOV]奶牛混合起来Mixed Up Cows</a></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>$n$较小，考虑状压。</p>
 <p>有些像Travelling那题。</p>
@@ -626,7 +628,7 @@ dp[i+2^l][l]=\sum_{check(j)\&\&i\&2^j==1}dp[i][j]</script><p>最终答案即为$
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据范围"><span class="nav-number">1.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">2.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>

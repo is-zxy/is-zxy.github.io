@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="小Q在电子工艺实习课上学习焊接电路板。一块电路板由若干个元件组成，我们不妨称之为节点，并将其用数字$1,2,3$进行标号。电路板的各个节点由若干不相交的导线相连接，且对于电路板的任何两个节点，都存在且仅存在一条通路（通路指连接两个元件的导线序列）。 在电路板上存在一个特殊的元件称为“激发器”。当激发器工作后，产生一个激励电流，通过导线传向每一个它所连接的节点。而中间节点接收到激励电流后，得到信息，">
 <meta property="article:published_time" content="2020-02-03T12:02:34.000Z">
-<meta property="article:modified_time" content="2020-02-03T12:57:26.765Z">
+<meta property="article:modified_time" content="2020-02-17T14:15:16.910Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="树形DP">
 <meta property="article:tag" content="ZJOI">
@@ -400,6 +400,9 @@
 <p>在电路板上存在一个特殊的元件称为“激发器”。当激发器工作后，产生一个激励电流，通过导线传向每一个它所连接的节点。而中间节点接收到激励电流后，得到信息，并将该激励电流传向与它连接并且尚未接收到激励电流的节点。最终，激烈电流将到达一些“终止节点”――接收激励电流之后不再转发的节点。</p>
 <p>激励电流在导线上的传播是需要花费时间的，对于每条边$e$，激励电流通过它需要的时间为$t_e$，而节点接收到激励电流后的转发可以认为是在瞬间完成的。现在这块电路板要求每一个“终止节点”同时得到激励电路――即保持时态同步。由于当前的构造并不符合时态同步的要求，故需要通过改变连接线的构造。目前小Q​有一个道具，使用一次该道具，可以使得激励电流通过某条连接导线的时间增加一个单位。请问小Q最少使用多少次道具才可使得所有的“终止节点”时态同步？</p>
 <a id="more"></a>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>对于$40\%$的数据，$N ≤ 1000$</p>
+<p>对于$100\%$的数据，$N ≤ 500000$</p>
+<p>对于所有的数据，$t_e ≤ 1000000$</p>
 <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P1131" target="_blank" rel="noopener">[ZJOI2007]时态同步</a></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>不算难的一题。</p>
 <p>定义$dp[root]$表示以$root$为根的子树的道具最少使用次数。</p>
@@ -630,7 +633,7 @@ dp[root]=\sum_{j\in son_{root}}dp[j]+cnt*maxn[root]-sum</script><p>其中$maxn[i
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据范围"><span class="nav-number">1.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">2.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>

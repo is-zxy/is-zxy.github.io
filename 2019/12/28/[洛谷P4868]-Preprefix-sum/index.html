@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="给定一个序列$a$，有两种操作：  $Modify\ \  i\ \ x$：把$a_i$改为$x$ $Query\ \ i$：查询前缀和$S[i]$的前缀和$SS[i]$，并输出。">
 <meta property="article:published_time" content="2019-12-27T16:13:28.000Z">
-<meta property="article:modified_time" content="2020-01-29T15:15:01.158Z">
+<meta property="article:modified_time" content="2020-02-17T14:28:30.691Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="树状数组">
 <meta property="article:tag" content="洛谷">
@@ -403,6 +403,7 @@
 <li>$Query\ \ i$：查询前缀和$S[i]$的前缀和$SS[i]$，并输出。</li>
 </ol>
 <a id="more"></a>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1&lt;=N,M&lt;=100000$,且在任意时刻$0&lt;=A_i&lt;=100000$ </p>
 <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P4868" target="_blank" rel="noopener">P4868 Preprefix sum</a></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>易得$SS[n]=\sum_{i=1}^n(n-i+1)a_i=\sum_{i=1}^n(n+1)a_i-\sum_{i=1}^ni*a_i$</p>
 <p>那么维护两个树状数组$sum_1$与$sum_2$即可。其中</p>
@@ -632,7 +633,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据范围"><span class="nav-number">1.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">2.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>

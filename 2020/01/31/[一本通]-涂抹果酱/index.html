@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="Tyvj 两周年庆典要到了，Sam 想为 Tyvj 做一个大蛋糕。蛋糕俯视图是一个$N\times M$的矩形，它被划分成$N\times M$个边长为$1\times 1$的小正方形区域（可以把蛋糕当成$N$行$M$列的矩阵）。蛋糕很快做好了，但光秃秃的蛋糕肯定不好看！所以，Sam 要在蛋糕的上表面涂抹果酱。果酱有三种，分别是红果酱、绿果酱、蓝果酱，三种果酱的编号分别为$1,2,3$ 。为了保">
 <meta property="article:published_time" content="2020-01-31T14:48:37.000Z">
-<meta property="article:modified_time" content="2020-01-31T14:55:41.518Z">
+<meta property="article:modified_time" content="2020-02-17T14:34:25.870Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="状压DP">
 <meta property="article:tag" content="三进制">
@@ -396,8 +396,11 @@
       
 
       
-        <p> Tyvj 两周年庆典要到了，Sam 想为 Tyvj 做一个大蛋糕。蛋糕俯视图是一个$N\times M$的矩形，它被划分成$N\times M$个边长为$1\times 1$的小正方形区域（可以把蛋糕当成$N$行$M$列的矩阵）。蛋糕很快做好了，但光秃秃的蛋糕肯定不好看！所以，Sam 要在蛋糕的上表面涂抹果酱。果酱有三种，分别是红果酱、绿果酱、蓝果酱，三种果酱的编号分别为$1,2,3$ 。为了保证蛋糕的视觉效果，Admin 下达了死命令：相邻的区域严禁使用同种果酱。但 Sam 在接到这条命令之前，已经涂好了蛋糕第 $K$行的果酱，且无法修改。<br>现在 Sam 想知道：能令 Admin 满意的涂果酱方案有多少种。请输出方案数$mod 10^6$ 。若不存在满足条件的方案，请输出$0$。</p>
+        <p> Tyvj 两周年庆典要到了，Sam 想为 Tyvj 做一个大蛋糕。蛋糕俯视图是一个$N\times M$的矩形，它被划分成$N\times M$个边长为$1\times 1$的小正方形区域（可以把蛋糕当成$N$行$M$列的矩阵）。蛋糕很快做好了，但光秃秃的蛋糕肯定不好看！所以，Sam 要在蛋糕的上表面涂抹果酱。果酱有三种，分别是红果酱、绿果酱、蓝果酱，三种果酱的编号分别为$1,2,3$ 。为了保证蛋糕的视觉效果，Admin 下达了死命令：相邻的区域严禁使用同种果酱。但 Sam 在接到这条命令之前，已经涂好了蛋糕第 $K$行的果酱，且无法修改。<br>现在 Sam 想知道：能令 Admin 满意的涂果酱方案有多少种。请输出方案数$mod\ 10^6$ 。若不存在满足条件的方案，请输出$0$。</p>
 <a id="more"></a>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>对于$30\%$的数据，$1\le N\times M \le 20$；</p>
+<p>对于$60\%$的数据，$1\le N\le 1000,1\le M \le 3$；</p>
+<p>对于$100\%$的数据，$1\le N \le 10000,1\le M \le 5$。</p>
 <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://loj.ac/problem/10172" target="_blank" rel="noopener">「一本通 5.4 练习 1」涂抹果酱</a></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>三种果酱，且$m$较小，则考虑三进制状压。</p>
 <p>先判断其给的第$K$行涂抹的果酱是否合法，不合法直接输出$0$。</p>
@@ -624,7 +627,7 @@ dp[i][j]=\sum_{l}^{check(l)}dp[i-1][l]</script><p>当$i-1=k$或$i=k$的情况需
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据范围"><span class="nav-number">1.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">2.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>

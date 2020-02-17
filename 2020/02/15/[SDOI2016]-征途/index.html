@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="Pine开始了从S地到T地的征途。 从S地到T地的路可以划分成$n$段，相邻两段路的分界点设有休息站。 Pine计划用$m$天到达T地。除第$m$天外，每一天晚上Pine都必须在休息站过夜。所以，一段路必须在同一天中走完。 Pine希望每一天走的路长度尽可能相近，所以他希望每一天走的路的长度的方差尽可能小。 帮助Pine求出最小方差是多少。 设方差是$v$，可以证明，$v\times m^2$是一">
 <meta property="article:published_time" content="2020-02-15T04:42:53.000Z">
-<meta property="article:modified_time" content="2020-02-16T01:33:22.015Z">
+<meta property="article:modified_time" content="2020-02-17T13:46:02.473Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="斜率优化">
 <meta property="article:tag" content="SDOI">
@@ -403,6 +403,10 @@
 <p>帮助Pine求出最小方差是多少。</p>
 <p>设方差是$v$，可以证明，$v\times m^2$是一个整数。为了避免精度误差，输出结果时输出$v\times m^2$。</p>
 <a id="more"></a>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>对于$30\%$的数据，$1 \le n \le 10$</p>
+<p>对于$60\%$的数据，$1 \le n \le 100$</p>
+<p>对于$100\%$的数据，$1 \le n \le 3000$</p>
+<p>保证从 S 到 T 的总路程不超过$30000$。</p>
 <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P4072" target="_blank" rel="noopener">[SDOI2016]征途</a></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>$v$是方差，则$v=\frac{\sum_{i=1}^m(S_i-\frac{sum[n]}{m})^2}{m}$</p>
 <p>则</p>
@@ -661,7 +665,7 @@ dp[j][k-1]+sm[j]-(dp[p][k-1]+sm[p]) &\le 2m\times sum[i](sum[j]-sum[p]) \\ \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据范围"><span class="nav-number">1.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">2.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>

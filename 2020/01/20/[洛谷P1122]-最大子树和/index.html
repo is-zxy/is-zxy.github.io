@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="小明对数学饱有兴趣，并且是个勤奋好学的学生，总是在课后留在教室向老师请教一些问题。一天他早晨骑车去上课，路上见到一个老伯正在修剪花花草草，顿时想到了一个有关修剪花卉的问题。于是当日课后，小明就向老师提出了这个问题： 一株奇怪的花卉，上面共连有$N$朵花，共有$N-1$条枝干将花儿连在一起，并且未修剪时每朵花都不是孤立的。每朵花都有一个“美丽指数”，该数越大说明这朵花越漂亮，也有“美丽指数”为负数的">
 <meta property="article:published_time" content="2020-01-20T15:52:27.000Z">
-<meta property="article:modified_time" content="2020-01-23T13:55:01.786Z">
+<meta property="article:modified_time" content="2020-02-17T14:16:08.679Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="树形DP">
 <meta property="article:tag" content="洛谷">
@@ -400,6 +400,8 @@
 <p>一株奇怪的花卉，上面共连有$N$朵花，共有$N-1$条枝干将花儿连在一起，并且未修剪时每朵花都不是孤立的。每朵花都有一个“美丽指数”，该数越大说明这朵花越漂亮，也有“美丽指数”为负数的，说明这朵花看着都让人恶心。所谓“修剪”，意为：去掉其中的一条枝条，这样一株花就成了两株，扔掉其中一株。经过一系列“修剪“之后，还剩下最后一株花（也可能是一朵）。老师的任务就是：通过一系列“修剪”（也可以什么“修剪”都不进行），使剩下的那株（那朵）花卉上所有花朵的“美丽指数”之和最大。</p>
 <p>老师想了一会儿，给出了正解。小明见问题被轻易攻破，相当不爽，于是又拿来问你。</p>
 <a id="more"></a>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>对于$60\%$的数据，有$N≤1000$；</p>
+<p>对于$100\%$的数据，有$N≤16000$。</p>
 <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P1122" target="_blank" rel="noopener">P1122 最大子树和</a></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>定义$dp[root]$表示以$root$为根的最大子树和。</p>
 <p>易得（其中令$root$有$m$个儿子$son_{1\cdots m}$，$root$的美丽指数为$b_{root}$)</p>
@@ -625,7 +627,7 @@ dp[root]=\sum_{i=1}^mmax(0,dp[son_i])+b_{root}</script><p>上述与$0$比较的�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据范围"><span class="nav-number">1.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">2.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>

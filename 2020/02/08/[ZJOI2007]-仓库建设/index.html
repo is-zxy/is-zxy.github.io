@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="L 公司有$n$个工厂，由高到低分布在一座山上，工厂$1$在山顶，工厂$n$在山脚。 由于这座山处于高原内陆地区（干燥少雨），L公司一般把产品直接堆放在露天，以节省费用。突然有一天，L 公司的总裁 L 先生接到气象部门的电话，被告知三天之后将有一场暴雨，于是 L 先生决定紧急在某些工厂建立一些仓库以免产品被淋坏。 由于地形的不同，在不同工厂建立仓库的费用可能是不同的。第 ii 个工厂目前已有成品$">
 <meta property="article:published_time" content="2020-02-08T15:09:41.000Z">
-<meta property="article:modified_time" content="2020-02-10T15:29:46.824Z">
+<meta property="article:modified_time" content="2020-02-17T14:14:22.731Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="斜率优化">
 <meta property="article:tag" content="ZJOI">
@@ -408,6 +408,11 @@
 </ul>
 <p>请你帮助 L 公司寻找一个仓库建设的方案，使得总的费用（建造费用 + 运输费用）最小。</p>
 <a id="more"></a>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>对于$ 20\%$的数据，保证$ n \leq 500$。</p>
+<p>对于$ 40\%$的数据，保证$ n \leq 10^4$。</p>
+<p>对于$ 100\%$的数据，保证$ 1 \leq n \leq 10^6$，$0 \leq x_i,~p_i,~c_i &lt; 2^{31}$。</p>
+<p>对于任意的$ 1 \leq i &lt; n$，保证$ x_i &lt; x_{i + 1}$。</p>
+<p>设答案为$ans$，保证$ ans + \sum\limits_{i = 1}^{n} p_ix_i &lt; 2^{63}$。</p>
 <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P2120" target="_blank" rel="noopener">[ZJOI2007]仓库建设</a></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>定义$dp[i]$表示在工厂$i$建立仓库，并且前$i$个工厂的成品均被送往仓库的最小费用值。</p>
 <p>易得</p>
@@ -666,7 +671,7 @@ dp[i]=min\{ds[j]-x[i]\times sump[j]\}+c[i]+x[i]\times sump[i-1]-sumf[i-1]</scrip
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据范围"><span class="nav-number">1.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">2.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>
