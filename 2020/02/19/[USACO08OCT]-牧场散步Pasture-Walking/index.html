@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="单调队列,洛谷," />
+  <meta name="keywords" content="LCA," />
 
 
 
@@ -79,17 +79,16 @@
 
 
 
-<meta name="description" content="给定一行$n$个非负整数$a[1]..a[n]$。现在你可以选择其中若干个数，但不能有超过$k$个连续的数字被选择。你的任务是使得选出的数字的和最大。">
+<meta name="description" content="有$N(2&lt;&#x3D;N&lt;&#x3D;1000)$头奶牛，编号为$1$到$W$，它们正在同样编号为$1$到$N$的牧场上行走.为了方便，我们假设编号为$i$的牛恰好在第i号牧场上. 有一些牧场间每两个牧场用一条双向道路相连，道路总共有$N - 1$条，奶牛可以在这些道路 上行走.第i条道路把第$A_i$个牧场和第$B_i$个牧场连了起来$(1 &lt;&#x3D; A_i &lt;&#x3D; N; 1 &lt;&#x3D; B_i">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[洛谷P2627] 修剪草坪&#x2F;[洛谷2034] 选择数字">
-<meta property="og:url" content="http://www.zxyer.xyz/2020/02/05/[%E6%B4%9B%E8%B0%B7P2627]-%E4%BF%AE%E5%89%AA%E8%8D%89%E5%9D%AA-[%E6%B4%9B%E8%B0%B72034]-%E9%80%89%E6%8B%A9%E6%95%B0%E5%AD%97/index.html">
+<meta property="og:title" content="[USACO08OCT] 牧场散步Pasture Walking">
+<meta property="og:url" content="http://www.zxyer.xyz/2020/02/19/[USACO08OCT]-%E7%89%A7%E5%9C%BA%E6%95%A3%E6%AD%A5Pasture-Walking/index.html">
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
-<meta property="og:description" content="给定一行$n$个非负整数$a[1]..a[n]$。现在你可以选择其中若干个数，但不能有超过$k$个连续的数字被选择。你的任务是使得选出的数字的和最大。">
-<meta property="article:published_time" content="2020-02-05T05:15:52.000Z">
-<meta property="article:modified_time" content="2020-02-17T14:24:20.645Z">
+<meta property="og:description" content="有$N(2&lt;&#x3D;N&lt;&#x3D;1000)$头奶牛，编号为$1$到$W$，它们正在同样编号为$1$到$N$的牧场上行走.为了方便，我们假设编号为$i$的牛恰好在第i号牧场上. 有一些牧场间每两个牧场用一条双向道路相连，道路总共有$N - 1$条，奶牛可以在这些道路 上行走.第i条道路把第$A_i$个牧场和第$B_i$个牧场连了起来$(1 &lt;&#x3D; A_i &lt;&#x3D; N; 1 &lt;&#x3D; B_i">
+<meta property="article:published_time" content="2020-02-19T14:29:29.000Z">
+<meta property="article:modified_time" content="2020-02-19T14:37:14.436Z">
 <meta property="article:author" content="Yuzuriha_Inori">
-<meta property="article:tag" content="单调队列">
-<meta property="article:tag" content="洛谷">
+<meta property="article:tag" content="LCA">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zxyer.xyz/2020/02/05/[洛谷P2627]-修剪草坪-[洛谷2034]-选择数字/"/>
+  <link rel="canonical" href="http://www.zxyer.xyz/2020/02/19/[USACO08OCT]-牧场散步Pasture-Walking/"/>
 
 
 
 
 
-  <title>[洛谷P2627] 修剪草坪/[洛谷2034] 选择数字 | Zxyer's Blog</title>
+  <title>[USACO08OCT] 牧场散步Pasture Walking | Zxyer's Blog</title>
   
 
 
@@ -307,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/02/05/%5B%E6%B4%9B%E8%B0%B7P2627%5D-%E4%BF%AE%E5%89%AA%E8%8D%89%E5%9D%AA-%5B%E6%B4%9B%E8%B0%B72034%5D-%E9%80%89%E6%8B%A9%E6%95%B0%E5%AD%97/">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/02/19/%5BUSACO08OCT%5D-%E7%89%A7%E5%9C%BA%E6%95%A3%E6%AD%A5Pasture-Walking/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yuzuriha_Inori">
@@ -324,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[洛谷P2627] 修剪草坪/[洛谷2034] 选择数字</h1>
+          <h1 class="post-title" itemprop="name headline">[USACO08OCT] 牧场散步Pasture Walking</h1>
         
 
         <div class="post-meta">
@@ -336,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-05T13:15:52+08:00">
-                2020-02-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-19T22:29:29+08:00">
+                2020-02-19
               </time>
             
 
@@ -396,33 +395,21 @@
       
 
       
-        <p>给定一行$n$个非负整数$a[1]..a[n]$。现在你可以选择其中若干个数，但不能有超过$k$个连续的数字被选择。你的任务是使得选出的数字的和最大。 </p>
+        <p>有$N(2&lt;=N&lt;=1000)$头奶牛，编号为$1$到$W$，它们正在同样编号为$1$到$N$的牧场上行走.为了方便，我们假设编号为$i$的牛恰好在第i号牧场上.</p>
+<p>有一些牧场间每两个牧场用一条双向道路相连，道路总共有$N - 1$条，奶牛可以在这些道路 上行走.第i条道路把第$A_i$个牧场和第$B_i$个牧场连了起来$(1 &lt;= A_i &lt;= N; 1 &lt;= B_i &lt;= N)$，而它的长度 是$ 1 &lt;= L_i &lt;= 10,000$。在任意两个牧场间，有且仅有一条由若干道路组成的路径相连.也就是说，所有的道路构成了一棵树。</p>
+<p>奶牛们十分希望经常互相见面.它们十分着急，所以希望你帮助它们计划它们的行程，你只 需要计算出$Q(1 &lt; Q &lt; 1000)$对点之间的路径长度，每对点以一个询问$p_1$,$p_2$$ (1 &lt;= p1 &lt;= N; 1 &lt;= p2 &lt;= N)$。 的形式给出。</p>
 <a id="more"></a>
-<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$ (1 &lt;= N &lt;= 100,000) $</p>
-<p>$ (0 &lt;= a_i &lt;= 1,000,000,000) $</p>
-<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P2627" target="_blank" rel="noopener">P2627 修剪草坪</a></p>
-<p><a href="https://www.luogu.com.cn/problem/P2034" target="_blank" rel="noopener">P2034 选择数字</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>定义$dp[i][pos]$，当$pos$等于$0$时表示$a[i]$不选时前$i$个数的最大和，当$pos$等于$1$时表示$a[i]$选时前$i$个数的最大和。</p>
-<p>对于第$i$个数，可以从$[i-k,i-1]$中枚举断点$j$，即$j$不选。</p>
-<p>则易得</p>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$  (2 &lt;= N &lt;= 1,000) $</p>
+<p>$ (1 &lt;= A_i &lt;= N; 1 &lt;= B_i &lt;= N) $</p>
+<p>$ (1 &lt;= L_i &lt;= 10,000) $</p>
+<p>$ (1 &lt;= p_1 &lt;= N; 1 &lt;= p_2 &lt;= N) $</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P2912" target="_blank" rel="noopener">[USACO08OCT]牧场散步Pasture Walking</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>两点间路径长度即到其LCA的路径长度之和。</p>
+<p>定义$f[x][i]$表示点$x$的第$2^i$级祖先，$dis[x][i]$表示点$x$到其第$2^i$级祖先的路径长度。</p>
+<p>易得</p>
 <script type="math/tex; mode=display">
-dp[i][pos]=
-\left\{
-\begin{aligned}
-max(dp[i-1][0],dp[i-1][1])\ \  && pos=0 \\
-max\{dp[j]+sum[i]-sum[j]\} && pos=1 \\
-\end{aligned}
-\right.</script><p>而在过程中$sum[i]$为定值，所以可以提出来</p>
-<script type="math/tex; mode=display">
-dp[i][pos]=
-\left\{
-\begin{aligned}
-max(dp[i-1][0],dp[i-1][1])\ \  && pos=0 \\
-max\{dp[j]-sum[j]\}-sum[i] && pos=1 \\
-\end{aligned}
-\right.</script><p>因此可以用维护一个递减的$dp[j]-sum[j]$单调队列，每次转移状态直接用队头减$sum[i]$即可。</p>
-<p>当然，线段树也是可以的，但不是目前学习的重点，此处不再赘述。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,k;</span><br><span class="line">ll a[N],dp[N][<span class="number">2</span>],sum[N];</span><br><span class="line"><span class="built_in">deque</span> &lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">		sum[i]=sum[i<span class="number">-1</span>]+a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	q.push_back(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		dp[i][<span class="number">0</span>]=max(dp[i<span class="number">-1</span>][<span class="number">0</span>],dp[i<span class="number">-1</span>][<span class="number">1</span>]);</span><br><span class="line">		<span class="keyword">if</span>(q.empty()) &#123;</span><br><span class="line">			q.push_back(i<span class="number">-1</span>);</span><br><span class="line">			dp[i][<span class="number">1</span>]=sum[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">while</span>(!q.empty()&amp;&amp;q.front()&lt;i-k) q.pop_front();</span><br><span class="line">			dp[i][<span class="number">1</span>]=dp[q.front()][<span class="number">0</span>]-sum[q.front()]+sum[i];</span><br><span class="line">			<span class="keyword">while</span>(!q.empty()&amp;&amp;dp[i][<span class="number">0</span>]-sum[i]&gt;dp[q.back()][<span class="number">0</span>]-sum[q.back()]) q.pop_back();</span><br><span class="line">			q.push_back(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;max(dp[n][<span class="number">0</span>],dp[n][<span class="number">1</span>])&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+dis[x][i]=dis[x][i-1]+dis[f[x][i-1]][i-1]</script><p>于是跑个倍增LCA，过程中计算答案即可。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,q,head[N],tot=<span class="number">0</span>,lg[N],depth[N],f[N][<span class="number">15</span>],dis[N][<span class="number">15</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,next,w;</span><br><span class="line">&#125;edge[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span> </span>&#123;</span><br><span class="line">	edge[++tot].to=v;</span><br><span class="line">	edge[tot].w=w;</span><br><span class="line">	edge[tot].next=head[u];</span><br><span class="line">	head[u]=tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> from,<span class="keyword">int</span> now,<span class="keyword">int</span> d)</span> </span>&#123;</span><br><span class="line">	depth[now]=depth[from]+<span class="number">1</span>;</span><br><span class="line">	f[now][<span class="number">0</span>]=from;</span><br><span class="line">	dis[now][<span class="number">0</span>]=d;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=lg[depth[now]];i++) &#123;</span><br><span class="line">		f[now][i]=f[f[now][i<span class="number">-1</span>]][i<span class="number">-1</span>];</span><br><span class="line">		dis[now][i]=dis[f[now][i<span class="number">-1</span>]][i<span class="number">-1</span>]+dis[now][i<span class="number">-1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[now];i;i=edge[i].next) <span class="keyword">if</span>(edge[i].to!=from) dfs(now,edge[i].to,edge[i].w);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	lg[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) lg[i]=lg[i&gt;&gt;<span class="number">1</span>]+<span class="number">1</span>;</span><br><span class="line">	dfs(<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LCA</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(depth[x]&lt;depth[y]) swap(x,y);</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(depth[x]&gt;depth[y]) &#123;</span><br><span class="line">		ans+=dis[x][lg[depth[x]-depth[y]]];</span><br><span class="line">		x=f[x][lg[depth[x]-depth[y]]];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(x==y) <span class="keyword">return</span> ans;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=lg[depth[x]];i&gt;=<span class="number">0</span>;i--) &#123;</span><br><span class="line">		<span class="keyword">if</span>(f[x][i]!=f[y][i]) &#123;</span><br><span class="line">			ans+=dis[x][i]+dis[y][i];</span><br><span class="line">			x=f[x][i];</span><br><span class="line">			y=f[y][i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans+dis[x][<span class="number">0</span>]+dis[y][<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;q;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> x,y,z;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;x&gt;&gt;y&gt;&gt;z;</span><br><span class="line">		add(x,y,z);</span><br><span class="line">		add(y,x,z);      </span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	init();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=q;i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> x,y;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;x&gt;&gt;y;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;LCA(x,y)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -440,9 +427,7 @@ max\{dp[j]-sum[j]\}-sum[i] && pos=1 \\
       
         <div class="post-tags">
           
-            <a href="/is-zxy.github.io/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" rel="tag"># 单调队列</a>
-          
-            <a href="/is-zxy.github.io/tags/%E6%B4%9B%E8%B0%B7/" rel="tag"># 洛谷</a>
+            <a href="/is-zxy.github.io/tags/LCA/" rel="tag"># LCA</a>
           
         </div>
       
@@ -455,8 +440,8 @@ max\{dp[j]-sum[j]\}-sum[i] && pos=1 \\
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/is-zxy.github.io/2020/02/04/%5B%E6%B4%9B%E8%B0%B7P2422%5D-%E8%89%AF%E5%A5%BD%E7%9A%84%E6%84%9F%E8%A7%89/" rel="next" title="[洛谷P2422] 良好的感觉">
-                <i class="fa fa-chevron-left"></i> [洛谷P2422] 良好的感觉
+              <a href="/is-zxy.github.io/2020/02/18/%5BNOIP2013%5D-%E8%B4%A7%E8%BD%A6%E8%BF%90%E8%BE%93/" rel="next" title="[NOIP2013] 货车运输">
+                <i class="fa fa-chevron-left"></i> [NOIP2013] 货车运输
               </a>
             
           </div>
@@ -464,10 +449,6 @@ max\{dp[j]-sum[j]\}-sum[i] && pos=1 \\
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/is-zxy.github.io/2020/02/05/%5B%E6%B4%9B%E8%B0%B7P5858%5D-%E3%80%8CSWTR-03%E3%80%8DGolden-Sword/" rel="prev" title="[洛谷P5858] 「SWTR-03」Golden Sword">
-                [洛谷P5858] 「SWTR-03」Golden Sword <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
