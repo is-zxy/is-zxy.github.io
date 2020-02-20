@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="CQOI,树状数组," />
+  <meta name="keywords" content="LCA,洛谷," />
 
 
 
@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="给定一有$n$个元素的数组，初始每个元素都为$0$。 输入$m$条指令，其中 $1\ x\ y$表示将区间$[x,y]$内的数反转（$0$变$1$，$1$变$0$）。 $2\ x$表示查询第$x$个元素的值。">
+<meta name="description" content="小仓鼠的和他的基（mei）友（zi）sugar住在地下洞穴中，每个节点的编号为$1$~$n$。地下洞穴是一个树形结构。这一天小仓鼠打算从从他的卧室（$a$）到餐厅（$b$），而他的基友同时要从他的卧室（$c$）到图书馆（$d$）。他们都会走最短路径。现在小仓鼠希望知道，有没有可能在某个地方，可以碰到他的基友？ 小仓鼠那么弱，还要天天被zzq大爷虐，请你快来救救他吧！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[CQOI2006] 简单题">
-<meta property="og:url" content="http://www.zxyer.xyz/2020/01/05/[CQOI2006]-%E7%AE%80%E5%8D%95%E9%A2%98/index.html">
+<meta property="og:title" content="[洛谷P3398] 仓鼠找sugar">
+<meta property="og:url" content="http://www.zxyer.xyz/2020/02/20/[%E6%B4%9B%E8%B0%B7P3398]-%E4%BB%93%E9%BC%A0%E6%89%BEsugar/index.html">
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
-<meta property="og:description" content="给定一有$n$个元素的数组，初始每个元素都为$0$。 输入$m$条指令，其中 $1\ x\ y$表示将区间$[x,y]$内的数反转（$0$变$1$，$1$变$0$）。 $2\ x$表示查询第$x$个元素的值。">
-<meta property="article:published_time" content="2020-01-05T15:36:43.000Z">
-<meta property="article:modified_time" content="2020-02-17T12:54:11.714Z">
+<meta property="og:description" content="小仓鼠的和他的基（mei）友（zi）sugar住在地下洞穴中，每个节点的编号为$1$~$n$。地下洞穴是一个树形结构。这一天小仓鼠打算从从他的卧室（$a$）到餐厅（$b$），而他的基友同时要从他的卧室（$c$）到图书馆（$d$）。他们都会走最短路径。现在小仓鼠希望知道，有没有可能在某个地方，可以碰到他的基友？ 小仓鼠那么弱，还要天天被zzq大爷虐，请你快来救救他吧！">
+<meta property="article:published_time" content="2020-02-20T14:13:26.000Z">
+<meta property="article:modified_time" content="2020-02-20T14:21:22.241Z">
 <meta property="article:author" content="Yuzuriha_Inori">
-<meta property="article:tag" content="CQOI">
-<meta property="article:tag" content="树状数组">
+<meta property="article:tag" content="LCA">
+<meta property="article:tag" content="洛谷">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zxyer.xyz/2020/01/05/[CQOI2006]-简单题/"/>
+  <link rel="canonical" href="http://www.zxyer.xyz/2020/02/20/[洛谷P3398]-仓鼠找sugar/"/>
 
 
 
 
 
-  <title>[CQOI2006] 简单题 | Zxyer's Blog</title>
+  <title>[洛谷P3398] 仓鼠找sugar | Zxyer's Blog</title>
   
 
 
@@ -307,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/01/05/%5BCQOI2006%5D-%E7%AE%80%E5%8D%95%E9%A2%98/">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/02/20/%5B%E6%B4%9B%E8%B0%B7P3398%5D-%E4%BB%93%E9%BC%A0%E6%89%BEsugar/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yuzuriha_Inori">
@@ -324,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[CQOI2006] 简单题</h1>
+          <h1 class="post-title" itemprop="name headline">[洛谷P3398] 仓鼠找sugar</h1>
         
 
         <div class="post-meta">
@@ -336,8 +336,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T23:36:43+08:00">
-                2020-01-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-20T22:13:26+08:00">
+                2020-02-20
               </time>
             
 
@@ -396,17 +396,23 @@
       
 
       
-        <p>给定一有$n$个元素的数组，初始每个元素都为$0$。</p>
-<p>输入$m$条指令，其中</p>
-<p>$1\ x\ y$表示将区间$[x,y]$内的数反转（$0$变$1$，$1$变$0$）。</p>
-<p>$2\ x$表示查询第$x$个元素的值。</p>
+        <p>小仓鼠的和他的基（mei）友（zi）sugar住在地下洞穴中，每个节点的编号为$1$~$n$。地下洞穴是一个树形结构。这一天小仓鼠打算从从他的卧室（$a$）到餐厅（$b$），而他的基友同时要从他的卧室（$c$）到图书馆（$d$）。他们都会走最短路径。现在小仓鼠希望知道，有没有可能在某个地方，可以碰到他的基友？</p>
+<p>小仓鼠那么弱，还要天天被zzq大爷虐，请你快来救救他吧！</p>
 <a id="more"></a>
-<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>对于$50\%$的数据，$1 ≤ n ≤ 10^{3}$,$1 ≤ m ≤ 10^4$；</p>
-<p>对于$100\%$的数据，$1 ≤ n ≤ 10^5$,$1 ≤ m ≤ 5 × 10^5$，保证$L ≤ R$。 </p>
-<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P5057" target="_blank" rel="noopener">[CQOI2006]简单题</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>显然，一个位置如果被反转过奇数次则为$1$，反之则为$0$。</p>
-<p>针对每个反转指令维护差分，查询则直接查询差分的前缀和$\&amp; 1$即可。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,a[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x&amp;(-x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(x;x&lt;=n;x+=lowbit(x)) a[x]+=k;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ask</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(x;x;x-=lowbit(x)) ans+=a[x];</span><br><span class="line">	<span class="keyword">return</span> ans&amp;<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123; </span><br><span class="line">	<span class="built_in">memset</span>(a,<span class="number">0</span>,<span class="keyword">sizeof</span>(a));</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> t,x,y;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">		<span class="keyword">if</span>(t&amp;<span class="number">1</span>) &#123;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;x&gt;&gt;y;</span><br><span class="line">			update(x,<span class="number">1</span>);</span><br><span class="line">			<span class="keyword">if</span>(y&lt;n) update(y+<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;x;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;ask(x)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$20\%$的数据$n&lt;=200,q&lt;=200$</p>
+<p>$40\%$的数据$n&lt;=2000,q&lt;=2000$</p>
+<p>$70\%$的数据$n&lt;=50000,q&lt;=50000$</p>
+<p>$100\%$的数据$n&lt;=100000,q&lt;=100000$</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P3398" target="_blank" rel="noopener">P3398 仓鼠找sugar</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>求两条树上最短路的交点。</p>
+<p>动手模拟模拟，发现若两路径若有交点，则较深的两点的LCA一定在另一条路径上。</p>
+<p>那么如何判断一点在一条路径上呢？</p>
+<p>树上的最短路是一条链，链上任意一点到链两边距离相等，于是便可以据此判断两点的LCA是否在另一条路径上。</p>
+<p>接下来的问题就是如何求两点间距离。</p>
+<p>定义$depth[x]$表示点$x$的深度。</p>
+<p>其实很容易得到，点$x$与点$y$的距离$dis(x,y)=depth[x]+depth[y]-2\times depth[LCA(x,y)]$。</p>
+<p>这里的距离是在本题边权为$1$的情况而定的。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,q,tot=<span class="number">0</span>,lg[N],depth[N],f[N][<span class="number">25</span>],head[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> next,to;</span><br><span class="line">&#125;edge[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">	edge[++tot].to=v;</span><br><span class="line">	edge[tot].next=head[u];</span><br><span class="line">	head[u]=tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> from,<span class="keyword">int</span> now)</span> </span>&#123;</span><br><span class="line">	depth[now]=depth[from]+<span class="number">1</span>;</span><br><span class="line">	f[now][<span class="number">0</span>]=from;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=lg[depth[now]];i++) f[now][i]=f[f[now][i<span class="number">-1</span>]][i<span class="number">-1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[now];i;i=edge[i].next) <span class="keyword">if</span>(edge[i].to!=from) dfs(now,edge[i].to);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	lg[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) lg[i]=lg[i&gt;&gt;<span class="number">1</span>]+<span class="number">1</span>;</span><br><span class="line">	dfs(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LCA</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(depth[x]&lt;depth[y]) swap(x,y);</span><br><span class="line">	<span class="keyword">while</span>(depth[x]&gt;depth[y]) x=f[x][lg[depth[x]-depth[y]]];</span><br><span class="line">	<span class="keyword">if</span>(x==y) <span class="keyword">return</span> x;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=lg[depth[x]];i&gt;=<span class="number">0</span>;i--) &#123;</span><br><span class="line">		<span class="keyword">if</span>(f[x][i]!=f[y][i]) &#123;</span><br><span class="line">			x=f[x][i];</span><br><span class="line">			y=f[y][i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> f[x][<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dis</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> depth[x]+depth[y]<span class="number">-2</span>*depth[LCA(x,y)];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;q;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> u,v;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v;</span><br><span class="line">		add(u,v);</span><br><span class="line">		add(v,u);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	init();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=q;i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> a,b,c,d;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;c&gt;&gt;d;</span><br><span class="line">		<span class="keyword">int</span> lab=LCA(a,b),lcd=LCA(c,d);</span><br><span class="line">		<span class="keyword">if</span>(depth[lab]&gt;depth[lcd]) &#123;</span><br><span class="line">			<span class="keyword">if</span>(dis(lab,c)+dis(lab,d)==depth[c]+depth[d]<span class="number">-2</span>*depth[lcd]) <span class="built_in">cout</span>&lt;&lt;<span class="string">"Y"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"N"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(depth[lab]==depth[lcd]) &#123;</span><br><span class="line">			<span class="keyword">if</span>(lab==lcd) <span class="built_in">cout</span>&lt;&lt;<span class="string">"Y"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"N"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(depth[lab]&lt;depth[lcd]) &#123;</span><br><span class="line">			<span class="keyword">if</span>(dis(lcd,a)+dis(lcd,b)==depth[a]+depth[b]<span class="number">-2</span>*depth[lab]) <span class="built_in">cout</span>&lt;&lt;<span class="string">"Y"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"N"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -424,9 +430,9 @@
       
         <div class="post-tags">
           
-            <a href="/is-zxy.github.io/tags/CQOI/" rel="tag"># CQOI</a>
+            <a href="/is-zxy.github.io/tags/LCA/" rel="tag"># LCA</a>
           
-            <a href="/is-zxy.github.io/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" rel="tag"># 树状数组</a>
+            <a href="/is-zxy.github.io/tags/%E6%B4%9B%E8%B0%B7/" rel="tag"># 洛谷</a>
           
         </div>
       
@@ -439,8 +445,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/is-zxy.github.io/2020/01/03/%5BSP1716%5D-GSS3-Can-you-answer-these-queries-III/" rel="next" title="[SP1716] GSS3 - Can you answer these queries III">
-                <i class="fa fa-chevron-left"></i> [SP1716] GSS3 - Can you answer these queries III
+              <a href="/is-zxy.github.io/2020/02/19/%5BUSACO08OCT%5D-%E7%89%A7%E5%9C%BA%E6%95%A3%E6%AD%A5Pasture-Walking/" rel="next" title="[USACO08OCT] 牧场散步Pasture Walking">
+                <i class="fa fa-chevron-left"></i> [USACO08OCT] 牧场散步Pasture Walking
               </a>
             
           </div>
@@ -448,10 +454,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/is-zxy.github.io/2020/01/07/%5B%E6%B4%9B%E8%B0%B7P3373%5D-%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E7%BA%BF%E6%AE%B5%E6%A0%912-AHOI2009-%E7%BB%B4%E6%8A%A4%E5%BA%8F%E5%88%97/" rel="prev" title="[洛谷P3373] 【模板】线段树2/[AHOI2009]维护序列">
-                [洛谷P3373] 【模板】线段树2/[AHOI2009]维护序列 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
