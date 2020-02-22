@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="设$w(x,y)$是定义在整数集合上的二院函数。若对于定义域上的任意整数$a,b,c,d$，其中$a\le b\le c\le d$，都有$w(a,d)+w(b,c)\ge w(a,c)+w(b,d)$成立，则称函数$w$满足四边形不等式。">
 <meta property="article:published_time" content="2020-02-21T15:31:57.000Z">
-<meta property="article:modified_time" content="2020-02-21T16:06:05.894Z">
+<meta property="article:modified_time" content="2020-02-22T09:07:55.503Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="四边形不等式">
 <meta name="twitter:card" content="summary">
@@ -414,6 +414,47 @@ w(j,i')+w(p[i],i)\ge w(j,i)+w(p[i],i')</script><p>移项，可得</p>
 v(p[i],i')-w(p[i],i)\le w(j,i')-w(j,i)</script><p>与第一个不等式相加，可得</p>
 <script type="math/tex; mode=display">
 f[p[i]]+w(p[i],i')\le f[j]+w(j,i')</script><p>即$i’$的最优决策点一定大于等于$p[i]$。故$f$具有决策单调性。</p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p>就拿之前做过的斜率优化的一题来举个例子。</p>
+<p><a href="http://zxyer.xyz/2020/02/07/%5BHNOI2008%5D-%E7%8E%A9%E5%85%B7%E8%A3%85%E7%AE%B1TOY/" target="_blank" rel="noopener">[HNOI2008]玩具装箱TOY</a></p>
+<p>状转方程</p>
+<script type="math/tex; mode=display">
+dp[i]=\min\{dp[j]+[i-(j+1)+sum[i]-sum[j]-L]^2\},j\in[0,i)</script><p>定义$f[i]=sum[i]+i$，则可化为</p>
+<script type="math/tex; mode=display">
+dp[i]=\min\{dp[j]+[f[i]-f[j]-1-L]^2\},j\in[0,i)</script><p>于是本题中的$w(j,i)=[f[i]-f[j]-1-L]^2$</p>
+<p>判断是否具有决策单调性。</p>
+<p>首先，易得$f$是单调递增的。</p>
+<p>设$a+1&lt;c$。设$w(a,c)=[f[c]-f[a]-1-L]^2=K^2$。</p>
+<p>则</p>
+<script type="math/tex; mode=display">
+\begin{align}
+w(a,c+1) &= [f[c+1]-f[a]-1-L]^2=[f[c]-f[a]-1-L+C[c+1]+1]^2=[K+C[c+1]+1]^2 \\
+w(a+1,c) &= [f[c]-f[a+1]-1-L]^2=[f[c]-f[a]-1-L-C[a+1]-1]^2=[K-C[a+1]-1]^2 \\
+w(a+1,c+1) &=[f[c+1]-f[a+1]-1-L]^2=[f[c]-f[a]-1-L+C[c+1]+1-C[a+1]-1]^2=[K+C[c+1]-C[a+1]]^2
+\end{align}</script><p>则</p>
+<script type="math/tex; mode=display">
+\begin{align}
+w(a,c+1)+w(a+1,c)
+&= [K+C[c+1]+1]^2+[K-C[a+1]-1]^2 \\
+&= K^2+C[c+1]^2+1+2K\times C[c+1]+2K+2C[c+1]+K^2+C[a+1]^2+1-2K\times C[a+1]-2K+2C[a+1] \\
+&= 2K^2+C[c+1]^2+C[a+1]^2+2K\times(C[c+1]-C[a+1])+2\times (C[c+1]+C[a+1])+2
+\end{align}</script><script type="math/tex; mode=display">
+\begin{align}
+w(a,c)+w(a+1,c+1) 
+&= K^2+[K+C[c+1]-C[a+1]]^2 \\
+&= K^2+K^2+C[c+1]^2+C[a+1]^2+2K\times C[c+1]-2K\times C[a+1]-2\times C[c+1]\times C[a+1] \\
+&= 2K^2+C[c+1]^2+C[a+1]^2+2K\times C[c+1]-2K\times C[a+1]-2\times C[c+1]\times C[a+1] \\
+&= 2K^2+C[c+1]^2+C[a+1]^2+2K(C[c+1]-C[a+1])-2\times C[c+1]\times C[a+1] 
+\end{align}</script><p>则</p>
+<script type="math/tex; mode=display">
+\begin{align}
+&\ \ \ \ \  w(a,c+1)+w(a+1,c)-[w(a,c)+w(a+1,c+1)] \\
+&= 2\times (C[c+1]+C[a+1])+2\times C[c+1]\times C[a+1]+2 \\
+&= 2\times (C[c+1]+C[a+1]+C[c+1]\times C[a+1]+1) \\
+&= 2\times (C[c+1]+1)(C[a+1]+1)>0
+\end{align}</script><p>故</p>
+<script type="math/tex; mode=display">
+w(a,c+1)+w(a+1,c)>w(a,c)+w(a+1,c+1)</script><p>则$w$满足四边形不等式。</p>
+<p>则$dp$具有决策单调性。</p>
 
       
     </div>
@@ -645,7 +686,7 @@ f[p[i]]+w(p[i],i')\le f[j]+w(j,i')</script><p>即$i’$的最优决策点一定�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定理"><span class="nav-number">1.</span> <span class="nav-text">定理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#证明"><span class="nav-number">1.1.</span> <span class="nav-text">证明</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#决策单调性"><span class="nav-number">2.</span> <span class="nav-text">决策单调性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#证明-1"><span class="nav-number">2.1.</span> <span class="nav-text">证明</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定理"><span class="nav-number">1.</span> <span class="nav-text">定理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#证明"><span class="nav-number">1.1.</span> <span class="nav-text">证明</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#决策单调性"><span class="nav-number">2.</span> <span class="nav-text">决策单调性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#证明-1"><span class="nav-number">2.1.</span> <span class="nav-text">证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-number">2.2.</span> <span class="nav-text">例题</span></a></li></ol></li></ol></div>
             
 
           </div>
