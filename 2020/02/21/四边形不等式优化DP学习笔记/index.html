@@ -81,12 +81,12 @@
 
 <meta name="description" content="设$w(x,y)$是定义在整数集合上的二院函数。若对于定义域上的任意整数$a,b,c,d$，其中$a\le b\le c\le d$，都有$w(a,d)+w(b,c)\ge w(a,c)+w(b,d)$成立，则称函数$w$满足四边形不等式。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="四边形不等式优化DP学习笔记">
+<meta property="og:title" content="决策单调性优化DP学习笔记">
 <meta property="og:url" content="http://www.zxyer.xyz/2020/02/21/%E5%9B%9B%E8%BE%B9%E5%BD%A2%E4%B8%8D%E7%AD%89%E5%BC%8F%E4%BC%98%E5%8C%96DP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="设$w(x,y)$是定义在整数集合上的二院函数。若对于定义域上的任意整数$a,b,c,d$，其中$a\le b\le c\le d$，都有$w(a,d)+w(b,c)\ge w(a,c)+w(b,d)$成立，则称函数$w$满足四边形不等式。">
 <meta property="article:published_time" content="2020-02-21T15:31:57.000Z">
-<meta property="article:modified_time" content="2020-02-22T09:20:53.795Z">
+<meta property="article:modified_time" content="2020-02-23T15:53:46.782Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="四边形不等式">
 <meta name="twitter:card" content="summary">
@@ -125,7 +125,7 @@
 
 
 
-  <title>四边形不等式优化DP学习笔记 | Zxyer's Blog</title>
+  <title>决策单调性优化DP学习笔记 | Zxyer's Blog</title>
   
 
 
@@ -323,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">四边形不等式优化DP学习笔记</h1>
+          <h1 class="post-title" itemprop="name headline">决策单调性优化DP学习笔记</h1>
         
 
         <div class="post-meta">
@@ -414,60 +414,58 @@ w(j,i')+w(p[i],i)\ge w(j,i)+w(p[i],i')</script><p>移项，可得</p>
 v(p[i],i')-w(p[i],i)\le w(j,i')-w(j,i)</script><p>与第一个不等式相加，可得</p>
 <script type="math/tex; mode=display">
 f[p[i]]+w(p[i],i')\le f[j]+w(j,i')</script><p>即$i’$的最优决策点一定大于等于$p[i]$。故$f$具有决策单调性。</p>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p>就拿之前做过的斜率优化的一题来举个例子。</p>
-<p><a href="http://zxyer.xyz/2020/02/07/%5BHNOI2008%5D-%E7%8E%A9%E5%85%B7%E8%A3%85%E7%AE%B1TOY/" target="_blank" rel="noopener">[HNOI2008]玩具装箱TOY</a></p>
-<p>状转方程</p>
-<script type="math/tex; mode=display">
-dp[i]=\min\{dp[j]+[i-(j+1)+sum[i]-sum[j]-L]^2\},j\in[0,i)</script><p>定义$f[i]=sum[i]+i$，则可化为</p>
-<script type="math/tex; mode=display">
-dp[i]=\min\{dp[j]+[f[i]-f[j]-1-L]^2\},j\in[0,i)</script><p>于是本题中的$w(j,i)=[f[i]-f[j]-1-L]^2$</p>
-<p>判断是否具有决策单调性。</p>
-<p>首先，易得$f$是单调递增的。</p>
-<p>设$a+1&lt;c$。设$w(a,c)=[f[c]-f[a]-1-L]^2=K^2$。</p>
-<p>则</p>
-<script type="math/tex; mode=display">
-\begin{align} 
-w(a,c+1)
-&= [f[c+1]-f[a]-1-L]^2 \\
-&= [f[c]-f[a]-1-L+C[c+1]+1]^2 \\
-&= [K+C[c+1]+1]^2
-\end{align}</script><script type="math/tex; mode=display">
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>那么知道其有决策单调性后，有什么应用呢？</p>
+<p>既然其有决策单调性，定义$p[i]$表示$i$的最优决策点，则$p$内一定是非严格单调递增的。</p>
+<p>那么根据此性质，满足决策单调性的题目主要有两种处理手法。</p>
+<h3 id="方法一：单调队列"><a href="#方法一：单调队列" class="headerlink" title="方法一：单调队列"></a>方法一：单调队列</h3><p>可以用单调队列维护决策集合$p$。</p>
+<p>当求出一个新的$f[i]$时，考虑$i$可以作为哪些$f[i’]\ (i’&gt;i)$的最优决策。根据决策单调性，我们一定可以找到一个位置，在该位置之前，$p$内存储的决策都比$i$要优，其后都比$i$差。于是便可以将该位置及其后面的部分全部变为$i$，即此时它们的最优决策均为$i$。</p>
+<p>一个位置一个位置的修改效率很低，所以可以建立一个队列，代替$p$。队列中保存三个量$(j,l,r)$，表示$p[l$~$r]$的值都是$j$。</p>
+<p>对于每个$i\in[1,n]$，执行以下操作：</p>
+<ol>
+<li><p>检查队头：设队头为$(j_0,l_0,r_0)$，若$r_0=i-1$，则删除队头（因为队头不需要了，$f[i]$之前的值已经被求出）。否则则令$l_0=i$。</p>
+</li>
+<li><p>取队头保存的最优决策$j$进行状态转移，计算出$f[i]$。</p>
+</li>
+<li><p>尝试插入新决策$i$，步骤如下</p>
+<p>(1) 取出队尾，即为$(j_t,l_t,r_t)$</p>
+<p>(2) 若对于$f[l_t]$来说，$i$是比$j_t$更优的决策，即$f[i]+w(i,l_t)\le f[j_t]+w(j_t,l_t)$，记$pos=l_t$，删除队尾，返回步骤(1)。</p>
+<p>(3) 若对于$f[r_t]$来说，$i$是比$j_t$更优的决策，即$f[j_t]+w(j_t,r_t)\le f[i]+w(i,r_t)$，去往步骤(5)。</p>
+<p>(4) 否则，则在$[l_t,r_t]$上二分查找出位置$pos$，在此之前决策比$i$优，在此之后决策$i$更优，去往步骤(5)。</p>
+<p>(5) 把三元组$(i,pos,n)$插入队尾。</p>
+</li>
+</ol>
+<h3 id="方法二：分治"><a href="#方法二：分治" class="headerlink" title="方法二：分治"></a>方法二：分治</h3><h2 id="例题-POI2011-Lightning-Conductor"><a href="#例题-POI2011-Lightning-Conductor" class="headerlink" title="例题 [POI2011]Lightning Conductor"></a>例题 [POI2011]Lightning Conductor</h2><p>给定一个长度为$ n$的序列$\{a_n\}$，对于每个$i\in [1,n]$，求出一个最小的非负整数$p$，使得 $\forall j\in[1,n]$，都有$a_j\le a_i+p-\sqrt{|i-j|}$。</p>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1 \le n \le 5\times 10^{5}$，$0 \le a_i \le 10^{9}$。</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P3515" target="_blank" rel="noopener">[POI2011]Lightning Conductor</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><script type="math/tex; mode=display">
 \begin{align}
-w(a+1,c)
-&= [f[c]-f[a+1]-1-L]^2 \\
-&= [f[c]-f[a]-1-L-C[a+1]-1]^2 \\
-&= [K-C[a+1]-1]^2
-\end{align}</script><script type="math/tex; mode=display">
-\begin{align}
-w(a+1,c+1)
-&= [f[c+1]-f[a+1]-1-L]^2 \\
-&= [f[c]-f[a]-1-L+C[c+1]+1-C[a+1]-1]^2 \\
-&= [K+C[c+1]-C[a+1]]^2
-\end{align}</script><p>则</p>
+a_j &\le a_i+p-\sqrt{|i-j|},\forall j\in[1,n] \\
+p &\ge a_j+\sqrt{|i-j|}-a_i,\forall j\in[1,n]
+\end{align}</script><p>而$p$为非负整数，则</p>
 <script type="math/tex; mode=display">
-\begin{align}
-&\ \ \ \ \ \ w(a,c+1)+w(a+1,c) \\
-&= [K+C[c+1]+1]^2+[K-C[a+1]-1]^2 \\
-&= K^2+C[c+1]^2+1+2K\times C[c+1]+2K+2C[c+1]+K^2+C[a+1]^2+1-2K\times C[a+1]-2K+2C[a+1] \\
-&= 2K^2+C[c+1]^2+C[a+1]^2+2K\times(C[c+1]-C[a+1])+2\times (C[c+1]+C[a+1])+2
-\end{align}</script><script type="math/tex; mode=display">
-\begin{align}
-&\ \ \ \ \ \ w(a,c)+w(a+1,c+1) \\
-&= K^2+[K+C[c+1]-C[a+1]]^2 \\
-&= K^2+K^2+C[c+1]^2+C[a+1]^2+2K\times C[c+1]-2K\times C[a+1]-2\times C[c+1]\times C[a+1] \\
-&= 2K^2+C[c+1]^2+C[a+1]^2+2K\times C[c+1]-2K\times C[a+1]-2\times C[c+1]\times C[a+1] \\
-&= 2K^2+C[c+1]^2+C[a+1]^2+2K(C[c+1]-C[a+1])-2\times C[c+1]\times C[a+1] 
-\end{align}</script><p>则</p>
+p=\lceil \max\{ a_j+\sqrt{|i-j|}\}\rceil-a_i,\forall j\in[1,n]</script><p>那么问题便转变为求$\lceil \max\{ a_j+\sqrt{|i-j|}\}\rceil,\forall j\in[1,n]$。</p>
+<p>可以考虑做两次，正做一次，将序列翻转再做一次，这样便可以去掉绝对值</p>
+<script type="math/tex; mode=display">
+\lceil \max\{ a_j+\sqrt{i-j}\}\rceil,\forall j\in[1,i)</script><p>定义$dp[i]=\lceil \max\{ a_j+\sqrt{i-j}\}\rceil$。</p>
+<p>此处的$w(j,i)$即为$\sqrt{i-j}$。</p>
+<p>定义$a+1&lt;c$。</p>
+<script type="math/tex; mode=display">
+w(a,c)=\sqrt{c-a}</script><script type="math/tex; mode=display">
+w(a+1,c)=\sqrt{c-a-1}</script><script type="math/tex; mode=display">
+w(a,c+1)=\sqrt{c-a+1}</script><script type="math/tex; mode=display">
+w(a+1,c+1)=\sqrt{c-a}</script><p>则</p>
 <script type="math/tex; mode=display">
 \begin{align}
-&\ \ \ \ \ w(a,c+1)+w(a+1,c)-[w(a,c)+w(a+1,c+1)] \\
-&= 2\times (C[c+1]+C[a+1])+2\times C[c+1]\times C[a+1]+2 \\
-&= 2\times (C[c+1]+C[a+1]+C[c+1]\times C[a+1]+1) \\
-&= 2\times (C[c+1]+1)(C[a+1]+1)>0
-\end{align}</script><p>故</p>
+w(a,c+1)+w(a+1,c)-[w(a,c)+w(a+1,c+1)] &=\sqrt{c-a-1}+\sqrt{c-a+1}-2\sqrt{c-a}
+\end{align}</script><p>令$d=c-a$，原式变为</p>
 <script type="math/tex; mode=display">
-w(a,c+1)+w(a+1,c)>w(a,c)+w(a+1,c+1)</script><p>则$w$满足四边形不等式。</p>
-<p>则$dp$具有决策单调性。</p>
+\sqrt{d-1}+\sqrt{d+1}-2\sqrt{d}=(\sqrt{d+1}-\sqrt{d})-(\sqrt{d}-\sqrt{d-1})</script><p>而函数$f(x)=\sqrt{x}-\sqrt{x-1}$单调递减</p>
+<p>则该式恒小于$0$。</p>
+<p>即$w(a,c+1)+w(a+1,c)\ge w(a,c)+w(a+1,c+1)$。</p>
+<p>可以发现，这东西与四边形不等式的符号相反。将上面的证明过程符号取反（因为本题求的是$\max$），便可证明$dp$满足决策单调性。</p>
+<p>于是采用上面两种方法实现即可。</p>
+<h3 id="代码（单调队列）"><a href="#代码（单调队列）" class="headerlink" title="代码（单调队列）"></a>代码（单调队列）</h3><h3 id="代码（分治）"><a href="#代码（分治）" class="headerlink" title="代码（分治）"></a>代码（分治）</h3><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>《算法竞赛进阶指南》</p>
+<p><a href="https://www.cnblogs.com/Xing-Ling/p/11317315.html" target="_blank" rel="noopener">【学习笔记】动态规划—各种 DP 优化</a></p>
 
       
     </div>
@@ -699,7 +697,7 @@ w(a,c+1)+w(a+1,c)>w(a,c)+w(a+1,c+1)</script><p>则$w$满足四边形不等式。
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定理"><span class="nav-number">1.</span> <span class="nav-text">定理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#证明"><span class="nav-number">1.1.</span> <span class="nav-text">证明</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#决策单调性"><span class="nav-number">2.</span> <span class="nav-text">决策单调性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#证明-1"><span class="nav-number">2.1.</span> <span class="nav-text">证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-number">2.2.</span> <span class="nav-text">例题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定理"><span class="nav-number">1.</span> <span class="nav-text">定理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#证明"><span class="nav-number">1.1.</span> <span class="nav-text">证明</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#决策单调性"><span class="nav-number">2.</span> <span class="nav-text">决策单调性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#证明-1"><span class="nav-number">2.1.</span> <span class="nav-text">证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用"><span class="nav-number">2.2.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一：单调队列"><span class="nav-number">2.2.1.</span> <span class="nav-text">方法一：单调队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法二：分治"><span class="nav-number">2.2.2.</span> <span class="nav-text">方法二：分治</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题-POI2011-Lightning-Conductor"><span class="nav-number">2.3.</span> <span class="nav-text">例题 [POI2011]Lightning Conductor</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据范围"><span class="nav-number">2.3.1.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">2.3.2.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">2.3.3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码（单调队列）"><span class="nav-number">2.3.4.</span> <span class="nav-text">代码（单调队列）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码（分治）"><span class="nav-number">2.3.5.</span> <span class="nav-text">代码（分治）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
