@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="貌似是莫比乌斯反演的前置知识，那么先学一下好了。">
 <meta property="article:published_time" content="2020-03-02T10:29:56.000Z">
-<meta property="article:modified_time" content="2020-03-02T10:31:19.823Z">
+<meta property="article:modified_time" content="2020-03-02T12:12:59.497Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="整除分块">
@@ -398,6 +398,51 @@
       
         <p>貌似是莫比乌斯反演的前置知识，那么先学一下好了。</p>
 <a id="more"></a>
+<h1 id="整除分块"><a href="#整除分块" class="headerlink" title="整除分块"></a>整除分块</h1><p>看这个式子</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^n\lfloor\frac{n}{i}\rfloor</script><p>显然可以$O(n)$求解。</p>
+<p>那么是否有更高效的方法呢？</p>
+<p>有的——整除分块，$O(\sqrt{n})$。</p>
+<p>显然，对于$i\in [i,n]$，有很多$\lfloor \frac{n}{i} \rfloor$的值是相等的，且呈块状分布。</p>
+<p>显然，相等的值的个数最多为$2\sqrt{n}$个。</p>
+<p>一个重要的结论：若$\forall i\in[l,r]$，$\lfloor \frac{n}{i} \rfloor$都相等，那么$r=\left\lfloor\frac{n}{\lfloor\frac{n}{l}\rfloor}\right\rfloor$。</p>
+<p>简单证明一下：</p>
+<p>令$\lfloor \frac{n}{l} \rfloor=k$</p>
+<p>因为</p>
+<script type="math/tex; mode=display">
+\lfloor \frac{n}{k} \rfloor \le \frac{n}{k}</script><p>所以</p>
+<script type="math/tex; mode=display">
+\frac{n}{\lfloor \frac{n}{k}\rfloor} \ge \frac{n}{\frac{n}{k}}=k</script><p>即</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\frac{n}{\lfloor \frac{n}{k}\rfloor} &\ge k \\
+\left\lfloor\frac{n}{\lfloor\frac{n}{k}\rfloor}\right\rfloor &\ge k
+\end{align}</script><p>根据单调性，易得$\left\lfloor\frac{n}{\lfloor\frac{n}{k}\rfloor}\right\rfloor=k$，此则说明$r$取$\lfloor \frac{n}{k} \rfloor $是满足条件的，此时$[l,r]$内其值都为$k$。</p>
+<p>那么现在还需证明的就是$r$取$\lfloor \frac{n}{k} \rfloor +1$是不满足条件的，即$\left\lfloor \frac{n}{\lfloor \frac{n}{k}\rfloor +1}\right\rfloor &lt;k$。</p>
+<script type="math/tex; mode=display">
+\left\lfloor \frac{n}{\lfloor \frac{n}{k}\rfloor +1}\right\rfloor<k⟺\frac{n}{\lfloor \frac{n}{k}\rfloor +1}<k⟺\lfloor \frac{n}{k}\rfloor\times k+k>n</script><p>设$n=q\times k+r\ (0\le r&lt; k)$。</p>
+<p>则$\lfloor \frac{n}{k} \rfloor\times k +k=\lfloor q+\frac{r}{k}\rfloor \times k+k=q\times k+r+k&gt;n$</p>
+<p>证毕。</p>
+<p>于是便可用两个指针$l,r$来进行求和，每次求$r$，移动$l$即可。</p>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="CQOI2007-余数求和"><a href="#CQOI2007-余数求和" class="headerlink" title="[CQOI2007]余数求和"></a>[CQOI2007]余数求和</h2><p>给出正整数$n$和$k$计算$ G(n, k)=k\ \bmod\ 1 + k\ \bmod\ 2 + k\ \bmod\ 3 + \cdots + k\ \bmod\ n$的值。其中$ k\ \bmod\ i$表示$k$除以$i$的余数。</p>
+<p>例如$ G(10, 5)=5\ \bmod\ 1 + 5\ \bmod\ 2 + 5\ \bmod\ 3 + 5\ \bmod\ 4 + 5\ \bmod\ 5 \cdots + 5\ \bmod\ 10=29$ 。</p>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$30\%:n,k≤1000$</p>
+<p>$60\%: n , k \le 10^6$</p>
+<p>$100\%: n , k \le 10^9$</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P2261" target="_blank" rel="noopener">[CQOI2007]余数求和</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>即求</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^n(k\bmod i)</script><p>化简</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\sum_{i=1}^n(k\bmod i) 
+&=\sum_{i=1}^n(k-i\times\lfloor \frac{k}{i}\rfloor) \\
+&= n\times k-\sum_{i=1}^n i\times\lfloor \frac{k}{i}\rfloor
+\end{align}</script><p>后式可整除分块求出，前式可直接求出。于是便可$O(\sqrt{n})$求解。</p>
+<p>本题有几个注意点，当$n&gt;k$时会出现$\lfloor \frac{k}{i} \rfloor=0$的情况，这样便出现了$\frac{k}{0}$，所以$n$应取$n,k$中的较小值，这样是没有影响的。</p>
+<p>$\left\lfloor\frac{k}{\lfloor\frac{k}{l}\rfloor}\right\rfloor$也有可能大于$n$，也要判断一下。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line">ll n,k,sum;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">	</span><br><span class="line">	sum=n*k;</span><br><span class="line">	n=min(n,k);</span><br><span class="line">	<span class="keyword">for</span>(ll l=<span class="number">1</span>,r;l&lt;=n;l=r+<span class="number">1</span>) &#123;</span><br><span class="line">		r=min(k/(k/l),n);</span><br><span class="line">		sum-=(k/l)*(l+r)*(r-l+<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;sum&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>整除分块可快速处理形如$\sum_{i=1}^nf(\lfloor \frac{n}{i} \rfloor)$的式子。</p>
 
       
     </div>
@@ -490,8 +535,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,6 +666,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#整除分块"><span class="nav-number">1.</span> <span class="nav-text">整除分块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例题"><span class="nav-number">2.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CQOI2007-余数求和"><span class="nav-number">2.1.</span> <span class="nav-text">[CQOI2007]余数求和</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据范围"><span class="nav-number">2.1.1.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">2.1.2.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">2.1.3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">2.1.4.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
