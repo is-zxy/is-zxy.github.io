@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>[USACO19DEC] Milk Visits S</title>
+      <link href="/is-zxy.github.io/2020/03/06/%5BUSACO19DEC%5D-Milk-Visits-S/"/>
+      <url>/is-zxy.github.io/2020/03/06/%5BUSACO19DEC%5D-Milk-Visits-S/</url>
+      
+        <content type="html"><![CDATA[<p>Farmer John 计划建造$ N$个农场，用$ N-1$条道路连接，构成一棵树（也就是说，所有农场之间都互相可以到达，并且没有环）。每个农场有一头奶牛，品种为更赛牛或荷斯坦牛之一。</p><p>Farmer John 的$ M$个朋友经常前来拜访他。在朋友$ i$拜访之时，Farmer John 会与他的朋友沿着从农场$ A_i$到农场$ B_i$之间的唯一路径行走（可能有$ A_i = B_i$）。除此之外，他们还可以品尝他们经过的路径上任意一头奶牛的牛奶。由于 Farmer John 的朋友们大多数也是农场主，他们对牛奶有着极强的偏好。他的有些朋友只喝更赛牛的牛奶，其余的只喝荷斯坦牛的牛奶。任何 Farmer John 的朋友只有在他们访问时能喝到他们偏好的牛奶才会高兴。</p><p>请求出每个朋友在拜访过后是否会高兴。</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>对于$ 100\%$的数据，$1 \leq N \leq 10^5$，$1 \leq M \leq 10^5$。</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P5836" target="_blank" rel="noopener">[USACO19DEC]Milk Visits S</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>不妨令根为$1$。</p><p>定义$g[x],h[x]$分别表示从$1$到$x$路径上$G$牛和$H$牛的个数。</p><p>易得点$u$到点$v$路径上$G$牛的总数为</p><script type="math/tex; mode=display">g[u]+g[v]-g[LCA(u,v)]-g[f[0][LCA(u,v)]]</script><p>其中$f[x][y]$表示$y$的第$2^{x-1}$个祖先。</p><p>$H$牛个数同理。</p><p>判断路径上是否有询问的牛类型即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 100010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 20</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,head[MAXN],tot=<span class="number">0</span>,g[MAXN],h[MAXN],f[N][MAXN],lg[MAXN],depth[MAXN];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> next,v;</span><br><span class="line">&#125;edge[MAXN&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="built_in">string</span> s,ans=(<span class="string">""</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">edge[++tot].v=v;</span><br><span class="line">edge[tot].next=head[u];</span><br><span class="line">head[u]=tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> from,<span class="keyword">int</span> to)</span> </span>&#123;</span><br><span class="line">depth[to]=depth[from]+<span class="number">1</span>;</span><br><span class="line">f[<span class="number">0</span>][to]=from;</span><br><span class="line">g[to]=g[from],h[to]=h[from];</span><br><span class="line"><span class="keyword">if</span>(s[to<span class="number">-1</span>]==<span class="string">'H'</span>) h[to]++;</span><br><span class="line"><span class="keyword">else</span> g[to]++;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=lg[depth[to]];i++) f[i][to]=f[i<span class="number">-1</span>][f[i<span class="number">-1</span>][to]];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=head[to];i;i=edge[i].next) <span class="keyword">if</span>(edge[i].v!=from) dfs(to,edge[i].v);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">lg[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) lg[i]=lg[i&gt;&gt;<span class="number">1</span>]+<span class="number">1</span>;</span><br><span class="line">dfs(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LCA</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line"><span class="keyword">if</span>(depth[x]&lt;depth[y]) swap(x,y);</span><br><span class="line"><span class="keyword">while</span>(depth[x]&gt;depth[y]) x=f[lg[depth[x]-depth[y]]][x];</span><br><span class="line"><span class="keyword">if</span>(x==y) <span class="keyword">return</span> x;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=lg[depth[x]];i&gt;=<span class="number">0</span>;i--) &#123;</span><br><span class="line"><span class="keyword">if</span>(f[i][x]!=f[i][y]) &#123;</span><br><span class="line">x=f[i][x];</span><br><span class="line">y=f[i][y];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> f[<span class="number">0</span>][x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;s;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++) &#123;</span><br><span class="line"><span class="keyword">int</span> u,v;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v;</span><br><span class="line">add(u,v),add(v,u);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">init();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line"><span class="keyword">int</span> u,v;</span><br><span class="line"><span class="keyword">char</span> ins;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v&gt;&gt;ins;</span><br><span class="line"><span class="keyword">int</span> L=LCA(u,v);</span><br><span class="line"><span class="keyword">if</span>(ins==<span class="string">'H'</span>) &#123;</span><br><span class="line"><span class="keyword">if</span>(h[u]+h[v]-h[L]-h[f[<span class="number">0</span>][L]]) ans+=<span class="string">"1"</span>;</span><br><span class="line"><span class="keyword">else</span> ans+=<span class="string">"0"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(ins==<span class="string">'G'</span>) &#123;</span><br><span class="line"><span class="keyword">if</span>(g[u]+g[v]-g[L]-g[f[<span class="number">0</span>][L]]) ans+=<span class="string">"1"</span>;</span><br><span class="line"><span class="keyword">else</span> ans+=<span class="string">"0"</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> USACO </tag>
+            
+            <tag> LCA </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>杂句整理</title>
       <link href="/is-zxy.github.io/2020/03/06/%E6%9D%82%E5%8F%A5%E6%95%B4%E7%90%86/"/>
       <url>/is-zxy.github.io/2020/03/06/%E6%9D%82%E5%8F%A5%E6%95%B4%E7%90%86/</url>
@@ -191,9 +218,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 数学 </tag>
             
         </tags>
       
@@ -220,9 +247,9 @@
             
             <tag> 线性筛 </tag>
             
-            <tag> 数学 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 数学 </tag>
             
         </tags>
       
@@ -274,9 +301,9 @@
       
         <tags>
             
-            <tag> 斜率优化 </tag>
-            
             <tag> CEOI </tag>
+            
+            <tag> 斜率优化 </tag>
             
         </tags>
       
@@ -434,9 +461,9 @@
       
         <tags>
             
-            <tag> NOIP </tag>
-            
             <tag> LCA </tag>
+            
+            <tag> NOIP </tag>
             
             <tag> 最小生成树 </tag>
             
@@ -797,9 +824,9 @@
       
         <tags>
             
-            <tag> APIO </tag>
-            
             <tag> 斜率优化 </tag>
+            
+            <tag> APIO </tag>
             
         </tags>
       
@@ -1146,9 +1173,9 @@
       
         <tags>
             
-            <tag> 树状数组 </tag>
-            
             <tag> ST表 </tag>
+            
+            <tag> 树状数组 </tag>
             
             <tag> 线段树 </tag>
             
@@ -1370,9 +1397,9 @@
       
         <tags>
             
-            <tag> 状压DP </tag>
-            
             <tag> NOI </tag>
+            
+            <tag> 状压DP </tag>
             
         </tags>
       
@@ -1613,9 +1640,9 @@
             
             <tag> 线性筛 </tag>
             
-            <tag> 数学 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 数学 </tag>
             
         </tags>
       
@@ -1825,9 +1852,9 @@
             
             <tag> 线性筛 </tag>
             
-            <tag> 数学 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 数学 </tag>
             
         </tags>
       
