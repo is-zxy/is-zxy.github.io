@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>[JLOI2014] 松鼠的新家</title>
+      <link href="/is-zxy.github.io/2020/03/08/%5BJLOI2014%5D-%E6%9D%BE%E9%BC%A0%E7%9A%84%E6%96%B0%E5%AE%B6/"/>
+      <url>/is-zxy.github.io/2020/03/08/%5BJLOI2014%5D-%E6%9D%BE%E9%BC%A0%E7%9A%84%E6%96%B0%E5%AE%B6/</url>
+      
+        <content type="html"><![CDATA[<p>松鼠的新家是一棵树，前几天刚刚装修了新家，新家有$n$个房间，并且有$n-1$根树枝连接，每个房间都可以相互到达，且俩个房间之间的路线都是唯一的。天哪，他居然真的住在”树“上。</p><p>松鼠想邀请小熊维尼前来参观，并且还指定一份参观指南，他希望维尼能够按照他的指南顺序，先去$a_1$，再去$a_2$，……，最后到$a_n$，去参观新家。可是这样会导致维尼重复走很多房间，懒惰的维尼不停地推辞。可是松鼠告诉他，每走到一个房间，他就可以从房间拿一块糖果吃。</p><p>维尼是个馋家伙，立马就答应了。现在松鼠希望知道为了保证维尼有糖果吃，他需要在每一个房间各放至少多少个糖果。</p><p>因为松鼠参观指南上的最后一个房间$a_n$是餐厅，餐厅里他准备了丰盛的大餐，所以当维尼在参观的最后到达餐厅时就不需要再拿糖果吃了。</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$2&lt;= n &lt;=300000$</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P3258" target="_blank" rel="noopener">[JLOI2014]松鼠的新家</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>十分裸的树上差分。</p><p>需要注意重复经过的问题。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 300010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,a[N],head[N],lg[N],tot=<span class="number">0</span>,f[N][<span class="number">20</span>],depth[N],cnt[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> next,v;</span><br><span class="line">&#125;edge[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">edge[++tot].v=v;</span><br><span class="line">edge[tot].next=head[u];</span><br><span class="line">head[u]=tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> from,<span class="keyword">int</span> now)</span> </span>&#123;</span><br><span class="line">f[now][<span class="number">0</span>]=from;</span><br><span class="line">depth[now]=depth[from]+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=lg[depth[now]];i++) f[now][i]=f[f[now][i<span class="number">-1</span>]][i<span class="number">-1</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=head[now];i;i=edge[i].next) <span class="keyword">if</span>(edge[i].v!=from) dfs(now,edge[i].v);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">lg[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) lg[i]=lg[i&gt;&gt;<span class="number">1</span>]+<span class="number">1</span>;</span><br><span class="line">dfs(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LCA</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line"><span class="keyword">if</span>(depth[x]&lt;depth[y]) swap(x,y);</span><br><span class="line"><span class="keyword">while</span>(depth[x]&gt;depth[y]) x=f[x][lg[depth[x]-depth[y]]];</span><br><span class="line"><span class="keyword">if</span>(x==y) <span class="keyword">return</span> x;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=lg[depth[x]];i&gt;=<span class="number">0</span>;i--) <span class="keyword">if</span>(f[x][i]!=f[y][i]) x=f[x][i],y=f[y][i];</span><br><span class="line"><span class="keyword">return</span> f[x][<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_ans</span><span class="params">(<span class="keyword">int</span> now)</span> </span>&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=head[now];i;i=edge[i].next) &#123;</span><br><span class="line"><span class="keyword">if</span>(edge[i].v!=f[now][<span class="number">0</span>]) &#123;</span><br><span class="line">get_ans(edge[i].v);</span><br><span class="line">cnt[now]+=cnt[edge[i].v];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(now==<span class="number">1</span>) &#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++) cnt[a[i]]--;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++) &#123;</span><br><span class="line"><span class="keyword">int</span> u,v;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v;</span><br><span class="line">add(u,v),add(v,u);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">init();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++) &#123;</span><br><span class="line"><span class="keyword">int</span> l=LCA(a[i],a[i+<span class="number">1</span>]);</span><br><span class="line">cnt[a[i]]++,cnt[a[i+<span class="number">1</span>]]++,cnt[l]--;</span><br><span class="line"><span class="keyword">if</span>(f[l][<span class="number">0</span>]) cnt[f[l][<span class="number">0</span>]]--;</span><br><span class="line">&#125;</span><br><span class="line">get_ans(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cout</span>&lt;&lt;cnt[i]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JLOI </tag>
+            
+            <tag> LCA </tag>
+            
+            <tag> 树上差分 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[USACO15DEC] Max Flow P</title>
       <link href="/is-zxy.github.io/2020/03/07/%5BUSACO15DEC%5D-Max-Flow-P/"/>
       <url>/is-zxy.github.io/2020/03/07/%5BUSACO15DEC%5D-Max-Flow-P/</url>
@@ -22,9 +51,9 @@
             
             <tag> LCA </tag>
             
-            <tag> USACO </tag>
-            
             <tag> 树上差分 </tag>
+            
+            <tag> USACO </tag>
             
         </tags>
       
@@ -152,25 +181,6 @@
             <tag> 数学 </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Angel Beats!</title>
-      <link href="/is-zxy.github.io/2020/03/02/Angel-Beats/"/>
-      <url>/is-zxy.github.io/2020/03/02/Angel-Beats/</url>
-      
-        <content type="html"><![CDATA[<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=471799&auto=1&height=66"></iframe><p>AB很早看过了，如今看到这一段，听到这个BGM，瞬间泪目。</p><a id="more"></a><h3 id="第9话19min42s"><a href="#第9话19min42s" class="headerlink" title="第9话19min42s"></a>第9话19min42s</h3><p>这样啊。</p><p>这里是拯救年轻人灵魂的地方啊。</p><p>日向如果把那个二垒高飞球接住的话就能满足地离开了</p><p>还真是多管闲事了啊</p><p>我和由依。</p><p>岩泽则是用自己的力量达成心愿</p><p>最后毫无遗憾的离去了啊。</p><p>他们都不是想留在这里而留下的</p><p>而是为了反抗不合理的人生。</p><p>但是奏却说别那么做</p><p>她想给予他们合理的人生</p><p>想让他们和其他人一样度过美好的青春</p><p>才一直劝说试图留在这里的他们</p><p>那还真是讽刺啊。</p><p>明明就是这么简单的事情</p><p>两方为了贯彻自己的信念而对立</p><p>甚至还造出了武器。</p><p>如今</p><p>每天都是纷争不断。</p><p>音无：你到底有多么笨拙啊</p><p>奏：我知道</p><p>音无：原来你有自觉的啊</p><p>奏：嗯，但是如果和你在一起的话也许就能做得到</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 杂 </category>
-          
-      </categories>
-      
       
     </entry>
     
@@ -490,9 +500,9 @@
       
         <tags>
             
-            <tag> NOIP </tag>
-            
             <tag> LCA </tag>
+            
+            <tag> NOIP </tag>
             
             <tag> 最小生成树 </tag>
             
@@ -1206,9 +1216,9 @@
             
             <tag> ST表 </tag>
             
-            <tag> 线段树 </tag>
-            
             <tag> RMQ问题 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> USACO </tag>
             
@@ -1750,9 +1760,9 @@
       
         <tags>
             
-            <tag> SPOJ </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> SPOJ </tag>
             
             <tag> 数据结构 </tag>
             
