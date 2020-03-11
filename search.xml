@@ -308,7 +308,7 @@
       
       <categories>
           
-          <category> 题解 </category>
+          <category> 学习笔记 </category>
           
       </categories>
       
@@ -316,6 +316,8 @@
         <tags>
             
             <tag> 数学 </tag>
+            
+            <tag> 学习笔记 </tag>
             
             <tag> 整除分块 </tag>
             
@@ -425,9 +427,9 @@
       
         <tags>
             
-            <tag> 动态规划 </tag>
-            
             <tag> 斜率优化 </tag>
+            
+            <tag> 动态规划 </tag>
             
         </tags>
       
@@ -507,6 +509,8 @@
         <tags>
             
             <tag> 决策单调性 </tag>
+            
+            <tag> 学习笔记 </tag>
             
         </tags>
       
@@ -842,6 +846,8 @@
             
             <tag> 组合数学 </tag>
             
+            <tag> 学习笔记 </tag>
+            
             <tag> 乘法逆元 </tag>
             
         </tags>
@@ -867,9 +873,9 @@
       
         <tags>
             
-            <tag> HDU </tag>
-            
             <tag> 斜率优化 </tag>
+            
+            <tag> HDU </tag>
             
         </tags>
       
@@ -895,6 +901,8 @@
         <tags>
             
             <tag> 数学 </tag>
+            
+            <tag> 学习笔记 </tag>
             
             <tag> 乘法逆元 </tag>
             
@@ -975,9 +983,9 @@
       
         <tags>
             
-            <tag> 斜率优化 </tag>
-            
             <tag> APIO </tag>
+            
+            <tag> 斜率优化 </tag>
             
         </tags>
       
@@ -1326,13 +1334,13 @@
             
             <tag> 树状数组 </tag>
             
+            <tag> RMQ </tag>
+            
             <tag> ST表 </tag>
             
             <tag> 线段树 </tag>
             
             <tag> USACO </tag>
-            
-            <tag> RMQ问题 </tag>
             
         </tags>
       
@@ -1872,9 +1880,9 @@
       
         <tags>
             
-            <tag> SPOJ </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> SPOJ </tag>
             
             <tag> 数据结构 </tag>
             
@@ -1902,6 +1910,8 @@
         <tags>
             
             <tag> 线段树 </tag>
+            
+            <tag> 学习笔记 </tag>
             
         </tags>
       
@@ -1977,6 +1987,8 @@
             <tag> 线性筛 </tag>
             
             <tag> 数学 </tag>
+            
+            <tag> 学习笔记 </tag>
             
         </tags>
       
