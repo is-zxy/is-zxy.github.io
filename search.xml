@@ -512,9 +512,9 @@
       
         <tags>
             
-            <tag> CEOI </tag>
-            
             <tag> 斜率优化 </tag>
+            
+            <tag> CEOI </tag>
             
         </tags>
       
@@ -1041,9 +1041,9 @@
       
         <tags>
             
-            <tag> 斜率优化 </tag>
-            
             <tag> APIO </tag>
+            
+            <tag> 斜率优化 </tag>
             
         </tags>
       
@@ -1390,11 +1390,11 @@
       
         <tags>
             
+            <tag> 树状数组 </tag>
+            
             <tag> RMQ </tag>
             
             <tag> ST表 </tag>
-            
-            <tag> 树状数组 </tag>
             
             <tag> 线段树 </tag>
             
