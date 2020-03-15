@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="CQOI,树形DP," />
+  <meta name="keywords" content="数学,BSGS,SDOI,EXGCD," />
 
 
 
@@ -79,17 +79,19 @@
 
 
 
-<meta name="description" content="有一棵 $n$ 个结点的树，给每个点安排一个正整数编号，使得相邻点具有不同的编号，编号的总和尽量小。">
+<meta name="description" content="你被要求设计一个计算器完成以下三项任务：  给定$y,z,p$，计算$ y^z \bmod p$的值； 给定$ y,z,p$，计算满足$ xy \equiv z \pmod p$的最小非负整数$ x$； 给定$ y,z,p$，计算满足$ y^x \equiv z \pmod p$的最小非负整数$ x$。  为了拿到奖品，全力以赴吧！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[CQOI2005] 珠宝">
-<meta property="og:url" content="http://www.zxyer.xyz/2020/01/23/[CQOI2005]-%E7%8F%A0%E5%AE%9D/index.html">
+<meta property="og:title" content="[SDOI2011] 计算器">
+<meta property="og:url" content="http://www.zxyer.xyz/2020/03/15/[SDOI2011]-%E8%AE%A1%E7%AE%97%E5%99%A8/index.html">
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
-<meta property="og:description" content="有一棵 $n$ 个结点的树，给每个点安排一个正整数编号，使得相邻点具有不同的编号，编号的总和尽量小。">
-<meta property="article:published_time" content="2020-01-23T13:29:56.000Z">
-<meta property="article:modified_time" content="2020-02-17T12:52:15.049Z">
+<meta property="og:description" content="你被要求设计一个计算器完成以下三项任务：  给定$y,z,p$，计算$ y^z \bmod p$的值； 给定$ y,z,p$，计算满足$ xy \equiv z \pmod p$的最小非负整数$ x$； 给定$ y,z,p$，计算满足$ y^x \equiv z \pmod p$的最小非负整数$ x$。  为了拿到奖品，全力以赴吧！">
+<meta property="article:published_time" content="2020-03-15T12:29:32.000Z">
+<meta property="article:modified_time" content="2020-03-15T14:46:18.130Z">
 <meta property="article:author" content="Yuzuriha_Inori">
-<meta property="article:tag" content="CQOI">
-<meta property="article:tag" content="树形DP">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="BSGS">
+<meta property="article:tag" content="SDOI">
+<meta property="article:tag" content="EXGCD">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zxyer.xyz/2020/01/23/[CQOI2005]-珠宝/"/>
+  <link rel="canonical" href="http://www.zxyer.xyz/2020/03/15/[SDOI2011]-计算器/"/>
 
 
 
 
 
-  <title>[CQOI2005] 珠宝 | Zxyer's Blog</title>
+  <title>[SDOI2011] 计算器 | Zxyer's Blog</title>
   
 
 
@@ -307,7 +309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/01/23/%5BCQOI2005%5D-%E7%8F%A0%E5%AE%9D/">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/03/15/%5BSDOI2011%5D-%E8%AE%A1%E7%AE%97%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yuzuriha_Inori">
@@ -324,7 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[CQOI2005] 珠宝</h1>
+          <h1 class="post-title" itemprop="name headline">[SDOI2011] 计算器</h1>
         
 
         <div class="post-meta">
@@ -336,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-23T21:29:56+08:00">
-                2020-01-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-15T20:29:32+08:00">
+                2020-03-15
               </time>
             
 
@@ -396,18 +398,47 @@
       
 
       
-        <p> 有一棵 $n$ 个结点的树，给每个点安排一个正整数编号，使得相邻点具有不同的编号，编号的总和尽量小。 </p>
+        <p>你被要求设计一个计算器完成以下三项任务：</p>
+<ol>
+<li>给定$y,z,p$，计算$ y^z \bmod p$的值；</li>
+<li>给定$ y,z,p$，计算满足$ xy \equiv z \pmod p$的最小非负整数$ x$；</li>
+<li>给定$ y,z,p$，计算满足$ y^x \equiv z \pmod p$的最小非负整数$ x$。</li>
+</ol>
+<p>为了拿到奖品，全力以赴吧！</p>
 <a id="more"></a>
-<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>对于$20\%$的数据，$n\le 10$；</p>
-<p>对于$40\%$的数据，$n\le 1000$；</p>
-<p>对于$100\%$的数据，$1\le n\le 50000$。</p>
-<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P5765" target="_blank" rel="noopener">[CQOI2005]珠宝</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>明显具有无后效性，于是树形DP。</p>
-<p>定义$dp[root][x]$表示以$root$为根且$root$上数字为$x$的子树的最小编号总和。</p>
-<p>于是易得（令$root$有$m$个儿子$son_{1\cdots m}$）</p>
-<script type="math/tex; mode=display">
-dp[root][x]=min_{i=1}^m\{dp[son_i][k]\}+x\ ,\  k!=x</script><p>由于本题数据较小，$k$的枚举到$10$左右即可，不放心可开大些。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 50010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dp[N][<span class="number">15</span>],n,ans=<span class="number">1e9</span>;</span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; g[N];</span><br><span class="line"><span class="keyword">bool</span> vh[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> root)</span> </span>&#123;</span><br><span class="line">	vh[root]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> cnt=g[root].size();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(vh[g[root][i]]) <span class="keyword">continue</span>;</span><br><span class="line">		dfs(g[root][i]);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=<span class="number">10</span>;j++) &#123;</span><br><span class="line">			<span class="keyword">int</span> minn=<span class="number">1e9</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=<span class="number">10</span>;k++) &#123;</span><br><span class="line">				<span class="keyword">if</span>(j==k) <span class="keyword">continue</span>;</span><br><span class="line">				minn=min(dp[g[root][i]][k],minn);</span><br><span class="line">			&#125;</span><br><span class="line">			dp[root][j]+=minn;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">10</span>;i++) dp[root][i]+=i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> x,y;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;x&gt;&gt;y;</span><br><span class="line">		g[x].push_back(y);</span><br><span class="line">		g[y].push_back(x);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	dfs(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">10</span>;i++) ans=min(dp[<span class="number">1</span>][i],ans);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>测试点共分为三类，各类测试点占总测试点的比例如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">$K=$</th>
+<th style="text-align:center">测试点占比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$1$</td>
+<td style="text-align:center">$20\%$</td>
+</tr>
+<tr>
+<td style="text-align:center">$2$</td>
+<td style="text-align:center">$35\%$</td>
+</tr>
+<tr>
+<td style="text-align:center">$3$</td>
+<td style="text-align:center">$45\%$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>所有数据均满足：$1 \leq y,z,p \leq 10^9$，$p$是质数，$1 \leq T \leq 10$。</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P2485" target="_blank" rel="noopener">[SDOI2011]计算器</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>由于保证$p$是质数，所以导致本题及其好做。</p>
+<p>对于第一项任务，快速幂即可。</p>
+<p>对于第二项任务，EXGCD即可。</p>
+<p>对于第三项任务，BSGS即可。</p>
+<p>调了两小时找不出错，最后发现变量名（y）重复了….崩溃….<del>果然我是个制杖呢</del></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mul(x,y) ((x%p)*(y%p))%p</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> plus(x,y) ((x%p)+(y%p))%p</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> T,k;</span><br><span class="line">ll x,y;</span><br><span class="line"><span class="built_in">map</span> &lt;ll,<span class="keyword">int</span>&gt; vh;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">quickp</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!y) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	ll t=quickp(x,y/<span class="number">2</span>,p);</span><br><span class="line">	<span class="keyword">if</span>(y&amp;<span class="number">1</span>) <span class="keyword">return</span> mul(t,mul(t,x));</span><br><span class="line">	<span class="keyword">return</span> mul(t,t);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">EXGCD</span><span class="params">(ll a,ll b,ll &amp;x,ll &amp;y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!b) &#123;</span><br><span class="line">		x=<span class="number">1</span>,y=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">	ll gcd=EXGCD(b,a%b,x,y),t=x;</span><br><span class="line">	x=y;</span><br><span class="line">	y=t-a/b*y;</span><br><span class="line">	<span class="keyword">return</span> gcd;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">BSGS</span><span class="params">(ll a,ll b,ll p)</span> </span>&#123;</span><br><span class="line">	vh.clear();</span><br><span class="line">	<span class="keyword">if</span>(!(a%p)) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">if</span>(b==<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	b%=p;</span><br><span class="line">	ll k=<span class="built_in">ceil</span>(<span class="built_in">sqrt</span>(p));</span><br><span class="line">	ll tmp=b,t=quickp(a,k,p);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=k;j++) &#123;</span><br><span class="line">		tmp=mul(tmp,a);</span><br><span class="line">		vh[tmp]=j;</span><br><span class="line">	&#125;</span><br><span class="line">	tmp=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;i++) &#123;</span><br><span class="line">		tmp=mul(tmp,t);</span><br><span class="line">		<span class="keyword">if</span>(vh[tmp]) <span class="keyword">return</span> ((i*k-vh[tmp])%p+p)%p;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">	ll a,z,p;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=T;i++) &#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;z&gt;&gt;p;</span><br><span class="line">		<span class="keyword">if</span>(k==<span class="number">1</span>) <span class="built_in">cout</span>&lt;&lt;quickp(a,z,p)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">if</span>(k==<span class="number">2</span>) &#123;</span><br><span class="line">			ll gcd=EXGCD(a,p,x,y);</span><br><span class="line">			<span class="keyword">if</span>(z%gcd) <span class="built_in">cout</span>&lt;&lt;<span class="string">"Orz, I cannot find x!"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;((x*(z/gcd))%p+p)%p&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(k==<span class="number">3</span>) &#123;</span><br><span class="line">			ll ans=BSGS(a,z,p);</span><br><span class="line">			<span class="keyword">if</span>(ans==<span class="number">-1</span>) <span class="built_in">cout</span>&lt;&lt;<span class="string">"Orz, I cannot find x!"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;T&gt;&gt;k;</span><br><span class="line">	</span><br><span class="line">	work(k);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -425,9 +456,13 @@ dp[root][x]=min_{i=1}^m\{dp[son_i][k]\}+x\ ,\  k!=x</script><p>由于本题数�
       
         <div class="post-tags">
           
-            <a href="/is-zxy.github.io/tags/CQOI/" rel="tag"># CQOI</a>
+            <a href="/is-zxy.github.io/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
           
-            <a href="/is-zxy.github.io/tags/%E6%A0%91%E5%BD%A2DP/" rel="tag"># 树形DP</a>
+            <a href="/is-zxy.github.io/tags/BSGS/" rel="tag"># BSGS</a>
+          
+            <a href="/is-zxy.github.io/tags/SDOI/" rel="tag"># SDOI</a>
+          
+            <a href="/is-zxy.github.io/tags/EXGCD/" rel="tag"># EXGCD</a>
           
         </div>
       
@@ -440,8 +475,8 @@ dp[root][x]=min_{i=1}^m\{dp[son_i][k]\}+x\ ,\  k!=x</script><p>由于本题数�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/is-zxy.github.io/2020/01/21/%5BSCOI2005%5D-%E4%BA%92%E4%B8%8D%E4%BE%B5%E7%8A%AF/" rel="next" title="[SCOI2005] 互不侵犯">
-                <i class="fa fa-chevron-left"></i> [SCOI2005] 互不侵犯
+              <a href="/is-zxy.github.io/2020/03/15/BSGS%E5%8F%8AEXBSGS%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="BSGS及EXBSGS算法学习笔记">
+                <i class="fa fa-chevron-left"></i> BSGS及EXBSGS算法学习笔记
               </a>
             
           </div>
@@ -449,10 +484,6 @@ dp[root][x]=min_{i=1}^m\{dp[son_i][k]\}+x\ ,\  k!=x</script><p>由于本题数�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/is-zxy.github.io/2020/01/26/%5BUSACO06NOV%5D-%E7%8E%89%E7%B1%B3%E7%94%B0Corn-Fields/" rel="prev" title="[USACO06NOV] 玉米田Corn Fields">
-                [USACO06NOV] 玉米田Corn Fields <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
