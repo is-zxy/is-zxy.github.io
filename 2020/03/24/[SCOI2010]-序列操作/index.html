@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="卢卡斯定理,组合数学,NOI.AC," />
+  <meta name="keywords" content="SCOI,线段树," />
 
 
 
@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="给一个$n$行$t$列的矩阵，矩阵第$i$行第$j$列的元素是$i+j$。 定义矩阵第$i$行的积为第$i$行所有元素的乘积。 现在要你求矩阵所有行的积的和。答案可能很大，所以$mod\ \ 1000000007(10^9+7)$输出。">
+<meta name="description" content="lxhgww最近收到了一个$01$序列，序列里面包含了$n$个数，下标从$0$开始。这些数要么是$0$，要么是$1$，现在对于这个序列有五种变换操作和询问操作：  0 l r 把$[l, r]$区间内的所有数全变成$0$ 1 l r 把$[l, r]$区间内的所有数全变成$1$ 2 l r 把$[l,r]$区间内的所有数全部取反，也就是说把所有的$0$变成$1$，把所有的$1$变成$0$ 3 l">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[NOI.AC#66] 求和">
-<meta property="og:url" content="http://www.zxyer.xyz/2020/02/17/[NOI-AC-66]-%E6%B1%82%E5%92%8C/index.html">
+<meta property="og:title" content="[SCOI2010] 序列操作">
+<meta property="og:url" content="http://www.zxyer.xyz/2020/03/24/[SCOI2010]-%E5%BA%8F%E5%88%97%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
-<meta property="og:description" content="给一个$n$行$t$列的矩阵，矩阵第$i$行第$j$列的元素是$i+j$。 定义矩阵第$i$行的积为第$i$行所有元素的乘积。 现在要你求矩阵所有行的积的和。答案可能很大，所以$mod\ \ 1000000007(10^9+7)$输出。">
-<meta property="article:published_time" content="2020-02-17T02:03:37.000Z">
-<meta property="article:modified_time" content="2020-02-17T13:18:12.662Z">
+<meta property="og:description" content="lxhgww最近收到了一个$01$序列，序列里面包含了$n$个数，下标从$0$开始。这些数要么是$0$，要么是$1$，现在对于这个序列有五种变换操作和询问操作：  0 l r 把$[l, r]$区间内的所有数全变成$0$ 1 l r 把$[l, r]$区间内的所有数全变成$1$ 2 l r 把$[l,r]$区间内的所有数全部取反，也就是说把所有的$0$变成$1$，把所有的$1$变成$0$ 3 l">
+<meta property="article:published_time" content="2020-03-24T02:49:12.000Z">
+<meta property="article:modified_time" content="2020-03-24T08:32:28.560Z">
 <meta property="article:author" content="Yuzuriha_Inori">
-<meta property="article:tag" content="卢卡斯定理">
-<meta property="article:tag" content="组合数学">
-<meta property="article:tag" content="NOI.AC">
+<meta property="article:tag" content="SCOI">
+<meta property="article:tag" content="线段树">
 <meta name="twitter:card" content="summary">
 
 
@@ -121,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zxyer.xyz/2020/02/17/[NOI-AC-66]-求和/"/>
+  <link rel="canonical" href="http://www.zxyer.xyz/2020/03/24/[SCOI2010]-序列操作/"/>
 
 
 
 
 
-  <title>[NOI.AC#66] 求和 | Zxyer's Blog</title>
+  <title>[SCOI2010] 序列操作 | Zxyer's Blog</title>
   
 
 
@@ -308,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/02/17/%5BNOI-AC-66%5D-%E6%B1%82%E5%92%8C/">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/03/24/%5BSCOI2010%5D-%E5%BA%8F%E5%88%97%E6%93%8D%E4%BD%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yuzuriha_Inori">
@@ -325,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[NOI.AC#66] 求和</h1>
+          <h1 class="post-title" itemprop="name headline">[SCOI2010] 序列操作</h1>
         
 
         <div class="post-meta">
@@ -337,8 +336,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-17T10:03:37+08:00">
-                2020-02-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-24T10:49:12+08:00">
+                2020-03-24
               </time>
             
 
@@ -397,44 +396,26 @@
       
 
       
-        <p>给一个$n$行$t$列的矩阵，矩阵第$i$行第$j$列的元素是$i+j$。</p>
-<p>定义矩阵第$i$行的积为第$i$行所有元素的乘积。</p>
-<p>现在要你求矩阵所有行的积的和。答案可能很大，所以$mod\ \ 1000000007(10^9+7)$输出。</p>
+        <p>lxhgww最近收到了一个$01$序列，序列里面包含了$n$个数，下标从$0$开始。这些数要么是$0$，要么是$1$，现在对于这个序列有五种变换操作和询问操作：</p>
+<ul>
+<li><code>0 l r</code> 把$[l, r]$区间内的所有数全变成$0$</li>
+<li><code>1 l r</code> 把$[l, r]$区间内的所有数全变成$1$</li>
+<li><code>2 l r</code> 把$[l,r]$区间内的所有数全部取反，也就是说把所有的$0$变成$1$，把所有的$1$变成$0$</li>
+<li><code>3 l r</code> 询问$[l, r]$区间内总共有多少个$1$</li>
+<li><code>4 l r</code> 询问$[l, r]$区间内最多有多少个连续的$1$</li>
+</ul>
+<p>对于每一种询问操作，lxhgww 都需要给出回答，聪明的程序员们，你们能帮助他吗？</p>
 <a id="more"></a>
-<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$10\%$, $T≤100$,$n≤1000$</p>
-<p>另$20\%$,$T≤10$,$n≤1e7$</p>
-<p>另$20\%$,$T≤10000$,$n≤1e7$</p>
-<p>另$20\%$,$T≤10000$,$n≤1e8$</p>
-<p>$100\%$,$1≤T≤10000$,$1≤n≤1e10$,$1≤t≤1000$</p>
-<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="http://noi.ac/problem/66" target="_blank" rel="noopener">#66. 求和</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>则求</p>
-<script type="math/tex; mode=display">
-\sum_{i=1}^n\prod_{j=1}^t(i+j)</script><p>易得每行都为连续自然数，则可化为</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\sum_{i=1}^n\frac{(i+t)!}{i!}
-&= \sum_{i=1}^n(C_{i+t}^i\times t!) \\
-&= t!\times \sum_{i=1}^nC_{i+t}^i \\
-&= t!\times \sum_{i=1}^nC_{i+t}^t
-\end{align}</script><p>考虑这种式子：</p>
-<script type="math/tex; mode=display">
-\sum_{i=1}^nC_{i+t}^t</script><p>根据组合性质，有</p>
-<script type="math/tex; mode=display">
-\begin{align}
-C_{n+1}^m &= C_{n}^m+C_{n}^{m-1} \\
-C_{n}^{m-1} &= C_{n+1}^m-C_n^m \\
-C_{n}^m &= c_{n+1}^{m+1}-C_n^{m+1}
-\end{align}</script><p>那么上式可化为</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\sum_{i=1}^n(C_{i+t+1}^{t+1}-C_{i+t}^{t+1})
-&= C_{n+t+1}^{t+1}-C_{t+1}^{t+1} \\
-&= C_{n+t+1}^{t+1}-1
-\end{align}</script><p>那么答案即为</p>
-<script type="math/tex; mode=display">
-t!\times (C_{n+t+1}^{t+1}-1) \mod 1000000007</script><p>预处理出阶乘，然后卢卡斯即可。</p>
-<p>注意卢卡斯求$C_{n+t+1}^{t+1}\mod p$的结果可能为$0$，再减一为负，所以最终答案要加上$p$再模$p$。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> p 1000000007</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mul(x,y) (((x%p)*(y%p))%p)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line">ll n,t,T,f[N];</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">quickp</span><span class="params">(ll x,ll y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!y) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	ll t=quickp(x,y/<span class="number">2</span>)%p;</span><br><span class="line">	<span class="keyword">if</span>(y&amp;<span class="number">1</span>) <span class="keyword">return</span> mul(mul(t,t),x);</span><br><span class="line">	<span class="keyword">return</span> mul(t,t);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">C</span><span class="params">(ll n,ll m)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(n&lt;m) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(m&gt;n-m) m=n-m;</span><br><span class="line">	ll a=<span class="number">1</span>,b=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(ll i=<span class="number">0</span>;i&lt;m;i++) &#123;</span><br><span class="line">		a=mul(a,n-i);</span><br><span class="line">		b=mul(b,i+<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> mul(a,quickp(b,p<span class="number">-2</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">Laucs</span><span class="params">(ll n,ll m)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!m) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> mul(Laucs(n/p,m/p),C(n%p,m%p));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	f[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(ll i=<span class="number">2</span>;i&lt;=N<span class="number">-10</span>;i++) f[i]=mul(f[i<span class="number">-1</span>],i);</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;T;</span><br><span class="line">	<span class="keyword">while</span>(T) &#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;t;</span><br><span class="line">		ll ans=mul(f[t],Laucs(n+t+<span class="number">1</span>,t+<span class="number">1</span>)<span class="number">-1</span>);</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;(ans+p)%p&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		T--;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le n,m\le 10^5$</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P2572" target="_blank" rel="noopener">[SCOI2010]序列操作</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>调了好长时间。本想重构的，结果在今天早晨成功给调出来了2333。</p>
+<p>题目有点像<a href="http://zxyer.xyz/2020/03/22/%5BUSACO08FEB%5D-Hotel-G/#more" target="_blank" rel="noopener">[USACO08FEB] Hotel G</a>。唯一的麻烦之处在于多了一个修改操作——取反。</p>
+<p>于是需要维护的量有：区间内$1$的个数，区间左端最大连续$1$个数，区间右端最大连续$1$个数，区间最大连续$1$个数，区间左端最大连续$0$个数，区间右端最大连续$0$个数，区间最大连续$0$个数，以及懒标记。我写的这里，懒标记为$1$表示区间变$0$，懒标记为$2$表示区间变$1$，懒标记为$3$表示区间取反。</p>
+<p>修改操作中，操作$0,1$都不算太难。操作$2$只需要将$0,1$的信息交换即可。</p>
+<p>下传标记$1,2$都与之前相同。下传操作$3$时，若下传区间的懒标记为$1$则变$2$，为$2$则变$1$，为$3$则变$0$，这也很好理解，但我就是因为少了“为$3$”的情况而狂调了好长时间。</p>
+<p>另外的就是<code>spread</code>的顺序问题了。切记在<code>change</code>操作前要<code>spread</code>，否则其子区间可能会漏、少操作，就是因为存在着这取反操作的缘故。我觉得在后面<code>spread</code>也是可以的，不过还是要像<code>spread</code>函数里一样分三种情况讨论。</p>
+<p>写线段树，一定要想好细节的处理。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,op,l,r,tot=<span class="number">0</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> l,r,maxn1,lmaxn1,rmaxn1,maxn0,lmaxn0,rmaxn0,lazy,sum;</span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> l(x) tree[x].l</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> r(x) tree[x].r</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> m1(x) tree[x].maxn1</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> lm1(x) tree[x].lmaxn1</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> rm1(x) tree[x].rmaxn1</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> m0(x) tree[x].maxn0</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> lm0(x) tree[x].lmaxn0</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> rm0(x) tree[x].rmaxn0</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> lazy(x) tree[x].lazy</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> s(x) tree[x].sum</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> ls p&lt;&lt;1</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> rs p&lt;&lt;1|1</span></span><br><span class="line">&#125;tree[N&lt;&lt;<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push_up</span><span class="params">(<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">	s(p)=s(ls)+s(rs);</span><br><span class="line">	m1(p)=max(rm1(ls)+lm1(rs),max(m1(ls),m1(rs)));</span><br><span class="line">	m0(p)=max(rm0(ls)+lm0(rs),max(m0(ls),m0(rs)));</span><br><span class="line">	<span class="keyword">if</span>(lm1(ls)==r(ls)-l(ls)+<span class="number">1</span>) lm1(p)=lm1(ls)+lm1(rs);</span><br><span class="line">	<span class="keyword">else</span> lm1(p)=lm1(ls);</span><br><span class="line">	<span class="keyword">if</span>(rm1(rs)==r(rs)-l(rs)+<span class="number">1</span>) rm1(p)=rm1(rs)+rm1(ls);</span><br><span class="line">	<span class="keyword">else</span> rm1(p)=rm1(rs);</span><br><span class="line">	<span class="keyword">if</span>(lm0(ls)==r(ls)-l(ls)+<span class="number">1</span>) lm0(p)=lm0(ls)+lm0(rs);</span><br><span class="line">	<span class="keyword">else</span> lm0(p)=lm0(ls);</span><br><span class="line">	<span class="keyword">if</span>(rm0(rs)==r(rs)-l(rs)+<span class="number">1</span>) rm0(p)=rm0(rs)+rm0(ls);</span><br><span class="line">	<span class="keyword">else</span> rm0(p)=rm0(rs);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">	l(p)=l,r(p)=r;</span><br><span class="line">	<span class="keyword">if</span>(l==r) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;s(p));</span><br><span class="line">		lm1(p)=rm1(p)=m1(p)=s(p);</span><br><span class="line">		lm0(p)=rm0(p)=m0(p)=s(p)^<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	build(ls,l,mid);</span><br><span class="line">	build(rs,mid+<span class="number">1</span>,r);</span><br><span class="line">	push_up(p);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spread</span><span class="params">(<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!lazy(p)) <span class="keyword">return</span> ;</span><br><span class="line">	<span class="keyword">if</span>(lazy(p)==<span class="number">1</span>) &#123;</span><br><span class="line">		s(ls)=s(rs)=<span class="number">0</span>;</span><br><span class="line">		m1(ls)=lm1(ls)=rm1(ls)=<span class="number">0</span>;</span><br><span class="line">		m0(ls)=lm0(ls)=rm0(ls)=r(ls)-l(ls)+<span class="number">1</span>;</span><br><span class="line">		m1(rs)=lm1(rs)=rm1(rs)=<span class="number">0</span>;</span><br><span class="line">		m0(rs)=lm0(rs)=rm0(rs)=r(rs)-l(rs)+<span class="number">1</span>;</span><br><span class="line">		lazy(ls)=<span class="number">1</span>,lazy(rs)=<span class="number">1</span>;</span><br><span class="line">		lazy(p)=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(lazy(p)==<span class="number">2</span>) &#123;</span><br><span class="line">		s(ls)=r(ls)-l(ls)+<span class="number">1</span>;</span><br><span class="line">		s(rs)=r(rs)-l(rs)+<span class="number">1</span>;</span><br><span class="line">		m1(ls)=lm1(ls)=rm1(ls)=r(ls)-l(ls)+<span class="number">1</span>;</span><br><span class="line">		m0(ls)=lm0(ls)=rm0(ls)=<span class="number">0</span>;</span><br><span class="line">		m1(rs)=lm1(rs)=rm1(rs)=r(rs)-l(rs)+<span class="number">1</span>;</span><br><span class="line">		m0(rs)=lm0(rs)=rm0(rs)=<span class="number">0</span>;</span><br><span class="line">		lazy(ls)=<span class="number">2</span>,lazy(rs)=<span class="number">2</span>;</span><br><span class="line">		lazy(p)=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(lazy(p)==<span class="number">3</span>) &#123;</span><br><span class="line">		s(ls)=r(ls)-l(ls)+<span class="number">1</span>-s(ls);</span><br><span class="line">		s(rs)=r(rs)-l(rs)+<span class="number">1</span>-s(rs);</span><br><span class="line">		swap(m1(ls),m0(ls)),swap(m1(rs),m0(rs));</span><br><span class="line">		swap(lm1(ls),lm0(ls)),swap(lm1(rs),lm0(rs));</span><br><span class="line">		swap(rm1(ls),rm0(ls)),swap(rm1(rs),rm0(rs));</span><br><span class="line">		<span class="keyword">if</span>(!lazy(ls)) lazy(ls)=<span class="number">3</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(lazy(ls)==<span class="number">1</span>) lazy(ls)=<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(lazy(ls)==<span class="number">2</span>) lazy(ls)=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> lazy(ls)=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(!lazy(rs)) lazy(rs)=<span class="number">3</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(lazy(rs)==<span class="number">1</span>) lazy(rs)=<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(lazy(rs)==<span class="number">2</span>) lazy(rs)=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span> lazy(rs)=<span class="number">0</span>;</span><br><span class="line">		lazy(p)=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l(p)&gt;r||r(p)&lt;l) <span class="keyword">return</span> ;</span><br><span class="line">	spread(p);</span><br><span class="line">	<span class="keyword">if</span>(l(p)&gt;=l&amp;&amp;r(p)&lt;=r) &#123;</span><br><span class="line">		<span class="keyword">if</span>(!x) &#123;</span><br><span class="line">			s(p)=<span class="number">0</span>;</span><br><span class="line">			m1(p)=lm1(p)=rm1(p)=<span class="number">0</span>;</span><br><span class="line">			m0(p)=lm0(p)=rm0(p)=r(p)-l(p)+<span class="number">1</span>;</span><br><span class="line">			lazy(p)=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">return</span> ;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(x==<span class="number">1</span>) &#123;</span><br><span class="line">			s(p)=r(p)-l(p)+<span class="number">1</span>;</span><br><span class="line">			m1(p)=lm1(p)=rm1(p)=r(p)-l(p)+<span class="number">1</span>;</span><br><span class="line">			m0(p)=lm0(p)=rm0(p)=<span class="number">0</span>;</span><br><span class="line">			lazy(p)=<span class="number">2</span>;</span><br><span class="line">			<span class="keyword">return</span> ;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			s(p)=r(p)-l(p)+<span class="number">1</span>-s(p);</span><br><span class="line">			swap(m1(p),m0(p));</span><br><span class="line">			swap(lm1(p),lm0(p));</span><br><span class="line">			swap(rm1(p),rm0(p));</span><br><span class="line">			lazy(p)=<span class="number">3</span>;</span><br><span class="line">			<span class="keyword">return</span> ;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	change(ls,l,r,x);</span><br><span class="line">	change(rs,l,r,x);</span><br><span class="line">	push_up(p);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ask</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> op)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(op==<span class="number">3</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(l(p)&gt;r||r(p)&lt;l) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(l(p)&gt;=l&amp;&amp;r(p)&lt;=r) &#123;</span><br><span class="line">			<span class="keyword">return</span> s(p);</span><br><span class="line">		&#125;</span><br><span class="line">		spread(p);</span><br><span class="line">		<span class="keyword">return</span> ask(ls,l,r,op)+ask(rs,l,r,op);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(l(p)&gt;r||r(p)&lt;l) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(l(p)&gt;=l&amp;&amp;r(p)&lt;=r) <span class="keyword">return</span> m1(p);</span><br><span class="line">		spread(p);</span><br><span class="line">		<span class="keyword">return</span> max(max(ask(ls,l,r,op),ask(rs,l,r,op)),min(rm1(ls),r(ls)-l+<span class="number">1</span>)+min(lm1(rs),r-l(rs)+<span class="number">1</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">	</span><br><span class="line">	build(<span class="number">1</span>,<span class="number">1</span>,n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;op,&amp;l,&amp;r);</span><br><span class="line">		l++,r++;</span><br><span class="line">		<span class="keyword">if</span>(op&lt;=<span class="number">2</span>) change(<span class="number">1</span>,l,r,op);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ask(<span class="number">1</span>,l,r,op));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -452,11 +433,9 @@ t!\times (C_{n+t+1}^{t+1}-1) \mod 1000000007</script><p>预处理出阶乘，然
       
         <div class="post-tags">
           
-            <a href="/is-zxy.github.io/tags/%E5%8D%A2%E5%8D%A1%E6%96%AF%E5%AE%9A%E7%90%86/" rel="tag"># 卢卡斯定理</a>
+            <a href="/is-zxy.github.io/tags/SCOI/" rel="tag"># SCOI</a>
           
-            <a href="/is-zxy.github.io/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" rel="tag"># 组合数学</a>
-          
-            <a href="/is-zxy.github.io/tags/NOI-AC/" rel="tag"># NOI.AC</a>
+            <a href="/is-zxy.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag"># 线段树</a>
           
         </div>
       
@@ -469,8 +448,8 @@ t!\times (C_{n+t+1}^{t+1}-1) \mod 1000000007</script><p>预处理出阶乘，然
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/is-zxy.github.io/2020/02/16/%5BNOI-AC-605%5D-%E7%BA%A6%E6%95%B0%E4%B8%AA%E6%95%B0/" rel="next" title="[NOI.AC#605] 约数个数">
-                <i class="fa fa-chevron-left"></i> [NOI.AC#605] 约数个数
+              <a href="/is-zxy.github.io/2020/03/23/%5B%E6%B4%9B%E8%B0%B7P4145%5D-%E4%B8%8A%E5%B8%9D%E9%80%A0%E9%A2%98%E7%9A%84%E4%B8%83%E5%88%86%E9%92%9F2-%E8%8A%B1%E7%A5%9E%E6%B8%B8%E5%8E%86%E5%90%84%E5%9B%BD/" rel="next" title="[洛谷P4145] 上帝造题的七分钟2/花神游历各国">
+                <i class="fa fa-chevron-left"></i> [洛谷P4145] 上帝造题的七分钟2/花神游历各国
               </a>
             
           </div>
@@ -478,10 +457,6 @@ t!\times (C_{n+t+1}^{t+1}-1) \mod 1000000007</script><p>预处理出阶乘，然
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/is-zxy.github.io/2020/02/17/%5BNOI-AC-65%5D-triangle/" rel="prev" title="[NOI.AC#65] triangle">
-                [NOI.AC#65] triangle <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
