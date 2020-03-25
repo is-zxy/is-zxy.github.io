@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="线段树,洛谷," />
 
 
 
@@ -79,13 +79,17 @@
 
 
 
-<meta name="description" content="长存不灭的过去，逐渐消逝的未来。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zxyer&#39;s Blog">
-<meta property="og:url" content="http://www.zxyer.xyz/archives/page/5/index.html">
+<meta name="description" content="维护一个数列$a_i$，支持两种操作：  1 l r K D：给出一个长度等于$r-l+1$的等差数列，首项为$K$，公差为$D$，并将它对应加到 $[l,r]$范围中的每一个数上。即：令$a_l&#x3D;a_l+K,a_{l+1}&#x3D;a_{l+1}+K+D\ldots a_r&#x3D;a_r+K+(r-l) \times D$。 2 p：询问序列的第$p$个数的值$a_p$。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[洛谷P1438] 无聊的数列">
+<meta property="og:url" content="http://www.zxyer.xyz/2020/03/25/[%E6%B4%9B%E8%B0%B7P1438]-%E6%97%A0%E8%81%8A%E7%9A%84%E6%95%B0%E5%88%97/index.html">
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
-<meta property="og:description" content="长存不灭的过去，逐渐消逝的未来。">
+<meta property="og:description" content="维护一个数列$a_i$，支持两种操作：  1 l r K D：给出一个长度等于$r-l+1$的等差数列，首项为$K$，公差为$D$，并将它对应加到 $[l,r]$范围中的每一个数上。即：令$a_l&#x3D;a_l+K,a_{l+1}&#x3D;a_{l+1}+K+D\ldots a_r&#x3D;a_r+K+(r-l) \times D$。 2 p：询问序列的第$p$个数的值$a_p$。">
+<meta property="article:published_time" content="2020-03-25T14:09:36.000Z">
+<meta property="article:modified_time" content="2020-03-25T14:17:53.870Z">
 <meta property="article:author" content="Yuzuriha_Inori">
+<meta property="article:tag" content="线段树">
+<meta property="article:tag" content="洛谷">
 <meta name="twitter:card" content="summary">
 
 
@@ -116,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zxyer.xyz/archives/page/5/"/>
+  <link rel="canonical" href="http://www.zxyer.xyz/2020/03/25/[洛谷P1438]-无聊的数列/"/>
 
 
 
 
 
-  <title>归档 | Zxyer's Blog</title>
+  <title>[洛谷P1438] 无聊的数列 | Zxyer's Blog</title>
   
 
 
@@ -141,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -289,410 +293,183 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/03/25/%5B%E6%B4%9B%E8%B0%B7P1438%5D-%E6%97%A0%E8%81%8A%E7%9A%84%E6%95%B0%E5%88%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yuzuriha_Inori">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/is-zxy.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zxyer's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
-         
+          <h1 class="post-title" itemprop="name headline">[洛谷P1438] 无聊的数列</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-25T22:09:36+08:00">
+                2020-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        很好! 目前共计 95 篇日志。 继续努力。
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/is-zxy.github.io/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2020">2020</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/is-zxy.github.io/2020/02/17/%5BNOI-AC-65%5D-triangle/" itemprop="url">
-              
-                <span itemprop="name">[NOI.AC#65] triangle</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-17T17:59:56+08:00"
-              content="2020-02-17" >
-          02-17
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/is-zxy.github.io/2020/02/17/%5BNOI-AC-66%5D-%E6%B1%82%E5%92%8C/" itemprop="url">
-              
-                <span itemprop="name">[NOI.AC#66] 求和</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-17T10:03:37+08:00"
-              content="2020-02-17" >
-          02-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/is-zxy.github.io/2020/02/16/%5BNOI-AC-605%5D-%E7%BA%A6%E6%95%B0%E4%B8%AA%E6%95%B0/" itemprop="url">
-              
-                <span itemprop="name">[NOI.AC#605] 约数个数</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-16T12:03:11+08:00"
-              content="2020-02-16" >
-          02-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>维护一个数列$a_i$，支持两种操作：</p>
+<ul>
+<li><code>1 l r K D</code>：给出一个长度等于$r-l+1$的等差数列，首项为$K$，公差为$D$，并将它对应加到 $[l,r]$范围中的每一个数上。即：令$a_l=a_l+K,a_{l+1}=a_{l+1}+K+D\ldots a_r=a_r+K+(r-l) \times D$。</li>
+<li><code>2 p</code>：询问序列的第$p$个数的值$a_p$。</li>
+</ul>
+<a id="more"></a>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$0\le n,m\le 10^5$，$-200\le a_i,K,D\le 200$，$1\le l\le r\le n$，$1\le p\le n$。</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P1438" target="_blank" rel="noopener">P1438 无聊的数列</a></p>
+<h3 id="思路1"><a href="#思路1" class="headerlink" title="思路1"></a>思路1</h3><p>我的想法比较直接，比较暴力。</p>
+<p>直接维护！维护区间的最左端值，以及首项与公差的懒标记（显然满足区间可减性）。</p>
+<p>细节见代码吧。。懒得解释。</p>
+<p>看了题解后，发现还有两种比较妙的做法，一个是差分做法（其实和树状数组区间修改查询差不多）。一个是zkw线段树（自底向上的线段树？）。以后有时间再写<del>其实是现在懒得写</del>。</p>
+<h3 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF ~0x3f3f3f3f</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,opt,l,r;</span><br><span class="line">ll k,d;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> l,r;</span><br><span class="line">	ll first,lazyd,lazyf;</span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> l(x) tree[x].l</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> r(x) tree[x].r</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> f(x) tree[x].first</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> ld(x) tree[x].lazyd</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> lf(x) tree[x].lazyf</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> ls p&lt;&lt;1</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> rs ls|1</span></span><br><span class="line">&#125;tree[N&lt;&lt;<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push_up</span><span class="params">(<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">	f(p)=f(ls);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">	l(p)=l,r(p)=r;</span><br><span class="line">	<span class="keyword">if</span>(l==r) &#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;f(p);</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	build(ls,l,mid);</span><br><span class="line">	build(rs,mid+<span class="number">1</span>,r);</span><br><span class="line">	push_up(p);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spread</span><span class="params">(<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">	f(ls)=f(p);</span><br><span class="line">	f(rs)+=lf(p)+(l(rs)-l(p))*ld(p);</span><br><span class="line">	ld(ls)+=ld(p);</span><br><span class="line">	ld(rs)+=ld(p);</span><br><span class="line">	lf(ls)+=lf(p);</span><br><span class="line">	lf(rs)+=lf(p)+(l(rs)-l(p))*ld(p);</span><br><span class="line">	ld(p)=<span class="number">0</span>;</span><br><span class="line">	lf(p)=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,ll k,ll d)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l(p)&gt;r||r(p)&lt;l) <span class="keyword">return</span> ;</span><br><span class="line">	<span class="keyword">if</span>(l(p)&gt;=l&amp;&amp;r(p)&lt;=r) &#123;</span><br><span class="line">		f(p)+=d*(l(p)-l)+k;</span><br><span class="line">		lf(p)+=d*(l(p)-l)+k;</span><br><span class="line">		ld(p)+=d;</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	spread(p);</span><br><span class="line">	change(ls,l,r,k,d);</span><br><span class="line">	change(rs,l,r,k,d);</span><br><span class="line">	push_up(p);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">ask</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l(p)&gt;x||r(p)&lt;x) <span class="keyword">return</span> INF;</span><br><span class="line">	<span class="keyword">if</span>(l(p)==r(p)) <span class="keyword">return</span> f(p);</span><br><span class="line">	spread(p);</span><br><span class="line">	<span class="keyword">return</span> max(ask(ls,x),ask(rs,x));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	</span><br><span class="line">	build(<span class="number">1</span>,<span class="number">1</span>,n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;opt;</span><br><span class="line">		<span class="keyword">if</span>(opt&amp;<span class="number">1</span>) &#123;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;l&gt;&gt;r&gt;&gt;k&gt;&gt;d;</span><br><span class="line">			change(<span class="number">1</span>,l,r,k,d);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;l;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;ask(<span class="number">1</span>,l)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/is-zxy.github.io/2020/02/15/%5BSDOI2016%5D-%E5%BE%81%E9%80%94/" itemprop="url">
-              
-                <span itemprop="name">[SDOI2016] 征途</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-15T12:42:53+08:00"
-              content="2020-02-15" >
-          02-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/is-zxy.github.io/2020/02/14/%5BPOI2015%5D-WIL-Wilcze-doly/" itemprop="url">
-              
-                <span itemprop="name">[POI2015] WIL-Wilcze doły</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-14T20:52:00+08:00"
-              content="2020-02-14" >
-          02-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/is-zxy.github.io/2020/02/13/%5B%E6%B4%9B%E8%B0%B7P1613%5D-%E8%B7%91%E8%B7%AF/" itemprop="url">
-              
-                <span itemprop="name">[洛谷P1613] 跑路</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-13T23:37:49+08:00"
-              content="2020-02-13" >
-          02-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/is-zxy.github.io/2020/02/13/%5BCF57C%5D-Array/" itemprop="url">
-              
-                <span itemprop="name">[CF57C] Array</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-13T15:58:47+08:00"
-              content="2020-02-13" >
-          02-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/is-zxy.github.io/2020/02/11/%E5%8D%A2%E5%8D%A1%E6%96%AF%EF%BC%88Lucas%EF%BC%89%E5%AE%9A%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url">
-              
-                <span itemprop="name">卢卡斯（Lucas）定理学习笔记</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-11T22:39:02+08:00"
-              content="2020-02-11" >
-          02-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/is-zxy.github.io/2020/02/10/%5BHDU3507%5D-Print-Article/" itemprop="url">
-              
-                <span itemprop="name">[HDU3507] Print Article</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-10T23:28:09+08:00"
-              content="2020-02-10" >
-          02-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/is-zxy.github.io/2020/02/10/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url">
-              
-                <span itemprop="name">乘法逆元学习笔记</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-02-10T14:57:02+08:00"
-              content="2020-02-10" >
-          02-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/is-zxy.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag"># 线段树</a>
+          
+            <a href="/is-zxy.github.io/tags/%E6%B4%9B%E8%B0%B7/" rel="tag"># 洛谷</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/is-zxy.github.io/2020/03/25/%5B%E6%B4%9B%E8%B0%B7P2253%5D-%E5%A5%BD%E4%B8%80%E4%B8%AA%E4%B8%80%E4%B8%AD%E8%85%B0%E9%BC%93%EF%BC%81/" rel="next" title="[洛谷P2253] 好一个一中腰鼓！">
+                <i class="fa fa-chevron-left"></i> [洛谷P2253] 好一个一中腰鼓！
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  ﻿
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/is-zxy.github.io/archives/page/4/">上一页</a><a class="page-number" href="/is-zxy.github.io/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/is-zxy.github.io/archives/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/is-zxy.github.io/archives/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/is-zxy.github.io/archives/page/10/">10</a><a class="extend next" rel="next" href="/is-zxy.github.io/archives/page/6/">下一页</a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -700,6 +477,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -720,8 +501,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -842,6 +632,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据范围"><span class="nav-number">1.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">2.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路1"><span class="nav-number">3.</span> <span class="nav-text">思路1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码1"><span class="nav-number">4.</span> <span class="nav-text">代码1</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -989,6 +795,10 @@
 
 
   
+  <script type="text/javascript" src="/is-zxy.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/is-zxy.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
