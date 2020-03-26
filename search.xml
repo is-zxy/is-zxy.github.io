@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>[洛谷P2184] 贪婪大陆</title>
+      <link href="/is-zxy.github.io/2020/03/26/%5B%E6%B4%9B%E8%B0%B7P2184%5D-%E8%B4%AA%E5%A9%AA%E5%A4%A7%E9%99%86/"/>
+      <url>/is-zxy.github.io/2020/03/26/%5B%E6%B4%9B%E8%B0%B7P2184%5D-%E8%B4%AA%E5%A9%AA%E5%A4%A7%E9%99%86/</url>
+      
+        <content type="html"><![CDATA[<p>小FF最后一道防线是一条长度为$N$的战壕， 小FF拥有无数多种地雷，而SCV每次可以在$[L,R]$区间埋放同一种不同于之前已经埋放的地雷。 由于情况已经十万火急，小FF在某些时候可能会询问你在$[L’,R’]$ 区间内有多少种不同的地雷， 他希望你能尽快的给予答复。</p><ul><li><code>1 L R</code>表示在$[L,R]$这段区间布上一种地雷。</li><li><code>2 L R</code>表示询问$[L,R]$区间总共有多少种地雷。</li></ul><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$0\le n,m\le 10^5$，$0\le L\le R\le n$。</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P2184" target="_blank" rel="noopener">P2184 贪婪大陆</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>考虑一个区间$[L,R]$。</p><p>在区间$[1,L)$内却不在$[L,R]$内的地雷种数为区间右端在$[1,L)$内的个数。</p><p>在区间$[1,R]$内的地雷种数为区间左端在$[1,R]$内的个数。</p><p>显然，区间$[L,R]$内的地雷种数为上述两个数量相减。</p><p>于是维护两个树状数组，一个维护区间左端个数的前缀和，一个维护区间右端个数的前缀和即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lowbit(x) (x&amp;(-x))</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,s[N],e[N],q,l,r;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line"><span class="keyword">for</span>(;x&lt;=n;x+=lowbit(x)) s[x]++;</span><br><span class="line"><span class="keyword">for</span>(;y&lt;=n;y+=lowbit(y)) e[y]++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">asks</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(;x;x-=lowbit(x)) ans+=s[x];</span><br><span class="line"><span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">aske</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(;x;x-=lowbit(x)) ans+=e[x];</span><br><span class="line"><span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;q&gt;&gt;l&gt;&gt;r;</span><br><span class="line"><span class="keyword">if</span>(q&amp;<span class="number">1</span>) update(l,r);</span><br><span class="line"><span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;asks(r)-aske(l<span class="number">-1</span>)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 树状数组 </tag>
+            
+            <tag> 洛谷 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[洛谷P1438] 无聊的数列</title>
       <link href="/is-zxy.github.io/2020/03/25/%5B%E6%B4%9B%E8%B0%B7P1438%5D-%E6%97%A0%E8%81%8A%E7%9A%84%E6%95%B0%E5%88%97/"/>
       <url>/is-zxy.github.io/2020/03/25/%5B%E6%B4%9B%E8%B0%B7P1438%5D-%E6%97%A0%E8%81%8A%E7%9A%84%E6%95%B0%E5%88%97/</url>
@@ -321,9 +348,9 @@
             
             <tag> 数学 </tag>
             
-            <tag> BSGS </tag>
-            
             <tag> SDOI </tag>
+            
+            <tag> BSGS </tag>
             
         </tags>
       
@@ -379,9 +406,9 @@
             
             <tag> 数学 </tag>
             
-            <tag> BSGS </tag>
-            
             <tag> SDOI </tag>
+            
+            <tag> BSGS </tag>
             
             <tag> EXGCD </tag>
             
@@ -408,11 +435,11 @@
       
         <tags>
             
-            <tag> 学习笔记 </tag>
-            
             <tag> 数学 </tag>
             
             <tag> BSGS </tag>
+            
+            <tag> 学习笔记 </tag>
             
         </tags>
       
@@ -437,9 +464,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> NOI </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 中国剩余定理 </tag>
             
@@ -495,11 +522,11 @@
       
         <tags>
             
-            <tag> 学习笔记 </tag>
-            
             <tag> 数学 </tag>
             
             <tag> 中国剩余定理 </tag>
+            
+            <tag> 学习笔记 </tag>
             
         </tags>
       
@@ -790,9 +817,9 @@
       
         <tags>
             
-            <tag> 学习笔记 </tag>
-            
             <tag> 数学 </tag>
+            
+            <tag> 学习笔记 </tag>
             
             <tag> 整除分块 </tag>
             
@@ -873,9 +900,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 线性筛 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 洛谷 </tag>
             
@@ -929,9 +956,9 @@
       
         <tags>
             
-            <tag> 斜率优化 </tag>
-            
             <tag> CEOI </tag>
+            
+            <tag> 斜率优化 </tag>
             
         </tags>
       
@@ -983,9 +1010,9 @@
       
         <tags>
             
-            <tag> 学习笔记 </tag>
-            
             <tag> 决策单调性 </tag>
+            
+            <tag> 学习笔记 </tag>
             
         </tags>
       
@@ -1317,11 +1344,11 @@
       
         <tags>
             
-            <tag> 学习笔记 </tag>
-            
             <tag> 卢卡斯定理 </tag>
             
             <tag> 组合数学 </tag>
+            
+            <tag> 学习笔记 </tag>
             
             <tag> 乘法逆元 </tag>
             
@@ -1375,9 +1402,9 @@
       
         <tags>
             
-            <tag> 学习笔记 </tag>
-            
             <tag> 数学 </tag>
+            
+            <tag> 学习笔记 </tag>
             
             <tag> 乘法逆元 </tag>
             
@@ -1458,9 +1485,9 @@
       
         <tags>
             
-            <tag> APIO </tag>
-            
             <tag> 斜率优化 </tag>
+            
+            <tag> APIO </tag>
             
         </tags>
       
@@ -2272,9 +2299,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 线性筛 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 洛谷 </tag>
             
@@ -2384,9 +2411,9 @@
       
         <tags>
             
-            <tag> 学习笔记 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 学习笔记 </tag>
             
         </tags>
       
@@ -2459,11 +2486,11 @@
       
         <tags>
             
-            <tag> 学习笔记 </tag>
+            <tag> 线性筛 </tag>
             
             <tag> 数学 </tag>
             
-            <tag> 线性筛 </tag>
+            <tag> 学习笔记 </tag>
             
         </tags>
       
@@ -2488,9 +2515,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 线性筛 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 洛谷 </tag>
             
