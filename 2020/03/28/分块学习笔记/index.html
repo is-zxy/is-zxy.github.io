@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="众所周知，分块，是一个优雅的暴力数据结构。">
 <meta property="article:published_time" content="2020-03-28T12:55:58.000Z">
-<meta property="article:modified_time" content="2020-03-30T09:45:40.300Z">
+<meta property="article:modified_time" content="2020-03-30T17:02:12.034Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="学习笔记">
 <meta property="article:tag" content="分块">
@@ -472,8 +472,18 @@
 <h3 id="数据范围-5"><a href="#数据范围-5" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le n\le 100000$</p>
 <p>$-2^{31}\le \mathrm{others},\mathrm{ans}\le 2^{31}-1$</p>
 <h3 id="链接-5"><a href="#链接-5" class="headerlink" title="链接"></a>链接</h3><p><a href="https://loj.ac/problem/6282" target="_blank" rel="noopener">#6282. 数列分块入门 6</a></p>
-<h3 id="思路-5"><a href="#思路-5" class="headerlink" title="思路"></a>思路</h3><p>咕咕咕</p>
-<h3 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h3><p>咕咕咕</p>
+<h3 id="思路-5"><a href="#思路-5" class="headerlink" title="思路"></a>思路</h3><p>插入，不好搞。</p>
+<p>黄学长的文章中有句话：如果我们块内用<strong>数组以外的数据结构</strong>，能够支持其他不一样的操作。</p>
+<p>于是可以想到本题可以用$\mathrm{vector}$或链表来搞。</p>
+<p>我用了$\mathrm{vector}$（好写）。</p>
+<p>插入直接利用$\mathrm{vector}$自带的<code>insert</code>函数。</p>
+<p>查询类似。</p>
+<p>完了吗？</p>
+<p>并没有。</p>
+<p>如果在一个块内插入大量的元素，便可能超时了。</p>
+<p>因此需要引入一个新操作：重构块。即当一个块内元素数量达到一定数量后，便把数列重新平均分块。</p>
+<p>这样保证每个块的大小相对均衡，便一定程度上防止了向一个块内插入大量元素的数据TLE。</p>
+<h3 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> p 10007 </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> plus(x,y) ((x%p)+(y%p))%p</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010 </span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,pos[N&lt;&lt;<span class="number">1</span>],maxpos,a[N&lt;&lt;<span class="number">1</span>],t;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; b[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	t=<span class="built_in">sqrt</span>(n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> x;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;x;</span><br><span class="line">		b[(i<span class="number">-1</span>)/t+<span class="number">1</span>].push_back(x);</span><br><span class="line">	&#125;</span><br><span class="line">	maxpos=(n<span class="number">-1</span>)/t+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; query(<span class="keyword">int</span> l) &#123;</span><br><span class="line">	<span class="keyword">int</span> cnt=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(l&gt;b[cnt].size()) &#123;</span><br><span class="line">		l-=b[cnt].size();</span><br><span class="line">		cnt++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> make_pair(cnt,l<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rebuild</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=maxpos;i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> size=b[i].size();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;size;j++) a[++cnt]=b[i][j];</span><br><span class="line">		b[i].clear();</span><br><span class="line">	&#125;</span><br><span class="line">	t=<span class="built_in">sqrt</span>(cnt);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;i++) b[(i<span class="number">-1</span>)/t+<span class="number">1</span>].push_back(a[i]);</span><br><span class="line">	maxpos=(cnt<span class="number">-1</span>)/t+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; w=query(l);</span><br><span class="line">	b[w.first].insert(b[w.first].begin()+w.second,x);</span><br><span class="line">	<span class="keyword">if</span>(b[w.first].size()&gt;<span class="number">2</span>*t) rebuild();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; w=query(x);</span><br><span class="line">	<span class="keyword">return</span> b[w.first][w.second];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	</span><br><span class="line">	init();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> opt,l,r,c;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;opt&gt;&gt;l&gt;&gt;r&gt;&gt;c;</span><br><span class="line">		<span class="keyword">if</span>(opt) <span class="built_in">cout</span>&lt;&lt;find(r)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">else</span> insert(l,r);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
 <h2 id="例题-LOJ-6283-数列分块入门-7"><a href="#例题-LOJ-6283-数列分块入门-7" class="headerlink" title="例题[LOJ#6283] 数列分块入门 7"></a>例题[LOJ#6283] 数列分块入门 7</h2><p>给出一个长为$n$的数列，以及$n$个操作，操作涉及区间乘法，区间加法，单点询问。</p>
 <p>输入<code>0 l r c</code>时表示将区间$[l,r]$的之间的数字都加$c$。</p>
@@ -542,6 +552,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/is-zxy.github.io/2020/03/31/%5BCF920F%5D-SUM-and-REPLACE/" rel="prev" title="[CF920F] SUM and REPLACE">
+                [CF920F] SUM and REPLACE <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -622,7 +636,7 @@
               
                 <a href="/is-zxy.github.io/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">98</span>
+                  <span class="site-state-item-count">99</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -644,7 +658,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/is-zxy.github.io/tags/index.html">
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
