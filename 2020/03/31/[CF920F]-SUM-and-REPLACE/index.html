@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="给你一个数组$a_i$，对其进行$m$次操作。其中$D(x)$为$x$的约数个数 有两种操作： 输入1 l r表示将$[l,r]$的$a_i$替换为$D(a_i)$。 输入2 l r则输出$\sum^r_{i&#x3D;l}a_i$。">
 <meta property="article:published_time" content="2020-03-30T16:31:22.000Z">
-<meta property="article:modified_time" content="2020-03-30T16:51:01.296Z">
+<meta property="article:modified_time" content="2020-03-30T17:05:14.929Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="线性筛">
 <meta property="article:tag" content="Codeforcts">
@@ -410,7 +410,7 @@
 <p>首先$O(n)$线性筛求出因数个数，因为其是个积性函数。</p>
 <p>一个数$x$进行这样变换的次数不会超过$log_2x$次，因为$D(x)$至多为$\dfrac{x}{2}$。</p>
 <p>本题$a_i$最大为$10^6$，则最多这样变换$20$次。</p>
-<p>因此便可以暴力单点修改（因为不满足区间可减性也不易区间修改）。</p>
+<p>因此便可以暴力单点修改（不满足区间可减性也不易区间修改）。</p>
 <p>一个数为$2$或$1$时，便不必在变换了，因为其因数个数就是本身。</p>
 <p>因此维护区间和，以及一个标记，用来标记一个区间内的数字是否都为$1$或$2$。</p>
 <p>查询就是老操作了。</p>
