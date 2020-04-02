@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>[洛谷P3901] 数列找不同</title>
+      <link href="/is-zxy.github.io/2020/04/02/%5B%E6%B4%9B%E8%B0%B7P3901%5D-%E6%95%B0%E5%88%97%E6%89%BE%E4%B8%8D%E5%90%8C/"/>
+      <url>/is-zxy.github.io/2020/04/02/%5B%E6%B4%9B%E8%B0%B7P3901%5D-%E6%95%B0%E5%88%97%E6%89%BE%E4%B8%8D%E5%90%8C/</url>
+      
+        <content type="html"><![CDATA[<p>现有数列$A_1,A_2,\ldots,A_N$，$Q$个询问$(L_i,R_i)$，询问$A_{L_i} ,A_{L_i+1},\ldots,A_{R_i}$是否互不相同。</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le N,Q\le 10^5,1\le A_i\le N,1\le L_i\le R_i\le N$</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P3901" target="_blank" rel="noopener">P3901 数列找不同</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>莫队板子中的板子，比我写的学习笔记里的例题还板。。</p><p>明显$O(1)$转移。</p><p>直接莫队不解释。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,Q,a[N],blo,js[N],ans=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">bool</span> Ans[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">query</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> l,r,pos,id;</span><br><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> query &amp;x) <span class="keyword">const</span>&#123;</span><br><span class="line"><span class="keyword">if</span>(pos==x.pos) <span class="keyword">return</span> r&lt;x.r;</span><br><span class="line"><span class="keyword">return</span> pos&lt;x.pos;</span><br><span class="line">&#125;</span><br><span class="line">&#125;q[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line"><span class="keyword">if</span>(js[a[x]]) ans++;</span><br><span class="line">js[a[x]]++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">js[a[x]]--;</span><br><span class="line"><span class="keyword">if</span>(js[a[x]]) ans--;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;Q);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line"></span><br><span class="line">blo=<span class="built_in">sqrt</span>(n);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=Q;i++) &#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;q[i].l&gt;&gt;q[i].r;</span><br><span class="line">q[i].id=i,q[i].pos=(q[i].l<span class="number">-1</span>)/blo+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">sort(q+<span class="number">1</span>,q+Q+<span class="number">1</span>);</span><br><span class="line"><span class="keyword">int</span> l=<span class="number">1</span>,r=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=Q;i++) &#123;</span><br><span class="line"><span class="keyword">while</span>(l&gt;q[i].l) l--,add(l);</span><br><span class="line"><span class="keyword">while</span>(r&lt;q[i].r) r++,add(r);</span><br><span class="line"><span class="keyword">while</span>(l&lt;q[i].l) del(l),l++;</span><br><span class="line"><span class="keyword">while</span>(r&gt;q[i].r) del(r),r--;</span><br><span class="line"><span class="keyword">if</span>(!ans) Ans[q[i].id]=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">else</span> Ans[q[i].id]=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=Q;i++) &#123;</span><br><span class="line"><span class="keyword">if</span>(Ans[i]) <span class="built_in">printf</span>(<span class="string">"Yes\n"</span>);</span><br><span class="line"><span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"No\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 莫队 </tag>
+            
+            <tag> 分块 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>普通莫队学习笔记</title>
       <link href="/is-zxy.github.io/2020/04/01/%E6%99%AE%E9%80%9A%E8%8E%AB%E9%98%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
       <url>/is-zxy.github.io/2020/04/01/%E6%99%AE%E9%80%9A%E8%8E%AB%E9%98%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
@@ -1940,11 +1967,11 @@
             
             <tag> 线段树 </tag>
             
+            <tag> 树状数组 </tag>
+            
             <tag> RMQ </tag>
             
             <tag> ST表 </tag>
-            
-            <tag> 树状数组 </tag>
             
             <tag> USACO </tag>
             
