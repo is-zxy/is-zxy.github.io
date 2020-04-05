@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="动态规划,洛谷," />
+  <meta name="keywords" content="Codeforces,动态规划," />
 
 
 
@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="瞬间，地面上出现了一个$n\times m$的巨幅矩阵，矩阵的每个格子上有一坨$0\sim k$不等量的魔液。怪物各给了小a和uim一个魔瓶，说道，你们可以从矩阵的任一个格子开始，每次向右或向下走一步，从任一个格子结束。开始时小a用魔瓶吸收地面上的魔液，下一步由uim吸收，如此交替下去，并且要求最后一步必须由uim吸收。魔瓶只有$k$的容量，也就是说，如果装了$k+1$那么魔瓶会被清空成零，如果装">
+<meta name="description" content="有 $n$ 棵树， $m$ 种颜料，要求现在要给这些树涂上颜料，最后涂成 $k$ 段（连续颜色相同划为一段如 $2$ , $1$ , $1$ , $1$ , $3$ , $2$ , $2$ , $3$ , $1$ , $3$ 是 $7$ 段），有些树已经涂了，则不涂了只能涂一次，输入 $n$ 个数（每个数为 $0\sim m$）， $0$ 表示还没有涂， $1\sim m$ 表示已经涂了哪种颜料。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[洛谷P1373] 小a与uim之大逃离">
-<meta property="og:url" content="http://www.zxyer.xyz/2020/03/10/[%E6%B4%9B%E8%B0%B7P1373]-%E5%B0%8Fa%E4%B8%8Euim%E4%B9%8B%E5%A4%A7%E9%80%83%E7%A6%BB/index.html">
+<meta property="og:title" content="CF711C Coloring Trees">
+<meta property="og:url" content="http://www.zxyer.xyz/2020/04/05/[CF711C]-Coloring-Trees/index.html">
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
-<meta property="og:description" content="瞬间，地面上出现了一个$n\times m$的巨幅矩阵，矩阵的每个格子上有一坨$0\sim k$不等量的魔液。怪物各给了小a和uim一个魔瓶，说道，你们可以从矩阵的任一个格子开始，每次向右或向下走一步，从任一个格子结束。开始时小a用魔瓶吸收地面上的魔液，下一步由uim吸收，如此交替下去，并且要求最后一步必须由uim吸收。魔瓶只有$k$的容量，也就是说，如果装了$k+1$那么魔瓶会被清空成零，如果装">
-<meta property="article:published_time" content="2020-03-10T02:58:51.000Z">
-<meta property="article:modified_time" content="2020-03-10T03:08:13.099Z">
+<meta property="og:description" content="有 $n$ 棵树， $m$ 种颜料，要求现在要给这些树涂上颜料，最后涂成 $k$ 段（连续颜色相同划为一段如 $2$ , $1$ , $1$ , $1$ , $3$ , $2$ , $2$ , $3$ , $1$ , $3$ 是 $7$ 段），有些树已经涂了，则不涂了只能涂一次，输入 $n$ 个数（每个数为 $0\sim m$）， $0$ 表示还没有涂， $1\sim m$ 表示已经涂了哪种颜料。">
+<meta property="article:published_time" content="2020-04-05T14:18:02.000Z">
+<meta property="article:modified_time" content="2020-04-05T14:25:03.310Z">
 <meta property="article:author" content="Yuzuriha_Inori">
+<meta property="article:tag" content="Codeforces">
 <meta property="article:tag" content="动态规划">
-<meta property="article:tag" content="洛谷">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zxyer.xyz/2020/03/10/[洛谷P1373]-小a与uim之大逃离/"/>
+  <link rel="canonical" href="http://www.zxyer.xyz/2020/04/05/[CF711C]-Coloring-Trees/"/>
 
 
 
 
 
-  <title>[洛谷P1373] 小a与uim之大逃离 | Zxyer's Blog</title>
+  <title>CF711C Coloring Trees | Zxyer's Blog</title>
   
 
 
@@ -307,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/03/10/%5B%E6%B4%9B%E8%B0%B7P1373%5D-%E5%B0%8Fa%E4%B8%8Euim%E4%B9%8B%E5%A4%A7%E9%80%83%E7%A6%BB/">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/04/05/%5BCF711C%5D-Coloring-Trees/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yuzuriha_Inori">
@@ -324,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[洛谷P1373] 小a与uim之大逃离</h1>
+          <h1 class="post-title" itemprop="name headline">CF711C Coloring Trees</h1>
         
 
         <div class="post-meta">
@@ -336,8 +336,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-10T10:58:51+08:00">
-                2020-03-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-05T22:18:02+08:00">
+                2020-04-05
               </time>
             
 
@@ -396,20 +396,16 @@
       
 
       
-        <p>瞬间，地面上出现了一个$n\times m$的巨幅矩阵，矩阵的每个格子上有一坨$0\sim k$不等量的魔液。怪物各给了小a和uim一个魔瓶，说道，你们可以从矩阵的任一个格子开始，每次向右或向下走一步，从任一个格子结束。开始时小a用魔瓶吸收地面上的魔液，下一步由uim吸收，如此交替下去，并且要求最后一步必须由uim吸收。魔瓶只有$k$的容量，也就是说，如果装了$k+1$那么魔瓶会被清空成零，如果装了$k+2$就只剩下$1$，依次类推。怪物还说道，最后谁的魔瓶装的魔液多，谁就能活下来。小a和uim感情深厚，情同手足，怎能忍心让小伙伴离自己而去呢？沉默片刻，小a灵机一动，如果他俩的魔瓶中魔液一样多，不就都能活下来了吗？小a和他的小伙伴都笑呆了！</p>
-<p>现在他想知道他们都能活下来有多少种方法。</p>
+        <p>有 $n$ 棵树， $m$ 种颜料，要求现在要给这些树涂上颜料，最后涂成 $k$ 段（连续颜色相同划为一段如 $2$ , $1$ , $1$ , $1$ , $3$ , $2$ , $2$ , $3$ , $1$ , $3$ 是 $7$ 段），有些树已经涂了，则不涂了只能涂一次，输入 $n$ 个数（每个数为 $0\sim m$）， $0$ 表示还没有涂， $1\sim m$ 表示已经涂了哪种颜料。接下来输入 $n$ 行 $m$ 列，表示每棵树涂成每种颜色所要的颜料量。现在要把所有树都涂上颜料涂成 $k$ 段，求最少要用的颜料量。</p>
 <a id="more"></a>
-<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$n,m&lt;=800,1&lt;=k&lt;=15$</p>
-<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P1373" target="_blank" rel="noopener">P1373 小a和uim之大逃离</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>状态的设计十分重要。</p>
-<p>定义$dp[i][j][l][f]$。</p>
-<p>若$f=0$表示第$i$行第$j$列的魔液被小a吸取后小a与uim魔液差值为$l$的方案总数。</p>
-<p>若$f=1$表示第$i$行第$j$列的魔液被uim吸取后小a与uim莫邪差值为$l$的方案总数。</p>
-<p>易得</p>
-<script type="math/tex; mode=display">
-dp[i][j][l][0]=dp[i-1][j][l-a[i][j]][1]+dp[i][j-1][l-a[i][j]][1] \\
-dp[i][j][l][1]=dp[i-1][j][l+a[i][j]][0]+dp[i][j-1][l+a[i][j]][0]</script><p>由于可以从任意一个格子开始，初始化$dp[i][j][a[i][j]][0]=1$。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 810</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> p 1000000007</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> plus(x,y) ((x%p)+(y%p))%p</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,k,a[N][N],dp[N][N][<span class="number">20</span>][<span class="number">2</span>],ans=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m&gt;&gt;k;</span><br><span class="line">	k++;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++) &#123;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;a[i][j];</span><br><span class="line">			a[i][j]%=k;</span><br><span class="line">			dp[i][j][a[i][j]][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;k;l++) &#123;</span><br><span class="line">				<span class="keyword">if</span>(i<span class="number">-1</span>) &#123;</span><br><span class="line">					dp[i][j][l][<span class="number">0</span>]=plus(dp[i<span class="number">-1</span>][j][(l-a[i][j]+k)%k][<span class="number">1</span>],dp[i][j][l][<span class="number">0</span>]);</span><br><span class="line">					dp[i][j][l][<span class="number">1</span>]=plus(dp[i<span class="number">-1</span>][j][(l+a[i][j]+k)%k][<span class="number">0</span>],dp[i][j][l][<span class="number">1</span>]);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>(j<span class="number">-1</span>) &#123;</span><br><span class="line">					dp[i][j][l][<span class="number">0</span>]=plus(dp[i][j<span class="number">-1</span>][(l-a[i][j]+k)%k][<span class="number">1</span>],dp[i][j][l][<span class="number">0</span>]);</span><br><span class="line">					dp[i][j][l][<span class="number">1</span>]=plus(dp[i][j<span class="number">-1</span>][(l+a[i][j]+k)%k][<span class="number">0</span>],dp[i][j][l][<span class="number">1</span>]);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			ans=plus(ans,dp[i][j][<span class="number">0</span>][<span class="number">1</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le k\le n\le 100$</p>
+<p>$1\le m\le 100$</p>
+<p>$0\le c_i\le m$</p>
+<p>$1\le p_{i,j}\le 10^9$</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/CF711C" target="_blank" rel="noopener">CF711C Coloring Trees</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>定义$dp[i][j][l]$表示前$i$颗树分为$j$段，第$i$棵树颜色为$l$时的最小费用。</p>
+<p>根据这个状态分类讨论即可。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 110</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,k;</span><br><span class="line">ll c[N],cost[N][N],dp[N][N][N],ans;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m&gt;&gt;k;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;c[i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++) <span class="built_in">cin</span>&gt;&gt;cost[i][j];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">memset</span>(dp,<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	ans=dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">if</span>(c[<span class="number">1</span>]) dp[<span class="number">1</span>][<span class="number">1</span>][c[<span class="number">1</span>]]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) dp[<span class="number">1</span>][<span class="number">1</span>][i]=cost[<span class="number">1</span>][i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=min(k,i);j++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(c[i]) &#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">1</span>;l&lt;=m;l++) &#123;</span><br><span class="line">					<span class="keyword">if</span>(c[i]==l) dp[i][j][l]=min(dp[i][j][l],dp[i<span class="number">-1</span>][j][l]);</span><br><span class="line">					<span class="keyword">else</span> dp[i][j][c[i]]=min(dp[i][j][c[i]],dp[i<span class="number">-1</span>][j<span class="number">-1</span>][l]);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">1</span>;l&lt;=m;l++) &#123;</span><br><span class="line">					<span class="keyword">for</span>(<span class="keyword">int</span> o=<span class="number">1</span>;o&lt;=m;o++) &#123;</span><br><span class="line">						<span class="keyword">if</span>(l==o) dp[i][j][l]=min(dp[i][j][l],dp[i<span class="number">-1</span>][j][o]+cost[i][l]);</span><br><span class="line">						<span class="keyword">else</span> dp[i][j][l]=min(dp[i][j][l],dp[i<span class="number">-1</span>][j<span class="number">-1</span>][o]+cost[i][l]);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(c[n]) ans=dp[n][k][c[n]];</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) ans=min(dp[n][k][i],ans);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;(ans==dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>]?<span class="number">-1</span>:ans)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -427,9 +423,9 @@ dp[i][j][l][1]=dp[i-1][j][l+a[i][j]][0]+dp[i][j-1][l+a[i][j]][0]</script><p>由�
       
         <div class="post-tags">
           
-            <a href="/is-zxy.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
+            <a href="/is-zxy.github.io/tags/Codeforces/" rel="tag"># Codeforces</a>
           
-            <a href="/is-zxy.github.io/tags/%E6%B4%9B%E8%B0%B7/" rel="tag"># 洛谷</a>
+            <a href="/is-zxy.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
           
         </div>
       
@@ -442,8 +438,8 @@ dp[i][j][l][1]=dp[i-1][j][l+a[i][j]][0]+dp[i][j-1][l+a[i][j]][0]</script><p>由�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/is-zxy.github.io/2020/03/09/%5BHAOI2008%5D-%E7%A1%AC%E5%B8%81%E8%B4%AD%E7%89%A9/" rel="next" title="[HAOI2008] 硬币购物">
-                <i class="fa fa-chevron-left"></i> [HAOI2008] 硬币购物
+              <a href="/is-zxy.github.io/2020/04/04/%5BHAOI2009%5D-%E9%80%86%E5%BA%8F%E5%AF%B9%E6%95%B0%E5%88%97/" rel="next" title="[HAOI2009] 逆序对数列">
+                <i class="fa fa-chevron-left"></i> [HAOI2009] 逆序对数列
               </a>
             
           </div>
@@ -451,10 +447,6 @@ dp[i][j][l][1]=dp[i-1][j][l+a[i][j]][0]+dp[i][j-1][l+a[i][j]][0]</script><p>由�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/is-zxy.github.io/2020/03/11/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86-CRT-%E5%8F%8A%E6%89%A9%E5%B1%95%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86-EXCRT-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="中国剩余定理(CRT)及扩展中国剩余定理(EXCRT)学习笔记">
-                中国剩余定理(CRT)及扩展中国剩余定理(EXCRT)学习笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
