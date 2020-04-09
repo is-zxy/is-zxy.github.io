@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="学习笔记,卢卡斯定理,组合数学,乘法逆元," />
+  <meta name="keywords" content="状压DP,NOIP," />
 
 
 
@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="卢卡斯（Lucas）定理可以用来求$C_n^m\ mod\ p$。 前置知识：乘法逆元。">
+<meta name="description" content="Kiana 最近沉迷于一款神奇的游戏无法自拔。 简单来说，这款游戏是在一个平面上进行的。 有一架弹弓位于 $(0,0)$ 处，每次 Kiana 可以用它向第一象限发射一只红色的小鸟，小鸟们的飞行轨迹均为形如 $y&#x3D;ax^2+bx$ 的曲线，其中 $a,b$ 是Kiana 指定的参数，且必须满足 $a &lt; 0$，$a,b$ 都是实数。 当小鸟落回地面（即 $x$ 轴）时，它就会瞬间消失。 在游">
 <meta property="og:type" content="article">
-<meta property="og:title" content="卢卡斯（Lucas）定理学习笔记">
-<meta property="og:url" content="http://www.zxyer.xyz/2020/02/11/%E5%8D%A2%E5%8D%A1%E6%96%AF%EF%BC%88Lucas%EF%BC%89%E5%AE%9A%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="[NOIP2016] 愤怒的小鸟">
+<meta property="og:url" content="http://www.zxyer.xyz/2020/04/09/[NOIP2016]-%E6%84%A4%E6%80%92%E7%9A%84%E5%B0%8F%E9%B8%9F/index.html">
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
-<meta property="og:description" content="卢卡斯（Lucas）定理可以用来求$C_n^m\ mod\ p$。 前置知识：乘法逆元。">
-<meta property="article:published_time" content="2020-02-11T14:39:02.000Z">
-<meta property="article:modified_time" content="2020-03-11T12:03:38.659Z">
+<meta property="og:description" content="Kiana 最近沉迷于一款神奇的游戏无法自拔。 简单来说，这款游戏是在一个平面上进行的。 有一架弹弓位于 $(0,0)$ 处，每次 Kiana 可以用它向第一象限发射一只红色的小鸟，小鸟们的飞行轨迹均为形如 $y&#x3D;ax^2+bx$ 的曲线，其中 $a,b$ 是Kiana 指定的参数，且必须满足 $a &lt; 0$，$a,b$ 都是实数。 当小鸟落回地面（即 $x$ 轴）时，它就会瞬间消失。 在游">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/pic/3459.png">
+<meta property="article:published_time" content="2020-04-09T15:35:41.000Z">
+<meta property="article:modified_time" content="2020-04-09T15:45:17.754Z">
 <meta property="article:author" content="Yuzuriha_Inori">
-<meta property="article:tag" content="学习笔记">
-<meta property="article:tag" content="卢卡斯定理">
-<meta property="article:tag" content="组合数学">
-<meta property="article:tag" content="乘法逆元">
+<meta property="article:tag" content="状压DP">
+<meta property="article:tag" content="NOIP">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.luogu.com.cn/upload/pic/3459.png">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zxyer.xyz/2020/02/11/卢卡斯（Lucas）定理学习笔记/"/>
+  <link rel="canonical" href="http://www.zxyer.xyz/2020/04/09/[NOIP2016]-愤怒的小鸟/"/>
 
 
 
 
 
-  <title>卢卡斯（Lucas）定理学习笔记 | Zxyer's Blog</title>
+  <title>[NOIP2016] 愤怒的小鸟 | Zxyer's Blog</title>
   
 
 
@@ -309,7 +309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/02/11/%E5%8D%A2%E5%8D%A1%E6%96%AF%EF%BC%88Lucas%EF%BC%89%E5%AE%9A%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/04/09/%5BNOIP2016%5D-%E6%84%A4%E6%80%92%E7%9A%84%E5%B0%8F%E9%B8%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yuzuriha_Inori">
@@ -326,7 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">卢卡斯（Lucas）定理学习笔记</h1>
+          <h1 class="post-title" itemprop="name headline">[NOIP2016] 愤怒的小鸟</h1>
         
 
         <div class="post-meta">
@@ -338,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-11T22:39:02+08:00">
-                2020-02-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-09T23:35:41+08:00">
+                2020-04-09
               </time>
             
 
@@ -361,8 +361,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/is-zxy.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">学习笔记</span>
+                  <a href="/is-zxy.github.io/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
                   </a>
                 </span>
 
@@ -398,63 +398,31 @@
       
 
       
-        <p>卢卡斯（Lucas）定理可以用来求$C_n^m\ mod\ p$。</p>
-<p>前置知识：乘法逆元。</p>
+        <p><code>Kiana</code> 最近沉迷于一款神奇的游戏无法自拔。</p>
+<p>简单来说，这款游戏是在一个平面上进行的。</p>
+<p>有一架弹弓位于 $(0,0)$ 处，每次 <code>Kiana</code> 可以用它向第一象限发射一只红色的小鸟，小鸟们的飞行轨迹均为形如 $y=ax^2+bx$ 的曲线，其中 $a,b$ 是<code>Kiana</code> 指定的参数，且必须满足 $a &lt; 0$，$a,b$ 都是实数。</p>
+<p>当小鸟落回地面（即 $x$ 轴）时，它就会瞬间消失。</p>
+<p>在游戏的某个关卡里，平面的第一象限中有 $n$ 只绿色的小猪，其中第 $i$ 只小猪所在的坐标为 $\left(x_i,y_i \right)$。 </p>
+<p>如果某只小鸟的飞行轨迹经过了 $\left( x_i, y_i \right)$，那么第 $i$ 只小猪就会被消灭掉，同时小鸟将会沿着原先的轨迹继续飞行；</p>
+<p>如果一只小鸟的飞行轨迹没有经过 $\left( x_i, y_i \right)$，那么这只小鸟飞行的全过程就不会对第 $i$ 只小猪产生任何影响。</p>
+<p>例如，若两只小猪分别位于 $(1,3)$ 和 $(3,3)$，<code>Kiana</code> 可以选择发射一只飞行轨迹为 $y=-x^2+4x$ 的小鸟，这样两只小猪就会被这只小鸟一起消灭。</p>
+<p>而这个游戏的目的，就是通过发射小鸟消灭所有的小猪。</p>
+<p>这款神奇游戏的每个关卡对 <code>Kiana</code>来说都很难，所以<code>Kiana</code>还输入了一些神秘的指令，使得自己能更轻松地完成这个游戏。这些指令将在【输入格式】中详述。</p>
+<p>假设这款游戏一共有 $T$ 个关卡，现在 <code>Kiana</code>想知道，对于每一个关卡，至少需要发射多少只小鸟才能消灭所有的小猪。由于她不会算，所以希望由你告诉她。</p>
 <a id="more"></a>
-<h1 id="定理内容"><a href="#定理内容" class="headerlink" title="定理内容"></a>定理内容</h1><p>令$n=sp+q,m=tp+r,(q,r\le p)$，则有</p>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p><img src="https://cdn.luogu.com.cn/upload/pic/3459.png" alt="img"></p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P2831" target="_blank" rel="noopener">愤怒的小鸟</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>$n$较小，考虑状压。</p>
+<p>设两点$(x_1,y_1),(x_2,y_2)$，则过这两点与原点的抛物线$y=ax^2+bx$中，</p>
 <script type="math/tex; mode=display">
-C_n^m=C_{sp+q}^{tp+r} \equiv C_s^t\times C_q^r(mod\ p)</script><hr>
-<h1 id="简要证明"><a href="#简要证明" class="headerlink" title="简要证明"></a>简要证明</h1><p>定义</p>
+a=\frac{x_2y_1-x_1y_2}{x_1x_2(x_1-x_2)},b=\frac{x_1^2y_2-x_2^2y_1}{x_1x_2(x_1-x_2)}</script><p>于是预处理所有可行的抛物线，并把其经过的猪作为状态记录下来。</p>
+<p>预处理完后直接状转即可，定义$dp[i]$表示目前猪状态为$i$时的最少鸟数。</p>
+<p>易得</p>
 <script type="math/tex; mode=display">
-n=sp+q,m=tp+r,(q,r\le p)</script><p>组合数定义</p>
-<script type="math/tex; mode=display">
-C_n^m=\frac{n!}{m!(n-m)!}</script><p>于是易得</p>
-<script type="math/tex; mode=display">
-C_p^d \equiv 0(mod\ p),d\in(0,p)\ ①</script><p>由二项式定理</p>
-<script type="math/tex; mode=display">
-(x+y)^n=\sum_{i=0}^nC_n^ix^{n-i}y^i</script><p>于是</p>
-<script type="math/tex; mode=display">
-(1+x)^n=(1+x)^{sp+q}=(1+x)^q\times[(1+x)^p]^s=(1+x)^q\times[\sum_{i=0}^pC_p^ix^i]^s</script><p>由式①，可得</p>
-<script type="math/tex; mode=display">
-\begin{align}
-(1+x)^n 
-&\equiv (1+x)^q\times[\sum_{i=0}^pC_p^ix^i]^s \\ 
-&\equiv (1+x)^q\times (1+x^p)^s\ (mod\ p) \\ 
-&\equiv \sum_{i=0}^qC_q^ix^i\times \sum_{j=0}^sC_s^jx^{jp}\ (mod\ p)
-\end{align}</script><p>则</p>
-<script type="math/tex; mode=display">
-\begin{align}
-(1+x)^{sp+q} &\equiv \sum_{i=0}^qC_q^ix^i\times \sum_{j=0}^sC_s^jx^{jp}\ (mod\ p) \\
-\sum_{k=0}^{sp+q}C_{sp+q}^kx^k &\equiv \sum_{i=0}^qC_q^ix^i\times \sum_{j=0}^sC_s^jx^{jp}\ (mod\ p) \\
-
-\end{align}</script><p>两边同时取$x^{sp+r}$项</p>
-<script type="math/tex; mode=display">
-C_{sp+q}^{tp+r}x^{tp+r} \equiv C_q^rx^r\times C_{s}^{t}x^{tp}\ (mod\ p)</script><p>而$n=sp+q,m=tp+r,(q,r\le p)$，则</p>
-<script type="math/tex; mode=display">
-\begin{align}
-C_n^mx^m &\equiv C_q^r\times C_s^tx^{tp+r}\ (mod\ p) \\
-&\equiv C_q^r\times C_s^tx^m\ (mod\ p)
-\end{align}</script><p>两边同时消去$x^m$，可得</p>
-<script type="math/tex; mode=display">
-C_n^m \equiv C_q^r\times C_s^t\ (mod\ p)</script><p>于是得证。</p>
-<hr>
-<h1 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h1><p>有了这个定理，于是我们可以递归求解$C_s^t\ mod\ p$，再用乘法逆元求出$C_q^r\ mod\ p$，两者相乘再$mod\ p$即可。</p>
-<p>转化成一个更加易懂的形式，即</p>
-<script type="math/tex; mode=display">
-s=\lfloor \frac{n}{p} \rfloor,t=\lfloor \frac{m}{p} \rfloor,q=n\ mod\ p,r=m\ mod\ p \\
-C_n^m \equiv C_{\lfloor \frac{n}{p} \rfloor}^{\lfloor \frac{m}{p} \rfloor} \times C_{n\ mod\ p}^{m\ mod\ p}\ (mod\ p)</script><p>定义$C_n^m \equiv Lucas(n,m)\ (mod\ p)$</p>
-<p>则递归式为$Lucas(n,m) \equiv Lucas_{\lfloor \frac{n}{p} \rfloor}^{\lfloor \frac{m}{p} \rfloor} \times C_{n\ mod\ p}^{m\ mod\ p}\ (mod\ p)$</p>
-<hr>
-<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="洛谷P3807-【模板】卢卡斯定理"><a href="#洛谷P3807-【模板】卢卡斯定理" class="headerlink" title="[洛谷P3807] 【模板】卢卡斯定理"></a>[洛谷P3807] 【模板】卢卡斯定理</h2><p>给定$n,m,p(1\le n,m,p\le 10^5)$</p>
-<p>求$C_{n+m}^{m}\ mod\ p$</p>
-<p>保证$P$为$prime$</p>
-<p>$C$表示组合数。</p>
-<p>一个测试点内包含多组数据。</p>
-<!--more-->
-<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P3807" target="_blank" rel="noopener">P3807 【模板】卢卡斯定理</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>没啥思路，套板子就好。</p>
-<p>当然乘法逆元也可以用扩欧写。这里我只写了费马小定理的。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> t;</span><br><span class="line">ll n,m,p;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">quickpow</span><span class="params">(ll x,ll y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(y==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	ll t=quickpow(x,y/<span class="number">2</span>);</span><br><span class="line">	t=(t*t)%p;</span><br><span class="line">	<span class="keyword">if</span>(y&amp;<span class="number">1</span>) t=(t*x)%p;</span><br><span class="line">	<span class="keyword">return</span> t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">C</span><span class="params">(ll n,ll m)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(n&lt;m) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(m&gt;n-m) m-n-m;</span><br><span class="line">	ll a=<span class="number">1</span>,b=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++) &#123;</span><br><span class="line">		a=(a*(n-i))%p;</span><br><span class="line">		b=(b*(i+<span class="number">1</span>))%p;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> (a*quickpow(b,p<span class="number">-2</span>))%p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">Laucs</span><span class="params">(ll n,ll m)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!m) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> (Laucs(n/p,m/p)*C(n%p,m%p))%p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">	<span class="keyword">while</span>(t) &#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m&gt;&gt;p;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;Laucs(n+m,m)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		t--;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+dp[i|line[j]]=\min(dp[i|line[j]],dp[i]+1)</script><p>其中$line[j]$表示预处理的第$j$个抛物线经过的猪的状态。</p>
+<p>最终答案即为$dp[2^n-1]$。</p>
+<p>注意控制精度，要开<code>long double</code>。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 20</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 400</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> tot (1&lt;&lt;N)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ld long double</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> all (1&lt;&lt;n) </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> T,n,m,line[MAXN];</span><br><span class="line">ll dp[tot];</span><br><span class="line">ld x[N],y[N],eps=<span class="number">1e-6</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;T;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(T--) &#123;</span><br><span class="line">		<span class="built_in">memset</span>(dp,<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) <span class="built_in">scanf</span>(<span class="string">"%llf%llf"</span>,&amp;x[i],&amp;y[i]);</span><br><span class="line">		<span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</span><br><span class="line">			line[cnt++]=(<span class="number">1</span>&lt;&lt;i);</span><br><span class="line">			<span class="keyword">int</span> use=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;n;j++) &#123;</span><br><span class="line">				<span class="keyword">if</span>((use&gt;&gt;j)&amp;<span class="number">1</span>) <span class="keyword">continue</span>;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					ld a=(x[j]*y[i]-x[i]*y[j])/(x[i]*x[j]*(x[i]-x[j])),b=(x[i]*x[i]*y[j]-x[j]*x[j]*y[i])/(x[i]*x[j]*(x[i]-x[j]));</span><br><span class="line">					<span class="keyword">if</span>(a&gt;=<span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">					line[cnt]=(<span class="number">1</span>&lt;&lt;i);</span><br><span class="line">					<span class="keyword">for</span>(<span class="keyword">int</span> k=j;k&lt;n;k++) <span class="keyword">if</span>(<span class="built_in">abs</span>(a*x[k]*x[k]+b*x[k]-y[k])&lt;=eps) use|=(<span class="number">1</span>&lt;&lt;k),line[cnt]|=(<span class="number">1</span>&lt;&lt;k);</span><br><span class="line">					cnt++;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		dp[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;all;i++) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;cnt;j++) dp[i|line[j]]=min(dp[i|line[j]],dp[i]+<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,dp[all<span class="number">-1</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -472,13 +440,9 @@ C_n^m \equiv C_{\lfloor \frac{n}{p} \rfloor}^{\lfloor \frac{m}{p} \rfloor} \time
       
         <div class="post-tags">
           
-            <a href="/is-zxy.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"># 学习笔记</a>
+            <a href="/is-zxy.github.io/tags/%E7%8A%B6%E5%8E%8BDP/" rel="tag"># 状压DP</a>
           
-            <a href="/is-zxy.github.io/tags/%E5%8D%A2%E5%8D%A1%E6%96%AF%E5%AE%9A%E7%90%86/" rel="tag"># 卢卡斯定理</a>
-          
-            <a href="/is-zxy.github.io/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" rel="tag"># 组合数学</a>
-          
-            <a href="/is-zxy.github.io/tags/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/" rel="tag"># 乘法逆元</a>
+            <a href="/is-zxy.github.io/tags/NOIP/" rel="tag"># NOIP</a>
           
         </div>
       
@@ -491,8 +455,8 @@ C_n^m \equiv C_{\lfloor \frac{n}{p} \rfloor}^{\lfloor \frac{m}{p} \rfloor} \time
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/is-zxy.github.io/2020/02/10/%5BHDU3507%5D-Print-Article/" rel="next" title="[HDU3507] Print Article">
-                <i class="fa fa-chevron-left"></i> [HDU3507] Print Article
+              <a href="/is-zxy.github.io/2020/04/08/%5BPOJ2411%5D-Mondriaan-s-Dream/" rel="next" title="[POJ2411] Mondriaan's Dream">
+                <i class="fa fa-chevron-left"></i> [POJ2411] Mondriaan's Dream
               </a>
             
           </div>
@@ -500,10 +464,6 @@ C_n^m \equiv C_{\lfloor \frac{n}{p} \rfloor}^{\lfloor \frac{m}{p} \rfloor} \time
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/is-zxy.github.io/2020/02/13/%5BCF57C%5D-Array/" rel="prev" title="[CF57C] Array">
-                [CF57C] Array <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -696,7 +656,7 @@ C_n^m \equiv C_{\lfloor \frac{n}{p} \rfloor}^{\lfloor \frac{m}{p} \rfloor} \time
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定理内容"><span class="nav-number">1.</span> <span class="nav-text">定理内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简要证明"><span class="nav-number">2.</span> <span class="nav-text">简要证明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实际应用"><span class="nav-number">3.</span> <span class="nav-text">实际应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#例题"><span class="nav-number">4.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#洛谷P3807-【模板】卢卡斯定理"><span class="nav-number">4.1.</span> <span class="nav-text">[洛谷P3807] 【模板】卢卡斯定理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">4.1.1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">4.1.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">4.1.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据范围"><span class="nav-number">1.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">2.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>
