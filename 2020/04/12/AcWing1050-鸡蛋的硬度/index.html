@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="最近XX公司举办了一个奇怪的比赛：鸡蛋硬度之王争霸赛。 参赛者是来自世界各地的母鸡，比赛的内容是看谁下的蛋最硬，更奇怪的是XX公司并不使用什么精密仪器来测量蛋的硬度，他们采用了一种最老土的办法–从高度扔鸡蛋–来测试鸡蛋的硬度，如果一次母鸡下的蛋从高楼的第 $a$ 层摔下来没摔破，但是从 $a+1$ 层摔下来时摔破了，那么就说这只母鸡的鸡蛋的硬度是 $a$ 。 你当然可以找出各种理由说明这种方法不科">
 <meta property="article:published_time" content="2020-04-12T15:34:25.000Z">
-<meta property="article:modified_time" content="2020-04-12T15:53:26.446Z">
+<meta property="article:modified_time" content="2020-04-13T15:17:20.517Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="AcWing">
 <meta property="article:tag" content="动态规划">
@@ -408,6 +408,17 @@
 <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.acwing.com/problem/content/1050/" target="_blank" rel="noopener">1048. 鸡蛋的硬度</a></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>相当经典的一题。</p>
 <p>其实老早就看过，不过读不懂题。今天看了<a href="https://www.bilibili.com/video/BV1KE41137PK" target="_blank" rel="noopener">李永乐老师的视频</a>后才懂。</p>
+<p>定义$dp[i][j]$表示$i$层楼，$j$个鸡蛋，最坏情况的最小值。</p>
+<p>状态转移，枚举扔的楼层$k$，分类讨论：</p>
+<ul>
+<li>蛋在第$k$层碎了，那么说明蛋硬度在$[1,k-1]$之间，蛋少了一个，则方案为$dp[k-1][j-1]$。</li>
+<li>蛋没碎，说明蛋硬度在$[k,i]$之间，蛋没少，则方案为$dp[i-k][j]$。</li>
+</ul>
+<p>由于要最坏情况，则取这两个值的较大值。由于扔了一次，所以还需加$1$。</p>
+<p>则</p>
+<script type="math/tex; mode=display">
+dp[i][j]=\min\{\max(dp[k-1][j-1],dp[i-k][j])+1\}</script><p>初始化$dp[i][1]$为$i$，$dp[1][i]$为$1$，其余均为一个较大值，我初始化为$i$的。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 110</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,dp[N][<span class="number">11</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++) dp[i][j]=i;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>;j&lt;=m;j++) &#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=i;k++) &#123;</span><br><span class="line">					dp[i][j]=min(dp[i][j],max(dp[k<span class="number">-1</span>][j<span class="number">-1</span>],dp[i-k][j])+<span class="number">1</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;dp[n][m]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -645,7 +656,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据范围"><span class="nav-number">1.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">2.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据范围"><span class="nav-number">1.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">2.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>

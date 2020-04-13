@@ -33,7 +33,7 @@
       <link href="/is-zxy.github.io/2020/04/12/AcWing1050-%E9%B8%A1%E8%9B%8B%E7%9A%84%E7%A1%AC%E5%BA%A6/"/>
       <url>/is-zxy.github.io/2020/04/12/AcWing1050-%E9%B8%A1%E8%9B%8B%E7%9A%84%E7%A1%AC%E5%BA%A6/</url>
       
-        <content type="html"><![CDATA[<p>最近XX公司举办了一个奇怪的比赛：鸡蛋硬度之王争霸赛。</p><p>参赛者是来自世界各地的母鸡，比赛的内容是看谁下的蛋最硬，更奇怪的是XX公司并不使用什么精密仪器来测量蛋的硬度，他们采用了一种最老土的办法–从高度扔鸡蛋–来测试鸡蛋的硬度，如果一次母鸡下的蛋从高楼的第 $a$ 层摔下来没摔破，但是从 $a+1$ 层摔下来时摔破了，那么就说这只母鸡的鸡蛋的硬度是 $a$ 。</p><p>你当然可以找出各种理由说明这种方法不科学，比如同一只母鸡下的蛋硬度可能不一样等等，但是这不影响XX公司的争霸赛，因为他们只是为了吸引大家的眼球，一个个鸡蛋从 $100$ 层的高楼上掉下来的时候，这情景还是能吸引很多人驻足观看的，当然，XX公司也绝不会忘记在高楼上挂一条幅，写上“XX公司”的字样–这比赛不过是XX公司的一个另类广告而已。</p><p>勤于思考的小A总是能从一件事情中发现一个数学问题，这件事也不例外。</p><p>“假如有很多同样硬度的鸡蛋，那么我可以用二分的办法用最少的次数测出鸡蛋的硬度”，小A对自己的这个结论感到很满意，不过很快麻烦来了，“但是，假如我的鸡蛋不够用呢，比如我只有 $1$ 个鸡蛋，那么我就不得不从第 $1$ 层楼开始一层一层的扔，最坏情况下我要扔 $100$ 次。如果有 $2$ 个鸡蛋，那么就从 $ 2$  层楼开始的地方扔……等等，不对，好像应该从 $1/3$ 的地方开始扔才对，嗯，好像也不一定啊…… $3$ 个鸡蛋怎么办，$4$ 个，$5$ 个，更多呢……”，和往常一样，小A又陷入了一个思维僵局，与其说他是勤于思考，不如说他是喜欢自找麻烦。</p><p>好吧，既然麻烦来了，就得有人去解决，小A的麻烦就靠你来解决了。</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le n\le 100$</p><p>$1\le m \le 10$</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.acwing.com/problem/content/1050/" target="_blank" rel="noopener">1048. 鸡蛋的硬度</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>相当经典的一题。</p><p>其实老早就看过，不过读不懂题。今天看了<a href="https://www.bilibili.com/video/BV1KE41137PK" target="_blank" rel="noopener">李永乐老师的视频</a>后才懂。</p>]]></content>
+        <content type="html"><![CDATA[<p>最近XX公司举办了一个奇怪的比赛：鸡蛋硬度之王争霸赛。</p><p>参赛者是来自世界各地的母鸡，比赛的内容是看谁下的蛋最硬，更奇怪的是XX公司并不使用什么精密仪器来测量蛋的硬度，他们采用了一种最老土的办法–从高度扔鸡蛋–来测试鸡蛋的硬度，如果一次母鸡下的蛋从高楼的第 $a$ 层摔下来没摔破，但是从 $a+1$ 层摔下来时摔破了，那么就说这只母鸡的鸡蛋的硬度是 $a$ 。</p><p>你当然可以找出各种理由说明这种方法不科学，比如同一只母鸡下的蛋硬度可能不一样等等，但是这不影响XX公司的争霸赛，因为他们只是为了吸引大家的眼球，一个个鸡蛋从 $100$ 层的高楼上掉下来的时候，这情景还是能吸引很多人驻足观看的，当然，XX公司也绝不会忘记在高楼上挂一条幅，写上“XX公司”的字样–这比赛不过是XX公司的一个另类广告而已。</p><p>勤于思考的小A总是能从一件事情中发现一个数学问题，这件事也不例外。</p><p>“假如有很多同样硬度的鸡蛋，那么我可以用二分的办法用最少的次数测出鸡蛋的硬度”，小A对自己的这个结论感到很满意，不过很快麻烦来了，“但是，假如我的鸡蛋不够用呢，比如我只有 $1$ 个鸡蛋，那么我就不得不从第 $1$ 层楼开始一层一层的扔，最坏情况下我要扔 $100$ 次。如果有 $2$ 个鸡蛋，那么就从 $ 2$  层楼开始的地方扔……等等，不对，好像应该从 $1/3$ 的地方开始扔才对，嗯，好像也不一定啊…… $3$ 个鸡蛋怎么办，$4$ 个，$5$ 个，更多呢……”，和往常一样，小A又陷入了一个思维僵局，与其说他是勤于思考，不如说他是喜欢自找麻烦。</p><p>好吧，既然麻烦来了，就得有人去解决，小A的麻烦就靠你来解决了。</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le n\le 100$</p><p>$1\le m \le 10$</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.acwing.com/problem/content/1050/" target="_blank" rel="noopener">1048. 鸡蛋的硬度</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>相当经典的一题。</p><p>其实老早就看过，不过读不懂题。今天看了<a href="https://www.bilibili.com/video/BV1KE41137PK" target="_blank" rel="noopener">李永乐老师的视频</a>后才懂。</p><p>定义$dp[i][j]$表示$i$层楼，$j$个鸡蛋，最坏情况的最小值。</p><p>状态转移，枚举扔的楼层$k$，分类讨论：</p><ul><li>蛋在第$k$层碎了，那么说明蛋硬度在$[1,k-1]$之间，蛋少了一个，则方案为$dp[k-1][j-1]$。</li><li>蛋没碎，说明蛋硬度在$[k,i]$之间，蛋没少，则方案为$dp[i-k][j]$。</li></ul><p>由于要最坏情况，则取这两个值的较大值。由于扔了一次，所以还需加$1$。</p><p>则</p><script type="math/tex; mode=display">dp[i][j]=\min\{\max(dp[k-1][j-1],dp[i-k][j])+1\}</script><p>初始化$dp[i][1]$为$i$，$dp[1][i]$为$1$，其余均为一个较大值，我初始化为$i$的。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 110</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,dp[N][<span class="number">11</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m) &#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++) dp[i][j]=i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++) &#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>;j&lt;=m;j++) &#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=i;k++) &#123;</span><br><span class="line">dp[i][j]=min(dp[i][j],max(dp[k<span class="number">-1</span>][j<span class="number">-1</span>],dp[i-k][j])+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;dp[n][m]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -267,9 +267,9 @@
             
             <tag> 线性筛 </tag>
             
-            <tag> 线段树 </tag>
-            
             <tag> Codeforcts </tag>
+            
+            <tag> 线段树 </tag>
             
         </tags>
       
@@ -423,9 +423,9 @@
       
         <tags>
             
-            <tag> SCOI </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> SCOI </tag>
             
         </tags>
       
@@ -558,9 +558,9 @@
       
         <tags>
             
-            <tag> TJOI </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> TJOI </tag>
             
         </tags>
       
@@ -2156,13 +2156,13 @@
       
         <tags>
             
+            <tag> 线段树 </tag>
+            
             <tag> 树状数组 </tag>
             
             <tag> RMQ </tag>
             
             <tag> ST表 </tag>
-            
-            <tag> 线段树 </tag>
             
             <tag> USACO </tag>
             
