@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>[BZOJ#2252] 矩阵距离</title>
+      <link href="/is-zxy.github.io/2020/04/22/%5BBZOJ-2252-%E7%9F%A9%E9%98%B5%E8%B7%9D%E7%A6%BB%5D/"/>
+      <url>/is-zxy.github.io/2020/04/22/%5BBZOJ-2252-%E7%9F%A9%E9%98%B5%E8%B7%9D%E7%A6%BB%5D/</url>
+      
+        <content type="html"><![CDATA[<p>给定一个$N$行$M$列的$01$矩阵$A$。</p><p>定义$dist(A[i][j],A[k][l])=|i-k|+|j-l|$。</p><p>输出一个$N$行$M$列的整数矩阵$B$，其中：</p><script type="math/tex; mode=display">B[i][j]=\min_{1\le x\le N,1\le y\le M,A[x][y]=1}\{dist(A[i][j],A[x][y])\}</script><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le N,M\le 1000$</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://darkbzoj.tk/problem/2252" target="_blank" rel="noopener">#2252. [2010Beijing wc]矩阵距离</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>若$A$中一个位置本来就为$1$，显然对应的在$B$中位置为$0$。</p><p>其余$A$中非$1$的位置，即由$1$位置扩展来，可以看成一个多源点的求到每格的最小步数问题。</p><p>因此bfs瞎搞即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> dx[<span class="number">4</span>]=&#123;<span class="number">-1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> dy[<span class="number">4</span>]=&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">-1</span>,<span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> d[N][N],n,m;</span><br><span class="line"><span class="built_in">string</span> s[N];</span><br><span class="line"><span class="built_in">queue</span>&lt; pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; &gt; q;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="built_in">memset</span>(d,<span class="number">-1</span>,<span class="keyword">sizeof</span>(d));</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++) &#123;</span><br><span class="line"><span class="keyword">if</span>(s[i][j]==<span class="string">'1'</span>) q.push(make_pair(i,j+<span class="number">1</span>)),d[i][j+<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">while</span>(!q.empty()) &#123;</span><br><span class="line">pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; head=q.front();</span><br><span class="line">q.pop();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++) &#123;</span><br><span class="line">pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; next(head.first+dx[i],head.second+dy[i]);</span><br><span class="line"><span class="keyword">if</span>(next.first&lt;<span class="number">1</span>||next.second&lt;<span class="number">1</span>||next.first&gt;n||next.second&gt;m||d[next.first][next.second]!=<span class="number">-1</span>) <span class="keyword">continue</span>;</span><br><span class="line">d[next.first][next.second]=d[head.first][head.second]+<span class="number">1</span>;</span><br><span class="line">q.push(next);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;s[i];</span><br><span class="line"></span><br><span class="line">init();</span><br><span class="line">bfs();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++) <span class="built_in">cout</span>&lt;&lt;d[i][j]&lt;&lt;<span class="string">" "</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> BFS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[国家集训队] 排队</title>
       <link href="/is-zxy.github.io/2020/04/20/%5B%E5%9B%BD%E5%AE%B6%E9%9B%86%E8%AE%AD%E9%98%9F%5D-%E6%8E%92%E9%98%9F/"/>
       <url>/is-zxy.github.io/2020/04/20/%5B%E5%9B%BD%E5%AE%B6%E9%9B%86%E8%AE%AD%E9%98%9F%5D-%E6%8E%92%E9%98%9F/</url>
@@ -101,9 +126,9 @@
       
         <tags>
             
-            <tag> 动态规划 </tag>
-            
             <tag> AcWing </tag>
+            
+            <tag> 动态规划 </tag>
             
         </tags>
       
@@ -1012,9 +1037,9 @@
       
         <tags>
             
-            <tag> JLOI </tag>
-            
             <tag> LCA </tag>
+            
+            <tag> JLOI </tag>
             
             <tag> 树上差分 </tag>
             
@@ -1307,9 +1332,9 @@
       
         <tags>
             
-            <tag> 动态规划 </tag>
-            
             <tag> 斜率优化 </tag>
+            
+            <tag> 动态规划 </tag>
             
         </tags>
       
@@ -1496,9 +1521,9 @@
       
         <tags>
             
-            <tag> LCA </tag>
-            
             <tag> NOIP </tag>
+            
+            <tag> LCA </tag>
             
             <tag> 最小生成树 </tag>
             
@@ -2212,13 +2237,13 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 树状数组 </tag>
             
             <tag> RMQ </tag>
             
             <tag> ST表 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> USACO </tag>
             
