@@ -1411,9 +1411,9 @@
       
         <tags>
             
-            <tag> 动态规划 </tag>
-            
             <tag> 斜率优化 </tag>
+            
+            <tag> 动态规划 </tag>
             
         </tags>
       
@@ -2316,13 +2316,13 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
-            <tag> 树状数组 </tag>
-            
             <tag> RMQ </tag>
             
             <tag> ST表 </tag>
+            
+            <tag> 线段树 </tag>
+            
+            <tag> 树状数组 </tag>
             
             <tag> USACO </tag>
             
