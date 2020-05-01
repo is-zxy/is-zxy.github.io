@@ -4,6 +4,29 @@
   
     
     <entry>
+      <title>[洛谷P1441] 砝码称重</title>
+      <link href="/is-zxy.github.io/2020/05/01/%5B%E6%B4%9B%E8%B0%B7P1441%5D-%E7%A0%9D%E7%A0%81%E7%A7%B0%E9%87%8D/"/>
+      <url>/is-zxy.github.io/2020/05/01/%5B%E6%B4%9B%E8%B0%B7P1441%5D-%E7%A0%9D%E7%A0%81%E7%A7%B0%E9%87%8D/</url>
+      
+        <content type="html"><![CDATA[<p>现有 $n$ 个砝码，重量分别为 $a_i$，在去掉 $m$ 个砝码后，问最多能称量出多少不同的重量（不包括 $0$）。</p><p>请注意，砝码只能放在其中一边。</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>对于 $20\%$ 的数据，$m=0$。</p><p>对于 $50\%$ 的数据，$m\leq 1$。</p><p>对于 $50\%$ 的数据，$n\leq 10$。</p><p>对于 $100\%$ 的数据，$n\leq 20$， $m\leq 4$，$m &lt; n$，$a_i\leq 100$。</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P1441" target="_blank" rel="noopener">P1441 砝码称重</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>不考虑去砝码的话就是个背包。</p><p>考虑去砝码，还是个背包，只需要枚举选了$n-m$个砝码的所有情况，对每个情况都背包即可。</p><p>时间复杂度$O(C_n^m\times m\times a_{tot})$</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 2010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 25</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,a[N],dp[MAXN],sum=<span class="number">0</span>,ans=<span class="number">0</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; chosen;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> js)</span> </span>&#123;</span><br><span class="line"><span class="keyword">if</span>(js==n-m) &#123;</span><br><span class="line"><span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line"><span class="keyword">int</span> tmp=<span class="number">0</span>;</span><br><span class="line">dp[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;js;i++) &#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=sum;j&gt;=chosen[i];j--) &#123;</span><br><span class="line"><span class="keyword">if</span>(dp[j]||!dp[j-chosen[i]]) <span class="keyword">continue</span>;</span><br><span class="line">dp[j]=dp[j-chosen[i]];</span><br><span class="line">tmp++;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">ans=max(ans,tmp);</span><br><span class="line"><span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(x&gt;n) <span class="keyword">return</span> ;</span><br><span class="line">chosen.push_back(a[x]);</span><br><span class="line">sum+=a[x];</span><br><span class="line">dfs(x+<span class="number">1</span>,js+<span class="number">1</span>);</span><br><span class="line">chosen.pop_back();</span><br><span class="line">sum-=a[x];</span><br><span class="line">dfs(x+<span class="number">1</span>,js);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line"></span><br><span class="line">dfs(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 洛谷 </tag>
+            
+            <tag> DP </tag>
+            
+            <tag> DFS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[洛谷P1156] 垃圾陷阱</title>
       <link href="/is-zxy.github.io/2020/04/29/%5B%E6%B4%9B%E8%B0%B7P1156%5D-%E5%9E%83%E5%9C%BE%E9%99%B7%E9%98%B1/"/>
       <url>/is-zxy.github.io/2020/04/29/%5B%E6%B4%9B%E8%B0%B7P1156%5D-%E5%9E%83%E5%9C%BE%E9%99%B7%E9%98%B1/</url>
@@ -348,9 +371,9 @@
             
             <tag> 分块 </tag>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 莫队 </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -1093,9 +1116,9 @@
       
         <tags>
             
-            <tag> LCA </tag>
-            
             <tag> JLOI </tag>
+            
+            <tag> LCA </tag>
             
             <tag> 树上差分 </tag>
             
@@ -1415,9 +1438,9 @@
       
         <tags>
             
-            <tag> 斜率优化 </tag>
-            
             <tag> CEOI </tag>
+            
+            <tag> 斜率优化 </tag>
             
         </tags>
       
@@ -1577,9 +1600,9 @@
       
         <tags>
             
-            <tag> NOIP </tag>
-            
             <tag> LCA </tag>
+            
+            <tag> NOIP </tag>
             
             <tag> 最小生成树 </tag>
             
@@ -1944,9 +1967,9 @@
       
         <tags>
             
-            <tag> APIO </tag>
-            
             <tag> 斜率优化 </tag>
+            
+            <tag> APIO </tag>
             
         </tags>
       
