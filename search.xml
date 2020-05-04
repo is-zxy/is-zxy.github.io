@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>[NOI Online #2 提高组] 子序列问题</title>
+      <link href="/is-zxy.github.io/2020/05/04/%5BNOI-Online-2-%E6%8F%90%E9%AB%98%E7%BB%84%5D-%E5%AD%90%E5%BA%8F%E5%88%97%E9%97%AE%E9%A2%98/"/>
+      <url>/is-zxy.github.io/2020/05/04/%5BNOI-Online-2-%E6%8F%90%E9%AB%98%E7%BB%84%5D-%E5%AD%90%E5%BA%8F%E5%88%97%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<p>给定一个长度为 $n$ 的正整数序列 $A_1, A_2,\cdots⋯, A_n$。定义一个函数 $f(l,r)$ 表示：序列中下标在 $[l,r]$ 范围内的子区间中，不同的整数个数。换句话说，$f(l,r)$ 就是集合 $\{A_l,A_{l+1},\cdots,A_r\}$ 的大小，这里的集合是不可重集，即集合中的元素互不相等。</p><p>现在，请你求出 $\sum_{l=1}^n\sum_{r=l}^n (f(l,r))^2$。由于答案可能很大，请输出答案对 $10^9 +7$ 取模的结果。</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>对于 $10\%$ 的数据，满足 $1 \leq n \leq 10$；</p><p>对于 $30\%$ 的数据，满足 $1 \leq n \leq 100$；</p><p>对于 $50\%$ 的数据，满足 $1\leq n \leq 10^3$；</p><p>对于 $70\%$ 的数据，满足 $1 \leq n \leq 10^5$；</p><p>对于 $100\%$ 的数据，满足 $1\leq n\leq 10^6$，集合中每个数的范围是 $[1,10^9]$。</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P6477" target="_blank" rel="noopener">[NOI Online #2 提高组]子序列问题</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>用map可写出个$O(n^2\log n)$的暴力。</p><p>枚举左端点，即$\sum\limits_{l=1}^rf^2(l,r)$。</p><p>那么将数一个一个加入其中，每次<code>r++​</code>，然后答案累加目前的$\sum\limits_{l=1}^rf^2(l,r)$即可。</p><p>那么考虑每次加入一个数后，如何求出$\sum\limits_{l=1}^rf^2(l,r)$。</p><p>用线段树维护，线段树中的单点$i$即表示$f(i,r)$的信息，区间即为区间内点的信息和。</p><p>如若要维护区间平方和的话，则需要用线段树维护区间和与区间平方和，这个很容易想。</p><p>那么每次的$\sum\limits_{l=1}^rf^2(l,r)$即为线段树根记录的区间平方和值。</p><p>现在只剩下，如何解决每次加入一个数的问题。</p><p>考虑用一个数组$rec[x]$表示数$x$出现的上一个位置在哪里（初始化为$0$）。每次加入第$r$个数$x$时，将区间$[rec[x]+1,r]$内每个$f(i,r)$的值加$1$，并维护区间平方和（因为这区间内的$[i,r]$间数$x$只有$1$个，而其之前出现过，因此对$i\in[1,rec[x]]$的$f(i,r)$没有贡献）。这样就可以保证加入一个数后，线段树所维护的信息由$f(i,r-1)$变为$f(i,r)$。</p><p>当然，数大小 $10^9$，先要离散化。</p><p>时间复杂度$O(n\log n)$。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1000010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 1000000007</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,b[N],a[N],rec[N];</span><br><span class="line">ll ans=<span class="number">0</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SMT</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> l,r;</span><br><span class="line">ll sum,sos,lazy;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> l(x) tree[x].l</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> r(x) tree[x].r</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> s(x) tree[x].sum</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ss(x) tree[x].sos</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lazy(x) tree[x].lazy</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ls p&lt;&lt;1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rs p&lt;&lt;1|1</span></span><br><span class="line">&#125;tree[N&lt;&lt;<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">discre</span><span class="params">()</span> </span>&#123;</span><br><span class="line">sort(b+<span class="number">1</span>,b+n+<span class="number">1</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">a[i]=lower_bound(b+<span class="number">1</span>,b+n+<span class="number">1</span>,a[i])-b;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push_up</span><span class="params">(<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">s(p)=s(ls)+s(rs);</span><br><span class="line">ss(p)=ss(ls)+ss(rs);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">l(p)=l,r(p)=r;</span><br><span class="line"><span class="keyword">if</span>(l==r) &#123;</span><br><span class="line">s(p)=ss(p)=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">build(ls,l,mid);</span><br><span class="line">build(rs,mid+<span class="number">1</span>,r);</span><br><span class="line">push_up(p);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spread</span><span class="params">(<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line"><span class="keyword">if</span>(!lazy(p)) <span class="keyword">return</span> ;</span><br><span class="line">ss(ls)+=<span class="number">2</span>*s(ls)*lazy(p)+(r(ls)-l(ls)+<span class="number">1</span>)*lazy(p)*lazy(p);</span><br><span class="line">s(ls)+=(r(ls)-l(ls)+<span class="number">1</span>)*lazy(p);</span><br><span class="line">lazy(ls)+=lazy(p);</span><br><span class="line">ss(rs)+=<span class="number">2</span>*s(rs)*lazy(p)+(r(rs)-l(rs)+<span class="number">1</span>)*lazy(p)*lazy(p);</span><br><span class="line">s(rs)+=(r(rs)-l(rs)+<span class="number">1</span>)*lazy(p);</span><br><span class="line">lazy(rs)+=lazy(p);</span><br><span class="line">lazy(p)=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,ll x)</span> </span>&#123;</span><br><span class="line"><span class="keyword">if</span>(r(p)&lt;l||l(p)&gt;r) <span class="keyword">return</span> ;</span><br><span class="line"><span class="keyword">if</span>(l(p)&gt;=l&amp;&amp;r(p)&lt;=r) &#123;</span><br><span class="line">ss(p)+=<span class="number">2</span>*s(p)*x+(r(p)-l(p)+<span class="number">1</span>)*x*x;</span><br><span class="line">s(p)+=(r(p)-l(p)+<span class="number">1</span>)*x;</span><br><span class="line">lazy(p)+=x;</span><br><span class="line"><span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line">spread(p);</span><br><span class="line">change(ls,l,r,x);</span><br><span class="line">change(rs,l,r,x);</span><br><span class="line">push_up(p);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">b[i]=a[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">memset</span>(rec,<span class="number">0</span>,<span class="keyword">sizeof</span>(rec));</span><br><span class="line">build(<span class="number">1</span>,<span class="number">1</span>,n);</span><br><span class="line">discre();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">change(<span class="number">1</span>,rec[a[i]]+<span class="number">1</span>,i,<span class="number">1</span>);</span><br><span class="line">rec[a[i]]=i;</span><br><span class="line">ans+=ss(<span class="number">1</span>);</span><br><span class="line">ans%=mod;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 线段树 </tag>
+            
+            <tag> NOI Online </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[NOI Online #2 提高组] 涂色游戏</title>
       <link href="/is-zxy.github.io/2020/05/02/%5BNOI-Online-2-%E6%8F%90%E9%AB%98%E7%BB%84%5D-%E6%B6%82%E8%89%B2%E6%B8%B8%E6%88%8F/"/>
       <url>/is-zxy.github.io/2020/05/02/%5BNOI-Online-2-%E6%8F%90%E9%AB%98%E7%BB%84%5D-%E6%B6%82%E8%89%B2%E6%B8%B8%E6%88%8F/</url>
@@ -211,9 +238,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 分块 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 洛谷 </tag>
             
@@ -265,9 +292,9 @@
       
         <tags>
             
-            <tag> AcWing </tag>
-            
             <tag> 动态规划 </tag>
+            
+            <tag> AcWing </tag>
             
         </tags>
       
@@ -431,9 +458,9 @@
             
             <tag> 分块 </tag>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 莫队 </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -1471,9 +1498,9 @@
       
         <tags>
             
-            <tag> 斜率优化 </tag>
-            
             <tag> 动态规划 </tag>
+            
+            <tag> 斜率优化 </tag>
             
         </tags>
       
@@ -2544,9 +2571,9 @@
       
         <tags>
             
-            <tag> 树形DP </tag>
-            
             <tag> 背包 </tag>
+            
+            <tag> 树形DP </tag>
             
             <tag> 洛谷 </tag>
             
