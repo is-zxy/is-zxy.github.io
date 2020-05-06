@@ -74,9 +74,9 @@
       
         <tags>
             
-            <tag> NOI Online </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> NOI Online </tag>
             
         </tags>
       
@@ -568,9 +568,9 @@
             
             <tag> 线性筛 </tag>
             
-            <tag> 线段树 </tag>
-            
             <tag> Codeforcts </tag>
+            
+            <tag> 线段树 </tag>
             
         </tags>
       
@@ -2476,15 +2476,15 @@
       
         <tags>
             
-            <tag> 树状数组 </tag>
-            
             <tag> 线段树 </tag>
             
-            <tag> USACO </tag>
+            <tag> 树状数组 </tag>
             
             <tag> RMQ </tag>
             
             <tag> ST表 </tag>
+            
+            <tag> USACO </tag>
             
         </tags>
       
@@ -2644,9 +2644,9 @@
       
         <tags>
             
-            <tag> 树形DP </tag>
-            
             <tag> 背包 </tag>
+            
+            <tag> 树形DP </tag>
             
             <tag> 洛谷 </tag>
             
