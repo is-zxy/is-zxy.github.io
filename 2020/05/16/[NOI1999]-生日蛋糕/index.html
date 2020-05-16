@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="7 月 17 日是 Mr.W 的生日，ACM-THU 为此要制作一个体积为 $N\pi$ 的 $M$ 层生日蛋糕，每层都是一个圆柱体。 设从下往上数第 $i(1 \leq i \leq M)$ 层蛋糕是半径为 $R_i$，高度为 $H_i$ 的圆柱。当 $i \lt M$ 时，要求 $R_i \gt R_{i+1}$ 且 $H_i \gt H_{i+1}$。 由于要在蛋糕上抹奶油，为尽可能节约经费">
 <meta property="article:published_time" content="2020-05-16T14:56:44.000Z">
-<meta property="article:modified_time" content="2020-05-16T15:20:17.917Z">
+<meta property="article:modified_time" content="2020-05-16T15:38:12.378Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="NOI">
 <meta property="article:tag" content="DFS">
@@ -424,7 +424,7 @@ r^2\cdot h=l</script><p>由于全为正整数，所以当 $h$ 为 $1$ 时，$r$ 
 <script type="math/tex; mode=display">
 \left[M-x+1,\min\left(\left\lfloor\sqrt{l}\right\rfloor,lastR-1\right)\right]</script><p>对于每次枚举的 $r$，其 $h$ 的最大值都为 $\left\lfloor\dfrac{l}{r^2}\right\rfloor$。那么 $h$ 的枚举范围可以优化到</p>
 <script type="math/tex; mode=display">
-[M-x+1,\min\left(\left\lfloor\dfrac{l}{r^2}\right\rfloor,lastH-1\right)]</script><p>加上上下界剪枝后，40分。</p>
+\left[M-x+1,\min\left(\left\lfloor\dfrac{l}{r^2}\right\rfloor,lastH-1\right)\right]</script><p>加上上下界剪枝后，40分。</p>
 </li>
 <li><p>倒序枚举，50分。</p>
 </li>
