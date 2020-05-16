@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="线段树," />
+  <meta name="keywords" content="状压DP,洛谷," />
 
 
 
@@ -79,16 +79,17 @@
 
 
 
-<meta name="description" content="给出一个长度为$n$的整数序列$a_1,a_2,\ldots,a_n$，进行$m$次操作，操作分为两类。 操作$1$：给出$l,r,v$，将$a_l,a_{l+1},\ldots,a_r$分别加上$v$。 操作$2$：给出$l,r$，询问$\sum\limits_{i&#x3D;l}^{r}\sin(a_i)$。">
+<meta name="description" content="Io和Ao在玩一个单词游戏。 他们轮流说出一个仅包含元音字母的单词，并且后一个单词的第一个字母必须与前一个单词的最后一个字母一致。 游戏可以从任何一个单词开始。 任何单词禁止说两遍，游戏中只能使用给定词典中含有的单词。 游戏的复杂度定义为游戏中所使用的单词长度总和。 编写程序，求出使用一本给定的词典来玩这个游戏所能达到的游戏最大可能复杂度。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[洛谷P6327] 区间加区间sin和">
-<meta property="og:url" content="http://www.zxyer.xyz/2020/03/26/[%E6%B4%9B%E8%B0%B7P6327]%20%E5%8C%BA%E9%97%B4%E5%8A%A0%E5%8C%BA%E9%97%B4sin%E5%92%8C/index.html">
+<meta property="og:title" content="[洛谷P1278] 单词游戏">
+<meta property="og:url" content="http://www.zxyer.xyz/2020/05/16/[%E6%B4%9B%E8%B0%B7P1278]-%E5%8D%95%E8%AF%8D%E6%B8%B8%E6%88%8F/index.html">
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
-<meta property="og:description" content="给出一个长度为$n$的整数序列$a_1,a_2,\ldots,a_n$，进行$m$次操作，操作分为两类。 操作$1$：给出$l,r,v$，将$a_l,a_{l+1},\ldots,a_r$分别加上$v$。 操作$2$：给出$l,r$，询问$\sum\limits_{i&#x3D;l}^{r}\sin(a_i)$。">
-<meta property="article:published_time" content="2020-03-26T10:57:04.000Z">
-<meta property="article:modified_time" content="2020-05-05T15:54:03.253Z">
+<meta property="og:description" content="Io和Ao在玩一个单词游戏。 他们轮流说出一个仅包含元音字母的单词，并且后一个单词的第一个字母必须与前一个单词的最后一个字母一致。 游戏可以从任何一个单词开始。 任何单词禁止说两遍，游戏中只能使用给定词典中含有的单词。 游戏的复杂度定义为游戏中所使用的单词长度总和。 编写程序，求出使用一本给定的词典来玩这个游戏所能达到的游戏最大可能复杂度。">
+<meta property="article:published_time" content="2020-05-16T15:24:51.000Z">
+<meta property="article:modified_time" content="2020-05-16T15:33:13.299Z">
 <meta property="article:author" content="Yuzuriha_Inori">
-<meta property="article:tag" content="线段树">
+<meta property="article:tag" content="状压DP">
+<meta property="article:tag" content="洛谷">
 <meta name="twitter:card" content="summary">
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zxyer.xyz/2020/03/26/[洛谷P6327] 区间加区间sin和/"/>
+  <link rel="canonical" href="http://www.zxyer.xyz/2020/05/16/[洛谷P1278]-单词游戏/"/>
 
 
 
 
 
-  <title>[洛谷P6327] 区间加区间sin和 | Zxyer's Blog</title>
+  <title>[洛谷P1278] 单词游戏 | Zxyer's Blog</title>
   
 
 
@@ -306,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/03/26/%5B%E6%B4%9B%E8%B0%B7P6327%5D%20%E5%8C%BA%E9%97%B4%E5%8A%A0%E5%8C%BA%E9%97%B4sin%E5%92%8C/">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/05/16/%5B%E6%B4%9B%E8%B0%B7P1278%5D-%E5%8D%95%E8%AF%8D%E6%B8%B8%E6%88%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yuzuriha_Inori">
@@ -323,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[洛谷P6327] 区间加区间sin和</h1>
+          <h1 class="post-title" itemprop="name headline">[洛谷P1278] 单词游戏</h1>
         
 
         <div class="post-meta">
@@ -335,8 +336,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-26T18:57:04+08:00">
-                2020-03-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-16T23:24:51+08:00">
+                2020-05-16
               </time>
             
 
@@ -345,6 +346,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/is-zxy.github.io/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -373,27 +396,23 @@
       
 
       
-        <p>给出一个长度为$n$的整数序列$a_1,a_2,\ldots,a_n$，进行$m$次操作，操作分为两类。</p>
-<p>操作$1$：给出$l,r,v$，将$a_l,a_{l+1},\ldots,a_r$分别加上$v$。</p>
-<p>操作$2$：给出$l,r$，询问$\sum\limits_{i=l}^{r}\sin(a_i)$。</p>
+        <p>Io和Ao在玩一个单词游戏。</p>
+<p>他们轮流说出一个仅包含元音字母的单词，并且后一个单词的第一个字母必须与前一个单词的最后一个字母一致。</p>
+<p>游戏可以从任何一个单词开始。</p>
+<p>任何单词禁止说两遍，游戏中只能使用给定词典中含有的单词。</p>
+<p>游戏的复杂度定义为游戏中所使用的单词长度总和。</p>
+<p>编写程序，求出使用一本给定的词典来玩这个游戏所能达到的游戏最大可能复杂度。</p>
 <a id="more"></a>
-<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le n,m,a_i,v\le 2\times 10^5$，$1\le l\le r\le n$。保证所有输入的数都是正整数。</p>
-<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P5524" target="_blank" rel="noopener">[洛谷P6327] 区间加区间sin和</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p><del>终于有一道我这菜逼能做出来的Ynoi了！</del>该题被移除Ynoi了（悲）。</p>
-<p>当对区间$[l,r]$进行操作$1$时，则</p>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$N\le 16$</p>
+<p>每一个单词是由A、E、I、O、U组成的一个字符串，长度小于等于 $100$，每个单词都不一样。</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P1278" target="_blank" rel="noopener">P1278 单词游戏</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>搜索题单里的一题<del>结果先想到了状压DP</del>。</p>
+<p>数据范围显然状压可行。</p>
+<p>定义 $dp[i][j]$ 表示状态 $i$ 下，末尾字母是第 $j$ 个字母的最长长度。</p>
+<p>显然</p>
 <script type="math/tex; mode=display">
-\begin{align}
-\sum_{i=l}^r\sin(a_i+v)
-&= \sum_{i=l}^r\left[\sin(a_i)\cdot \cos(v)+\cos(a_i)\cdot \sin(v)\right] \\
-&= \sum_{i=l}^r\left[\sin(a_i)\cdot \cos(v)\right]+\sum_{i=l}^r\left[\cos(a_i)\cdot \sin(v)\right] \\
-&= \cos(v)\sum_{i=l}^r\sin(a_i)+\sin(v)\sum_{i=l}^r\cos(a_i)
-\end{align}</script><p>于是可以用线段树维护区间正余弦和，分别表示为$S$与$C$，则化为</p>
-<script type="math/tex; mode=display">
-S\cdot \cos(v)+C\cdot \sin(v)</script><p>维护$cos$值与此同理，代个和角公式，过程就不写了，直接给出最终结果吧</p>
-<script type="math/tex; mode=display">
-C\cdot cos(v)-S\cdot sin(v)</script><p>涉及区间修改，便可以再维护个懒标记，其<code>spread</code>也是大抵利用上面的式子。</p>
-<p>没了。<del>写了个最劣解233</del></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 200010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,op,l,r;</span><br><span class="line"><span class="keyword">double</span> v;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SGT</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> l,r;</span><br><span class="line">	<span class="keyword">double</span> Itvsine,Itvcosine,lazy;</span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> l(x) tree[x].l</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> r(x) tree[x].r</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> S(x) tree[x].Itvsine</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> C(x) tree[x].Itvcosine</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> lazy(x) tree[x].lazy</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> ls p&lt;&lt;1</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> rs ls|1</span></span><br><span class="line">&#125;tree[N&lt;&lt;<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push_up</span><span class="params">(<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">	S(p)=S(ls)+S(rs);</span><br><span class="line">	C(p)=C(ls)+C(rs);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">	l(p)=l,r(p)=r;</span><br><span class="line">	<span class="keyword">if</span>(l==r) &#123;</span><br><span class="line">		<span class="keyword">int</span> x;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;x;</span><br><span class="line">		S(p)=<span class="built_in">sin</span>(x);</span><br><span class="line">		C(p)=<span class="built_in">cos</span>(x);</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	build(ls,l,mid);</span><br><span class="line">	build(rs,mid+<span class="number">1</span>,r);</span><br><span class="line">	push_up(p);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spread</span><span class="params">(<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!lazy(p)) <span class="keyword">return</span> ;</span><br><span class="line">	<span class="keyword">double</span> sine=<span class="built_in">sin</span>(lazy(p)),cosi=<span class="built_in">cos</span>(lazy(p)),tmp;</span><br><span class="line">	tmp=S(ls);</span><br><span class="line">	S(ls)=S(ls)*cosi+C(ls)*sine;</span><br><span class="line">	C(ls)=C(ls)*cosi-tmp*sine;</span><br><span class="line">	tmp=S(rs);</span><br><span class="line">	S(rs)=S(rs)*cosi+C(rs)*sine;</span><br><span class="line">	C(rs)=C(rs)*cosi-tmp*sine;</span><br><span class="line">	lazy(ls)+=lazy(p);</span><br><span class="line">	lazy(rs)+=lazy(p);</span><br><span class="line">	lazy(p)=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">double</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l(p)&gt;r||r(p)&lt;l) <span class="keyword">return</span> ;</span><br><span class="line">	<span class="keyword">if</span>(l(p)&gt;=l&amp;&amp;r(p)&lt;=r) &#123;</span><br><span class="line">		<span class="keyword">double</span> sine=<span class="built_in">sin</span>(x),cosi=<span class="built_in">cos</span>(x),tmp=S(p);</span><br><span class="line">		S(p)=S(p)*cosi+C(p)*sine;</span><br><span class="line">		C(p)=C(p)*cosi-tmp*sine;</span><br><span class="line">		lazy(p)+=x;</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	spread(p);</span><br><span class="line">	change(ls,l,r,x);</span><br><span class="line">	change(rs,l,r,x);</span><br><span class="line">	push_up(p);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">ask</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l(p)&gt;r||r(p)&lt;l) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(l(p)&gt;=l&amp;&amp;r(p)&lt;=r) <span class="keyword">return</span> S(p);</span><br><span class="line">	spread(p);</span><br><span class="line">	<span class="keyword">return</span> ask(ls,l,r)+ask(rs,l,r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	</span><br><span class="line">	build(<span class="number">1</span>,<span class="number">1</span>,n);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;op);</span><br><span class="line">		<span class="keyword">if</span>(op&amp;<span class="number">1</span>) &#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d%d%lf"</span>,&amp;l,&amp;r,&amp;v);</span><br><span class="line">			change(<span class="number">1</span>,l,r,v);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;l,&amp;r);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%.1lf\n"</span>,ask(<span class="number">1</span>,l,r));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+dp[i][s[j][s[j].size()-1]]=\max\{dp[i][s[j][0]]+s[j].size()\}</script><p>前提是 $i$ 状态中 $j$ 并没有被选。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 20</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> tot (1&lt;&lt;n)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lowbit(x) (x&amp;(-x))</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,dp[<span class="number">1</span>&lt;&lt;N][<span class="number">30</span>],bits[<span class="number">1</span>&lt;&lt;N],ans=<span class="number">0</span>;</span><br><span class="line"><span class="built_in">string</span> s[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) dp[<span class="number">1</span>&lt;&lt;i][s[i][s[i].size()<span class="number">-1</span>]-<span class="string">'A'</span>]=s[i].size();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) <span class="built_in">cin</span>&gt;&gt;s[i];</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tot;i++) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++) &#123;</span><br><span class="line">			<span class="keyword">if</span>((<span class="number">1</span>&lt;&lt;j)&amp;i) <span class="keyword">continue</span>;</span><br><span class="line">			dp[i|(<span class="number">1</span>&lt;&lt;j)][s[j][s[j].size()<span class="number">-1</span>]]=max(dp[i|(<span class="number">1</span>&lt;&lt;j)][s[j][s[j].size()<span class="number">-1</span>]],dp[i][s[j][<span class="number">0</span>]]+(<span class="keyword">int</span>)s[j].size());</span><br><span class="line">			ans=max(ans,dp[i|(<span class="number">1</span>&lt;&lt;j)][s[j][s[j].size()<span class="number">-1</span>]]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -411,7 +430,9 @@ C\cdot cos(v)-S\cdot sin(v)</script><p>涉及区间修改，便可以再维护�
       
         <div class="post-tags">
           
-            <a href="/is-zxy.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag"># 线段树</a>
+            <a href="/is-zxy.github.io/tags/%E7%8A%B6%E5%8E%8BDP/" rel="tag"># 状压DP</a>
+          
+            <a href="/is-zxy.github.io/tags/%E6%B4%9B%E8%B0%B7/" rel="tag"># 洛谷</a>
           
         </div>
       
@@ -424,8 +445,8 @@ C\cdot cos(v)-S\cdot sin(v)</script><p>涉及区间修改，便可以再维护�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/is-zxy.github.io/2020/03/26/%5B%E6%B4%9B%E8%B0%B7P6327%5D-%E5%8C%BA%E9%97%B4%E5%8A%A0%E5%8C%BA%E9%97%B4sin%E5%92%8C/" rel="next" title="[Ynoi2012] NOIP2015洋溢着希望">
-                <i class="fa fa-chevron-left"></i> [Ynoi2012] NOIP2015洋溢着希望
+              <a href="/is-zxy.github.io/2020/05/16/%5BNOI1999%5D-%E7%94%9F%E6%97%A5%E8%9B%8B%E7%B3%95/" rel="next" title="[NOI1999] 生日蛋糕">
+                <i class="fa fa-chevron-left"></i> [NOI1999] 生日蛋糕
               </a>
             
           </div>
@@ -433,10 +454,6 @@ C\cdot cos(v)-S\cdot sin(v)</script><p>涉及区间修改，便可以再维护�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/is-zxy.github.io/2020/03/28/%E5%88%86%E5%9D%97%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="分块学习笔记">
-                分块学习笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
