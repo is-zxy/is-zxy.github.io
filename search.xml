@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>[CTSC1997] 选课</title>
+      <link href="/is-zxy.github.io/2020/05/25/%5BCTSC1997%5D-%E9%80%89%E8%AF%BE/"/>
+      <url>/is-zxy.github.io/2020/05/25/%5BCTSC1997%5D-%E9%80%89%E8%AF%BE/</url>
+      
+        <content type="html"><![CDATA[<p>在大学里每个学生，为了达到一定的学分，必须从很多课程里选择一些课程来学习，在课程里有些课程必须在某些课程之前学习，如高等数学总是在其它课程之前学习。现在有 $N$ 门功课，每门课有个学分，每门课有一门或没有直接先修课（若课程a是课程b的先修课即只有学完了课程a，才能学习课程b）。一个学生要从这些课程里选择 $M$ 门课程学习，问他能获得的最大学分是多少？</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le N\le 300$</p><p>$1\le M\le 300$</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P2014" target="_blank" rel="noopener">[CTSC1997]选课</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>首先，本题所有的课程构成了一个森林，因为每个课程最多只有一个先修课。</p><p>于是可以构造一个“虚根”0，这样把森林转化为一颗树，就可以像普通的树形dp那样搞了。</p><p>定义 $dp[root][i]$ 表示以 $root$ 节点为根的子树中，选择 $i$ 个课程的最大学分。</p><p>实际上就是一个树上的分组背包。</p><script type="math/tex; mode=display">dp[root][i]=\max\limits_{s\in son_{root}}\{dp[root][j-k]+dp[s][k]\},j\in[0,m],k\le j</script><p>不过最后还需要加上目前的根的学分，即倒序，然后 $dp[root][i]=dp[root][i-1]+score[root]$。</p><p>最后输出 $dp[0][m]$ 即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 310</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,score[N],dp[N][N];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; son[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> root)</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> cnt=son[root].size();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;i++) &#123;</span><br><span class="line">dfs(son[root][i]);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=m;j&gt;=<span class="number">0</span>;j--) &#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=j;k++) &#123;</span><br><span class="line">dp[root][j]=max(dp[root][j],dp[root][j-k]+dp[son[root][i]][k]);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(root) <span class="keyword">for</span>(<span class="keyword">int</span> i=m;i&gt;=<span class="number">1</span>;i--) dp[root][i]=dp[root][i<span class="number">-1</span>]+score[root];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line"><span class="keyword">int</span> x,y;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;x&gt;&gt;y;</span><br><span class="line">son[x].push_back(i);</span><br><span class="line">score[i]=y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dfs(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;dp[<span class="number">0</span>][m]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CTSC </tag>
+            
+            <tag> 树形DP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[IOI2007]Miners 矿工配餐</title>
       <link href="/is-zxy.github.io/2020/05/24/%5BIOI2007%5D-Miners-%E7%9F%BF%E5%B7%A5%E9%85%8D%E9%A4%90/"/>
       <url>/is-zxy.github.io/2020/05/24/%5BIOI2007%5D-Miners-%E7%9F%BF%E5%B7%A5%E9%85%8D%E9%A4%90/</url>
@@ -595,9 +622,9 @@
       
         <tags>
             
-            <tag> 动态规划 </tag>
-            
             <tag> AcWing </tag>
+            
+            <tag> 动态规划 </tag>
             
         </tags>
       
@@ -1822,9 +1849,9 @@
       
         <tags>
             
-            <tag> 斜率优化 </tag>
-            
             <tag> 动态规划 </tag>
+            
+            <tag> 斜率优化 </tag>
             
         </tags>
       
@@ -1849,9 +1876,9 @@
       
         <tags>
             
-            <tag> 斜率优化 </tag>
-            
             <tag> CEOI </tag>
+            
+            <tag> 斜率优化 </tag>
             
         </tags>
       
@@ -2380,9 +2407,9 @@
       
         <tags>
             
-            <tag> APIO </tag>
-            
             <tag> 斜率优化 </tag>
+            
+            <tag> APIO </tag>
             
         </tags>
       
@@ -2729,13 +2756,13 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
-            <tag> 树状数组 </tag>
-            
             <tag> RMQ </tag>
             
             <tag> ST表 </tag>
+            
+            <tag> 树状数组 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> USACO </tag>
             
@@ -2868,9 +2895,9 @@
       
         <tags>
             
-            <tag> HDU </tag>
-            
             <tag> 状压DP </tag>
+            
+            <tag> HDU </tag>
             
             <tag> 三进制 </tag>
             
@@ -2953,9 +2980,9 @@
       
         <tags>
             
-            <tag> 状压DP </tag>
-            
             <tag> NOI </tag>
+            
+            <tag> 状压DP </tag>
             
         </tags>
       
@@ -3007,9 +3034,9 @@
       
         <tags>
             
-            <tag> CQOI </tag>
-            
             <tag> 树形DP </tag>
+            
+            <tag> CQOI </tag>
             
         </tags>
       
