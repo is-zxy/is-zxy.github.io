@@ -20,9 +20,9 @@
       
         <tags>
             
-            <tag> CTSC </tag>
-            
             <tag> 树形DP </tag>
+            
+            <tag> CTSC </tag>
             
         </tags>
       
@@ -622,9 +622,9 @@
       
         <tags>
             
-            <tag> AcWing </tag>
-            
             <tag> 动态规划 </tag>
+            
+            <tag> AcWing </tag>
             
         </tags>
       
@@ -1849,9 +1849,9 @@
       
         <tags>
             
-            <tag> 动态规划 </tag>
-            
             <tag> 斜率优化 </tag>
+            
+            <tag> 动态规划 </tag>
             
         </tags>
       
@@ -1876,9 +1876,9 @@
       
         <tags>
             
-            <tag> CEOI </tag>
-            
             <tag> 斜率优化 </tag>
+            
+            <tag> CEOI </tag>
             
         </tags>
       
@@ -2407,9 +2407,9 @@
       
         <tags>
             
-            <tag> 斜率优化 </tag>
-            
             <tag> APIO </tag>
+            
+            <tag> 斜率优化 </tag>
             
         </tags>
       
@@ -2756,13 +2756,13 @@
       
         <tags>
             
-            <tag> RMQ </tag>
-            
-            <tag> ST表 </tag>
+            <tag> 线段树 </tag>
             
             <tag> 树状数组 </tag>
             
-            <tag> 线段树 </tag>
+            <tag> RMQ </tag>
+            
+            <tag> ST表 </tag>
             
             <tag> USACO </tag>
             
@@ -2831,7 +2831,7 @@
       <link href="/is-zxy.github.io/2020/02/01/%5B%E4%B8%80%E6%9C%AC%E9%80%9A%5D-%E7%9A%87%E5%AE%AB%E7%9C%8B%E5%AE%88/"/>
       <url>/is-zxy.github.io/2020/02/01/%5B%E4%B8%80%E6%9C%AC%E9%80%9A%5D-%E7%9A%87%E5%AE%AB%E7%9C%8B%E5%AE%88/</url>
       
-        <content type="html"><![CDATA[<p>太平王世子事件后，陆小凤成了皇上特聘的御前一品侍卫。</p><p>皇宫以午门为起点，直到后宫嫔妃们的寝宫，呈一棵树的形状，某些宫殿间可以互相望见。大内保卫森严，三步一岗，五步一哨，每个宫殿都要有人全天候看守，在不同的宫殿安排看守所需的费用不同。</p><p>可是陆小凤手上的经费不足，无论如何也没法在每个宫殿都安置留守侍卫。</p><p>帮助陆小凤布置侍卫，在看守全部宫殿的前提下，使得花费的经费最少。 </p><p><a href="https://postimg.cc/r0XqxsZF" target="_blank" rel="noopener"><img src="https://i.postimg.cc/k4DDrtx8/aaaabba2.png" alt="aaaabba2.png"></a></p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>对于$100\%$的数据，$0&lt;n\le1500$。</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://loj.ac/problem/10157" target="_blank" rel="noopener">「一本通 5.2 例 5」皇宫看守</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>与战略游戏和没有上司的舞会差不多。刚看这题时交了个战略游戏代码上去，当然错了233。</p><p>战略游戏是看路，而本题是看点。</p><p>路，可被连接的两点给看到。</p><p>而点，则有三种状态，一是被它父节点给看到，二是被自己看到，三是被子节点看到。</p><p>于是定义$dp[root][p]$表示以$root$为根的状态，其中</p><p>$dp[root][0]$表示$root$被其父节点看到的最小花费。</p><p>$dp[root][1]$表示$root$处就有看守的最小花费。</p><p>$dp[root][2]$表示$root$被其子节点看到的最小花费。</p><p>于是</p><script type="math/tex; mode=display">dp[root][0]=\sum_{v\in son_{root}}min(dp[v][1],dp[v][2])  \\dp[root][1]=\sum_{v\in son_{root}}min\{dp[v][0],dp[v][1],dp[v][2]\}+cost[root] \\dp[root][2]=\sum_{v\in son_{root}}min(dp[v][1],dp[v][2])+d</script><p>其中$d=\min_{v\in son_{root}}(dp[v][1]-min(dp[v][1],dp[v][2]))$ 。</p><p>这个$d$的用途很大。因为对于$dp[root][2]$，必须要选取一个子节点上放看守，否则状态$dp[root][2]$就不成立了。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1510</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,cost[N],root=<span class="number">0</span>,dp[N][<span class="number">3</span>];</span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; son[N];</span><br><span class="line"><span class="keyword">bool</span> vh[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> root)</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> cnt=son[root].size();</span><br><span class="line"><span class="keyword">int</span> d=INF;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;i++) &#123;</span><br><span class="line"><span class="keyword">int</span> v=son[root][i];</span><br><span class="line">dfs(v);</span><br><span class="line">dp[root][<span class="number">0</span>]+=min(dp[v][<span class="number">1</span>],dp[v][<span class="number">2</span>]);</span><br><span class="line">dp[root][<span class="number">1</span>]+=min(dp[v][<span class="number">0</span>],min(dp[v][<span class="number">1</span>],dp[v][<span class="number">2</span>]));</span><br><span class="line">dp[root][<span class="number">2</span>]+=min(dp[v][<span class="number">1</span>],dp[v][<span class="number">2</span>]);</span><br><span class="line">d=min(d,dp[v][<span class="number">1</span>]-min(dp[v][<span class="number">1</span>],dp[v][<span class="number">2</span>]));</span><br><span class="line">&#125;</span><br><span class="line">dp[root][<span class="number">1</span>]+=cost[root];</span><br><span class="line">dp[root][<span class="number">2</span>]+=d;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line"><span class="keyword">int</span> id,m,fee;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;id&gt;&gt;fee&gt;&gt;m;</span><br><span class="line">cost[id]=fee;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++) &#123;</span><br><span class="line"><span class="keyword">int</span> x;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;x;</span><br><span class="line">vh[x]=<span class="number">1</span>;</span><br><span class="line">son[id].push_back(x);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(vh[++root]);</span><br><span class="line">dfs(root);</span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;min(dp[root][<span class="number">1</span>],dp[root][<span class="number">2</span>])&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>太平王世子事件后，陆小凤成了皇上特聘的御前一品侍卫。</p><p>皇宫以午门为起点，直到后宫嫔妃们的寝宫，呈一棵树的形状，某些宫殿间可以互相望见。大内保卫森严，三步一岗，五步一哨，每个宫殿都要有人全天候看守，在不同的宫殿安排看守所需的费用不同。</p><p>可是陆小凤手上的经费不足，无论如何也没法在每个宫殿都安置留守侍卫。</p><p>帮助陆小凤布置侍卫，在看守全部宫殿的前提下，使得花费的经费最少。 </p><p><a href="https://postimg.cc/r0XqxsZF" target="_blank" rel="noopener"><img src="https://i.postimg.cc/k4DDrtx8/aaaabba2.png" alt="aaaabba2.png"></a></p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>对于$100\%$的数据，$0&lt;n\le1500$。</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://loj.ac/problem/10157" target="_blank" rel="noopener">「一本通 5.2 例 5」皇宫看守</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>与战略游戏和没有上司的舞会差不多。刚看这题时交了个战略游戏代码上去，当然错了233。</p><p>战略游戏是看路，而本题是看点。</p><p>路，可被连接的两点给看到。</p><p>而点，则有三种状态，一是被它父节点给看到，二是被自己看到，三是被子节点看到。</p><p>于是定义$dp[root][p]$表示以$root$为根的状态，其中</p><p>$dp[root][0]$表示$root$被其父节点看到的最小花费。</p><p>$dp[root][1]$表示$root$处就有看守的最小花费。</p><p>$dp[root][2]$表示$root$被其子节点看到的最小花费。</p><p>于是</p><script type="math/tex; mode=display">dp[root][0]=\sum_{v\in son_{root}}min(dp[v][1],dp[v][2])  \\dp[root][1]=\sum_{v\in son_{root}}min\{dp[v][0],dp[v][1],dp[v][2]\}+cost[root] \\dp[root][2]=\sum_{v\in son_{root}}min(dp[v][1],dp[v][2])+d</script><p>其中$d=\min_{v\in son_{root}}(dp[v][1]-min(dp[v][1],dp[v][2]))$ 。</p><p>这个$d$的用途很大。因为对于$dp[root][2]$，必须要选取一个子节点上放看守，否则状态$dp[root][2]$就不成立了。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1510</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,cost[N],root=<span class="number">0</span>,dp[N][<span class="number">3</span>];</span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; son[N];</span><br><span class="line"><span class="keyword">bool</span> vh[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> root)</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> cnt=son[root].size();</span><br><span class="line"><span class="keyword">int</span> d=INF;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;i++) &#123;</span><br><span class="line"><span class="keyword">int</span> v=son[root][i];</span><br><span class="line">dfs(v);</span><br><span class="line">dp[root][<span class="number">0</span>]+=min(dp[v][<span class="number">1</span>],dp[v][<span class="number">2</span>]);</span><br><span class="line">dp[root][<span class="number">1</span>]+=min(dp[v][<span class="number">0</span>],min(dp[v][<span class="number">1</span>],dp[v][<span class="number">2</span>]));</span><br><span class="line">dp[root][<span class="number">2</span>]+=min(dp[v][<span class="number">1</span>],dp[v][<span class="number">2</span>]);</span><br><span class="line">d=min(d,dp[v][<span class="number">1</span>]-min(dp[v][<span class="number">1</span>],dp[v][<span class="number">2</span>]));</span><br><span class="line">&#125;</span><br><span class="line">dp[root][<span class="number">1</span>]+=cost[root];</span><br><span class="line">dp[root][<span class="number">2</span>]+=d;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line"><span class="keyword">int</span> id,m,fee;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;id&gt;&gt;fee&gt;&gt;m;</span><br><span class="line">cost[id]=fee;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++) &#123;</span><br><span class="line"><span class="keyword">int</span> x;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;x;</span><br><span class="line">vh[x]=<span class="number">1</span>;</span><br><span class="line">son[id].push_back(x);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(vh[++root]);</span><br><span class="line">dfs(root);</span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;min(dp[root][<span class="number">1</span>],dp[root][<span class="number">2</span>])&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="重题"><a href="#重题" class="headerlink" title="重题"></a>重题</h3><p><a href="https://www.luogu.com.cn/problem/P2458" target="_blank" rel="noopener">[SDOI2006]保安站岗</a></p>]]></content>
       
       
       <categories>
@@ -2844,6 +2844,8 @@
         <tags>
             
             <tag> 树形DP </tag>
+            
+            <tag> SDOI </tag>
             
         </tags>
       
@@ -2895,9 +2897,9 @@
       
         <tags>
             
-            <tag> 状压DP </tag>
-            
             <tag> HDU </tag>
+            
+            <tag> 状压DP </tag>
             
             <tag> 三进制 </tag>
             
@@ -3034,9 +3036,9 @@
       
         <tags>
             
-            <tag> 树形DP </tag>
-            
             <tag> CQOI </tag>
+            
+            <tag> 树形DP </tag>
             
         </tags>
       
