@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>[HAOI2015] 树上染色</title>
+      <link href="/is-zxy.github.io/2020/05/27/%5BHAOI2015%5D-%E6%A0%91%E4%B8%8A%E6%9F%93%E8%89%B2/"/>
+      <url>/is-zxy.github.io/2020/05/27/%5BHAOI2015%5D-%E6%A0%91%E4%B8%8A%E6%9F%93%E8%89%B2/</url>
+      
+        <content type="html"><![CDATA[<p>有一棵点数为 $n$ 的树，树边有边权。给你一个在 $0 \sim n$ 之内的正整数 $k$ ，你要在这棵树中选择 $k$ 个点，将染成黑色，并将其他 的 $n-k$ 个点染成白色。将所有点染色后，你会获得黑点两两之间的距离加上白点两两之间的距离的和的受益。问受益最大值是多少。</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$0\le n,k\le 2000$</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P3177" target="_blank" rel="noopener">[HAOI2015]树上染色</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>一开始的想法是定义 $dp[root][i]$ 表示以 $root$ 为根的子树，选择 $i$ 个点染成黑色的最大受益值。</p><p>然后……发现不好转移。</p><p>然后……就不会做了，毫无头绪。</p><p>然后……就打开了题解。</p><p>发现了这题与NOI ONLINE第二场提高组的T2的思想是相似的。</p><p>由于求的是<strong>所有同色点两两之间的距离和</strong>，于是想到计算每条边的<strong>贡献</strong>。</p><p>显然，对于每条边的贡献 $val$，其值为一边的子树上白点个数 $w_1$，黑点个数 $b_1$，另一边子树上白点个数 $w_2$，黑点个数 $b_2$，$val=(w_1<em>w_2+b_1</em>b_2)*W$，其中 $W$ 为边权值。</p><p>于是定义 $dp[root][i]$ 表示以 $root$ 为根的子树，选择 $i$ 个点染成黑色的对答案的<strong>最大贡献</strong>。</p><p>于是就转化为一个树上背包问题，即</p><script type="math/tex; mode=display">dp[root][i]=\max\{dp[v][j]+dp[root][i-j]+val\},v\in son(root)</script><p>定义以 $v$ 为根的子树的节点数为 $cnt[v]$。</p><p>那么该式子中的 $val$ 即为 $\left[j\times (k-j)+(cnt[v]-j)\times(n-k-cnt[v]+j)\right]\times W$，$W$ 为边权。</p><p>初始化 $dp$ 为 $-1$，对于每个点 $root$， $dp[root][0]=dp[root][1]=0$。</p><p>不合法状态不能用来转移，因此需要判断是否为 $-1$。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 2010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,p,tot=<span class="number">0</span>,head[N],cnt[N];</span><br><span class="line">ll dp[N][N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> v,w,next;</span><br><span class="line">&#125;edge[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span> </span>&#123;</span><br><span class="line">edge[++tot].v=v;</span><br><span class="line">edge[tot].w=w;</span><br><span class="line">edge[tot].next=head[u];</span><br><span class="line">head[u]=tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> root,<span class="keyword">int</span> f)</span> </span>&#123;</span><br><span class="line">cnt[root]=<span class="number">1</span>;</span><br><span class="line">dp[root][<span class="number">0</span>]=dp[root][<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=head[root];~i;i=edge[i].next) &#123;</span><br><span class="line"><span class="keyword">int</span> v=edge[i].v,w=edge[i].w;</span><br><span class="line"><span class="keyword">if</span>(v==f) <span class="keyword">continue</span>;</span><br><span class="line">dfs(v,root);</span><br><span class="line">cnt[root]+=cnt[v];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=min(cnt[root],p);j&gt;=<span class="number">0</span>;j--) &#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;=min(cnt[v],j);k++) &#123;</span><br><span class="line"><span class="keyword">if</span>(dp[root][j-k]==<span class="number">-1</span>) <span class="keyword">continue</span>;</span><br><span class="line">ll val=(ll)(k*(p-k)+(cnt[v]-k)*(ll)(n-cnt[v]-p+k))*(ll)w;</span><br><span class="line">dp[root][j]=max(dp[root][j],dp[root][j-k]+dp[v][k]+val);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="built_in">memset</span>(head,<span class="number">-1</span>,<span class="keyword">sizeof</span>(head));</span><br><span class="line"><span class="built_in">memset</span>(dp,<span class="number">-1</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;p);</span><br><span class="line"><span class="keyword">if</span>(p&gt;n-p) p=n-p;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++) &#123;</span><br><span class="line"><span class="keyword">int</span> u,v,w;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;u,&amp;v,&amp;w);</span><br><span class="line">add(u,v,w);</span><br><span class="line">add(v,u,w);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dfs(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,dp[<span class="number">1</span>][p]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> HAOI </tag>
+            
+            <tag> 树形DP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[USACO17DEC] Barn Painting G</title>
       <link href="/is-zxy.github.io/2020/05/27/%5BUSACO17DEC%5D-Barn-Painting-G/"/>
       <url>/is-zxy.github.io/2020/05/27/%5BUSACO17DEC%5D-Barn-Painting-G/</url>
@@ -678,9 +705,9 @@
       
         <tags>
             
-            <tag> 动态规划 </tag>
-            
             <tag> AcWing </tag>
+            
+            <tag> 动态规划 </tag>
             
         </tags>
       
@@ -759,9 +786,9 @@
       
         <tags>
             
-            <tag> 动态规划 </tag>
-            
             <tag> Codeforces </tag>
+            
+            <tag> 动态规划 </tag>
             
         </tags>
       
@@ -1822,9 +1849,9 @@
       
         <tags>
             
-            <tag> 动态规划 </tag>
-            
             <tag> Codeforces </tag>
+            
+            <tag> 动态规划 </tag>
             
         </tags>
       
@@ -1932,9 +1959,9 @@
       
         <tags>
             
-            <tag> 斜率优化 </tag>
-            
             <tag> CEOI </tag>
+            
+            <tag> 斜率优化 </tag>
             
         </tags>
       
@@ -2463,9 +2490,9 @@
       
         <tags>
             
-            <tag> APIO </tag>
-            
             <tag> 斜率优化 </tag>
+            
+            <tag> APIO </tag>
             
         </tags>
       
@@ -2982,9 +3009,9 @@
       
         <tags>
             
-            <tag> 树形DP </tag>
-            
             <tag> 背包 </tag>
+            
+            <tag> 树形DP </tag>
             
             <tag> 洛谷 </tag>
             
