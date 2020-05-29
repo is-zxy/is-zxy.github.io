@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="卢卡斯定理,树形DP,一本通," />
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta name="description" content="长存不灭的过去，逐渐消逝的未来。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zxyer&#39;s Blog">
-<meta property="og:url" content="http://www.zxyer.xyz/tags/Ynoi/index.html">
+<meta name="description" content="小 $W$ 最近迷上了日本动漫，每天都有无数部动漫的更新等着他去看，所以他必须将所有的动漫排个顺序，当然，虽然有无数部动漫，但除了 $1$ 号动漫，每部动漫都有且仅有一部动漫是它的前传（父亲），也就是说，所有的动漫形成一个树形结构。而动漫的顺序必须满足以下两个限制： ①一部动漫的所有后继（子孙）都必须排在它的后面。 ②对于同一部动漫的续集（孩子），小 $W$ 喜爱度高的须排在前面。 光排序小 $W">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[一本通#1772] 动漫排序">
+<meta property="og:url" content="http://www.zxyer.xyz/2020/05/28/[%E4%B8%80%E6%9C%AC%E9%80%9A-1772]-%E5%8A%A8%E6%BC%AB%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
-<meta property="og:description" content="长存不灭的过去，逐渐消逝的未来。">
+<meta property="og:description" content="小 $W$ 最近迷上了日本动漫，每天都有无数部动漫的更新等着他去看，所以他必须将所有的动漫排个顺序，当然，虽然有无数部动漫，但除了 $1$ 号动漫，每部动漫都有且仅有一部动漫是它的前传（父亲），也就是说，所有的动漫形成一个树形结构。而动漫的顺序必须满足以下两个限制： ①一部动漫的所有后继（子孙）都必须排在它的后面。 ②对于同一部动漫的续集（孩子），小 $W$ 喜爱度高的须排在前面。 光排序小 $W">
+<meta property="article:published_time" content="2020-05-28T15:17:11.000Z">
+<meta property="article:modified_time" content="2020-05-29T04:31:53.962Z">
 <meta property="article:author" content="Yuzuriha_Inori">
+<meta property="article:tag" content="卢卡斯定理">
+<meta property="article:tag" content="树形DP">
+<meta property="article:tag" content="一本通">
 <meta name="twitter:card" content="summary">
 
 
@@ -116,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zxyer.xyz/tags/Ynoi/"/>
+  <link rel="canonical" href="http://www.zxyer.xyz/2020/05/28/[一本通-1772]-动漫排序/"/>
 
 
 
 
 
-  <title>标签: Ynoi | Zxyer's Blog</title>
+  <title>[一本通#1772] 动漫排序 | Zxyer's Blog</title>
   
 
 
@@ -141,7 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -289,54 +294,200 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Ynoi<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/05/28/%5B%E4%B8%80%E6%9C%AC%E9%80%9A-1772%5D-%E5%8A%A8%E6%BC%AB%E6%8E%92%E5%BA%8F/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yuzuriha_Inori">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/is-zxy.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zxyer's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/is-zxy.github.io/2020/03/26/%5B%E6%B4%9B%E8%B0%B7P6327%5D-%E5%8C%BA%E9%97%B4%E5%8A%A0%E5%8C%BA%E9%97%B4sin%E5%92%8C/" itemprop="url">
-              
-                <span itemprop="name">[Ynoi2012] NOIP2015洋溢着希望</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">[一本通#1772] 动漫排序</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-03-26T18:57:04+08:00"
-              content="2020-03-26" >
-          03-26
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-28T23:17:11+08:00">
+                2020-05-28
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/is-zxy.github.io/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>小 $W$ 最近迷上了日本动漫，每天都有无数部动漫的更新等着他去看，所以他必须将所有的动漫排个顺序，当然，虽然有无数部动漫，但除了 $1$ 号动漫，每部动漫都有且仅有一部动漫是它的前传（父亲），也就是说，所有的动漫形成一个树形结构。而动漫的顺序必须满足以下两个限制：</p>
+<p>①一部动漫的所有后继（子孙）都必须排在它的后面。</p>
+<p>②对于同一部动漫的续集（孩子），小 $W$ 喜爱度高的须排在前面。</p>
+<p>光排序小 $W$ 还不爽，他想知道一共有多少种排序方案，并且输出它 $\mod10007$的答案。</p>
+<a id="more"></a>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$n\le 1000$</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="http://ybt.ssoier.cn:8088/problem_show.php?pid=1772" target="_blank" rel="noopener">[一本通#1772]动漫排序</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p><del>这其实是个组合数学题</del></p>
+<p>定义 $dp[root]$ 表示以 $root$ 为根的子树的排序数。</p>
+<p>定义 $cnt[i]$ 表示以 $i$ 为根的子树的节点数量。</p>
+<p>考虑 $root$ 的第一个儿子 $son_1$。</p>
+<p>除去点 $root$ 与点 $son_1$（$son_1$ 位置固定了，因为只有 $son_1$ 被选中，其子树才有可能被选中），则该子树剩余的 $cnt[son_1]-1$ 个节点在总序列中的位置有</p>
+<script type="math/tex; mode=display">
+\binom{cnt[root]-2}{cnt[son]-1}</script><p>种</p>
+<p>那么由乘法原理可得</p>
+<script type="math/tex; mode=display">
+dp[root]*=dp[son_1]*\binom{cnt[root]-2}{cnt[son]-1}</script><p>考虑 $root$ 的第二个儿子 $son_2$。</p>
+<p>除去点 $root$ 与 $son_1$ 为根的子树与 $son_2$，则该子树剩余的 $cnt[son_2]-1$ 个节点在总序列中的位置有</p>
+<script type="math/tex; mode=display">
+\binom{cnt[root]-cnt[son_1]-2}{cnt[son_2]-1}</script><p>种</p>
+<p>那么同理由乘法原理可得</p>
+<script type="math/tex; mode=display">
+dp[root]*=dp[son_2]*\binom{cnt[root]-cnt[son_1]-2}{cnt[son_2]-1}</script><p>………………………………</p>
+<p>据此，可得</p>
+<script type="math/tex; mode=display">
+dp[root]=\prod_{i=1}^{tot_{root}}dp[son_i]\times\binom{cnt[root]-2-\sum_\limits{j=1}^{i-1}cnt[j]}{cnt[son_i]-1}</script><p>因此预处理组合数后直接DP即可。</p>
+<p><del>不取模见祖宗</del>。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> p 10007</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> T,n,cnt[N];</span><br><span class="line">ll dp[N],C[N][N];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; son[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">1000</span>;i++) C[i][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">1000</span>;i++) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=i;j++) C[i][j]=(C[i<span class="number">-1</span>][j]+C[i<span class="number">-1</span>][j<span class="number">-1</span>])%p;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> root)</span> </span>&#123;</span><br><span class="line">	dp[root]=cnt[root]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> size=son[root].size();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;size;i++) &#123;</span><br><span class="line">		dfs(son[root][i]);</span><br><span class="line">		cnt[root]+=cnt[son[root][i]];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> num=cnt[root]<span class="number">-2</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;size;i++) &#123;</span><br><span class="line">		(dp[root]*=(dp[son[root][i]]*C[num][cnt[son[root][i]]<span class="number">-1</span>])%p)%=p;</span><br><span class="line">		num-=cnt[son[root][i]];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;T;</span><br><span class="line">	</span><br><span class="line">	init();</span><br><span class="line">	<span class="keyword">while</span>(T--) &#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">			son[i].clear();</span><br><span class="line">			<span class="keyword">int</span> tot;</span><br><span class="line">			<span class="built_in">cin</span>&gt;&gt;tot;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=tot;j++) &#123;</span><br><span class="line">				<span class="keyword">int</span> x;</span><br><span class="line">				<span class="built_in">cin</span>&gt;&gt;x;</span><br><span class="line">				son[i].push_back(x);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		dfs(<span class="number">1</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;dp[<span class="number">1</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/is-zxy.github.io/tags/%E5%8D%A2%E5%8D%A1%E6%96%AF%E5%AE%9A%E7%90%86/" rel="tag"># 卢卡斯定理</a>
+          
+            <a href="/is-zxy.github.io/tags/%E6%A0%91%E5%BD%A2DP/" rel="tag"># 树形DP</a>
+          
+            <a href="/is-zxy.github.io/tags/%E4%B8%80%E6%9C%AC%E9%80%9A/" rel="tag"># 一本通</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/is-zxy.github.io/2020/05/27/%5BHAOI2015%5D-%E6%A0%91%E4%B8%8A%E6%9F%93%E8%89%B2/" rel="next" title="[HAOI2015] 树上染色">
+                <i class="fa fa-chevron-left"></i> [HAOI2015] 树上染色
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  ﻿
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -344,6 +495,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -364,8 +519,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -384,7 +548,7 @@
               
                 <a href="/is-zxy.github.io/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">133</span>
+                  <span class="site-state-item-count">134</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -486,6 +650,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据范围"><span class="nav-number">1.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">2.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -633,6 +813,10 @@
 
 
   
+  <script type="text/javascript" src="/is-zxy.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/is-zxy.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
