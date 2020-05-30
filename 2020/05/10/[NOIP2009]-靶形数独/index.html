@@ -85,15 +85,15 @@
 <meta property="og:url" content="http://www.zxyer.xyz/2020/05/10/[NOIP2009]-%E9%9D%B6%E5%BD%A2%E6%95%B0%E7%8B%AC/index.html">
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="小城和小华都是热爱数学的好学生，最近，他们不约而同地迷上了数独游戏，好胜的他们想用数独来一比高低。但普通的数独对他们来说都过于简单了，于是他们向 Z 博士请教，Z 博士拿出了他最近发明的“靶形数独”，作为这两个孩子比试的题目。 靶形数独的方格同普通数独一样，在 $9$ 格宽且 $9$ 格高的大九宫格中有 $9$ 个 $3$ 格宽且 $3$ 格高的小九宫格（用粗黑色线隔开的）。在这个大九宫格中，有一">
-<meta property="og:image" content="https://cdn.luogu.com.cn/upload/pic/28.png">
-<meta property="og:image" content="https://cdn.luogu.com.cn/upload/pic/29.png">
+<meta property="og:image" content="https://wx2.sbimg.cn/2020/05/30/1.png">
+<meta property="og:image" content="https://wx1.sbimg.cn/2020/05/30/18a5d1db5ebaa246c.png">
 <meta property="article:published_time" content="2020-05-09T16:12:44.000Z">
-<meta property="article:modified_time" content="2020-05-09T16:39:14.000Z">
+<meta property="article:modified_time" content="2020-05-30T15:05:05.300Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="DFS">
 <meta property="article:tag" content="搜索次序优化">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.luogu.com.cn/upload/pic/28.png">
+<meta name="twitter:image" content="https://wx2.sbimg.cn/2020/05/30/1.png">
 
 
 
@@ -401,10 +401,10 @@
       
         <p>小城和小华都是热爱数学的好学生，最近，他们不约而同地迷上了数独游戏，好胜的他们想用数独来一比高低。但普通的数独对他们来说都过于简单了，于是他们向 Z 博士请教，Z 博士拿出了他最近发明的“靶形数独”，作为这两个孩子比试的题目。</p>
 <p>靶形数独的方格同普通数独一样，在 $9$ 格宽且 $9$ 格高的大九宫格中有 $9$ 个 $3$ 格宽且 $3$ 格高的小九宫格（用粗黑色线隔开的）。在这个大九宫格中，有一些数字是已知的，根据这些数字，利用逻辑推理，在其他的空格上填入 $1$ 到 $9$ 的数字。每个数字在每个小九宫格内不能重复出现，每个数字在每行、每列也不能重复出现。但靶形数独有一点和普通数独不同，即每一个方格都有一个分值，而且如同一个靶子一样，离中心越近则分值越高。（如图）</p>
-<p><img src="https://cdn.luogu.com.cn/upload/pic/28.png" alt="img"></p>
+<p><img src="https://wx2.sbimg.cn/2020/05/30/1.png" alt="1.png"></p>
 <p>上图具体的分值分布是：最里面一格（黄色区域）为 $10$ 分，黄色区域外面的一圈（红色区域）每个格子为 $9$ 分，再外面一圈（蓝色区域）每个格子为 $8$ 分，蓝色区域外面一圈（棕色区域）每个格子为 $7$ 分，最外面一圈（白色区域）每个格子为 $6$ 分，如上图所示。比赛的要求是：每个人必须完成一个给定的数独（每个给定数独可能有不同的填法），而且要争取更高的总分数。而这个总分数即每个方格上的分值和完成这个数独时填在相应格上的数字的乘积的总和</p>
 <p>总分数即每个方格上的分值和完成这个数独时填在相应格上的数字的乘积的总和。如图，在以下的这个已经填完数字的靶形数独游戏中，总分数为 $2829$。游戏规定，将以总分数的高低决出胜负。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/pic/29.png" alt="img"></p>
+<p><img src="https://wx1.sbimg.cn/2020/05/30/18a5d1db5ebaa246c.png" alt="18a5d1db5ebaa246c.png"></p>
 <p>由于求胜心切，小城找到了善于编程的你，让你帮他求出，对于给定的靶形数独，能够得到的最高分数。</p>
 <a id="more"></a>
 <h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><ul>
