@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="LCA,洛谷," />
+  <meta name="keywords" content="树形DP,二次扫描与换根法,USACO," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="小仓鼠的和他的基（mei）友（zi）sugar住在地下洞穴中，每个节点的编号为$1$~$n$。地下洞穴是一个树形结构。这一天小仓鼠打算从从他的卧室（$a$）到餐厅（$b$），而他的基友同时要从他的卧室（$c$）到图书馆（$d$）。他们都会走最短路径。现在小仓鼠希望知道，有没有可能在某个地方，可以碰到他的基友？ 小仓鼠那么弱，还要天天被zzq大爷虐，请你快来救救他吧！">
+<meta name="description" content="给你一棵 $n$ 个点的树，每个点 $i$ 带权 $c_i$，对于每个节点求出距离它不超过 $k$ 的所有节点权值和 $m_i$。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[洛谷P3398] 仓鼠找sugar">
-<meta property="og:url" content="http://www.zxyer.xyz/2020/02/20/[%E6%B4%9B%E8%B0%B7P3398]-%E4%BB%93%E9%BC%A0%E6%89%BEsugar/index.html">
+<meta property="og:title" content="[USACO12FEB] Nearby Cows G">
+<meta property="og:url" content="http://www.zxyer.xyz/2020/05/31/[USACO12FEB]-Nearby-Cows-G/index.html">
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
-<meta property="og:description" content="小仓鼠的和他的基（mei）友（zi）sugar住在地下洞穴中，每个节点的编号为$1$~$n$。地下洞穴是一个树形结构。这一天小仓鼠打算从从他的卧室（$a$）到餐厅（$b$），而他的基友同时要从他的卧室（$c$）到图书馆（$d$）。他们都会走最短路径。现在小仓鼠希望知道，有没有可能在某个地方，可以碰到他的基友？ 小仓鼠那么弱，还要天天被zzq大爷虐，请你快来救救他吧！">
-<meta property="article:published_time" content="2020-02-20T14:13:26.000Z">
-<meta property="article:modified_time" content="2020-02-20T14:21:22.241Z">
+<meta property="og:description" content="给你一棵 $n$ 个点的树，每个点 $i$ 带权 $c_i$，对于每个节点求出距离它不超过 $k$ 的所有节点权值和 $m_i$。">
+<meta property="article:published_time" content="2020-05-31T15:44:53.000Z">
+<meta property="article:modified_time" content="2020-05-31T15:53:20.406Z">
 <meta property="article:author" content="Yuzuriha_Inori">
-<meta property="article:tag" content="LCA">
-<meta property="article:tag" content="洛谷">
+<meta property="article:tag" content="树形DP">
+<meta property="article:tag" content="二次扫描与换根法">
+<meta property="article:tag" content="USACO">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zxyer.xyz/2020/02/20/[洛谷P3398]-仓鼠找sugar/"/>
+  <link rel="canonical" href="http://www.zxyer.xyz/2020/05/31/[USACO12FEB]-Nearby-Cows-G/"/>
 
 
 
 
 
-  <title>[洛谷P3398] 仓鼠找sugar | Zxyer's Blog</title>
+  <title>[USACO12FEB] Nearby Cows G | Zxyer's Blog</title>
   
 
 
@@ -307,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/02/20/%5B%E6%B4%9B%E8%B0%B7P3398%5D-%E4%BB%93%E9%BC%A0%E6%89%BEsugar/">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/05/31/%5BUSACO12FEB%5D-Nearby-Cows-G/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yuzuriha_Inori">
@@ -324,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[洛谷P3398] 仓鼠找sugar</h1>
+          <h1 class="post-title" itemprop="name headline">[USACO12FEB] Nearby Cows G</h1>
         
 
         <div class="post-meta">
@@ -336,8 +337,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-20T22:13:26+08:00">
-                2020-02-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-31T23:44:53+08:00">
+                2020-05-31
               </time>
             
 
@@ -396,23 +397,26 @@
       
 
       
-        <p>小仓鼠的和他的基（mei）友（zi）sugar住在地下洞穴中，每个节点的编号为$1$~$n$。地下洞穴是一个树形结构。这一天小仓鼠打算从从他的卧室（$a$）到餐厅（$b$），而他的基友同时要从他的卧室（$c$）到图书馆（$d$）。他们都会走最短路径。现在小仓鼠希望知道，有没有可能在某个地方，可以碰到他的基友？</p>
-<p>小仓鼠那么弱，还要天天被zzq大爷虐，请你快来救救他吧！</p>
+        <p>给你一棵 $n$ 个点的树，每个点 $i$ 带权 $c_i$，对于每个节点求出距离它不超过 $k$ 的所有节点权值和 $m_i$。</p>
 <a id="more"></a>
-<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$20\%$的数据$n&lt;=200,q&lt;=200$</p>
-<p>$40\%$的数据$n&lt;=2000,q&lt;=2000$</p>
-<p>$70\%$的数据$n&lt;=50000,q&lt;=50000$</p>
-<p>$100\%$的数据$n&lt;=100000,q&lt;=100000$</p>
-<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P3398" target="_blank" rel="noopener">P3398 仓鼠找sugar</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>求两条树上最短路的交点。</p>
-<p>动手模拟模拟，发现若两路径若有交点，则较深的两点的LCA一定在另一条路径上。</p>
-<p>那么如何判断一点在一条路径上呢？</p>
-<p>树上的最短路是一条链，链上任意一点到链两边距离相等，于是便可以据此判断两点的LCA是否在另一条路径上。</p>
-<p>接下来的问题就是如何求两点间距离。</p>
-<p>定义$depth[x]$表示点$x$的深度。</p>
-<p>其实很容易得到，点$x$与点$y$的距离$dis(x,y)=depth[x]+depth[y]-2\times depth[LCA(x,y)]$。</p>
-<p>这里的距离是在本题边权为$1$的情况而定的。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,q,tot=<span class="number">0</span>,lg[N],depth[N],f[N][<span class="number">25</span>],head[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> next,to;</span><br><span class="line">&#125;edge[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">	edge[++tot].to=v;</span><br><span class="line">	edge[tot].next=head[u];</span><br><span class="line">	head[u]=tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> from,<span class="keyword">int</span> now)</span> </span>&#123;</span><br><span class="line">	depth[now]=depth[from]+<span class="number">1</span>;</span><br><span class="line">	f[now][<span class="number">0</span>]=from;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=lg[depth[now]];i++) f[now][i]=f[f[now][i<span class="number">-1</span>]][i<span class="number">-1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[now];i;i=edge[i].next) <span class="keyword">if</span>(edge[i].to!=from) dfs(now,edge[i].to);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	lg[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) lg[i]=lg[i&gt;&gt;<span class="number">1</span>]+<span class="number">1</span>;</span><br><span class="line">	dfs(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LCA</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(depth[x]&lt;depth[y]) swap(x,y);</span><br><span class="line">	<span class="keyword">while</span>(depth[x]&gt;depth[y]) x=f[x][lg[depth[x]-depth[y]]];</span><br><span class="line">	<span class="keyword">if</span>(x==y) <span class="keyword">return</span> x;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=lg[depth[x]];i&gt;=<span class="number">0</span>;i--) &#123;</span><br><span class="line">		<span class="keyword">if</span>(f[x][i]!=f[y][i]) &#123;</span><br><span class="line">			x=f[x][i];</span><br><span class="line">			y=f[y][i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> f[x][<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dis</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> depth[x]+depth[y]<span class="number">-2</span>*depth[LCA(x,y)];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;q;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> u,v;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v;</span><br><span class="line">		add(u,v);</span><br><span class="line">		add(v,u);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	init();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=q;i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> a,b,c,d;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;c&gt;&gt;d;</span><br><span class="line">		<span class="keyword">int</span> lab=LCA(a,b),lcd=LCA(c,d);</span><br><span class="line">		<span class="keyword">if</span>(depth[lab]&gt;depth[lcd]) &#123;</span><br><span class="line">			<span class="keyword">if</span>(dis(lab,c)+dis(lab,d)==depth[c]+depth[d]<span class="number">-2</span>*depth[lcd]) <span class="built_in">cout</span>&lt;&lt;<span class="string">"Y"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"N"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(depth[lab]==depth[lcd]) &#123;</span><br><span class="line">			<span class="keyword">if</span>(lab==lcd) <span class="built_in">cout</span>&lt;&lt;<span class="string">"Y"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"N"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(depth[lab]&lt;depth[lcd]) &#123;</span><br><span class="line">			<span class="keyword">if</span>(dis(lcd,a)+dis(lcd,b)==depth[a]+depth[b]<span class="number">-2</span>*depth[lab]) <span class="built_in">cout</span>&lt;&lt;<span class="string">"Y"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"N"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le n \le 10^5$</p>
+<p>$1\le k\le 20$</p>
+<p>$0\le c_i\le 1000$</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P3047" target="_blank" rel="noopener">[USACO12FEB]Nearby Cows G</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>显然的换根解决嘛。</p>
+<p>定义 $dp[root][j]$ 表示以 $root$ 为根的子树中距离 $root$ 不超过 $j$ 的所有点权值之和。</p>
+<p>易得</p>
+<script type="math/tex; mode=display">
+dp[root][j]=\sum_{v\in son(root)}dp[v][j-1]</script><p>其中</p>
+<script type="math/tex; mode=display">
+dp[root][0]=c[root]</script><p>定义 $df[root][j]$ 表示<strong>整棵树</strong>上距离点 $root$ 不超过 $j$ 的所有点权值之和。</p>
+<p>对于点 $root$ 的每个子节点 $v$ 显然有</p>
+<script type="math/tex; mode=display">
+df[v][j]=dp[v][j]+df[root][j-1]-dp[v][j-2]</script><p>其中</p>
+<script type="math/tex; mode=display">
+df[v][0]=c[v] \\
+df[v][1]=dp[v][1]+c[root]</script><p>最后输出每个点 $i$ 的 $df[i][k]$ 即可。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,k,c[N],head[N],tot=<span class="number">0</span>,dp[N][<span class="number">25</span>],df[N][<span class="number">25</span>];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">graph</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> v,next;</span><br><span class="line">&#125;edge[N&lt;&lt;<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">	edge[++tot].v=v;</span><br><span class="line">	edge[tot].next=head[u];</span><br><span class="line">	head[u]=tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs_first</span><span class="params">(<span class="keyword">int</span> root,<span class="keyword">int</span> f)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=k;i++) dp[root][i]=c[root];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[root];i;i=edge[i].next) &#123;</span><br><span class="line">		<span class="keyword">int</span> v=edge[i].v;</span><br><span class="line">		<span class="keyword">if</span>(v==f) <span class="keyword">continue</span>;</span><br><span class="line">		dfs_first(v,root);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=k;j++) dp[root][j]+=dp[v][j<span class="number">-1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs_second</span><span class="params">(<span class="keyword">int</span> root,<span class="keyword">int</span> f)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[root];i;i=edge[i].next) &#123;</span><br><span class="line">		<span class="keyword">int</span> v=edge[i].v;</span><br><span class="line">		<span class="keyword">if</span>(v==f) <span class="keyword">continue</span>;</span><br><span class="line">		df[v][<span class="number">0</span>]=dp[v][<span class="number">0</span>];</span><br><span class="line">		df[v][<span class="number">1</span>]=dp[v][<span class="number">1</span>]+c[root];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>;j&lt;=k;j++) df[v][j]=dp[v][j]+df[root][j<span class="number">-1</span>]-dp[v][j<span class="number">-2</span>];</span><br><span class="line">		dfs_second(v,root);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> u,v;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v;</span><br><span class="line">		add(u,v);</span><br><span class="line">		add(v,u);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;c[i];</span><br><span class="line">	</span><br><span class="line">	dfs_first(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=k;i++) df[<span class="number">1</span>][i]=dp[<span class="number">1</span>][i];</span><br><span class="line">	dfs_second(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cout</span>&lt;&lt;df[i][k]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -430,9 +434,11 @@
       
         <div class="post-tags">
           
-            <a href="/is-zxy.github.io/tags/LCA/" rel="tag"># LCA</a>
+            <a href="/is-zxy.github.io/tags/%E6%A0%91%E5%BD%A2DP/" rel="tag"># 树形DP</a>
           
-            <a href="/is-zxy.github.io/tags/%E6%B4%9B%E8%B0%B7/" rel="tag"># 洛谷</a>
+            <a href="/is-zxy.github.io/tags/%E4%BA%8C%E6%AC%A1%E6%89%AB%E6%8F%8F%E4%B8%8E%E6%8D%A2%E6%A0%B9%E6%B3%95/" rel="tag"># 二次扫描与换根法</a>
+          
+            <a href="/is-zxy.github.io/tags/USACO/" rel="tag"># USACO</a>
           
         </div>
       
@@ -445,8 +451,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/is-zxy.github.io/2020/02/19/%5BUSACO08OCT%5D-%E7%89%A7%E5%9C%BA%E6%95%A3%E6%AD%A5Pasture-Walking/" rel="next" title="[USACO08OCT] 牧场散步Pasture Walking">
-                <i class="fa fa-chevron-left"></i> [USACO08OCT] 牧场散步Pasture Walking
+              <a href="/is-zxy.github.io/2020/05/30/%5BUSACO10MAR%5D-Great-Cow-Gathering-G/" rel="next" title="[USACO10MAR]Great Cow Gathering G">
+                <i class="fa fa-chevron-left"></i> [USACO10MAR]Great Cow Gathering G
               </a>
             
           </div>
@@ -454,10 +460,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/is-zxy.github.io/2020/02/21/%5BHAOI2007%5D-%E7%90%86%E6%83%B3%E7%9A%84%E6%AD%A3%E6%96%B9%E5%BD%A2/" rel="prev" title="[HAOI2007] 理想的正方形">
-                [HAOI2007] 理想的正方形 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
