@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="给出一棵树，要求你为树上的结点标上权值，权值可以是任意的正整数，唯一的限制条件是相临的两个结点不能标上相同的权值，要求一种方案，使得整棵树的总价值最小。">
 <meta property="article:published_time" content="2020-06-02T15:24:15.000Z">
-<meta property="article:modified_time" content="2020-06-02T15:29:52.750Z">
+<meta property="article:modified_time" content="2020-06-02T15:36:56.784Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="Baltic">
 <meta property="article:tag" content="树形DP">
@@ -402,7 +402,7 @@
 <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://darkbzoj.tk/problem/1369" target="_blank" rel="noopener">[Baltic2003]Gem</a></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>很好想的DP。但是权值的最大取值不知。</p>
 <p>随便开到了 $15$ 过了。</p>
-<p>然后看了题解，有一个结论：节点数为 $n$的树，对其染色使相邻节点颜色不同，且总颜色权值最小，所需的颜色数量是 $O(\log n)​ 的。但是并没有看到有证明。</p>
+<p>然后看了题解，有一个结论：节点数为 $n$的树，对其染色使相邻节点颜色不同，且总颜色权值最小，所需的颜色数量是 $O(\log n)$ 的。但是并没有看到有证明。</p>
 <p>定义 $dp[root][i]$ 表示以 $root$ 为根的子树，当 $root$ 的权值为 $i$ 时，该子树的最小总价值。</p>
 <p>显然 </p>
 <script type="math/tex; mode=display">
