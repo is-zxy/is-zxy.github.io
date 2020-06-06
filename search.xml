@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>[USACO13NOV] No Change G</title>
+      <link href="/is-zxy.github.io/2020/06/07/%5BUSACO13NOV%5D-No-Change-G/"/>
+      <url>/is-zxy.github.io/2020/06/07/%5BUSACO13NOV%5D-No-Change-G/</url>
+      
+        <content type="html"><![CDATA[<p>约翰到商场购物，他的钱包里有 $K(1 \le K \le 16)$ 个硬币，面值的范围是 $1\dots 100,000,000$。</p><p>约翰想按顺序买 $N$ 个物品 $(1 \le N \le 100,000)$，第 $i$ 个物品需要花费 $c(i)$ 块钱，$(1 \le c(i) \le 10,000)$。</p><p>在依次进行的购买 $N$ 个物品的过程中，约翰可以随时停下来付款，每次付款只用一个硬币，支付购买的内容是从上一次支付后开始到现在的这些所有物品（前提是该硬币足以支付这些物品的费用）。不幸的是，商场的收银机坏了，如果约翰支付的硬币面值大于所需的费用，他不会得到任何找零。</p><p>请计算出在购买完 $N$ 个物品后，约翰最多剩下多少钱。如果无法完成购买，输出 $-1$。</p><a id="more"></a><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P3092" target="_blank" rel="noopener">[USACO13NOV]No Change G</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>本题的状态设计有些巧妙。</p><p>定义 $dp[state]$ 表示在状态 $state$ 下，可以达到的最远的物品位置。其中状态即为硬币是否用过。</p><p>状态设计完之后，本题就比较好做了。显然</p><script type="math/tex; mode=display">dp[state|2^j]=\max\{dp[state]+maxn\}</script><p>其中 $maxn$ 为在 $dp[state]$ 之后的位置，用第 $j$ 个硬币最多能购买的物品数，这个显然可以前缀和+二分解决。</p><p>最后对于所有满足 $dp[state]=n$ 的状态中，取该状态下剩余硬币总面额最多的方案即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 100010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 20</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> tot (1&lt;&lt;K)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> K,n,c[N],dp[MAXN],sum[MAXN],cost[MAXN],ans=<span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> i=<span class="number">0</span>,ans=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>((<span class="number">1</span>&lt;&lt;i)&lt;tot) &#123;</span><br><span class="line"><span class="keyword">if</span>(!((<span class="number">1</span>&lt;&lt;i)&amp;x)) ans+=c[i];</span><br><span class="line">i++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;K&gt;&gt;n;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;K;i++) <span class="built_in">cin</span>&gt;&gt;c[i];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;cost[i];</span><br><span class="line">sum[i]=sum[i<span class="number">-1</span>]+cost[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tot;i++) &#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;K;j++) &#123;</span><br><span class="line"><span class="keyword">if</span>(i&amp;(<span class="number">1</span>&lt;&lt;j)) <span class="keyword">continue</span>;</span><br><span class="line"><span class="keyword">int</span> tmp=upper_bound(sum+<span class="number">1</span>,sum+n+<span class="number">1</span>,sum[dp[i]]+c[j])-sum<span class="number">-1</span>;</span><br><span class="line">dp[i|(<span class="number">1</span>&lt;&lt;j)]=max(dp[i|(<span class="number">1</span>&lt;&lt;j)],tmp);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tot;i++) <span class="keyword">if</span>(dp[i]==n) ans=max(ans,get(i));</span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 状压DP </tag>
+            
+            <tag> USACO </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[SQOI2017] 小Q的棋盘</title>
       <link href="/is-zxy.github.io/2020/06/06/%5BSQOI2017%5D-%E5%B0%8FQ%E7%9A%84%E6%A3%8B%E7%9B%98/"/>
       <url>/is-zxy.github.io/2020/06/06/%5BSQOI2017%5D-%E5%B0%8FQ%E7%9A%84%E6%A3%8B%E7%9B%98/</url>
@@ -958,9 +985,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 分块 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 洛谷 </tag>
             
@@ -1917,9 +1944,9 @@
       
         <tags>
             
-            <tag> JLOI </tag>
-            
             <tag> LCA </tag>
+            
+            <tag> JLOI </tag>
             
             <tag> 树上差分 </tag>
             
@@ -1948,9 +1975,9 @@
             
             <tag> LCA </tag>
             
-            <tag> 树上差分 </tag>
-            
             <tag> USACO </tag>
+            
+            <tag> 树上差分 </tag>
             
         </tags>
       
@@ -2212,9 +2239,9 @@
       
         <tags>
             
-            <tag> 斜率优化 </tag>
-            
             <tag> 动态规划 </tag>
+            
+            <tag> 斜率优化 </tag>
             
         </tags>
       
@@ -2239,9 +2266,9 @@
       
         <tags>
             
-            <tag> 斜率优化 </tag>
-            
             <tag> CEOI </tag>
+            
+            <tag> 斜率优化 </tag>
             
         </tags>
       
@@ -2401,9 +2428,9 @@
       
         <tags>
             
-            <tag> LCA </tag>
-            
             <tag> NOIP </tag>
+            
+            <tag> LCA </tag>
             
             <tag> 最小生成树 </tag>
             
@@ -2770,9 +2797,9 @@
       
         <tags>
             
-            <tag> APIO </tag>
-            
             <tag> 斜率优化 </tag>
+            
+            <tag> APIO </tag>
             
         </tags>
       
@@ -3119,13 +3146,13 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
+            <tag> 树状数组 </tag>
             
             <tag> RMQ </tag>
             
             <tag> ST表 </tag>
             
-            <tag> 树状数组 </tag>
+            <tag> 线段树 </tag>
             
             <tag> USACO </tag>
             
@@ -3347,9 +3374,9 @@
       
         <tags>
             
-            <tag> 状压DP </tag>
-            
             <tag> NOI </tag>
+            
+            <tag> 状压DP </tag>
             
         </tags>
       
