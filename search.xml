@@ -8,7 +8,7 @@
       <link href="/is-zxy.github.io/2020/06/07/%5BCF327E%5D-Axis-Walking/"/>
       <url>/is-zxy.github.io/2020/06/07/%5BCF327E%5D-Axis-Walking/</url>
       
-        <content type="html"><![CDATA[<p>给你一个长度为 $n(1&lt;=n&lt;=24)$ 的正整数序列 $S$，再有 $k(0\le k\le 2)$ 个正整数。</p><p>求有多少种 $S$ 的排列方式使得其前缀和不会成为那 $k$ 个数里的任意一个。 答案对 $1e9+7$ 取模。</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le a_i\le 10^9$</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/CF327E" target="_blank" rel="noopener">CF327E Axis Walking</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>算是比较好想的状压DP了。</p><p>定义 $dp[state]$ 表示达到状态 $state$ 的方案数。</p><p>那么显然</p><script type="math/tex; mode=display">dp[state|2^j]=\sum_{j}\big(dp[state]+dp[2^j]\big)</script><p>于是可以得到这样的DP过程。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dp[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tot;i++) &#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++) &#123;</span><br><span class="line"><span class="keyword">if</span>(i&amp;(<span class="number">1</span>&lt;&lt;j)) <span class="keyword">continue</span>;</span><br><span class="line">sum[i|(<span class="number">1</span>&lt;&lt;j)]=sum[i]+sum[<span class="number">1</span>&lt;&lt;j];</span><br><span class="line"><span class="keyword">if</span>(sum[i|(<span class="number">1</span>&lt;&lt;j)]==u[<span class="number">1</span>]||sum[i|(<span class="number">1</span>&lt;&lt;j)]==u[<span class="number">2</span>]) <span class="keyword">continue</span>;</span><br><span class="line">(dp[i|(<span class="number">1</span>&lt;&lt;j)]+=dp[i])%=mod;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>交上去，TLE。</p><p>这个的时间复杂度为 $O(n2^n)$ 。</p><p>那么有没有办法优化点呢？</p><p>是有的。</p><p>这时不再采用这种“用目前推后面”的方式，而采用“用前面推目前”，这样就是枚举目前状态的子集，可以用<code>lowbit</code>达到 $\log n$实现，这样的时间复杂度 $O(2^n\log n)$。</p><p>然后再加上各种玄学卡常，开O2就过了。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 24</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> tot (1&lt;&lt;n)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lowbit(x) (x&amp;(-x))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 1000000007</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,a[N+<span class="number">10</span>],u[<span class="number">3</span>],sum[(<span class="number">1</span>&lt;&lt;N)+<span class="number">10</span>],dp[(<span class="number">1</span>&lt;&lt;N)+<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">sum[<span class="number">1</span>&lt;&lt;i]=a[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;m;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) <span class="built_in">cin</span>&gt;&gt;u[i];</span><br><span class="line"></span><br><span class="line">dp[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tot;i++) &#123;</span><br><span class="line">sum[i]=sum[i&amp;~lowbit(i)]+sum[lowbit(i)];</span><br><span class="line"><span class="keyword">if</span>(sum[i]==u[<span class="number">1</span>]||sum[i]==u[<span class="number">2</span>]) <span class="keyword">continue</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=i;j;j-=lowbit(j)) dp[i]=(dp[i]+dp[i&amp;~lowbit(j)])%mod;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;dp[tot<span class="number">-1</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>给你一个长度为 $n(1&lt;=n&lt;=24)$ 的正整数序列 $S$，再有 $k(0\le k\le 2)$ 个正整数。</p><p>求有多少种 $S$ 的排列方式使得其前缀和不会成为那 $k$ 个数里的任意一个。 答案对 $1e9+7$ 取模。</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le a_i\le 10^9$</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/CF327E" target="_blank" rel="noopener">CF327E Axis Walking</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>算是比较好想的状压DP了。</p><p>定义 $dp[state]$ 表示达到状态 $state$ 的方案数。</p><p>那么显然</p><script type="math/tex; mode=display">dp[state|2^j]=\sum_{j}\big(dp[state]+dp[2^j]\big)</script><p>于是可以得到这样的DP过程。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dp[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tot;i++) &#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++) &#123;</span><br><span class="line"><span class="keyword">if</span>(i&amp;(<span class="number">1</span>&lt;&lt;j)) <span class="keyword">continue</span>;</span><br><span class="line">sum[i|(<span class="number">1</span>&lt;&lt;j)]=sum[i]+sum[<span class="number">1</span>&lt;&lt;j];</span><br><span class="line"><span class="keyword">if</span>(sum[i|(<span class="number">1</span>&lt;&lt;j)]==u[<span class="number">1</span>]||sum[i|(<span class="number">1</span>&lt;&lt;j)]==u[<span class="number">2</span>]) <span class="keyword">continue</span>;</span><br><span class="line">(dp[i|(<span class="number">1</span>&lt;&lt;j)]+=dp[i])%=mod;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>交上去，TLE。</p><p>这个的时间复杂度为 $O(n2^n)$ 。</p><p>那么有没有办法优化点呢？</p><p>是有的。</p><p>这时不再采用这种“用目前推后面”的方式，而采用“用前面推目前”，这样就是枚举目前状态的子集，可以用<code>lowbit</code>达到 $\log n$实现，这样的时间复杂度 $O(2^n\log n)$。</p><p>然后再加上各种玄学卡常，开O2就过了。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 24</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> tot (1&lt;&lt;n)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lowbit(x) (x&amp;(-x))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 1000000007</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,a[N+<span class="number">10</span>],u[<span class="number">3</span>],sum[(<span class="number">1</span>&lt;&lt;N)+<span class="number">10</span>],dp[(<span class="number">1</span>&lt;&lt;N)+<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) &#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">sum[<span class="number">1</span>&lt;&lt;i]=a[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;m;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) <span class="built_in">cin</span>&gt;&gt;u[i];</span><br><span class="line"></span><br><span class="line">dp[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tot;i++) &#123;</span><br><span class="line">sum[i]=sum[i&amp;~lowbit(i)]+sum[lowbit(i)];</span><br><span class="line"><span class="keyword">if</span>(sum[i]==u[<span class="number">1</span>]||sum[i]==u[<span class="number">2</span>]) <span class="keyword">continue</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=i;j;j-=lowbit(j)) dp[i]=(dp[i]+dp[i&amp;~lowbit(j)])%mod;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;dp[tot<span class="number">-1</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="重题"><a href="#重题" class="headerlink" title="重题"></a>重题</h3><p><a href="https://www.luogu.com.cn/problem/P2396" target="_blank" rel="noopener">[洛谷P2396] yyy loves Maths VII</a></p>]]></content>
       
       
       <categories>
@@ -130,9 +130,9 @@
       
         <tags>
             
-            <tag> Codeforces </tag>
-            
             <tag> 树形DP </tag>
+            
+            <tag> Codeforces </tag>
             
         </tags>
       
@@ -157,9 +157,9 @@
       
         <tags>
             
-            <tag> Codeforces </tag>
-            
             <tag> 树形DP </tag>
+            
+            <tag> Codeforces </tag>
             
         </tags>
       
@@ -3177,11 +3177,11 @@
             
             <tag> 线段树 </tag>
             
-            <tag> 树状数组 </tag>
-            
             <tag> RMQ </tag>
             
             <tag> ST表 </tag>
+            
+            <tag> 树状数组 </tag>
             
             <tag> USACO </tag>
             
@@ -3347,9 +3347,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 树形DP </tag>
+            
+            <tag> 洛谷 </tag>
             
             <tag> 背包 </tag>
             
@@ -3511,9 +3511,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 树形DP </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -3565,9 +3565,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 树形DP </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -3592,9 +3592,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 树形DP </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -3619,9 +3619,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 树形DP </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
