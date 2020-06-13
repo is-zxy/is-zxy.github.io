@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>矩阵加速递推学习笔记</title>
+      <link href="/is-zxy.github.io/2020/06/13/%E7%9F%A9%E9%98%B5%E5%8A%A0%E9%80%9F%E9%80%92%E6%8E%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <url>/is-zxy.github.io/2020/06/13/%E7%9F%A9%E9%98%B5%E5%8A%A0%E9%80%9F%E9%80%92%E6%8E%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<p>很早就学过，当时也写过学习笔记，不过当时写的属实含糊，甚至矩阵的边框写成了行列式的边框..</p><p>因此今日重新写一篇。</p><p>前置知识：矩阵乘法</p><a id="more"></a><h1 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h1><p>重新温故一下矩阵乘法。</p><p>举个例子</p><script type="math/tex; mode=display">A=\begin{bmatrix}a_{11} & a_{12} & a_{13} \\a_{21} & a_{22} & a_{23} \\\end{bmatrix}，B=\begin{bmatrix}b_{11} & b_{12} \\b_{21} & b_{22} \\b_{31} & b_{32}\end{bmatrix}</script><p>于是</p><script type="math/tex; mode=display">C=AB=\begin{bmatrix}a_{11}b_{11}+a_{12}b_{21}+a_{13}b_{31} & a_{11}b_{12}+a_{12}b_{22}+a_{13}b_{32} \\a_{21}b_{11}+a_{22}b_{21}+a_{23}b_{31} & a_{21}b_{12}+a_{22}b_{22}+a_{23}b_{32}\end{bmatrix}</script><p>注意，只有满足 $A$ 为 $n\times m$ 的矩阵，$B$ 为 $m\times p$ 的矩阵，矩阵 $A$ 与矩阵 $B$ 才能相乘（$AB$）。所得的矩阵 $C$ 为 $n\times p$ 的矩阵。</p><p>$C$ 中第 $i$ 列第 $j$ 行元素为 </p><script type="math/tex; mode=display">C_{ij}=\sum_{k=1}^ma_{ik}b_{kj}</script><p>矩阵乘法满足结合律，即 $(AB)C=A(BC)$.</p><p>矩阵乘法满足分配率，即 $(A+B)C=AC+BC$，$C(A+B)=CA+CB$.</p><p>矩阵乘法对数乘满足结合律，即 $\lambda(AB)=(\lambda A)B=A(\lambda B)$.</p><p>对于转置矩阵也有性质：$(AB)^T=B^TA^T$.</p><p>但是要注意的是矩阵乘法<strong>不满足交换律</strong>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习笔记 </tag>
+            
+            <tag> 矩阵加速递推 </tag>
+            
+            <tag> 矩阵 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[CF915E] Physical Education Lessons</title>
       <link href="/is-zxy.github.io/2020/06/13/%5BCF915E%5D-Physical-Education-Lessons/"/>
       <url>/is-zxy.github.io/2020/06/13/%5BCF915E%5D-Physical-Education-Lessons/</url>
@@ -1983,9 +2012,9 @@
             
             <tag> 数学 </tag>
             
-            <tag> TJOI </tag>
-            
             <tag> 中国剩余定理 </tag>
+            
+            <tag> TJOI </tag>
             
         </tags>
       
@@ -3326,11 +3355,11 @@
             
             <tag> 线段树 </tag>
             
-            <tag> 树状数组 </tag>
-            
             <tag> RMQ </tag>
             
             <tag> ST表 </tag>
+            
+            <tag> 树状数组 </tag>
             
             <tag> USACO </tag>
             
