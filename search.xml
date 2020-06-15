@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>[洛谷P1306] 斐波那契公约数</title>
+      <link href="/is-zxy.github.io/2020/06/15/%5B%E6%B4%9B%E8%B0%B7P1306%5D-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E5%85%AC%E7%BA%A6%E6%95%B0/"/>
+      <url>/is-zxy.github.io/2020/06/15/%5B%E6%B4%9B%E8%B0%B7P1306%5D-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E5%85%AC%E7%BA%A6%E6%95%B0/</url>
+      
+        <content type="html"><![CDATA[<p>对于 Fibonacci 数列：</p><script type="math/tex; mode=display">f_i = \begin{cases} [i = 1] & i \leq 1 \\ f_{i - 1} + f_{i - 2} & i \gt 1 \end{cases}</script><p>请求出 $f_n$ 与 $f_m$ 的最大公约数，即 $\gcd(f_n, f_m)$。</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le n,m\le 10^9$</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P1306" target="_blank" rel="noopener">P1306 斐波那契公约数</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>老早以前的时候只知道 </p><script type="math/tex; mode=display">\gcd(f_n,f_m)=f_{\gcd(n,m)}</script><p>然后就直接套了矩阵加速递推。</p><p>今天补一发证明。</p><p>不妨设 $n&gt;m$。</p><p>令 $f_m=a,f_{m+1}=b$。</p><p>于是</p><script type="math/tex; mode=display">\begin{aligned}f_{m+2}&=a+b=af_1+bf_2\\f_{m+3}&=a+2b=af_2+bf_3\\f_{m+4}&=2a+3b=af_3+bf_4\\&\cdots\cdots\cdots\cdots\cdots\cdots\\f_{n}&=af_{n-m-1}+bf_{n-m}\end{aligned}</script><p>于是</p><script type="math/tex; mode=display">\gcd(f_n,f_m)=\gcd(af_{n-m-1}+bf_{n-m},f_m)</script><p>代入 $f_m=a,f_{m+1}=b$。</p><script type="math/tex; mode=display">\begin{aligned}\gcd(f_n,f_m)&= \gcd(f_{m}f_{n-m-1}+f_{m+1}f_{n-m},f_m) \\&= \gcd(f_{m+1}f_{n-m},f_m)\end{aligned}</script><p>易得</p><script type="math/tex; mode=display">\gcd(f_n,f_{n+1})=1</script><p>于是</p><script type="math/tex; mode=display">\gcd(f_{m+1}f_{n-m},f_m)=\gcd(f_{n-m},f_m)</script><p>即</p><script type="math/tex; mode=display">\gcd(f_n,f_m)=\gcd(f_{n-m},f_m)</script><p>则可得</p><script type="math/tex; mode=display">\gcd(f_n,f_m)=\gcd(f_{n\bmod m},f_m)</script><p>其实就是个求 $\gcd(n,m)$ 的过程。</p><p>因此</p><script type="math/tex; mode=display">\gcd(f_n,f_m)=f_{\gcd(n,m)}</script><p>有了这个结论后直接套矩阵加速递推即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 100000000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Matrix</span>&#123;</span></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">  <span class="keyword">int</span> row,col;</span><br><span class="line">  ll s[N][N];</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">  Matrix() &#123;</span><br><span class="line">  row=col=<span class="number">0</span>;</span><br><span class="line">  <span class="built_in">memset</span>(s,<span class="number">0</span>,<span class="keyword">sizeof</span>(s));</span><br><span class="line">  &#125;</span><br><span class="line">  Matrix(<span class="keyword">int</span> _row,<span class="keyword">int</span> _col):row(_row),col(_col)&#123;<span class="built_in">memset</span>(s,<span class="number">0</span>,<span class="keyword">sizeof</span>(s));&#125;</span><br><span class="line">  Matrix(<span class="keyword">int</span> n):row(n),col(n)&#123;<span class="built_in">memset</span>(s,<span class="number">0</span>,<span class="keyword">sizeof</span>(s));&#125;</span><br><span class="line">  Matrix <span class="keyword">operator</span> * (Matrix x) &#123;</span><br><span class="line">  <span class="function">Matrix <span class="title">y</span><span class="params">(row,x.col)</span></span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=row;i++) &#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=x.col;j++) &#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=col;k++) y.s[i][j]=(y.s[i][j]+s[i][k]*x.s[k][j])%mod;</span><br><span class="line">  &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> y;</span><br><span class="line">  &#125;</span><br><span class="line">  Matrix <span class="keyword">operator</span> *= (Matrix x) &#123;</span><br><span class="line">  <span class="keyword">return</span> *<span class="keyword">this</span>=*<span class="keyword">this</span>*x;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">idenitity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=row;i++) s[i][i]=<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">printp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">cout</span>&lt;&lt;s[<span class="number">1</span>][<span class="number">1</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> x[][N])</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=row;i++) &#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=col;j++) s[i][j]=x[i][j];</span><br><span class="line">  &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;Init(<span class="number">2</span>),seq(<span class="number">2</span>,<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> I[N][N],S[N][N];</span><br><span class="line"><span class="built_in">memset</span>(I,<span class="number">0</span>,<span class="keyword">sizeof</span>(I));</span><br><span class="line"><span class="built_in">memset</span>(S,<span class="number">0</span>,<span class="keyword">sizeof</span>(S));</span><br><span class="line">I[<span class="number">1</span>][<span class="number">1</span>]=I[<span class="number">1</span>][<span class="number">2</span>]=I[<span class="number">2</span>][<span class="number">1</span>]=S[<span class="number">1</span>][<span class="number">1</span>]=S[<span class="number">2</span>][<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">Init.init(I);</span><br><span class="line">seq.init(S);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Matrix <span class="title">qpow</span><span class="params">(Matrix x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">Matrix a;</span><br><span class="line"><span class="function">Matrix <span class="title">b</span><span class="params">(<span class="number">2</span>)</span></span>;</span><br><span class="line">a=x;</span><br><span class="line">b.idenitity();</span><br><span class="line"><span class="keyword">while</span>(y) &#123;</span><br><span class="line"><span class="keyword">if</span>(y&amp;<span class="number">1</span>) b*=a;</span><br><span class="line">a*=a;</span><br><span class="line">y&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line"><span class="keyword">return</span> !y?x:gcd(y,x%y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> t=gcd(n,m);</span><br><span class="line"><span class="keyword">if</span>(t&lt;=<span class="number">2</span>) <span class="built_in">cout</span>&lt;&lt;<span class="number">1</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">init();</span><br><span class="line">Init=qpow(Init,t<span class="number">-2</span>);</span><br><span class="line">seq=Init*seq;</span><br><span class="line">seq.printp();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 洛谷 </tag>
+            
+            <tag> 数学 </tag>
+            
+            <tag> 矩阵加速递推 </tag>
+            
+            <tag> 结论 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>矩阵加速递推学习笔记</title>
       <link href="/is-zxy.github.io/2020/06/13/%E7%9F%A9%E9%98%B5%E5%8A%A0%E9%80%9F%E9%80%92%E6%8E%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
       <url>/is-zxy.github.io/2020/06/13/%E7%9F%A9%E9%98%B5%E5%8A%A0%E9%80%9F%E9%80%92%E6%8E%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
@@ -78,11 +109,11 @@
       
         <tags>
             
-            <tag> 学习笔记 </tag>
-            
             <tag> 线段树 </tag>
             
             <tag> 动态开点 </tag>
+            
+            <tag> 学习笔记 </tag>
             
         </tags>
       
@@ -107,9 +138,9 @@
       
         <tags>
             
-            <tag> 学习笔记 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 学习笔记 </tag>
             
             <tag> 扫描线 </tag>
             
@@ -1466,9 +1497,9 @@
       
         <tags>
             
-            <tag> 学习笔记 </tag>
-            
             <tag> 分块 </tag>
+            
+            <tag> 学习笔记 </tag>
             
             <tag> 数据结构 </tag>
             
@@ -1892,11 +1923,11 @@
       
         <tags>
             
+            <tag> 洛谷 </tag>
+            
             <tag> 数学 </tag>
             
             <tag> BSGS </tag>
-            
-            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -2390,9 +2421,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 数学 </tag>
             
         </tags>
       
@@ -2417,11 +2448,11 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 洛谷 </tag>
             
             <tag> 线性筛 </tag>
+            
+            <tag> 数学 </tag>
             
         </tags>
       
@@ -2863,11 +2894,11 @@
       
         <tags>
             
-            <tag> 学习笔记 </tag>
-            
             <tag> 卢卡斯定理 </tag>
             
             <tag> 组合数学 </tag>
+            
+            <tag> 学习笔记 </tag>
             
             <tag> 乘法逆元 </tag>
             
@@ -3824,11 +3855,11 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 洛谷 </tag>
             
             <tag> 线性筛 </tag>
+            
+            <tag> 数学 </tag>
             
         </tags>
       
@@ -3936,9 +3967,9 @@
       
         <tags>
             
-            <tag> 学习笔记 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 学习笔记 </tag>
             
             <tag> 数据结构 </tag>
             
@@ -4013,11 +4044,11 @@
       
         <tags>
             
+            <tag> 线性筛 </tag>
+            
             <tag> 学习笔记 </tag>
             
             <tag> 数学 </tag>
-            
-            <tag> 线性筛 </tag>
             
         </tags>
       
@@ -4042,11 +4073,11 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 洛谷 </tag>
             
             <tag> 线性筛 </tag>
+            
+            <tag> 数学 </tag>
             
         </tags>
       
