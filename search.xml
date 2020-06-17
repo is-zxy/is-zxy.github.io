@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>[CF292E] Copying Data</title>
+      <link href="/is-zxy.github.io/2020/06/17/%5BCF292E%5D-Copying-Data/"/>
+      <url>/is-zxy.github.io/2020/06/17/%5BCF292E%5D-Copying-Data/</url>
+      
+        <content type="html"><![CDATA[<p>对于数组 $a$ 和数组 $b$，长度均为 $n$，有 $m$ 个操作，操作有两种：</p><ol><li>用 $a$ 中从 $x$ 开始的连续 $k$ 个元素覆盖掉 $b$ 中从 $y$ 开始的连续 $k$ 个元素。</li><li>求 $b[x]$ 的值。</li></ol><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le n,m\le 10^5$</p><p>$|a_i|,|b_i|\le 10^9$</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/CF292E" target="_blank" rel="noopener">CF292E Copying Data</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>显然可以线段树解决。</p><p>只需要维护一个标记 $lazy$，表示该区间被在 $a$ 中下标为 $lazy$ 的节点覆盖了。</p><p>然后修改查询啥的都差不多。</p><p>修改需要仔细推一下递归右节点时的状态。</p><p>修改函数：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> L,<span class="keyword">int</span> R,<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line"><span class="keyword">if</span>(l&gt;R||r&lt;L) <span class="keyword">return</span> ;</span><br><span class="line">  <span class="keyword">if</span>(l&gt;=L&amp;&amp;r&lt;=R) &#123;</span><br><span class="line">  lz(p)=x;</span><br><span class="line">  <span class="keyword">return</span> ;</span><br><span class="line">  &#125;</span><br><span class="line">  spread(p,l,r);</span><br><span class="line">  change(ls,l,mid,L,R,x);</span><br><span class="line">  change(rs,mid+<span class="number">1</span>,r,L,R,x+max(mid-max(L,l)+<span class="number">1</span>,<span class="number">0</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,a[N],b[N];</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SegmenTree</span>&#123;</span></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">  <span class="keyword">int</span> lz[N&lt;&lt;<span class="number">2</span>];</span><br><span class="line">  <span class="meta">#<span class="meta-keyword">define</span> lz(x) lz[x]</span></span><br><span class="line">  <span class="meta">#<span class="meta-keyword">define</span> ls (p&lt;&lt;1)</span></span><br><span class="line">  <span class="meta">#<span class="meta-keyword">define</span> rs (p&lt;&lt;1|1)</span></span><br><span class="line">  <span class="meta">#<span class="meta-keyword">define</span> mid (l+r&gt;&gt;1)</span></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">spread</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(!lz(p)) <span class="keyword">return</span> ;</span><br><span class="line">  lz(ls)=lz(p);</span><br><span class="line">  lz(rs)=lz(p)+mid-l+<span class="number">1</span>;</span><br><span class="line">  lz(p)=<span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">  lz(p)=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(l==r) <span class="keyword">return</span> ;</span><br><span class="line">  build(ls,l,mid);</span><br><span class="line">  build(rs,mid+<span class="number">1</span>,r);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> L,<span class="keyword">int</span> R,<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(l&gt;R||r&lt;L) <span class="keyword">return</span> ;</span><br><span class="line">  <span class="keyword">if</span>(l&gt;=L&amp;&amp;r&lt;=R) &#123;</span><br><span class="line">  lz(p)=x;</span><br><span class="line">  <span class="keyword">return</span> ;</span><br><span class="line">  &#125;</span><br><span class="line">  spread(p,l,r);</span><br><span class="line">  change(ls,l,mid,L,R,x);</span><br><span class="line">  change(rs,mid+<span class="number">1</span>,r,L,R,x+max(mid-max(L,l)+<span class="number">1</span>,<span class="number">0</span>));</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">ask</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(l==r) <span class="keyword">return</span> lz(p)?a[lz(p)]:b[l];</span><br><span class="line">  spread(p,l,r);</span><br><span class="line">  <span class="keyword">if</span>(x&lt;=mid) <span class="keyword">return</span> ask(ls,l,mid,x);</span><br><span class="line">  <span class="keyword">return</span> ask(rs,mid+<span class="number">1</span>,r,x);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;tree;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;b[i];</span><br><span class="line"></span><br><span class="line">tree.build(<span class="number">1</span>,<span class="number">1</span>,n);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line"><span class="keyword">int</span> ins,x,y,k;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;ins;</span><br><span class="line"><span class="keyword">if</span>(ins&amp;<span class="number">1</span>) &#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;x&gt;&gt;y&gt;&gt;k;</span><br><span class="line">tree.change(<span class="number">1</span>,<span class="number">1</span>,n,y,y+k<span class="number">-1</span>,x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;x;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;tree.ask(<span class="number">1</span>,<span class="number">1</span>,n,x)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Codeforces </tag>
+            
+            <tag> 线段树 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[洛谷P1306] 斐波那契公约数</title>
       <link href="/is-zxy.github.io/2020/06/15/%5B%E6%B4%9B%E8%B0%B7P1306%5D-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E5%85%AC%E7%BA%A6%E6%95%B0/"/>
       <url>/is-zxy.github.io/2020/06/15/%5B%E6%B4%9B%E8%B0%B7P1306%5D-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E5%85%AC%E7%BA%A6%E6%95%B0/</url>
@@ -20,9 +47,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 数学 </tag>
+            
+            <tag> 洛谷 </tag>
             
             <tag> 矩阵加速递推 </tag>
             
@@ -109,11 +136,11 @@
       
         <tags>
             
+            <tag> 学习笔记 </tag>
+            
             <tag> 线段树 </tag>
             
             <tag> 动态开点 </tag>
-            
-            <tag> 学习笔记 </tag>
             
         </tags>
       
@@ -138,9 +165,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 学习笔记 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 扫描线 </tag>
             
@@ -1215,9 +1242,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 洛谷 </tag>
             
             <tag> 分块 </tag>
             
@@ -1470,9 +1497,9 @@
             
             <tag> Codeforces </tag>
             
-            <tag> 线性筛 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 线性筛 </tag>
             
         </tags>
       
@@ -1497,9 +1524,9 @@
       
         <tags>
             
-            <tag> 分块 </tag>
-            
             <tag> 学习笔记 </tag>
+            
+            <tag> 分块 </tag>
             
             <tag> 数据结构 </tag>
             
@@ -1539,9 +1566,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -1593,9 +1620,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -1620,9 +1647,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 洛谷 </tag>
             
             <tag> COCI </tag>
             
@@ -1676,9 +1703,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -1730,9 +1757,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -1757,9 +1784,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -1923,11 +1950,11 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 数学 </tag>
             
             <tag> BSGS </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -2421,9 +2448,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 数学 </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -2448,11 +2475,11 @@
       
         <tags>
             
+            <tag> 数学 </tag>
+            
             <tag> 洛谷 </tag>
             
             <tag> 线性筛 </tag>
-            
-            <tag> 数学 </tag>
             
         </tags>
       
@@ -2894,11 +2921,11 @@
       
         <tags>
             
+            <tag> 学习笔记 </tag>
+            
             <tag> 卢卡斯定理 </tag>
             
             <tag> 组合数学 </tag>
-            
-            <tag> 学习笔记 </tag>
             
             <tag> 乘法逆元 </tag>
             
@@ -3855,11 +3882,11 @@
       
         <tags>
             
+            <tag> 数学 </tag>
+            
             <tag> 洛谷 </tag>
             
             <tag> 线性筛 </tag>
-            
-            <tag> 数学 </tag>
             
         </tags>
       
@@ -3884,9 +3911,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -3967,9 +3994,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 学习笔记 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 数据结构 </tag>
             
@@ -4044,11 +4071,11 @@
       
         <tags>
             
-            <tag> 线性筛 </tag>
-            
             <tag> 学习笔记 </tag>
             
             <tag> 数学 </tag>
+            
+            <tag> 线性筛 </tag>
             
         </tags>
       
@@ -4073,11 +4100,11 @@
       
         <tags>
             
+            <tag> 数学 </tag>
+            
             <tag> 洛谷 </tag>
             
             <tag> 线性筛 </tag>
-            
-            <tag> 数学 </tag>
             
         </tags>
       
