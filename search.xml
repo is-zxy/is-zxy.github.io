@@ -4,6 +4,51 @@
   
     
     <entry>
+      <title>[POI2014] KUR-Couriers</title>
+      <link href="/is-zxy.github.io/2020/06/25/%5BPOI2014%5D-KUR-Couriers/"/>
+      <url>/is-zxy.github.io/2020/06/25/%5BPOI2014%5D-KUR-Couriers/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>随感。</title>
+      <link href="/is-zxy.github.io/2020/06/25/%E9%9A%8F%E6%84%9F%E3%80%82/"/>
+      <url>/is-zxy.github.io/2020/06/25/%E9%9A%8F%E6%84%9F%E3%80%82/</url>
+      
+        <content type="html"><![CDATA[<p>可能有些消极偏激吧。</p><a id="more"></a><h3 id="update-on-2020-6-25"><a href="#update-on-2020-6-25" class="headerlink" title="update on 2020/6/25"></a>update on 2020/6/25</h3><p><code>hexo n &quot;随感&quot;</code></p><p>我新建了这个文档。</p><p>撑不住了，只好写出来。</p><p>现在是真的很厌恶有些人。</p><p>明明之前还与某个朋友说过”没有什么讨厌的人的，大家都很好”。</p><p>但仔细一想，他们似乎又没有做错什么，只是各种程度上的让我心里感觉不舒服罢了。</p><p>您说您一物理要进队的人，整天“羞辱”我干嘛呢？</p><p>我也没气的哦，毕竟我”很好舔，舔舔就不生气了“。</p><p>对啊，那有什么必要生气呢？</p><p>噢。这不是这几天的事，只是不久前的事被我拎过来罢了。</p><p>本来想的很多，敲着敲着全忘了呢。呵呵。</p><p>昨晚tqz的“小爆发”让我着实有点害怕。</p><p>是啊。我觉得他是真的累，数理信全学的。</p><p>文化课又要保持平常年级前几的好成绩。</p><p>这样的压力我觉得会让人奔溃。他心态是真的棒啊。</p><p>“不知道为谁而学“。好吧，我也是这样的呢。</p><p>曾经有过梦想，但逐渐认清现实，觉得遥不可及。</p><p>曾经自以为还不错，但如今越来越差。</p><p>整天浑浑噩噩，试图从番中寻找自我。</p><p>自我？哈哈。很好笑。</p><p>放学经常与gzy一起走。</p><p>路上总是避免触及到一些观点相悖的话题。</p><p>他自主意识很强。而我是那种“随大流”的人。</p><p>阿拉。不谈了。</p><p>我是什么时候变成这样的呢？</p><p>也许是一个朋友说出“你事不关己的样子真恶心”以后。</p><p>也许是发现自己越来越不合群之后。</p><p>也许是奶奶去世以后。</p><p>但，这样活着真累啊。</p><p>我是不是该变得像从前那样“事不关己”会更加轻松呢？</p><p>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 瞎写 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[SHOI2007] 园丁的烦恼</title>
+      <link href="/is-zxy.github.io/2020/06/25/%5BSHOI2007%5D-%E5%9B%AD%E4%B8%81%E7%9A%84%E7%83%A6%E6%81%BC/"/>
+      <url>/is-zxy.github.io/2020/06/25/%5BSHOI2007%5D-%E5%9B%AD%E4%B8%81%E7%9A%84%E7%83%A6%E6%81%BC/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>可持久化线段树学习笔记</title>
       <link href="/is-zxy.github.io/2020/06/20/%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
       <url>/is-zxy.github.io/2020/06/20/%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
@@ -250,9 +295,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 学习笔记 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 动态开点 </tag>
             
@@ -279,9 +324,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 学习笔记 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 扫描线 </tag>
             
@@ -642,9 +687,9 @@
             
             <tag> 树形DP </tag>
             
-            <tag> POJ </tag>
-            
             <tag> 二次扫描与换根法 </tag>
+            
+            <tag> POJ </tag>
             
         </tags>
       
@@ -1248,9 +1293,9 @@
       
         <tags>
             
-            <tag> 动态规划 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 动态规划 </tag>
             
             <tag> 记忆化搜索 </tag>
             
@@ -1385,9 +1430,9 @@
       
         <tags>
             
-            <tag> AcWing </tag>
-            
             <tag> 动态规划 </tag>
+            
+            <tag> AcWing </tag>
             
         </tags>
       
@@ -2240,9 +2285,9 @@
       
         <tags>
             
-            <tag> 动态规划 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 动态规划 </tag>
             
         </tags>
       
@@ -2401,7 +2446,7 @@
       
       <categories>
           
-          <category> 杂 </category>
+          <category> 瞎写 </category>
           
       </categories>
       
@@ -2535,9 +2580,9 @@
       
         <tags>
             
-            <tag> 动态规划 </tag>
-            
             <tag> Codeforces </tag>
+            
+            <tag> 动态规划 </tag>
             
         </tags>
       
@@ -2645,9 +2690,9 @@
       
         <tags>
             
-            <tag> CEOI </tag>
-            
             <tag> 斜率优化 </tag>
+            
+            <tag> CEOI </tag>
             
         </tags>
       
@@ -3176,9 +3221,9 @@
       
         <tags>
             
-            <tag> 斜率优化 </tag>
-            
             <tag> APIO </tag>
+            
+            <tag> 斜率优化 </tag>
             
         </tags>
       
@@ -4108,9 +4153,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 学习笔记 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 数据结构 </tag>
             
