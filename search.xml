@@ -8,28 +8,23 @@
       <link href="/is-zxy.github.io/2020/06/25/%5BPOI2014%5D-KUR-Couriers/"/>
       <url>/is-zxy.github.io/2020/06/25/%5BPOI2014%5D-KUR-Couriers/</url>
       
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>随感。</title>
-      <link href="/is-zxy.github.io/2020/06/25/%E9%9A%8F%E6%84%9F%E3%80%82/"/>
-      <url>/is-zxy.github.io/2020/06/25/%E9%9A%8F%E6%84%9F%E3%80%82/</url>
-      
-        <content type="html"><![CDATA[<p>可能有些消极偏激吧。</p><a id="more"></a><h3 id="update-on-2020-6-25"><a href="#update-on-2020-6-25" class="headerlink" title="update on 2020/6/25"></a>update on 2020/6/25</h3><p><code>hexo n &quot;随感&quot;</code></p><p>我新建了这个文档。</p><p>撑不住了，只好写出来。</p><p>现在是真的很厌恶有些人。</p><p>明明之前还与某个朋友说过”没有什么讨厌的人的，大家都很好”。</p><p>但仔细一想，他们似乎又没有做错什么，只是各种程度上的让我心里感觉不舒服罢了。</p><p>您说您一物理要进队的人，整天“羞辱”我干嘛呢？</p><p>我也没气的哦，毕竟我”很好舔，舔舔就不生气了“。</p><p>对啊，那有什么必要生气呢？</p><p>噢。这不是这几天的事，只是不久前的事被我拎过来罢了。</p><p>本来想的很多，敲着敲着全忘了呢。呵呵。</p><p>昨晚tqz的“小爆发”让我着实有点害怕。</p><p>是啊。我觉得他是真的累，数理信全学的。</p><p>文化课又要保持平常年级前几的好成绩。</p><p>这样的压力我觉得会让人奔溃。他心态是真的棒啊。</p><p>“不知道为谁而学“。好吧，我也是这样的呢。</p><p>曾经有过梦想，但逐渐认清现实，觉得遥不可及。</p><p>曾经自以为还不错，但如今越来越差。</p><p>整天浑浑噩噩，试图从番中寻找自我。</p><p>自我？哈哈。很好笑。</p><p>放学经常与gzy一起走。</p><p>路上总是避免触及到一些观点相悖的话题。</p><p>他自主意识很强。而我是那种“随大流”的人。</p><p>阿拉。不谈了。</p><p>我是什么时候变成这样的呢？</p><p>也许是一个朋友说出“你事不关己的样子真恶心”以后。</p><p>也许是发现自己越来越不合群之后。</p><p>也许是奶奶去世以后。</p><p>但，这样活着真累啊。</p><p>我是不是该变得像从前那样“事不关己”会更加轻松呢？</p><p>。</p>]]></content>
+        <content type="html"><![CDATA[<p>给一个长度为 $n$ 的正整数序列 $a$。共有 $m$ 组询问，每次询问一个区间 $[l,r]$ ，是否存在一个数在 $[l,r]$ 中出现的次数严格大于区间长度一半。如果存在，输出这个数，否则输出 $0$。</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le n,m\le 5\times 10^5$</p><p>$0\le a_i\le n$</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P3567" target="_blank" rel="noopener">[POI2014]KUR-Couriers</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>算是个 板子吧。</p><p>显然，这样的数如果存在，那么只有一个。</p><p>只需要在板子的基础上改改查询函数就好了。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 500010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Log 20</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 500000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> x=<span class="number">0</span>,w=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">char</span> ch=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) w=<span class="number">-1</span>;ch=getchar();&#125;</span><br><span class="line"><span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) &#123;x=x*<span class="number">10</span>+(ch-<span class="string">'0'</span>);ch=getchar();&#125;</span><br><span class="line"><span class="keyword">return</span> w*x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,a[N],root[N],tot=<span class="number">0</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Persistable_SegmemtTree</span>&#123;</span></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">  <span class="keyword">int</span> lson,rson,cnt;</span><br><span class="line">  &#125;nod[N*Log];</span><br><span class="line">  <span class="meta">#<span class="meta-keyword">define</span> ls(x) nod[x].lson</span></span><br><span class="line">  <span class="meta">#<span class="meta-keyword">define</span> rs(x) nod[x].rson</span></span><br><span class="line">  <span class="meta">#<span class="meta-keyword">define</span> c(x) nod[x].cnt</span></span><br><span class="line">  <span class="meta">#<span class="meta-keyword">define</span> mid (l+r&gt;&gt;1)</span></span><br><span class="line">  <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">  c(p)=c(ls(p))+c(rs(p));</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> &amp;p,<span class="keyword">int</span> pre,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(l&gt;x||r&lt;x) <span class="keyword">return</span> ;</span><br><span class="line">  p=++tot;</span><br><span class="line">  nod[p]=nod[pre];</span><br><span class="line"><span class="keyword">if</span>(l==r) &#123;</span><br><span class="line">  c(p)++;</span><br><span class="line">  <span class="keyword">return</span> ;</span><br><span class="line">  &#125;</span><br><span class="line">  change(ls(p),ls(pre),l,mid,x);</span><br><span class="line">  change(rs(p),rs(pre),mid+<span class="number">1</span>,r,x);</span><br><span class="line">  update(p);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">ask</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> q,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line"><span class="keyword">if</span>(l==r) <span class="keyword">return</span> l;</span><br><span class="line"><span class="keyword">if</span>(c(ls(p))-c(ls(q))&gt;k) <span class="keyword">return</span> ask(ls(p),ls(q),l,mid,k);</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(c(rs(p))-c(rs(q))&gt;k) <span class="keyword">return</span> ask(rs(p),rs(q),mid+<span class="number">1</span>,r,k);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;T;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">n=read(),m=read();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) a[i]=read();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) T.change(root[i],root[i<span class="number">-1</span>],<span class="number">0</span>,MAXN,a[i]);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line"><span class="keyword">int</span> l,r;</span><br><span class="line">l=read(),r=read();</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,T.ask(root[r],root[l<span class="number">-1</span>],<span class="number">0</span>,MAXN,(r-l+<span class="number">1</span>)/<span class="number">2</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
           
-          <category> 瞎写 </category>
+          <category> 题解 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> POI </tag>
+            
+            <tag> 主席树 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -52,11 +47,30 @@
       
         <tags>
             
-            <tag> SHOI </tag>
-            
             <tag> 主席树 </tag>
             
+            <tag> SHOI </tag>
+            
         </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>随感。</title>
+      <link href="/is-zxy.github.io/2020/06/25/%E9%9A%8F%E6%84%9F%E3%80%82/"/>
+      <url>/is-zxy.github.io/2020/06/25/%E9%9A%8F%E6%84%9F%E3%80%82/</url>
+      
+        <content type="html"><![CDATA[<p>可能有些消极偏激吧。</p><a id="more"></a><h3 id="update-on-2020-6-25"><a href="#update-on-2020-6-25" class="headerlink" title="update on 2020/6/25"></a>update on 2020/6/25</h3><p><code>hexo n &quot;随感&quot;</code></p><p>我新建了这个文档。</p><p>撑不住了，只好写出来。</p><p>现在是真的很厌恶有些人。</p><p>明明之前还与某个朋友说过”没有什么讨厌的人的，大家都很好”。</p><p>但仔细一想，他们似乎又没有做错什么，只是各种程度上的让我心里感觉不舒服罢了。</p><p>您说您一物理要进队的人，整天“羞辱”我干嘛呢？</p><p>我也没气的哦，毕竟我”很好舔，舔舔就不生气了“。</p><p>对啊，那有什么必要生气呢？</p><p>噢。这不是这几天的事，只是不久前的事被我拎过来罢了。</p><p>本来想的很多，敲着敲着全忘了呢。呵呵。</p><p>昨晚tqz的“小爆发”让我着实有点害怕。</p><p>是啊。我觉得他是真的累，数理信全学的。</p><p>文化课又要保持平常年级前几的好成绩。</p><p>这样的压力我觉得会让人奔溃。他心态是真的棒啊。</p><p>“不知道为谁而学“。好吧，我也是这样的呢。</p><p>曾经有过梦想，但逐渐认清现实，觉得遥不可及。</p><p>曾经自以为还不错，但如今越来越差。</p><p>整天浑浑噩噩，试图从番中寻找自我。</p><p>自我？哈哈。很好笑。</p><p>放学经常与gzy一起走。</p><p>路上总是避免触及到一些观点相悖的话题。</p><p>他自主意识很强。而我是那种“随大流”的人。</p><p>阿拉。不谈了。</p><p>我是什么时候变成这样的呢？</p><p>也许是一个朋友说出“你事不关己的样子真恶心”以后。</p><p>也许是发现自己越来越不合群之后。</p><p>也许是奶奶去世以后。</p><p>但，这样活着真累啊。</p><p>我是不是该变得像从前那样“事不关己”会更加轻松呢？</p><p>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 瞎写 </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -2677,9 +2691,9 @@
       
         <tags>
             
-            <tag> 动态规划 </tag>
-            
             <tag> 斜率优化 </tag>
+            
+            <tag> 动态规划 </tag>
             
         </tags>
       
