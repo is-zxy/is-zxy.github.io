@@ -304,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/03/28/%E5%88%86%E5%9D%97%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/04/26/%5BCQOI2011%5D-%E5%8A%A8%E6%80%81%E9%80%86%E5%BA%8F%E5%AF%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yuzuriha_Inori">
@@ -323,7 +323,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/is-zxy.github.io/2020/03/28/%E5%88%86%E5%9D%97%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url">分块学习笔记</a></h1>
+                <a class="post-title-link" href="/is-zxy.github.io/2020/04/26/%5BCQOI2011%5D-%E5%8A%A8%E6%80%81%E9%80%86%E5%BA%8F%E5%AF%B9/" itemprop="url">[CQOI2011] 动态逆序对</a></h1>
         
 
         <div class="post-meta">
@@ -335,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-28T20:55:58+08:00">
-                2020-03-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-26T23:38:04+08:00">
+                2020-04-26
               </time>
             
 
@@ -396,10 +396,13 @@
 
       
         
-          <p>众所周知，分块，是一个优雅的暴力数据结构。</p>
+          <p>对于序列 $a$，它的逆序对数定义为集合</p>
+<script type="math/tex; mode=display">
+\{(i,j)| i<j \wedge a_i > a_j \}</script><p>中的元素个数。</p>
+<p>现在给出 $1\sim n$ 的一个排列，按照某种顺序依次删除 $m$ 个元素，你的任务是在每次删除一个元素<strong>之前</strong>统计整个序列的逆序对数。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/is-zxy.github.io/2020/03/28/%E5%88%86%E5%9D%97%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more" rel="contents">
+            <a class="btn" href="/is-zxy.github.io/2020/04/26/%5BCQOI2011%5D-%E5%8A%A8%E6%80%81%E9%80%86%E5%BA%8F%E5%AF%B9/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -450,7 +453,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/03/26/%5B%E6%B4%9B%E8%B0%B7P6327%5D%20%E5%8C%BA%E9%97%B4%E5%8A%A0%E5%8C%BA%E9%97%B4sin%E5%92%8C/">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/04/22/%5BBZOJ-2252%5D-%E7%9F%A9%E9%98%B5%E8%B7%9D%E7%A6%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yuzuriha_Inori">
@@ -469,7 +472,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/is-zxy.github.io/2020/03/26/%5B%E6%B4%9B%E8%B0%B7P6327%5D%20%E5%8C%BA%E9%97%B4%E5%8A%A0%E5%8C%BA%E9%97%B4sin%E5%92%8C/" itemprop="url">[洛谷P6327] 区间加区间sin和</a></h1>
+                <a class="post-title-link" href="/is-zxy.github.io/2020/04/22/%5BBZOJ-2252%5D-%E7%9F%A9%E9%98%B5%E8%B7%9D%E7%A6%BB/" itemprop="url">[BZOJ#2252] 矩阵距离</a></h1>
         
 
         <div class="post-meta">
@@ -481,260 +484,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-26T18:57:04+08:00">
-                2020-03-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>给出一个长度为$n$的整数序列$a_1,a_2,\ldots,a_n$，进行$m$次操作，操作分为两类。</p>
-<p>操作$1$：给出$l,r,v$，将$a_l,a_{l+1},\ldots,a_r$分别加上$v$。</p>
-<p>操作$2$：给出$l,r$，询问$\sum\limits_{i=l}^{r}\sin(a_i)$。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/is-zxy.github.io/2020/03/26/%5B%E6%B4%9B%E8%B0%B7P6327%5D%20%E5%8C%BA%E9%97%B4%E5%8A%A0%E5%8C%BA%E9%97%B4sin%E5%92%8C/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/03/26/%5B%E6%B4%9B%E8%B0%B7P6327%5D-%E5%8C%BA%E9%97%B4%E5%8A%A0%E5%8C%BA%E9%97%B4sin%E5%92%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yuzuriha_Inori">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/is-zxy.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zxyer's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/is-zxy.github.io/2020/03/26/%5B%E6%B4%9B%E8%B0%B7P6327%5D-%E5%8C%BA%E9%97%B4%E5%8A%A0%E5%8C%BA%E9%97%B4sin%E5%92%8C/" itemprop="url">[Ynoi2012] NOIP2015洋溢着希望</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-26T18:57:04+08:00">
-                2020-03-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>给出一个长度为$n$的整数序列$a_1,a_2,\ldots,a_n$，进行$m$次操作，操作分为两类。</p>
-<p>操作$1$：给出$l,r,v$，将$a_l,a_{l+1},\ldots,a_r$分别加上$v$。</p>
-<p>操作$2$：给出$l,r$，询问$\sum\limits_{i=l}^{r}\sin(a_i)$。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/is-zxy.github.io/2020/03/26/%5B%E6%B4%9B%E8%B0%B7P6327%5D-%E5%8C%BA%E9%97%B4%E5%8A%A0%E5%8C%BA%E9%97%B4sin%E5%92%8C/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/03/26/%5B%E6%B4%9B%E8%B0%B7P2184%5D-%E8%B4%AA%E5%A9%AA%E5%A4%A7%E9%99%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yuzuriha_Inori">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/is-zxy.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zxyer's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/is-zxy.github.io/2020/03/26/%5B%E6%B4%9B%E8%B0%B7P2184%5D-%E8%B4%AA%E5%A9%AA%E5%A4%A7%E9%99%86/" itemprop="url">[洛谷P2184] 贪婪大陆</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-26T15:06:11+08:00">
-                2020-03-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-22T23:17:22+08:00">
+                2020-04-22
               </time>
             
 
@@ -794,14 +545,14 @@
 
       
         
-          <p>小FF最后一道防线是一条长度为$N$的战壕， 小FF拥有无数多种地雷，而SCV每次可以在$[L,R]$区间埋放同一种不同于之前已经埋放的地雷。 由于情况已经十万火急，小FF在某些时候可能会询问你在$[L’,R’]$ 区间内有多少种不同的地雷， 他希望你能尽快的给予答复。</p>
-<ul>
-<li><code>1 L R</code>表示在$[L,R]$这段区间布上一种地雷。</li>
-<li><code>2 L R</code>表示询问$[L,R]$区间总共有多少种地雷。</li>
-</ul>
+          <p>给定一个$N$行$M$列的$01$矩阵$A$。</p>
+<p>定义$dist(A[i][j],A[k][l])=|i-k|+|j-l|$。</p>
+<p>输出一个$N$行$M$列的整数矩阵$B$，其中：</p>
+<script type="math/tex; mode=display">
+B[i][j]=\min_{1\le x\le N,1\le y\le M,A[x][y]=1}\{dist(A[i][j],A[x][y])\}</script>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/is-zxy.github.io/2020/03/26/%5B%E6%B4%9B%E8%B0%B7P2184%5D-%E8%B4%AA%E5%A9%AA%E5%A4%A7%E9%99%86/#more" rel="contents">
+            <a class="btn" href="/is-zxy.github.io/2020/04/22/%5BBZOJ-2252%5D-%E7%9F%A9%E9%98%B5%E8%B7%9D%E7%A6%BB/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -852,7 +603,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/03/25/%5B%E6%B4%9B%E8%B0%B7P1438%5D-%E6%97%A0%E8%81%8A%E7%9A%84%E6%95%B0%E5%88%97/">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/04/20/%5B%E5%9B%BD%E5%AE%B6%E9%9B%86%E8%AE%AD%E9%98%9F%5D-%E6%8E%92%E9%98%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yuzuriha_Inori">
@@ -871,7 +622,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/is-zxy.github.io/2020/03/25/%5B%E6%B4%9B%E8%B0%B7P1438%5D-%E6%97%A0%E8%81%8A%E7%9A%84%E6%95%B0%E5%88%97/" itemprop="url">[洛谷P1438] 无聊的数列</a></h1>
+                <a class="post-title-link" href="/is-zxy.github.io/2020/04/20/%5B%E5%9B%BD%E5%AE%B6%E9%9B%86%E8%AE%AD%E9%98%9F%5D-%E6%8E%92%E9%98%9F/" itemprop="url">[国家集训队] 排队</a></h1>
         
 
         <div class="post-meta">
@@ -883,8 +634,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-25T22:09:36+08:00">
-                2020-03-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-20T23:16:37+08:00">
+                2020-04-20
               </time>
             
 
@@ -944,14 +695,12 @@
 
       
         
-          <p>维护一个数列$a_i$，支持两种操作：</p>
-<ul>
-<li><code>1 l r K D</code>：给出一个长度等于$r-l+1$的等差数列，首项为$K$，公差为$D$，并将它对应加到 $[l,r]$范围中的每一个数上。即：令$a_l=a_l+K,a_{l+1}=a_{l+1}+K+D\ldots a_r=a_r+K+(r-l) \times D$。</li>
-<li><code>2 p</code>：询问序列的第$p$个数的值$a_p$。</li>
-</ul>
+          <p>排排坐，吃果果，生果甜嗦嗦，大家笑呵呵。你一个，我一个，大的分给你，小的留给我，吃完果果唱支歌，大家乐和和。</p>
+<p>红星幼儿园的小朋友们排起了长长地队伍，准备吃果果。不过因为小朋友们的身高有所区别，排成的队伍高低错乱，极不美观。设第 $i$ 个小朋友的身高为 $h_i$。</p>
+<p>幼儿园阿姨每次会选出两个小朋友，交换他们的位置，请你帮忙计算出每次交换后，序列的逆序对数。为方便幼儿园阿姨统计，在未进行任何交换操作时，你也应该输出该序列的逆序对数。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/is-zxy.github.io/2020/03/25/%5B%E6%B4%9B%E8%B0%B7P1438%5D-%E6%97%A0%E8%81%8A%E7%9A%84%E6%95%B0%E5%88%97/#more" rel="contents">
+            <a class="btn" href="/is-zxy.github.io/2020/04/20/%5B%E5%9B%BD%E5%AE%B6%E9%9B%86%E8%AE%AD%E9%98%9F%5D-%E6%8E%92%E9%98%9F/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1002,7 +751,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/03/25/%5B%E6%B4%9B%E8%B0%B7P2253%5D-%E5%A5%BD%E4%B8%80%E4%B8%AA%E4%B8%80%E4%B8%AD%E8%85%B0%E9%BC%93%EF%BC%81/">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/04/19/%5B%E6%B4%9B%E8%B0%B7P4198%5D-%E6%A5%BC%E6%88%BF%E9%87%8D%E5%BB%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yuzuriha_Inori">
@@ -1021,7 +770,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/is-zxy.github.io/2020/03/25/%5B%E6%B4%9B%E8%B0%B7P2253%5D-%E5%A5%BD%E4%B8%80%E4%B8%AA%E4%B8%80%E4%B8%AD%E8%85%B0%E9%BC%93%EF%BC%81/" itemprop="url">[洛谷P2253] 好一个一中腰鼓！</a></h1>
+                <a class="post-title-link" href="/is-zxy.github.io/2020/04/19/%5B%E6%B4%9B%E8%B0%B7P4198%5D-%E6%A5%BC%E6%88%BF%E9%87%8D%E5%BB%BA/" itemprop="url">[洛谷P4198] 楼房重建</a></h1>
         
 
         <div class="post-meta">
@@ -1033,8 +782,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-25T00:06:06+08:00">
-                2020-03-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-19T23:11:55+08:00">
+                2020-04-19
               </time>
             
 
@@ -1094,10 +843,12 @@
 
       
         
-          <p>设想一下，腰鼓有两面，一面是红色的，一面是白色的。初二的苏大学神想给你这个oier出一道题。假设一共有$N(1&lt;=N&lt;=20,000)$个同学表演，表演刚开始每一个鼓都是红色面朝向观众，舞蹈老师会发出$M(1&lt;=M&lt;=20,000)$个指令，如果指令发给第i个表演的同学,这位同学就会把腰鼓反过来，如果腰鼓之前是红色面朝向观众的,那么就会变成白色面朝向观众，反之亦然。那么问题来了（！？），在老师每一次发出指令后，找到最长的连续的一排同学，满足每相邻的两个手中的腰鼓朝向观众的一面互不相同，输出这样一排连续的同学的人数。</p>
+          <p>小 A 的楼房外有一大片施工工地，工地上有 $N$ 栋待建的楼房。每天，这片工地上的房子拆了又建、建了又拆。他经常无聊地看着窗外发呆，数自己能够看到多少栋房子。</p>
+<p>为了简化问题，我们考虑这些事件发生在一个二维平面上。小 A 在平面上 $(0,0)$ 点的位置，第 $i$ 栋楼房可以用一条连接 $(i,0)$ 和 $(i,H_i)$ 的线段表示，其中 $H_i$ 为第 $i$ 栋楼房的高度。如果这栋楼房上任何一个高度大于 $0$ 的点与 $(0,0)$ 的连线没有与之前的线段相交，那么这栋楼房就被认为是可见的。</p>
+<p>施工队的建造总共进行了 $M$ 天。初始时，所有楼房都还没有开始建造，它们的高度均为 $0$。在第 $i$ 天，建筑队将会将横坐标为 $X_i$ 的房屋的高度变为 $Y_i$（高度可以比原来大——修建，也可以比原来小——拆除，甚至可以保持不变——建筑队这天什么事也没做）。请你帮小 A 数数每天在建筑队完工之后，他能看到多少栋楼房？</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/is-zxy.github.io/2020/03/25/%5B%E6%B4%9B%E8%B0%B7P2253%5D-%E5%A5%BD%E4%B8%80%E4%B8%AA%E4%B8%80%E4%B8%AD%E8%85%B0%E9%BC%93%EF%BC%81/#more" rel="contents">
+            <a class="btn" href="/is-zxy.github.io/2020/04/19/%5B%E6%B4%9B%E8%B0%B7P4198%5D-%E6%A5%BC%E6%88%BF%E9%87%8D%E5%BB%BA/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1148,7 +899,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/03/24/%5BSCOI2010%5D-%E5%BA%8F%E5%88%97%E6%93%8D%E4%BD%9C/">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/04/12/%5BAcWing1050%5D-%E9%B8%A1%E8%9B%8B%E7%9A%84%E7%A1%AC%E5%BA%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yuzuriha_Inori">
@@ -1167,7 +918,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/is-zxy.github.io/2020/03/24/%5BSCOI2010%5D-%E5%BA%8F%E5%88%97%E6%93%8D%E4%BD%9C/" itemprop="url">[SCOI2010] 序列操作</a></h1>
+                <a class="post-title-link" href="/is-zxy.github.io/2020/04/12/%5BAcWing1050%5D-%E9%B8%A1%E8%9B%8B%E7%9A%84%E7%A1%AC%E5%BA%A6/" itemprop="url">[AcWing1050] 鸡蛋的硬度</a></h1>
         
 
         <div class="post-meta">
@@ -1179,8 +930,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-24T10:49:12+08:00">
-                2020-03-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-12T23:34:25+08:00">
+                2020-04-12
               </time>
             
 
@@ -1240,18 +991,15 @@
 
       
         
-          <p>lxhgww最近收到了一个$01$序列，序列里面包含了$n$个数，下标从$0$开始。这些数要么是$0$，要么是$1$，现在对于这个序列有五种变换操作和询问操作：</p>
-<ul>
-<li><code>0 l r</code> 把$[l, r]$区间内的所有数全变成$0$</li>
-<li><code>1 l r</code> 把$[l, r]$区间内的所有数全变成$1$</li>
-<li><code>2 l r</code> 把$[l,r]$区间内的所有数全部取反，也就是说把所有的$0$变成$1$，把所有的$1$变成$0$</li>
-<li><code>3 l r</code> 询问$[l, r]$区间内总共有多少个$1$</li>
-<li><code>4 l r</code> 询问$[l, r]$区间内最多有多少个连续的$1$</li>
-</ul>
-<p>对于每一种询问操作，lxhgww 都需要给出回答，聪明的程序员们，你们能帮助他吗？</p>
+          <p>最近XX公司举办了一个奇怪的比赛：鸡蛋硬度之王争霸赛。</p>
+<p>参赛者是来自世界各地的母鸡，比赛的内容是看谁下的蛋最硬，更奇怪的是XX公司并不使用什么精密仪器来测量蛋的硬度，他们采用了一种最老土的办法–从高度扔鸡蛋–来测试鸡蛋的硬度，如果一次母鸡下的蛋从高楼的第 $a$ 层摔下来没摔破，但是从 $a+1$ 层摔下来时摔破了，那么就说这只母鸡的鸡蛋的硬度是 $a$ 。</p>
+<p>你当然可以找出各种理由说明这种方法不科学，比如同一只母鸡下的蛋硬度可能不一样等等，但是这不影响XX公司的争霸赛，因为他们只是为了吸引大家的眼球，一个个鸡蛋从 $100$ 层的高楼上掉下来的时候，这情景还是能吸引很多人驻足观看的，当然，XX公司也绝不会忘记在高楼上挂一条幅，写上“XX公司”的字样–这比赛不过是XX公司的一个另类广告而已。</p>
+<p>勤于思考的小A总是能从一件事情中发现一个数学问题，这件事也不例外。</p>
+<p>“假如有很多同样硬度的鸡蛋，那么我可以用二分的办法用最少的次数测出鸡蛋的硬度”，小A对自己的这个结论感到很满意，不过很快麻烦来了，“但是，假如我的鸡蛋不够用呢，比如我只有 $1$ 个鸡蛋，那么我就不得不从第 $1$ 层楼开始一层一层的扔，最坏情况下我要扔 $100$ 次。如果有 $2$ 个鸡蛋，那么就从 $ 2$  层楼开始的地方扔……等等，不对，好像应该从 $1/3$ 的地方开始扔才对，嗯，好像也不一定啊…… $3$ 个鸡蛋怎么办，$4$ 个，$5$ 个，更多呢……”，和往常一样，小A又陷入了一个思维僵局，与其说他是勤于思考，不如说他是喜欢自找麻烦。</p>
+<p>好吧，既然麻烦来了，就得有人去解决，小A的麻烦就靠你来解决了。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/is-zxy.github.io/2020/03/24/%5BSCOI2010%5D-%E5%BA%8F%E5%88%97%E6%93%8D%E4%BD%9C/#more" rel="contents">
+            <a class="btn" href="/is-zxy.github.io/2020/04/12/%5BAcWing1050%5D-%E9%B8%A1%E8%9B%8B%E7%9A%84%E7%A1%AC%E5%BA%A6/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1302,7 +1050,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/03/23/%5B%E6%B4%9B%E8%B0%B7P4145%5D-%E4%B8%8A%E5%B8%9D%E9%80%A0%E9%A2%98%E7%9A%84%E4%B8%83%E5%88%86%E9%92%9F2-%E8%8A%B1%E7%A5%9E%E6%B8%B8%E5%8E%86%E5%90%84%E5%9B%BD/">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/04/09/%5BNOIP2016%5D-%E6%84%A4%E6%80%92%E7%9A%84%E5%B0%8F%E9%B8%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yuzuriha_Inori">
@@ -1321,7 +1069,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/is-zxy.github.io/2020/03/23/%5B%E6%B4%9B%E8%B0%B7P4145%5D-%E4%B8%8A%E5%B8%9D%E9%80%A0%E9%A2%98%E7%9A%84%E4%B8%83%E5%88%86%E9%92%9F2-%E8%8A%B1%E7%A5%9E%E6%B8%B8%E5%8E%86%E5%90%84%E5%9B%BD/" itemprop="url">[洛谷P4145] 上帝造题的七分钟2/花神游历各国</a></h1>
+                <a class="post-title-link" href="/is-zxy.github.io/2020/04/09/%5BNOIP2016%5D-%E6%84%A4%E6%80%92%E7%9A%84%E5%B0%8F%E9%B8%9F/" itemprop="url">[NOIP2016] 愤怒的小鸟</a></h1>
         
 
         <div class="post-meta">
@@ -1333,8 +1081,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-23T14:57:12+08:00">
-                2020-03-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-09T23:35:41+08:00">
+                2020-04-09
               </time>
             
 
@@ -1394,18 +1142,20 @@
 
       
         
-          <p>“第一分钟，X说，要有数列，于是便给定了一个正整数数列。</p>
-<p>第二分钟，L说，要能修改，于是便有了对一段数中每个数都开平方(下取整)的操作。</p>
-<p>第三分钟，k说，要能查询，于是便有了求一段数的和的操作。</p>
-<p>第四分钟，彩虹喵说，要是noip难度，于是便有了数据范围。</p>
-<p>第五分钟，诗人说，要有韵律，于是便有了时间限制和内存限制。</p>
-<p>第六分钟，和雪说，要省点事，于是便有了保证运算过程中及最终结果均不超过64位有符号整数类型的表示范围的限制。</p>
-<p>第七分钟，这道题终于造完了，然而，造题的神牛们再也不想写这道题的程序了。”</p>
-<p>——《上帝造题的七分钟·第二部》</p>
-<p>所以这个神圣的任务就交给你了。</p>
+          <p><code>Kiana</code> 最近沉迷于一款神奇的游戏无法自拔。</p>
+<p>简单来说，这款游戏是在一个平面上进行的。</p>
+<p>有一架弹弓位于 $(0,0)$ 处，每次 <code>Kiana</code> 可以用它向第一象限发射一只红色的小鸟，小鸟们的飞行轨迹均为形如 $y=ax^2+bx$ 的曲线，其中 $a,b$ 是<code>Kiana</code> 指定的参数，且必须满足 $a &lt; 0$，$a,b$ 都是实数。</p>
+<p>当小鸟落回地面（即 $x$ 轴）时，它就会瞬间消失。</p>
+<p>在游戏的某个关卡里，平面的第一象限中有 $n$ 只绿色的小猪，其中第 $i$ 只小猪所在的坐标为 $\left(x_i,y_i \right)$。 </p>
+<p>如果某只小鸟的飞行轨迹经过了 $\left( x_i, y_i \right)$，那么第 $i$ 只小猪就会被消灭掉，同时小鸟将会沿着原先的轨迹继续飞行；</p>
+<p>如果一只小鸟的飞行轨迹没有经过 $\left( x_i, y_i \right)$，那么这只小鸟飞行的全过程就不会对第 $i$ 只小猪产生任何影响。</p>
+<p>例如，若两只小猪分别位于 $(1,3)$ 和 $(3,3)$，<code>Kiana</code> 可以选择发射一只飞行轨迹为 $y=-x^2+4x$ 的小鸟，这样两只小猪就会被这只小鸟一起消灭。</p>
+<p>而这个游戏的目的，就是通过发射小鸟消灭所有的小猪。</p>
+<p>这款神奇游戏的每个关卡对 <code>Kiana</code>来说都很难，所以<code>Kiana</code>还输入了一些神秘的指令，使得自己能更轻松地完成这个游戏。这些指令将在【输入格式】中详述。</p>
+<p>假设这款游戏一共有 $T$ 个关卡，现在 <code>Kiana</code>想知道，对于每一个关卡，至少需要发射多少只小鸟才能消灭所有的小猪。由于她不会算，所以希望由你告诉她。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/is-zxy.github.io/2020/03/23/%5B%E6%B4%9B%E8%B0%B7P4145%5D-%E4%B8%8A%E5%B8%9D%E9%80%A0%E9%A2%98%E7%9A%84%E4%B8%83%E5%88%86%E9%92%9F2-%E8%8A%B1%E7%A5%9E%E6%B8%B8%E5%8E%86%E5%90%84%E5%9B%BD/#more" rel="contents">
+            <a class="btn" href="/is-zxy.github.io/2020/04/09/%5BNOIP2016%5D-%E6%84%A4%E6%80%92%E7%9A%84%E5%B0%8F%E9%B8%9F/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1456,7 +1206,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/03/22/%5BUSACO08FEB%5D-Hotel-G/">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/04/08/%5BPOJ2411%5D-Mondriaan-s-Dream/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yuzuriha_Inori">
@@ -1475,7 +1225,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/is-zxy.github.io/2020/03/22/%5BUSACO08FEB%5D-Hotel-G/" itemprop="url">[USACO08FEB] Hotel G</a></h1>
+                <a class="post-title-link" href="/is-zxy.github.io/2020/04/08/%5BPOJ2411%5D-Mondriaan-s-Dream/" itemprop="url">[POJ2411] Mondriaan's Dream</a></h1>
         
 
         <div class="post-meta">
@@ -1487,8 +1237,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-22T23:23:42+08:00">
-                2020-03-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-08T23:15:34+08:00">
+                2020-04-08
               </time>
             
 
@@ -1548,12 +1298,12 @@
 
       
         
-          <p>参考样例，第一行输入$n$，$m$ ，$n$代表有$n$个房间，编号为$1\sim n$，开始都为空房，$m$表示以下有$m$行操作，以下 每行先输入一个数$i$，表示一种操作：</p>
-<p>若$i$为$1$，表示查询房间，再输入一个数$x$，表示在$1\sim n$房间中找到长度为$x$的连续空房，输出连续$x$个房间中左端的房间号，尽量让这个房间号最小，若找不到长度为$x$的连续空房，输出$0$，并且在这$x$个空房间中住上人。</p>
-<p>若$i$为$2$，表示退房，再输入两个数$x$，$y$ 代表房间号$x\sim x+y-1$退房，即让房间为空。</p>
+          <p>求把 $N\times M(1\le N,M\le 11)$ 的棋盘分割成若干个 $1\times 2$ 的长方形，有多少种方案。</p>
+<p>例如当 $N=2,M=4$ 时，共有 $5$ 种方案；当 $N=2,M=3$ 时，有 $3$ 种方案，如下图所示。</p>
+<p><img src="http://poj.org/images/2411_1.jpg" alt="img"></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/is-zxy.github.io/2020/03/22/%5BUSACO08FEB%5D-Hotel-G/#more" rel="contents">
+            <a class="btn" href="/is-zxy.github.io/2020/04/08/%5BPOJ2411%5D-Mondriaan-s-Dream/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1604,7 +1354,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/03/21/%5B%E6%B4%9B%E8%B0%B7P1471%5D-%E6%96%B9%E5%B7%AE/">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/04/05/%5BCF711C%5D-Coloring-Trees/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yuzuriha_Inori">
@@ -1623,7 +1373,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/is-zxy.github.io/2020/03/21/%5B%E6%B4%9B%E8%B0%B7P1471%5D-%E6%96%B9%E5%B7%AE/" itemprop="url">[洛谷P1471] 方差</a></h1>
+                <a class="post-title-link" href="/is-zxy.github.io/2020/04/05/%5BCF711C%5D-Coloring-Trees/" itemprop="url">[CF711C] Coloring Trees</a></h1>
         
 
         <div class="post-meta">
@@ -1635,8 +1385,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-21T18:33:25+08:00">
-                2020-03-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-05T22:18:02+08:00">
+                2020-04-05
               </time>
             
 
@@ -1696,13 +1446,306 @@
 
       
         
-          <p>有一包含$n$个数的序列，对其进行$m$次操作，有如下三种操作：</p>
-<p>操作1：$1\;x\;y\;k$，表示将第$x$到第$y$项每项加上$k$，$k$为一实数。</p>
-<p>操作2：$2\;x\;y$，表示求出第$x$到第$y$项这一子数列的平均数。</p>
-<p>操作3：$3\;x\;y$，表示求出第$x$到第$y$项这一子数列的方差。</p>
+          <p>有 $n$ 棵树， $m$ 种颜料，要求现在要给这些树涂上颜料，最后涂成 $k$ 段（连续颜色相同划为一段如 $2$ , $1$ , $1$ , $1$ , $3$ , $2$ , $2$ , $3$ , $1$ , $3$ 是 $7$ 段），有些树已经涂了，则不涂了只能涂一次，输入 $n$ 个数（每个数为 $0\sim m$）， $0$ 表示还没有涂， $1\sim m$ 表示已经涂了哪种颜料。接下来输入 $n$ 行 $m$ 列，表示每棵树涂成每种颜色所要的颜料量。现在要把所有树都涂上颜料涂成 $k$ 段，求最少要用的颜料量。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/is-zxy.github.io/2020/03/21/%5B%E6%B4%9B%E8%B0%B7P1471%5D-%E6%96%B9%E5%B7%AE/#more" rel="contents">
+            <a class="btn" href="/is-zxy.github.io/2020/04/05/%5BCF711C%5D-Coloring-Trees/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/04/04/%5BHAOI2009%5D-%E9%80%86%E5%BA%8F%E5%AF%B9%E6%95%B0%E5%88%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yuzuriha_Inori">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/is-zxy.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zxyer's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/is-zxy.github.io/2020/04/04/%5BHAOI2009%5D-%E9%80%86%E5%BA%8F%E5%AF%B9%E6%95%B0%E5%88%97/" itemprop="url">[HAOI2009] 逆序对数列</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-04T00:16:36+08:00">
+                2020-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/is-zxy.github.io/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>对于任意一个由 $1\sim n$ 自然数组成的数列，可以很容易求出有多少个逆序对数。那么逆序对数为 $m$ 的这样自然数数列到底有多少个？</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/is-zxy.github.io/2020/04/04/%5BHAOI2009%5D-%E9%80%86%E5%BA%8F%E5%AF%B9%E6%95%B0%E5%88%97/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/04/02/%5B%E5%9B%BD%E5%AE%B6%E9%9B%86%E8%AE%AD%E9%98%9F%5D-%E5%B0%8FZ%E7%9A%84%E8%A2%9C%E5%AD%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yuzuriha_Inori">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/is-zxy.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zxyer's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/is-zxy.github.io/2020/04/02/%5B%E5%9B%BD%E5%AE%B6%E9%9B%86%E8%AE%AD%E9%98%9F%5D-%E5%B0%8FZ%E7%9A%84%E8%A2%9C%E5%AD%90/" itemprop="url">[国家集训队] 小Z的袜子</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-02T23:01:05+08:00">
+                2020-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/is-zxy.github.io/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>作为一个生活散漫的人，小 Z 每天早上都要耗费很久从一堆五颜六色的袜子中找出一双来穿。终于有一天，小 Z 再也无法忍受这恼人的找袜子过程，于是他决定听天由命……</p>
+<p>具体来说，小 Z 把这 $N$ 只袜子从 $1$ 到 $N$ 编号，然后从编号$L$到$R$。</p>
+<p>尽管小 Z 并不在意两只袜子是不是完整的一双，甚至不在意两只袜子是否一左一右，他却很在意袜子的颜色，毕竟穿两只不同色的袜子会很尴尬。</p>
+<p>你的任务便是告诉小 Z，他有多大的概率抽到两只颜色相同的袜子。当然，小 Z 希望这个概率尽量高，所以他可能会询问多个 $(L,R)$ 以方便自己选择。</p>
+<p><strong>然而数据中有 $L=R$ 的情况，请特判这种情况，输出<code>0/1</code>。</strong></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/is-zxy.github.io/2020/04/02/%5B%E5%9B%BD%E5%AE%B6%E9%9B%86%E8%AE%AD%E9%98%9F%5D-%E5%B0%8FZ%E7%9A%84%E8%A2%9C%E5%AD%90/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1744,7 +1787,7 @@
 
   ﻿
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/is-zxy.github.io/page/7/">上一页</a><a class="page-number" href="/is-zxy.github.io/">1</a><span class="space">&hellip;</span><a class="page-number" href="/is-zxy.github.io/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/is-zxy.github.io/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/is-zxy.github.io/page/17/">17</a><a class="extend next" rel="next" href="/is-zxy.github.io/page/9/">下一页</a>
+    <a class="extend prev" rel="prev" href="/is-zxy.github.io/page/7/">上一页</a><a class="page-number" href="/is-zxy.github.io/">1</a><span class="space">&hellip;</span><a class="page-number" href="/is-zxy.github.io/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/is-zxy.github.io/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/is-zxy.github.io/page/19/">19</a><a class="extend next" rel="next" href="/is-zxy.github.io/page/9/">下一页</a>
   </nav>
 
 
@@ -1794,7 +1837,7 @@
               
                 <a href="/is-zxy.github.io/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">169</span>
+                  <span class="site-state-item-count">182</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1816,7 +1859,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/is-zxy.github.io/tags/index.html">
-                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-count">103</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
