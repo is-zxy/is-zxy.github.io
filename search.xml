@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>[LOJ#6234] 彩色弹珠</title>
+      <link href="/is-zxy.github.io/2020/07/25/%5BLOJ-6234%5D-%E5%BD%A9%E8%89%B2%E5%BC%B9%E7%8F%A0/"/>
+      <url>/is-zxy.github.io/2020/07/25/%5BLOJ-6234%5D-%E5%BD%A9%E8%89%B2%E5%BC%B9%E7%8F%A0/</url>
+      
+        <content type="html"><![CDATA[<p>玩具店新开张，免费赠送一些彩色弹珠，小明决定来蹭这个便宜。</p><p>玩具店老板将 $n$ 个弹珠排成了一排，第 $i$ 个弹珠有一个颜色 $c_i$。小明只能从这排弹珠里选取一个区间，拿到其中<strong>仅出现了该颜色一次</strong>的弹珠。</p><p>小明想知道他最多可以拿走几颗弹珠。</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$n\le 3\times 10^5,1\le c_i\le n$</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://loj.ac/problem/6234" target="_blank" rel="noopener">#6234. 彩色弹珠</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>考虑取所有的区间的弹珠数，这样的时间复杂度为 $O(n^2)$，过于暴力。</p><p>考虑用 <a href="https://www.luogu.com.cn/problem/P6477" target="_blank" rel="noopener">[NOI Online #2 提高组]子序列问题</a> 中的思路，那题是求所有区间的答案累加，而本题是求所有区间的最大值。</p><p>每次枚举右端点 $i$，一个弹珠颜色一个弹珠颜色地处理。用线段树维护，每个<strong>叶子节点</strong>所代表的区间 $[l,l]$（叶子节点，区间长度为 $1$），维护取区间 $[l,i]$ 可以获取的弹珠数量。非叶子节点则维护的是其子节点可获取弹珠数量的最大值。</p><p>如何实现？</p><p>对于每个颜色 $x$，记录该颜色上次出现的位置 $pos_x$以及上上次出现的位置 $last_x$。</p><p>那么根据题意，则需要对区间 $[last_x+1,pos_x]$ 都减一，因为 $pos_x$ 上的弹珠与 $i$ 上的弹珠都取不了了；对 $[pos_x+1,i]$ 都加一，因为 $\forall k\in[pos_x+1,i]$，$i$ 上的弹珠对于选取 $[k,i]$ 区间都是可取的。</p><p>注意特判 $pos_x,last_x$ 为 $0$ 的情况。</p><p>每次操作完后取区间 $[1,i]$ 的最大值即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 300010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> w=<span class="number">1</span>,x=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">char</span> ch=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) w=<span class="number">-1</span>;ch=getchar();&#125;</span><br><span class="line"><span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line"><span class="keyword">return</span> w*x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,pos[N],last[N],ans=<span class="number">0</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SegmentTree</span>&#123;</span></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">  <span class="keyword">int</span> maxn[N&lt;&lt;<span class="number">2</span>],lazy[N&lt;&lt;<span class="number">2</span>];</span><br><span class="line">  <span class="meta">#<span class="meta-keyword">define</span> m(x) maxn[x]</span></span><br><span class="line">  <span class="meta">#<span class="meta-keyword">define</span> lazy(x) lazy[x]</span></span><br><span class="line">  <span class="meta">#<span class="meta-keyword">define</span> ls (p&lt;&lt;1)</span></span><br><span class="line">  <span class="meta">#<span class="meta-keyword">define</span> rs (ls|1)</span></span><br><span class="line">  <span class="meta">#<span class="meta-keyword">define</span> mid (l+r&gt;&gt;1)</span></span><br><span class="line">  <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">  m(p)=max(m(ls),m(rs));</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">spread</span><span class="params">(<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(!lazy(p)) <span class="keyword">return</span> ;</span><br><span class="line">  m(ls)+=lazy(p);</span><br><span class="line">  m(rs)+=lazy(p);</span><br><span class="line">  lazy(ls)+=lazy(p);</span><br><span class="line">  lazy(rs)+=lazy(p);</span><br><span class="line">  lazy(p)=<span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">  lazy(p)=m(p)=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(l==r) <span class="keyword">return</span> ;</span><br><span class="line">  build(ls,l,mid);</span><br><span class="line">  build(rs,mid+<span class="number">1</span>,r);</span><br><span class="line">  update(p);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> L,<span class="keyword">int</span> R,<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(l&gt;R||r&lt;L) <span class="keyword">return</span> ;</span><br><span class="line">  <span class="keyword">if</span>(l&gt;=L&amp;&amp;r&lt;=R) &#123;</span><br><span class="line">  m(p)+=x;</span><br><span class="line">  lazy(p)+=x;</span><br><span class="line">  <span class="keyword">return</span> ;</span><br><span class="line">  &#125;</span><br><span class="line">  spread(p);</span><br><span class="line">  change(ls,l,mid,L,R,x);</span><br><span class="line">  change(rs,mid+<span class="number">1</span>,r,L,R,x);</span><br><span class="line">  update(p);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">ask</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> L,<span class="keyword">int</span> R)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(l&gt;R||r&lt;L) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(l&gt;=L&amp;&amp;r&lt;=R) <span class="keyword">return</span> m(p);</span><br><span class="line">  spread(p);</span><br><span class="line">  <span class="keyword">return</span> max(ask(ls,l,mid,L,R),ask(rs,mid+<span class="number">1</span>,r,L,R));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;T;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">n=read();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line"><span class="keyword">int</span> x=read();</span><br><span class="line"><span class="keyword">if</span>(!pos[x]) T.change(<span class="number">1</span>,<span class="number">1</span>,n,<span class="number">1</span>,i,<span class="number">1</span>),pos[x]=i;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line"><span class="keyword">if</span>(!last[x]) T.change(<span class="number">1</span>,<span class="number">1</span>,n,<span class="number">1</span>,pos[x],<span class="number">-1</span>);</span><br><span class="line"><span class="keyword">else</span> T.change(<span class="number">1</span>,<span class="number">1</span>,n,last[x]+<span class="number">1</span>,pos[x],<span class="number">-1</span>);</span><br><span class="line">T.change(<span class="number">1</span>,<span class="number">1</span>,n,pos[x]+<span class="number">1</span>,i,<span class="number">1</span>);</span><br><span class="line">last[x]=pos[x];</span><br><span class="line">pos[x]=i;</span><br><span class="line">&#125;</span><br><span class="line">ans=max(ans,T.ask(<span class="number">1</span>,<span class="number">1</span>,n,<span class="number">1</span>,i));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>当遇到关于一个序列的<strong>所有区间</strong>的问题时，这种思想很常见，也十分重要。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 线段树 </tag>
+            
+            <tag> LOJ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[NOIP2012] 借教室</title>
       <link href="/is-zxy.github.io/2020/07/24/%5BNOIP2012%5D-%E5%80%9F%E6%95%99%E5%AE%A4/"/>
       <url>/is-zxy.github.io/2020/07/24/%5BNOIP2012%5D-%E5%80%9F%E6%95%99%E5%AE%A4/</url>
@@ -1915,9 +1942,9 @@
       
         <tags>
             
-            <tag> 动态规划 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 动态规划 </tag>
             
             <tag> 记忆化搜索 </tag>
             
@@ -2052,9 +2079,9 @@
       
         <tags>
             
-            <tag> AcWing </tag>
-            
             <tag> 动态规划 </tag>
+            
+            <tag> AcWing </tag>
             
         </tags>
       
@@ -2907,9 +2934,9 @@
       
         <tags>
             
-            <tag> 动态规划 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 动态规划 </tag>
             
         </tags>
       
@@ -3202,9 +3229,9 @@
       
         <tags>
             
-            <tag> 动态规划 </tag>
-            
             <tag> Codeforces </tag>
+            
+            <tag> 动态规划 </tag>
             
         </tags>
       
