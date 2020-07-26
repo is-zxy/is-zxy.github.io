@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>[洛谷P4137] Rmq Problem/mex</title>
+      <link href="/is-zxy.github.io/2020/07/26/%5B%E6%B4%9B%E8%B0%B7P4137%5D-Rmq-Problem-mex/"/>
+      <url>/is-zxy.github.io/2020/07/26/%5B%E6%B4%9B%E8%B0%B7P4137%5D-Rmq-Problem-mex/</url>
+      
+        <content type="html"><![CDATA[<p>有一个长度为 $n$ 的数组 $\{a_1,a_2,\ldots,a_n\}$。$m$ 次询问，每次询问一个区间内最小没有出现过的自然数。</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1≤n,m≤2×10^5$，$0\leq a_i\leq 10^9$，$1\leq l\leq r\leq n$。</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P4137" target="_blank" rel="noopener">P4137 Rmq Problem / mex</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>显然，每次询问的答案都在 $[0,n]$ 内。因此对于数组中大于 $n$ 的可以直接忽略。</p><p>这样就有一个莫队思路。</p><p>开个桶。</p><p>对于每次 <code>add</code>，如果当前的数等于答案，那么就将答案后移直到到了一个出现次数为 $0$ 的数值。</p><p>对于每次 <code>del</code>，如果当前的数出现次数减一后等于 $0$，则与答案比较，答案取较小值。</p><p>该做法的复杂度其实是假的，很容易被卡掉。</p><p><img src="https://wx1.sbimg.cn/2020/07/26/Dfhdo.png" alt="Dfhdo.png"></p><p>（来自 <a href="https://www.luogu.com.cn/blog/uniecho/solution-p4137" target="_blank" rel="noopener">Uniecho1</a> dalao）。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 200010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> w=<span class="number">1</span>,x=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">char</span> ch=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) w=<span class="number">-1</span>;ch=getchar();&#125;</span><br><span class="line"><span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line"><span class="keyword">return</span> w*x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,a[N],blo,cnt[N],ans=<span class="number">0</span>,Ans[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">query</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> l,r,id,pos;</span><br><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> query &amp;x)<span class="keyword">const</span>&#123;</span><br><span class="line"><span class="keyword">return</span> (pos^x.pos)?l&lt;x.l:((pos&amp;<span class="number">1</span>)?r&lt;x.r:r&gt;x.r);</span><br><span class="line">&#125;</span><br><span class="line">&#125;q[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">blo=<span class="built_in">sqrt</span>(n);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line">q[i].l=read(),q[i].r=read();</span><br><span class="line">q[i].id=i,q[i].pos=(q[i].l<span class="number">-1</span>)/blo+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line"><span class="keyword">if</span>(a[x]&gt;n) <span class="keyword">return</span> ;</span><br><span class="line"><span class="keyword">if</span>(++cnt[a[x]]==<span class="number">1</span>&amp;&amp;ans==a[x]) <span class="keyword">while</span>(cnt[ans]) ans++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line"><span class="keyword">if</span>(a[x]&gt;n) <span class="keyword">return</span> ;</span><br><span class="line"><span class="keyword">if</span>(!(--cnt[a[x]])) ans=min(ans,a[x]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">n=read(),m=read();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) a[i]=read();</span><br><span class="line"></span><br><span class="line">init();</span><br><span class="line">sort(q+<span class="number">1</span>,q+m+<span class="number">1</span>);</span><br><span class="line"><span class="keyword">int</span> l=<span class="number">1</span>,r=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line"><span class="keyword">while</span>(l&gt;q[i].l) add(--l);</span><br><span class="line"><span class="keyword">while</span>(r&lt;q[i].r) add(++r);</span><br><span class="line"><span class="keyword">while</span>(l&lt;q[i].l) del(l++);</span><br><span class="line"><span class="keyword">while</span>(r&gt;q[i].r) del(r--);</span><br><span class="line">Ans[q[i].id]=ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,Ans[i]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 洛谷 </tag>
+            
+            <tag> 主席树 </tag>
+            
+            <tag> 莫队 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[LOJ#6234] 彩色弹珠</title>
       <link href="/is-zxy.github.io/2020/07/25/%5BLOJ-6234%5D-%E5%BD%A9%E8%89%B2%E5%BC%B9%E7%8F%A0/"/>
       <url>/is-zxy.github.io/2020/07/25/%5BLOJ-6234%5D-%E5%BD%A9%E8%89%B2%E5%BC%B9%E7%8F%A0/</url>
@@ -1249,9 +1278,9 @@
             
             <tag> 树形DP </tag>
             
-            <tag> 二次扫描与换根法 </tag>
-            
             <tag> USACO </tag>
+            
+            <tag> 二次扫描与换根法 </tag>
             
         </tags>
       
@@ -1278,9 +1307,9 @@
             
             <tag> 树形DP </tag>
             
-            <tag> 二次扫描与换根法 </tag>
-            
             <tag> USACO </tag>
+            
+            <tag> 二次扫描与换根法 </tag>
             
         </tags>
       
@@ -1336,9 +1365,9 @@
             
             <tag> 树形DP </tag>
             
-            <tag> 二次扫描与换根法 </tag>
-            
             <tag> POJ </tag>
+            
+            <tag> 二次扫描与换根法 </tag>
             
         </tags>
       
@@ -1886,9 +1915,9 @@
       
         <tags>
             
-            <tag> BFS </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> BFS </tag>
             
         </tags>
       
@@ -2050,9 +2079,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 洛谷 </tag>
             
             <tag> 分块 </tag>
             
@@ -2374,9 +2403,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -2428,9 +2457,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -2455,9 +2484,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 洛谷 </tag>
             
             <tag> COCI </tag>
             
@@ -2511,9 +2540,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -2565,9 +2594,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -2592,9 +2621,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -3229,9 +3258,9 @@
       
         <tags>
             
-            <tag> Codeforces </tag>
-            
             <tag> 动态规划 </tag>
+            
+            <tag> Codeforces </tag>
             
         </tags>
       
@@ -4719,9 +4748,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
