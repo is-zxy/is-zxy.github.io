@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>[HDU6795] Little W and Contest</title>
+      <link href="/is-zxy.github.io/2020/07/29/%5BHDU6795%5D-Little-W-and-Contest/"/>
+      <url>/is-zxy.github.io/2020/07/29/%5BHDU6795%5D-Little-W-and-Contest/</url>
+      
+        <content type="html"><![CDATA[<p>有 $T$ 组数据。</p><p>有 $n$ 个人，被分为 $\mathrm{coder}$ 与 $\mathrm{reader}$ 两类。</p><p>众所周知，一个 $\mathrm{ACM}$ 队有三个人。</p><p>而一个队至少有两个 $\mathrm{coder}$。</p><p>两个相互认识的人无法组队。</p><p>接下来给出 $n-1$ 组认识关系。</p><p>如果 $A$ 认识 $B$ 而 $B$ 又认识了 $C$，那么 $A$ 就可以通过 $B$ 认识 $C$。</p><p>求当第 $i,i\in[0,n-1]$ 组认识关系已经给出时组成一个队的组队方案。</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le T\le 10$</p><p>$1\le n\le 10^5$</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6795" target="_blank" rel="noopener">Little W and Contest</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题解用了母函数、二维背包做多项式乘法？？</p><p><del>那我和谈这个做法好像瞎搞啊</del></p><p>这题有点像洛谷七月月赛 T2 那个等腰三角形那题。</p><p>认识关系可以用并查集维护。</p><p>并查集再搞一个每个集合的 $\mathrm{coder}$ 与 $\mathrm{reader}$ 数量 $cn$、$rn$。</p><p>首先把 $n$ 个人中的 $num_{coder}$ 与 $num_{reader}$ 记录下来。</p><p>那么一开始所有人都互相认识时，显然方案数为</p><script type="math/tex; mode=display">\begin{align}&\binom{num_{coder}}{3}+\binom{num_{coder}}{2}\times num_{reader} \\\end{align}</script><p>将其记为 $ans$。</p><p>对于每次两个人相互认识，实质是两个集合的合并。</p><p>分四种情况讨论一下，在答案基础上减去不可行的方案即可。</p><p>有以下四种情况的不可行方案。</p><ol><li><p>集合 $u$ 与集合 $v$ 中的 $\mathrm{coder}$ 与两集合外的 $\mathrm{reader}$ 组队。</p><p>产生的不可行方案有</p><script type="math/tex; mode=display">cn_{u}\times cn_{v}\times(num_{reader}-rn_{u}-rn_{v})</script><p>种。</p></li><li><p>集合 $u$ 与集合 $v$ 中的 $\mathrm{coder}$ 与两集合外的 $\mathrm{coder}$ 组队。</p><p>产生的不可行方案有</p><script type="math/tex; mode=display">cn_{u}\times cn{v}\times (num_{coder}-cn_{u}-cn_{v})</script><p>种。</p></li><li><p>集合 $u$ 中的 $\mathrm{coder}$ 与集合 $v$ 中的 $\mathrm{reader}$ 与两集合外的 $\mathrm{coder}$ 组队。</p><p>产生的不可行方案有</p><script type="math/tex; mode=display">cn_{u}\times rn_{v}\times (num_{coder}-cn_{u}-cn_{v})</script></li><li><p>集合 $u$ 中的 $\mathrm{reader}$ 与集合 $v$ 中的 $coder$ 与两集合外的 $coder $ 组队。</p><p>产生的不可行方案有</p><script type="math/tex; mode=display">rn_{u}\times cn_{v}\times(num_{coder}-cn_{u}-cn_{v})</script></li></ol><p>减去以上四种情况即可。</p><p>注意取模。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>赛时代码，略丑..</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 1000000007</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x=<span class="number">0</span>,w=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> ch=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) w=<span class="number">-1</span>;ch=getchar();&#125;</span><br><span class="line">    <span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line">    <span class="keyword">return</span> w*x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> T,n,v[N],vset[N];</span><br><span class="line">ll ans,codernum,readernum,cn[N],rn[N],num[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x==vset[x]) <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">return</span> vset[x]=find(vset[x]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(v,<span class="number">0</span>,<span class="keyword">sizeof</span>(v));</span><br><span class="line">    <span class="built_in">memset</span>(cn,<span class="number">0</span>,<span class="keyword">sizeof</span>(cn));</span><br><span class="line">    <span class="built_in">memset</span>(rn,<span class="number">0</span>,<span class="keyword">sizeof</span>(rn));</span><br><span class="line">    codernum=<span class="number">0</span>;</span><br><span class="line">    readernum=<span class="number">0</span>;</span><br><span class="line">    ans=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    T=read();</span><br><span class="line">    <span class="keyword">while</span>(T--) &#123;</span><br><span class="line">        n=read();</span><br><span class="line">        init();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) v[i]=read(),codernum+=(v[i]==<span class="number">2</span>),readernum+=(v[i]==<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) vset[i]=i,cn[i]=(v[i]==<span class="number">2</span>),rn[i]=(v[i]==<span class="number">1</span>);</span><br><span class="line">        (ans=(codernum*(codernum<span class="number">-1</span>)*(codernum<span class="number">-2</span>)/<span class="number">6</span>)%mod+(codernum*(codernum<span class="number">-1</span>)/<span class="number">2</span>%mod*readernum)%mod)%=mod;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> u,v;</span><br><span class="line">            u=read(),v=read();</span><br><span class="line">            <span class="keyword">int</span> fu=find(u),fv=find(v);</span><br><span class="line">            <span class="keyword">if</span>(num[fv]&gt;=num[fu]) swap(fv,fu);</span><br><span class="line">            vset[fv]=fu;</span><br><span class="line">            ans-=cn[fu]*cn[fv]*(readernum-rn[fu]-rn[fv])%mod;</span><br><span class="line">            ans=(ans%mod+mod)%mod;</span><br><span class="line">            ans-=cn[fu]*cn[fv]*(codernum-cn[fu]-cn[fv])%mod;</span><br><span class="line">            ans=(ans%mod+mod)%mod;</span><br><span class="line">            ans-=cn[fu]*rn[fv]*(codernum-cn[fu]-cn[fv])%mod;</span><br><span class="line">            ans=(ans%mod+mod)%mod;</span><br><span class="line">            ans-=rn[fu]*cn[fv]*(codernum-cn[fu]-cn[fv])%mod;</span><br><span class="line">            ans=(ans%mod+mod)%mod;</span><br><span class="line">            cn[fu]+=cn[fv];</span><br><span class="line">            rn[fu]+=rn[fv];</span><br><span class="line">            num[fu]+=num[fv];</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数学 </tag>
+            
+            <tag> HDU </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[洛谷P4137] Rmq Problem/mex</title>
       <link href="/is-zxy.github.io/2020/07/26/%5B%E6%B4%9B%E8%B0%B7P4137%5D-Rmq-Problem-mex/"/>
       <url>/is-zxy.github.io/2020/07/26/%5B%E6%B4%9B%E8%B0%B7P4137%5D-Rmq-Problem-mex/</url>
@@ -294,9 +321,9 @@
       
         <tags>
             
-            <tag> 树链剖分 </tag>
-            
             <tag> NOI </tag>
+            
+            <tag> 树链剖分 </tag>
             
         </tags>
       
@@ -348,11 +375,11 @@
       
         <tags>
             
+            <tag> 树链剖分 </tag>
+            
             <tag> HEOI </tag>
             
             <tag> TJOI </tag>
-            
-            <tag> 树链剖分 </tag>
             
         </tags>
       
@@ -2907,9 +2934,9 @@
             
             <tag> 数学 </tag>
             
-            <tag> TJOI </tag>
-            
             <tag> 中国剩余定理 </tag>
+            
+            <tag> TJOI </tag>
             
         </tags>
       
@@ -3341,9 +3368,9 @@
       
         <tags>
             
-            <tag> 斜率优化 </tag>
-            
             <tag> 动态规划 </tag>
+            
+            <tag> 斜率优化 </tag>
             
         </tags>
       
