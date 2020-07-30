@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>[HDU6803] Blow up the Enemy</title>
+      <link href="/is-zxy.github.io/2020/07/30/%5BHDU6803%5D-Blow-up-the-Enemy/"/>
+      <url>/is-zxy.github.io/2020/07/30/%5BHDU6803%5D-Blow-up-the-Enemy/</url>
+      
+        <content type="html"><![CDATA[<p>张三在和爸爸玩游戏，在这个游戏中有两个玩家，以对方的死亡为胜利目标。</p><p>这个游戏中有 $n$ 个武器，第 $i$ 个武器有两个属性：攻击力 $A_i$ 与冷却时间 $D_i$，当一个玩家使用了这个武器，那么对方的生命值会减少 $A_i$，然后他必须等待 $D_i$ 秒后才可以再次使用这个武器。</p><p>这个游戏的规则如下：</p><ol><li>张三和爸爸各自选择一个武器。爸爸会等可能地随机在 $n$ 个武器中选择一个。每个玩家在一场游戏中只能使用一个武器。</li><li>当游戏开始时，张三和爸爸都拥有 $100$ 点生命值，在 $0$ 时刻他们都会使用格子的武器。</li><li>他们当武器冷却完毕后就立刻使用武器，直到游戏结束。</li><li>当一个玩家的生命值减到 $0$ 及以下，游戏结束。在此条件下，如果另一个玩家生命值高于 $0$，那么另一个玩家获胜；反之则两个人获胜的概率均为 $50\%$ 。</li></ol><p>张三想要赢得这个游戏。请帮助他选择一个武器，使得他获胜的可能性最大。</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le T\le 100$</p><p>$1\le n\le 1000$</p><p>$1\le A_i\le 100$</p><p>$1\le D_i\le 10000$</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6803" target="_blank" rel="noopener">Blow up the Enemy</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>2020hdu 多校第四场 T2。</p><p>考虑求出最小的 $j_i$ 使得 $A_i\times j_i\ge 100$，这样便能刻画出每个武器击败对方的时间 $(j_i-1)\times D_i$ 。</p><p>$A_i$ 最小为 $1$，所以直接暴力枚举，最多也就枚举 $100$ 次。</p><p>定义 $t_i=(j_i-1)\times D$。</p><p>求出 $t_i$ 后，将 $t$ 按照从小到大排序。</p><p>那么显然选择排在第一个位置的武器获胜的可能行最大。</p><p>最终答案即为</p><script type="math/tex; mode=display">\dfrac{\sum_{i=1}^n\dfrac{1}{2^{[t_i==t_1]}}}{n}</script><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>赛时代码略丑。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> w=<span class="number">1</span>,x=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> ch=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) w=<span class="number">-1</span>;ch=getchar();&#125;</span><br><span class="line">    <span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line">    <span class="keyword">return</span> w*x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> T,n,t[N];</span><br><span class="line"><span class="keyword">double</span> ans;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    T=read();</span><br><span class="line">    <span class="keyword">while</span>(T--) &#123;</span><br><span class="line">        <span class="built_in">memset</span>(t,<span class="number">0</span>,<span class="keyword">sizeof</span>(t));</span><br><span class="line">        n=read();</span><br><span class="line">        ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> a,d;</span><br><span class="line">            a=read(),d=read();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=<span class="number">110</span>;j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(a*j&gt;=<span class="number">100</span>) &#123;</span><br><span class="line">                    t[i]=d*(j<span class="number">-1</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(t+<span class="number">1</span>,t+n+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">int</span> selection=t[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">double</span> p=(<span class="keyword">double</span>)n;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) ans+=(t[i]==selection?<span class="number">0.5</span>:<span class="number">1</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lf\n"</span>,ans/p);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> HDU </tag>
+            
+            <tag> 暴力 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[HDU6795] Little W and Contest</title>
       <link href="/is-zxy.github.io/2020/07/29/%5BHDU6795%5D-Little-W-and-Contest/"/>
       <url>/is-zxy.github.io/2020/07/29/%5BHDU6795%5D-Little-W-and-Contest/</url>
@@ -321,9 +348,9 @@
       
         <tags>
             
-            <tag> NOI </tag>
-            
             <tag> 树链剖分 </tag>
+            
+            <tag> NOI </tag>
             
         </tags>
       
@@ -375,11 +402,11 @@
       
         <tags>
             
-            <tag> 树链剖分 </tag>
-            
             <tag> HEOI </tag>
             
             <tag> TJOI </tag>
+            
+            <tag> 树链剖分 </tag>
             
         </tags>
       
@@ -911,9 +938,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 矩阵加速递推 </tag>
             
@@ -1000,9 +1027,9 @@
       
         <tags>
             
-            <tag> 学习笔记 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 学习笔记 </tag>
             
             <tag> 动态开点 </tag>
             
@@ -1029,9 +1056,9 @@
       
         <tags>
             
-            <tag> 学习笔记 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 学习笔记 </tag>
             
             <tag> 扫描线 </tag>
             
@@ -2814,11 +2841,11 @@
       
         <tags>
             
+            <tag> 洛谷 </tag>
+            
             <tag> 数学 </tag>
             
             <tag> BSGS </tag>
-            
-            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -2934,9 +2961,9 @@
             
             <tag> 数学 </tag>
             
-            <tag> 中国剩余定理 </tag>
-            
             <tag> TJOI </tag>
+            
+            <tag> 中国剩余定理 </tag>
             
         </tags>
       
@@ -3312,9 +3339,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 数学 </tag>
             
         </tags>
       
@@ -3339,9 +3366,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 线性筛 </tag>
             
@@ -3368,9 +3395,9 @@
       
         <tags>
             
-            <tag> 动态规划 </tag>
-            
             <tag> 斜率优化 </tag>
+            
+            <tag> 动态规划 </tag>
             
         </tags>
       
@@ -4746,9 +4773,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 线性筛 </tag>
             
@@ -4858,9 +4885,9 @@
       
         <tags>
             
-            <tag> 学习笔记 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 学习笔记 </tag>
             
             <tag> 数据结构 </tag>
             
@@ -4964,9 +4991,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 数学 </tag>
             
             <tag> 线性筛 </tag>
             
