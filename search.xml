@@ -4,6 +4,87 @@
   
     
     <entry>
+      <title>[USACO5.3] 校园网Network of Schools</title>
+      <link href="/is-zxy.github.io/2020/08/07/%5BUSACO5-3%5D-%E6%A0%A1%E5%9B%AD%E7%BD%91Network-of-Schools/"/>
+      <url>/is-zxy.github.io/2020/08/07/%5BUSACO5-3%5D-%E6%A0%A1%E5%9B%AD%E7%BD%91Network-of-Schools/</url>
+      
+        <content type="html"><![CDATA[<p>一些学校连入一个电脑网络。那些学校已订立了协议：每个学校都会给其它的一些学校分发软件（称作“接受学校”）。注意即使 $B$ 在 $A$ 学校的分发列表中，$A$ 也不一定在 $B$ 学校的列表中。</p><p>你要写一个程序计算，根据协议，为了让网络中所有的学校都用上新软件，必须接受新软件副本的最少学校数目（子任务 A）。更进一步，我们想要确定通过给任意一个学校发送新软件，这个软件就会分发到网络中的所有学校。为了完成这个任务，我们可能必须扩展接收学校列表，使其加入新成员。计算最少需要增加几个扩展，使得不论我们给哪个学校发送新软件，它都会到达其余所有的学校（子任务 B）。一个扩展就是在一个学校的接收学校列表中引入一个新成员。</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$2\le N\le 100$</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P2746" target="_blank" rel="noopener">[USACO5.3]校园网Network of Schools</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>对于子任务一，就是 [洛谷P2002] 消息扩散。</p><p>对于子任务二。其目标就是添加最少的边数使得一个 DAG 转化成一个强连通图。</p><p>考虑入度为 $0$ 的点的个数与出度为 $0$ 的点的个数。若加边使得 DAG 中不存在入度、出度为 $0$ 的点，那么就是一个强连通图。因此考虑入度为 $0$ 的点与出度为 $0$ 的点进行配对连边，这样的话答案就是二者的较大值。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 110</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 6010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> w=<span class="number">1</span>,x=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">char</span> ch=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) w=<span class="number">-1</span>;ch=getchar();&#125;</span><br><span class="line"><span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line"><span class="keyword">return</span> w*x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,head[N],tot=<span class="number">0</span>,dfn[N],low[N],sccid[N],stk[N],in[N],out[N],inzero=<span class="number">0</span>,outzero=<span class="number">0</span>,top=<span class="number">0</span>,cnt=<span class="number">0</span>,id=<span class="number">0</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; scc[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">graph</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> v,next;</span><br><span class="line">&#125;edge[MAXN];</span><br><span class="line"><span class="keyword">bool</span> vh[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">edge[++tot].v=v;</span><br><span class="line">edge[tot].next=head[u];</span><br><span class="line">head[u]=tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Tarjan</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">dfn[u]=low[u]=++cnt;</span><br><span class="line">stk[++top]=u;</span><br><span class="line">vh[u]=<span class="literal">true</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=edge[i].next) &#123;</span><br><span class="line"><span class="keyword">int</span> v=edge[i].v;</span><br><span class="line"><span class="keyword">if</span>(!dfn[v]) &#123;</span><br><span class="line">Tarjan(v);</span><br><span class="line">low[u]=min(low[u],low[v]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(vh[v]) low[u]=min(low[u],dfn[v]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(dfn[u]==low[u]) &#123;</span><br><span class="line">id++;</span><br><span class="line"><span class="keyword">while</span>(vh[u]) &#123;</span><br><span class="line"><span class="keyword">int</span> v=stk[top--];</span><br><span class="line">vh[v]=<span class="literal">false</span>;</span><br><span class="line">scc[id].push_back(v);</span><br><span class="line">sccid[v]=id;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">n=read();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line"><span class="keyword">int</span> v=read();</span><br><span class="line"><span class="keyword">while</span>(v) &#123;</span><br><span class="line">add(i,v);</span><br><span class="line">v=read();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">if</span>(!dfn[i]) Tarjan(i);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=head[i];j;j=edge[j].next) &#123;</span><br><span class="line"><span class="keyword">int</span> v=edge[j].v;</span><br><span class="line"><span class="keyword">if</span>(sccid[i]!=sccid[v]) in[sccid[v]]++,out[sccid[i]]++;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=id;i++) &#123;</span><br><span class="line"><span class="keyword">if</span>(!in[i]) inzero++;</span><br><span class="line"><span class="keyword">if</span>(!out[i]) outzero++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(id!=<span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"%d\n%d\n"</span>,inzero,max(inzero,outzero));</span><br><span class="line"><span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n%d\n"</span>,<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> USACO </tag>
+            
+            <tag> 强连通分量 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[洛谷P2002] 消息扩散</title>
+      <link href="/is-zxy.github.io/2020/08/07/%5B%E6%B4%9B%E8%B0%B7P2002%5D-%E6%B6%88%E6%81%AF%E6%89%A9%E6%95%A3/"/>
+      <url>/is-zxy.github.io/2020/08/07/%5B%E6%B4%9B%E8%B0%B7P2002%5D-%E6%B6%88%E6%81%AF%E6%89%A9%E6%95%A3/</url>
+      
+        <content type="html"><![CDATA[<p>有 $n$ 个城市，中间有单向道路连接，消息会沿着道路扩散，现在给出 $n$ 个城市及其之间的道路，问至少需要在几个城市发布消息才能让这所有 $n$ 个城市都得到消息。</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$n\le 10^5$</p><p>$m\le 5\times 10^5$</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P2002" target="_blank" rel="noopener">P2002 消息扩散</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>首先用 Tarjan 跑一遍强连通分量，把每个强连通分量看成一个点。</p><p>这样就形成了一个 DAG。</p><p>显然答案就是 DAG 中入度为 $0$ 的点的个数。</p><p>时间复杂度 $O(n+m)$ 。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 500010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> w=<span class="number">1</span>,x=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">char</span> ch=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) w=<span class="number">-1</span>;ch=getchar();&#125;</span><br><span class="line"><span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line"><span class="keyword">return</span> w*x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,head[N],tot=<span class="number">0</span>,dfn[N],low[N],sccid[N],stk[N],in[N],top=<span class="number">0</span>,cnt=<span class="number">0</span>,id=<span class="number">0</span>,ans=<span class="number">0</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; scc[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">graph</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> v,next;</span><br><span class="line">&#125;edge[MAXN];</span><br><span class="line"><span class="keyword">bool</span> vh[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">edge[++tot].v=v;</span><br><span class="line">edge[tot].next=head[u];</span><br><span class="line">head[u]=tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Tarjan</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">dfn[u]=low[u]=++cnt;</span><br><span class="line">stk[++top]=u;</span><br><span class="line">vh[u]=<span class="literal">true</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=edge[i].next) &#123;</span><br><span class="line"><span class="keyword">int</span> v=edge[i].v;</span><br><span class="line"><span class="keyword">if</span>(!dfn[v]) &#123;</span><br><span class="line">Tarjan(v);</span><br><span class="line">low[u]=min(low[u],low[v]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(vh[v]) low[u]=min(low[u],dfn[v]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(dfn[u]==low[u]) &#123;</span><br><span class="line">id++;</span><br><span class="line"><span class="keyword">while</span>(vh[u]) &#123;</span><br><span class="line"><span class="keyword">int</span> v=stk[top--];</span><br><span class="line">vh[v]=<span class="literal">false</span>;</span><br><span class="line">scc[id].push_back(v);</span><br><span class="line">sccid[v]=id;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">n=read(),m=read();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line"><span class="keyword">int</span> u,v;</span><br><span class="line">u=read(),v=read();</span><br><span class="line">add(u,v);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">if</span>(!dfn[i]) Tarjan(i);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=head[i];j;j=edge[j].next) &#123;</span><br><span class="line"><span class="keyword">int</span> v=edge[j].v;</span><br><span class="line"><span class="keyword">if</span>(sccid[i]!=sccid[v]) in[sccid[v]]++;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=id;i++) <span class="keyword">if</span>(!in[i]) ans++;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 洛谷 </tag>
+            
+            <tag> 强连通分量 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[USACO06JAN] The Cow Prom S</title>
+      <link href="/is-zxy.github.io/2020/08/07/%5BUSACO06JAN%5D-The-Cow-Prom-S/"/>
+      <url>/is-zxy.github.io/2020/08/07/%5BUSACO06JAN%5D-The-Cow-Prom-S/</url>
+      
+        <content type="html"><![CDATA[<p>有一个 $n$ 个点，$m$ 条边的有向图，请求出这个图点数大于 $1$ 的强联通分量个数。</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$2\le n\le 10^4$</p><p>$2\le m\le 5\times 10^4$</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P2863" target="_blank" rel="noopener">[USACO06JAN]The Cow Prom S</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>板子。</p><p>直接 Tarjan 求一遍就好了。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 10010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 50010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> w=<span class="number">1</span>,x=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">char</span> ch=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) w=<span class="number">-1</span>;ch=getchar();&#125;</span><br><span class="line"><span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line"><span class="keyword">return</span> w*x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,head[N],tot=<span class="number">0</span>,dfn[N],low[N],sccid[N],stk[N],size[N],top=<span class="number">0</span>,cnt=<span class="number">0</span>,id=<span class="number">0</span>,ans=<span class="number">0</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; scc[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">graph</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> v,next;</span><br><span class="line">&#125;edge[MAXN];</span><br><span class="line"><span class="keyword">bool</span> vh[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">edge[++tot].v=v;</span><br><span class="line">edge[tot].next=head[u];</span><br><span class="line">head[u]=tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Tarjan</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">dfn[u]=low[u]=++cnt;</span><br><span class="line">stk[++top]=u;</span><br><span class="line">vh[u]=<span class="literal">true</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=edge[i].next) &#123;</span><br><span class="line"><span class="keyword">int</span> v=edge[i].v;</span><br><span class="line"><span class="keyword">if</span>(!dfn[v]) &#123;</span><br><span class="line">Tarjan(v);</span><br><span class="line">low[u]=min(low[u],low[v]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(vh[v]) low[u]=min(low[u],dfn[v]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(dfn[u]==low[u]) &#123;</span><br><span class="line">id++;</span><br><span class="line"><span class="keyword">while</span>(vh[u]) &#123;</span><br><span class="line"><span class="keyword">int</span> v=stk[top--];</span><br><span class="line">vh[v]=<span class="literal">false</span>;</span><br><span class="line">scc[id].push_back(v);</span><br><span class="line">sccid[v]=id;</span><br><span class="line">size[id]++;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">n=read(),m=read();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line"><span class="keyword">int</span> u,v;</span><br><span class="line">u=read(),v=read();</span><br><span class="line">add(u,v);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">if</span>(!dfn[i]) Tarjan(i);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=id;i++) <span class="keyword">if</span>(size[i]&gt;<span class="number">1</span>) ans++;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> USACO </tag>
+            
+            <tag> 强连通分量 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[洛谷P6175] 无向图的最小环问题</title>
       <link href="/is-zxy.github.io/2020/08/06/%5B%E6%B4%9B%E8%B0%B7P6175%5D-%E6%97%A0%E5%90%91%E5%9B%BE%E7%9A%84%E6%9C%80%E5%B0%8F%E7%8E%AF%E9%97%AE%E9%A2%98/"/>
       <url>/is-zxy.github.io/2020/08/06/%5B%E6%B4%9B%E8%B0%B7P6175%5D-%E6%97%A0%E5%90%91%E5%9B%BE%E7%9A%84%E6%9C%80%E5%B0%8F%E7%8E%AF%E9%97%AE%E9%A2%98/</url>
@@ -20,9 +101,9 @@
       
         <tags>
             
-            <tag> 图论 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 图论 </tag>
             
             <tag> Floyd </tag>
             
@@ -2191,9 +2272,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 分块 </tag>
             
@@ -2496,9 +2577,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 线段树 </tag>
             
         </tags>
       
@@ -2569,9 +2650,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 线段树 </tag>
             
         </tags>
       
@@ -2596,9 +2677,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> COCI </tag>
             
@@ -2652,9 +2733,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 线段树 </tag>
             
         </tags>
       
@@ -2706,9 +2787,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 线段树 </tag>
             
         </tags>
       
@@ -2733,9 +2814,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 线段树 </tag>
             
         </tags>
       
@@ -3480,9 +3561,9 @@
       
         <tags>
             
-            <tag> CEOI </tag>
-            
             <tag> 斜率优化 </tag>
+            
+            <tag> CEOI </tag>
             
         </tags>
       
@@ -4011,9 +4092,9 @@
       
         <tags>
             
-            <tag> 斜率优化 </tag>
-            
             <tag> APIO </tag>
+            
+            <tag> 斜率优化 </tag>
             
         </tags>
       
@@ -4860,9 +4941,9 @@
       
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 洛谷 </tag>
+            
+            <tag> 线段树 </tag>
             
         </tags>
       
