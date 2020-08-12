@@ -4,6 +4,89 @@
   
     
     <entry>
+      <title>[洛谷P3932] 浮游大陆的68号岛</title>
+      <link href="/is-zxy.github.io/2020/08/12/%5B%E6%B4%9B%E8%B0%B7P3932%5D-%E6%B5%AE%E6%B8%B8%E5%A4%A7%E9%99%86%E7%9A%8468%E5%8F%B7%E5%B2%9B/"/>
+      <url>/is-zxy.github.io/2020/08/12/%5B%E6%B4%9B%E8%B0%B7P3932%5D-%E6%B5%AE%E6%B8%B8%E5%A4%A7%E9%99%86%E7%9A%8468%E5%8F%B7%E5%B2%9B/</url>
+      
+        <content type="html"><![CDATA[<p>妖精仓库里生活着黄金妖精们，她们过着快乐，却随时准备着迎接死亡的生活。</p><p>换用更高尚的说法，是随时准备着为这个无药可救的世界献身。</p><p>然而孩子们的生活却总是无忧无虑的，幼体的黄金妖精们过着天真烂漫的生活，自然也无暇考虑什么拯救世界之类的重任。</p><p><img src="http://ww1.sinaimg.cn/large/0060lm7Tly1fkmg8rthiej30m80gbguu.jpg" alt="img"></p><p>有一天小妖精们又在做游戏。这个游戏是这样的。</p><p>妖精仓库的储物点可以看做在一个数轴上。每一个储物点会有一些东西，同时他们之间存在距离。</p><p>每次他们会选出一个小妖精，然后剩下的人找到区间 $[l,r]$ 储物点的所有东西，清点完毕之后问她，把这个区间内所有储物点的东西运到另外一个仓库的代价是多少？</p><p>比如储物点 $i$ 有 $x$ 个东西，要运到储物点 $j$，代价为</p><script type="math/tex; mode=display">x \times \mathrm{dist}( i , j )</script><p>$\mathrm{dist}$ 就是仓库间的距离。</p><p>当然啦，由于小妖精们不会算很大的数字，因此您的答案需要对 $19260817$ 取模。</p><p><img src="https://cdn.luogu.com.cn/upload/pic/9294.png" alt="img"></p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$n,m\le 2\times 10^5$</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P3932" target="_blank" rel="noopener">P3932 浮游大陆的68号岛</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p><del>看到区间问题又看到毒瘤出题后以为是什么奇怪的数据结构题</del></p><p>其实不是啦。</p><p>定义 $sum_n$ 表示储物点东西个数的前缀和， $sum_d$ 表示储物点之间距离的前缀和。</p><p>考虑预处理出 $dis_{front}(i)$ 表示 $i$ 之前的储物点的东西全部运到 $i$ 的代价之和， $dis_{behind}(i)$ 表示 $i$ 之后的储物点的东西全部运到 $i$ 的代价之和。</p><p>然后对于每个询问，分类讨论一下：</p><ol><li><p>$x&lt;l$ 。</p><p>此时手玩一下可推出答案为</p><script type="math/tex; mode=display">dis_{behind}(l)-dis_{behind}(r)-(sum_n[n]-sum_n[r])\times (sum_d[r]-sum_d[l])+(sum_n[r]-sum_n[l-1])\times (sum_d[l]-sum_d[x])</script><p>即先将 $l$ 之后的都运到 $l$ ，再统一运到 $x$ 。</p></li><li><p>$l\le x\le r$ 。</p><p>此时手玩一下可推出答案为 </p><script type="math/tex; mode=display">dis_{behind}(x)-dis_{behind}(r)-(sum_n[n]-sum_n[r])\times(sum_d[r]-sum_d[x])+dis_{front}(x)-dis_{front}(l)-sum_n[l-1]\times(sum_d[x]-sum_d[l])</script></li><li><p>$x&gt;r$ 。</p><p>此时手玩一下课推出答案为</p><script type="math/tex; mode=display">dis_{front}(r)-dis_{front}(l)-sum_n[l-1]\times (sum_d[r]-sum_d[l])+(sum_n[r]-sum_n[l-1])\times (sum_d[x]-sum_d[r])</script></li></ol><p>以上分步推一推就好了。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 200010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 19260817</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> w=<span class="number">1</span>,x=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">char</span> ch=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) w=<span class="number">-1</span>;ch=getchar();&#125;</span><br><span class="line"><span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line"><span class="keyword">return</span> w*x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line">ll d[N],num[N],sum_n[N],sum_d[N],dis_front[N],dis_behind[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">n=read(),m=read();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++) d[i]=read()%mod,(sum_d[i]=sum_d[i<span class="number">-1</span>]+d[i])%=mod;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) num[i]=read()%mod,(sum_n[i]=sum_n[i<span class="number">-1</span>]+num[i])%=mod;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++) (dis_front[i]=dis_front[i<span class="number">-1</span>]+sum_n[i<span class="number">-1</span>]*d[i]%mod)%=mod;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">1</span>;i--) (dis_behind[i]=dis_behind[i+<span class="number">1</span>]+(sum_n[n]-sum_n[i])*d[i+<span class="number">1</span>]%mod)%=mod;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line"><span class="keyword">int</span> x,l,r;</span><br><span class="line">x=read(),l=read(),r=read();</span><br><span class="line">ll ans;</span><br><span class="line"><span class="keyword">if</span>(x&lt;l) &#123;</span><br><span class="line">ans=dis_behind[l]-dis_behind[r];</span><br><span class="line">ans-=(sum_n[n]-sum_n[r])*(sum_d[r]-sum_d[l])%mod;</span><br><span class="line">ans+=(sum_n[r]-sum_n[l<span class="number">-1</span>])*(sum_d[l]-sum_d[x])%mod;</span><br><span class="line">ans=(ans%mod+mod)%mod;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(x&gt;=l&amp;&amp;x&lt;=r) &#123;</span><br><span class="line">ans=dis_behind[x]-dis_behind[r];</span><br><span class="line">ans-=(sum_n[n]-sum_n[r])*(sum_d[r]-sum_d[x])%mod;</span><br><span class="line">ans+=dis_front[x]-dis_front[l];</span><br><span class="line">ans-=sum_n[l<span class="number">-1</span>]*(sum_d[x]-sum_d[l])%mod;</span><br><span class="line">ans=(ans%mod+mod)%mod;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">ans=dis_front[r]-dis_front[l];</span><br><span class="line">ans-=sum_n[l<span class="number">-1</span>]*(sum_d[r]-sum_d[l])%mod;</span><br><span class="line">ans+=(sum_n[r]-sum_n[l<span class="number">-1</span>])*(sum_d[x]-sum_d[r])%mod;</span><br><span class="line">ans=(ans%mod+mod)%mod;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 洛谷 </tag>
+            
+            <tag> 前缀和 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[AcWing#289] 环路运输</title>
+      <link href="/is-zxy.github.io/2020/08/12/%5BAcWing-289%5D-%E7%8E%AF%E8%B7%AF%E8%BF%90%E8%BE%93/"/>
+      <url>/is-zxy.github.io/2020/08/12/%5BAcWing-289%5D-%E7%8E%AF%E8%B7%AF%E8%BF%90%E8%BE%93/</url>
+      
+        <content type="html"><![CDATA[<p>在一条环形公路旁均匀地分布着 $N$ 座仓库，编号为 $1\sim N$，编号为 $i$ 的仓库与编号为 $j$ 的仓库之间的距离定义为 $dist(i,j)=min⁡(|i-j|,N-|i-j|)$，也就是逆时针或顺时针从 $i$ 到 $j$ 中较近的一种。</p><p>每座仓库都存有货物，其中编号为 $i$ 的仓库库存量为 $A_i$ 。</p><p>在 $i$ 和 $j$ 两座仓库之间运送货物需要的代价为 $A_i+A_j+dist(i,j)$。</p><p>求在哪两座仓库之间运送货物需要的代价最大。</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$1\le N\le 10^6$</p><p>$1\le A_i\le 10^7$</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p>一个环上的问题。</p><p>考虑把链复制到末尾，以此化链为环。</p><p>定义 $dp[i]$ 表示 $i$ 之前的仓库运货到 $i$ 的最大代价。</p><p>那么显然</p><script type="math/tex; mode=display">dp[i]=\max\Big(A_i+A_j+i-j\Big),j\in\Big[\max(1,i-\dfrac{N}{2}),i\Big)</script><p>一遍 DP 即可。</p><p>该形式显然可以用单调队列优化，因此时间复杂度 $O(n)$ 。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1000010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> v(x) A[x]-x</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> w=<span class="number">1</span>,x=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">char</span> ch=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) w=<span class="number">-1</span>;ch=getchar();&#125;</span><br><span class="line"><span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line"><span class="keyword">return</span> w*x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,A[N&lt;&lt;<span class="number">1</span>],dp[N&lt;&lt;<span class="number">1</span>],q[N&lt;&lt;<span class="number">1</span>],ans=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">n=read();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) A[i]=A[i+n]=read();</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> head=<span class="number">1</span>,tail=<span class="number">0</span>;</span><br><span class="line">dp[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">q[++tail]=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=(n&lt;&lt;<span class="number">1</span>);i++) &#123;</span><br><span class="line"><span class="keyword">while</span>(head&lt;=tail&amp;&amp;q[head]&lt;max(<span class="number">1</span>,i-n/<span class="number">2</span>)) head++;</span><br><span class="line">dp[i]=A[i]+i+v(q[head]);</span><br><span class="line">ans=max(ans,dp[i]);</span><br><span class="line"><span class="keyword">while</span>(head&lt;=tail&amp;&amp;v(q[tail])&lt;=v(i)) tail--;</span><br><span class="line">q[++tail]=i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> AcWing </tag>
+            
+            <tag> 动态规划 </tag>
+            
+            <tag> 单调队列 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[USACO05JAN] Naptime G</title>
+      <link href="/is-zxy.github.io/2020/08/12/%5BUSACO05JAN%5D-Naptime-G/"/>
+      <url>/is-zxy.github.io/2020/08/12/%5BUSACO05JAN%5D-Naptime-G/</url>
+      
+        <content type="html"><![CDATA[<p>贝茜是一只非常缺觉的奶牛．她的一天被平均分割成 $N$ 段（$3 \leq N \leq 3830$），但是她要用其中的 $B$ 段时间（$2 \leq B \lt N$）睡觉。每段时间都有一个效用值 $U_i$（$0 \leq U_i \leq 2 \times 10^5$），只有当她睡觉的时候，才会发挥效用。</p><p>有了闹钟的帮助，贝茜可以选择任意的时间入睡，当然，她只能在时间划分的边界处入睡、醒来。</p><p>贝茜想使所有睡觉效用的总和最大。不幸的是，每一段睡眠的第一个时间阶段都是“入睡”阶段，而旦不记入效用值。</p><p>时间阶段是不断循环的圆（一天一天是循环的嘛），假如贝茜在时间 $N$ 和时间 $1$ 睡觉，那么她将得到时间 $1$ 的效用值。</p><a id="more"></a><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P6064" target="_blank" rel="noopener">[USACO05JAN]Naptime G</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>先不考虑环的问题。</p><p>定义 $dp[i][j][state]$ 表示前 $i$ 段，休息了 $j$ 段，且第 $i$ 段的状态为 $state$ 的最大效用值。当 $state=0$ 表示第 $i$ 段不休息，反之则休息。 </p><p>显然有</p><script type="math/tex; mode=display">\begin{equation}dp[i][j][state]=\begin{cases}\max\big(dp[i-1][j][0],dp[i-1][j][1]\big)&&state=0\\\max\big(dp[i-1][j-1][0],dp[i-1][j-1][1]+u[i]\big)&&state=1\end{cases}\end{equation}</script><p>注意初值 $dp[i][0][0]=0$，其余皆为负无穷。</p><p>最终答案即为 $\max\big(dp[n][b][0],dp[n][b][1]\big)$ ，记为 $ans_1$。</p><p>现在这个问题到了环上，该如何解决？</p><p>之前的策略是将链复制一倍到末尾，进行 DP。但是本题若如此操作，会导致两天同一时刻的转移。</p><p>考虑形成环时的状态，此时一定是链上开头与末尾都休息的。</p><p>因此考虑将 $dp[1][1][1]$ 的初值赋为 $u[1]$，其余皆为负无穷，再进行一次 DP 求解。</p><p>最终答案为 $dp[n][b][1]$，记为 $ans_2$ 。</p><p>取 $ans_1$ 与 $ans_2$ 中的较大者即可。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 4010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> w=<span class="number">1</span>,x=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">char</span> ch=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) w=<span class="number">-1</span>;ch=getchar();&#125;</span><br><span class="line"><span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line"><span class="keyword">return</span> w*x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> T,n,b,dp[N][N][<span class="number">2</span>],u[N],ans=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">T=read();</span><br><span class="line"><span class="keyword">while</span>(T--) &#123;</span><br><span class="line">n=read(),b=read();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) u[i]=read();</span><br><span class="line"></span><br><span class="line"><span class="built_in">memset</span>(dp,~<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">dp[<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>]=<span class="number">0</span>,dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">dp[i][<span class="number">0</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=b;j++) &#123;</span><br><span class="line">dp[i][j][<span class="number">0</span>]=max(dp[i<span class="number">-1</span>][j][<span class="number">1</span>],dp[i<span class="number">-1</span>][j][<span class="number">0</span>]);</span><br><span class="line">dp[i][j][<span class="number">1</span>]=max(dp[i<span class="number">-1</span>][j<span class="number">-1</span>][<span class="number">0</span>],dp[i<span class="number">-1</span>][j<span class="number">-1</span>][<span class="number">1</span>]+u[i]);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">ans=max(dp[n][b][<span class="number">0</span>],dp[n][b][<span class="number">1</span>]);</span><br><span class="line"><span class="built_in">memset</span>(dp,~<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">dp[<span class="number">1</span>][<span class="number">1</span>][<span class="number">1</span>]=u[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++) &#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=b;j++) &#123;</span><br><span class="line">dp[i][j][<span class="number">0</span>]=max(dp[i<span class="number">-1</span>][j][<span class="number">1</span>],dp[i<span class="number">-1</span>][j][<span class="number">0</span>]);</span><br><span class="line">dp[i][j][<span class="number">1</span>]=max(dp[i<span class="number">-1</span>][j<span class="number">-1</span>][<span class="number">0</span>],dp[i<span class="number">-1</span>][j<span class="number">-1</span>][<span class="number">1</span>]+u[i]);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">ans=max(ans,dp[n][b][<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>洛谷 AC，acwing与contest hunter 都 MLE。。</p><p>所以滚动数组！</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 4010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> w=<span class="number">1</span>,x=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">char</span> ch=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) w=<span class="number">-1</span>;ch=getchar();&#125;</span><br><span class="line"><span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line"><span class="keyword">return</span> w*x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,b,dp[<span class="number">2</span>][N][<span class="number">2</span>],u[N],ans=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">n=read(),b=read();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) u[i]=read();</span><br><span class="line"></span><br><span class="line"><span class="built_in">memset</span>(dp,~<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">dp[<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>]=<span class="number">0</span>,dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=b;j++) &#123;</span><br><span class="line">dp[i&amp;<span class="number">1</span>][j][<span class="number">0</span>]=max(dp[i&amp;<span class="number">1</span>^<span class="number">1</span>][j][<span class="number">1</span>],dp[i&amp;<span class="number">1</span>^<span class="number">1</span>][j][<span class="number">0</span>]);</span><br><span class="line">dp[i&amp;<span class="number">1</span>][j][<span class="number">1</span>]=max(dp[i&amp;<span class="number">1</span>^<span class="number">1</span>][j<span class="number">-1</span>][<span class="number">0</span>],dp[i&amp;<span class="number">1</span>^<span class="number">1</span>][j<span class="number">-1</span>][<span class="number">1</span>]+u[i]);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">ans=max(dp[n&amp;<span class="number">1</span>][b][<span class="number">0</span>],dp[n&amp;<span class="number">1</span>][b][<span class="number">1</span>]);</span><br><span class="line"><span class="built_in">memset</span>(dp,~<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">dp[<span class="number">1</span>][<span class="number">1</span>][<span class="number">1</span>]=u[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++) &#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=b;j++) &#123;</span><br><span class="line">dp[i&amp;<span class="number">1</span>][j][<span class="number">0</span>]=max(dp[i&amp;<span class="number">1</span>^<span class="number">1</span>][j][<span class="number">1</span>],dp[i&amp;<span class="number">1</span>^<span class="number">1</span>][j][<span class="number">0</span>]);</span><br><span class="line">dp[i&amp;<span class="number">1</span>][j][<span class="number">1</span>]=max(dp[i&amp;<span class="number">1</span>^<span class="number">1</span>][j<span class="number">-1</span>][<span class="number">0</span>],dp[i&amp;<span class="number">1</span>^<span class="number">1</span>][j<span class="number">-1</span>][<span class="number">1</span>]+u[i]);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">ans=max(ans,dp[n&amp;<span class="number">1</span>][b][<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 动态规划 </tag>
+            
+            <tag> USACO </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[SDOI2014] 旅行</title>
       <link href="/is-zxy.github.io/2020/08/11/%5BSDOI2014%5D-%E6%97%85%E8%A1%8C/"/>
       <url>/is-zxy.github.io/2020/08/11/%5BSDOI2014%5D-%E6%97%85%E8%A1%8C/</url>
@@ -1334,9 +1417,9 @@
       
         <tags>
             
-            <tag> USACO </tag>
+            <tag> 单调队列 </tag>
             
-            <tag> 单调队列优化DP </tag>
+            <tag> USACO </tag>
             
         </tags>
       
@@ -3644,9 +3727,9 @@
       
         <tags>
             
-            <tag> 斜率优化 </tag>
-            
             <tag> 动态规划 </tag>
+            
+            <tag> 斜率优化 </tag>
             
         </tags>
       
@@ -3974,9 +4057,9 @@
       
         <tags>
             
-            <tag> POI </tag>
-            
             <tag> 单调队列 </tag>
+            
+            <tag> POI </tag>
             
             <tag> 线性动规 </tag>
             
@@ -4175,9 +4258,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 单调队列 </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -4310,9 +4393,9 @@
       
         <tags>
             
-            <tag> POI </tag>
-            
             <tag> 单调队列 </tag>
+            
+            <tag> POI </tag>
             
         </tags>
       
@@ -4362,9 +4445,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 单调队列 </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -4416,9 +4499,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 单调队列 </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -4443,9 +4526,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 单调队列 </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
@@ -4470,9 +4553,9 @@
       
         <tags>
             
-            <tag> 洛谷 </tag>
-            
             <tag> 单调队列 </tag>
+            
+            <tag> 洛谷 </tag>
             
         </tags>
       
