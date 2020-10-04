@@ -79,14 +79,14 @@
 
 
 
-<meta name="description" content="Pine开始了从S地到T地的征途。 从S地到T地的路可以划分成$n$段，相邻两段路的分界点设有休息站。 Pine计划用$m$天到达T地。除第$m$天外，每一天晚上Pine都必须在休息站过夜。所以，一段路必须在同一天中走完。 Pine希望每一天走的路长度尽可能相近，所以他希望每一天走的路的长度的方差尽可能小。 帮助Pine求出最小方差是多少。 设方差是$v$，可以证明，$v\times m^2$是一">
+<meta name="description" content="Pine开始了从S地到T地的征途。 从S地到T地的路可以划分成 $n$ 段，相邻两段路的分界点设有休息站。 Pine计划用 $m$ 天到达 T 地。除第 $m$ 天外，每一天晚上Pine都必须在休息站过夜。所以，一段路必须在同一天中走完。 Pine希望每一天走的路长度尽可能相近，所以他希望每一天走的路的长度的方差尽可能小。 帮助Pine求出最小方差是多少。 设方差是$v$，可以证明，$v\time">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[SDOI2016] 征途">
 <meta property="og:url" content="http://www.zxyer.xyz/2020/02/15/[SDOI2016]-%E5%BE%81%E9%80%94/index.html">
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
-<meta property="og:description" content="Pine开始了从S地到T地的征途。 从S地到T地的路可以划分成$n$段，相邻两段路的分界点设有休息站。 Pine计划用$m$天到达T地。除第$m$天外，每一天晚上Pine都必须在休息站过夜。所以，一段路必须在同一天中走完。 Pine希望每一天走的路长度尽可能相近，所以他希望每一天走的路的长度的方差尽可能小。 帮助Pine求出最小方差是多少。 设方差是$v$，可以证明，$v\times m^2$是一">
+<meta property="og:description" content="Pine开始了从S地到T地的征途。 从S地到T地的路可以划分成 $n$ 段，相邻两段路的分界点设有休息站。 Pine计划用 $m$ 天到达 T 地。除第 $m$ 天外，每一天晚上Pine都必须在休息站过夜。所以，一段路必须在同一天中走完。 Pine希望每一天走的路长度尽可能相近，所以他希望每一天走的路的长度的方差尽可能小。 帮助Pine求出最小方差是多少。 设方差是$v$，可以证明，$v\time">
 <meta property="article:published_time" content="2020-02-15T04:42:53.000Z">
-<meta property="article:modified_time" content="2020-02-17T13:46:02.473Z">
+<meta property="article:modified_time" content="2020-10-04T05:33:31.274Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="斜率优化">
 <meta property="article:tag" content="SDOI">
@@ -397,8 +397,8 @@
 
       
         <p>Pine开始了从S地到T地的征途。</p>
-<p>从S地到T地的路可以划分成$n$段，相邻两段路的分界点设有休息站。</p>
-<p>Pine计划用$m$天到达T地。除第$m$天外，每一天晚上Pine都必须在休息站过夜。所以，一段路必须在同一天中走完。</p>
+<p>从S地到T地的路可以划分成 $n$ 段，相邻两段路的分界点设有休息站。</p>
+<p>Pine计划用 $m$ 天到达 T 地。除第 $m$ 天外，每一天晚上Pine都必须在休息站过夜。所以，一段路必须在同一天中走完。</p>
 <p>Pine希望每一天走的路长度尽可能相近，所以他希望每一天走的路的长度的方差尽可能小。</p>
 <p>帮助Pine求出最小方差是多少。</p>
 <p>设方差是$v$，可以证明，$v\times m^2$是一个整数。为了避免精度误差，输出结果时输出$v\times m^2$。</p>
@@ -419,14 +419,14 @@ v\times m^2
 &= m\sum_{i=1}^mS_i^2-2\times sum[n]^2+sum[n]^2 \\
 &= m\sum_{i=1}^mS_i^2-sum[n]^2
 
-\end{align}</script><p>于是最小化$m\sum_{i=1}^mS_i^2$即可。</p>
-<p>定义$dp[i][k]$表示前$i$段在第$k$天走到的最小$\sum_{i=1}^kS_i^2$的最小值。</p>
+\end{align}</script><p>于是最小化 $m\sum_{i=1}^mS_i^2$ 即可。</p>
+<p>定义 $dp[i][k]$ 表示前$i$段在第$k$天走到的最小 $\sum_{i=1}^kS_i^2$ 的最小值。</p>
 <p>易得</p>
 <script type="math/tex; mode=display">
-dp[i][k]=\min\{dp[j][k-1]+m\times (sum[i]-sum[j])^2\},i\in[1,n],k\in[0,i)</script><p>最终答案即为$dp[n][m]-sum[n]^2$</p>
-<p>于是可以得到一个$O(mn^2)$的算法，TLE。</p>
+dp[i][k]=\min\{dp[j][k-1]+m\times (sum[i]-sum[j])^2\},i\in[1,n],k\in[0,i)</script><p>最终答案即为 $dp[n][m]-sum[n]^2$</p>
+<p>于是可以得到一个 $O(mn^2)$ 的算法，TLE。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 3010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line">ll a[N],sum[N],dp[N][N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">		sum[i]=sum[i<span class="number">-1</span>]+a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">memset</span>(dp,<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	dp[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=n;k++) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;j++) dp[i][k]=min(dp[i][k],dp[j][k<span class="number">-1</span>]+m*(sum[i]-sum[j])*(sum[i]-sum[j]));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;dp[n][m]-sum[n]*sum[n]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>将$\min$内的式子单独提出来看看。</p>
+<p>将 $\min$ 内的式子单独提出来看看。</p>
 <script type="math/tex; mode=display">
 \begin{align}
 dp[j][k-1]+m\times (sum[i]-sum[j])^2 
@@ -434,11 +434,11 @@ dp[j][k-1]+m\times (sum[i]-sum[j])^2
 &= dp[j][k-1]+m\times sun[i]^2-2m\times sum[i]\times sum[j]+m\times sum[j]^2
 \end{align}</script><p>将常量剔除，得</p>
 <script type="math/tex; mode=display">
-dp[j][k-1]-2m\times sum[i]\times sum[j]+m\times sum[j]^2</script><p>定义$sm[i]=m\times sum[i]^2$，则变为</p>
+dp[j][k-1]-2m\times sum[i]\times sum[j]+m\times sum[j]^2</script><p>定义 $sm[i]=m\times sum[i]^2$ ，则变为</p>
 <script type="math/tex; mode=display">
 dp[j][k-1]-2m\times sum[i]\times sum[j]+sm[j]</script><p>则原状转方程变为</p>
 <script type="math/tex; mode=display">
-dp[i][k]=\min\{dp[j][k-1]-2m\times sum[i]\times sum[j]+sm[j]\}+sm[i],i\in[1,n],k\in[0,i)</script><p>令$p&lt;j&lt;i$， 若转移决策点$j$比转移决策点$k$更优，则</p>
+dp[i][k]=\min\{dp[j][k-1]-2m\times sum[i]\times sum[j]+sm[j]\}+sm[i],i\in[1,n],k\in[0,i)</script><p>令 $p&lt;j&lt;i$ ， 若转移决策点$j$比转移决策点$k$更优，则</p>
 <script type="math/tex; mode=display">
 \begin{align}
 dp[j][k-1]-2m\times sum[i]\times sum[j]+sm[j] &\le dp[p][k-1]-2m\times sum[i]\times sum[p]+sm[p] \\ \\
@@ -571,7 +571,7 @@ dp[j][k-1]+sm[j]-(dp[p][k-1]+sm[p]) &\le 2m\times sum[i](sum[j]-sum[p]) \\ \\
               
                 <a href="/is-zxy.github.io/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">203</span>
+                  <span class="site-state-item-count">204</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

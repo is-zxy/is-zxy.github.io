@@ -79,14 +79,14 @@
 
 
 
-<meta name="description" content="$n$组询问，每次给出一个区间$l, r$，你需要输出在这个区间内二进制表示中$1$的个数最多的数  如有多个答案，输出最小的那个  $(n \leq10^4, 0\leq l, r \leq10^{18})$">
+<meta name="description" content="$n$ 组询问，每次给出一个区间 $l, r$ ，你需要输出在这个区间内二进制表示中 $1$ 的个数最多的数  如有多个答案，输出最小的那个  $(n \leq10^4, 0\leq l, r \leq10^{18})$">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[CF484A] Bits">
 <meta property="og:url" content="http://www.zxyer.xyz/2020/01/30/[CF484A]-Bits/index.html">
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
-<meta property="og:description" content="$n$组询问，每次给出一个区间$l, r$，你需要输出在这个区间内二进制表示中$1$的个数最多的数  如有多个答案，输出最小的那个  $(n \leq10^4, 0\leq l, r \leq10^{18})$">
+<meta property="og:description" content="$n$ 组询问，每次给出一个区间 $l, r$ ，你需要输出在这个区间内二进制表示中 $1$ 的个数最多的数  如有多个答案，输出最小的那个  $(n \leq10^4, 0\leq l, r \leq10^{18})$">
 <meta property="article:published_time" content="2020-01-30T09:31:56.000Z">
-<meta property="article:modified_time" content="2020-02-15T04:46:22.694Z">
+<meta property="article:modified_time" content="2020-10-04T04:20:06.495Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="Codeforces">
 <meta property="article:tag" content="贪心">
@@ -397,7 +397,7 @@
 
       
         <ul>
-<li><p>$n$组询问，每次给出一个区间$l, r$，你需要输出在这个区间内二进制表示中$1$的个数最多的数</p>
+<li><p>$n$ 组询问，每次给出一个区间 $l, r$ ，你需要输出在这个区间内二进制表示中 $1$ 的个数最多的数</p>
 </li>
 <li><p>如有多个答案，输出最小的那个</p>
 </li>
@@ -406,8 +406,8 @@
 </ul>
 <a id="more"></a>
 <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/CF484A" target="_blank" rel="noopener">CF484A Bits</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>由于是在$[l,r]$区间内，即需要大于等于$l$且小于等于$r$，则可以直接在$l$上进行操作。</p>
-<p>从$l$的二进制最低位开始，每一位都$|1$，直到再$|1$就比$r$大了为止。</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>由于是在 $[l,r]$ 区间内，即需要大于等于 $l$ 且小于等于 $r$ ，则可以直接在 $l$ 上进行操作。</p>
+<p>从$l$的二进制最低位开始，每一位都 $|1$，直到再 $|1$ 就比 $r$ 大了为止。</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		ll l,r,t=<span class="number">1</span>;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;l&gt;&gt;r;</span><br><span class="line">		<span class="keyword">while</span>((l|t)&lt;=r) &#123;</span><br><span class="line">			l=l|t;</span><br><span class="line">			t&lt;&lt;=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;l&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
@@ -534,7 +534,7 @@
               
                 <a href="/is-zxy.github.io/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">203</span>
+                  <span class="site-state-item-count">204</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

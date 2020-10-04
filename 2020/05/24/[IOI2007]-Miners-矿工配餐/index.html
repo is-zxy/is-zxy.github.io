@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
 <meta property="og:description" content="现有两个煤矿，每个煤矿都雇用一组矿工。采煤工作很辛苦，所以矿工们需要良好饮食。每当一辆食品车到达煤矿时，矿工们便会产出一定数量的煤。 有三种类型的食品车：肉车，鱼车和面包车。 矿工们喜欢变化的食谱。如果提供的食品能够不断变化，他们的产煤量将会增加。每当一个新的食品车到达煤矿时，矿工们就会比较这种新的食品和前两次（或者少于两次，如果前面运送食品的次数不足两次）的食品，并且：  如果这几次食品车都是同">
 <meta property="article:published_time" content="2020-05-24T15:50:12.000Z">
-<meta property="article:modified_time" content="2020-06-03T15:36:26.719Z">
+<meta property="article:modified_time" content="2020-10-04T05:16:12.863Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="多维动态规划">
 <meta property="article:tag" content="IOI">
@@ -413,7 +413,7 @@
 <p>令<code>MBF</code>字符分别对应<code>123</code>。</p>
 <p>定义 $dp[i][a][b][c][d]$ 表示目前正在处理第 $i$ 辆食品车，煤矿1目前后两个食品种类为<code>ab</code>，煤矿2目前后两个食品种类为<code>cd</code>。</p>
 <p>这个转移思想是十分显然的，状态转移方程见代码吧。</p>
-<p>需要初始将其全赋为 $-1$，以表示此状态不存在。然后初始化 $dp[0][0][0][0][0]$为 $0$。</p>
+<p>需要初始将其全赋为 $-1$，以表示此状态不存在。然后初始化 $dp[0][0][0][0][0]$ 为 $0$。</p>
 <p>转移过程中判断被转移的状态是否存在，即是否等于 $-1$。</p>
 <p>显然可以滚动数组优化，只需保存两行即可，每次用另一行进行转移。</p>
 <p>具体细节见代码。</p>
@@ -543,7 +543,7 @@
               
                 <a href="/is-zxy.github.io/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">203</span>
+                  <span class="site-state-item-count">204</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

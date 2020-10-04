@@ -79,14 +79,14 @@
 
 
 
-<meta name="description" content="kkk做了一个人体感觉分析器。每一天，人都有一个感受值$A_i$，$A_i$越大，表示人感觉越舒适。在一段时间$[i, j]$内，人的舒适程度定义为$[i, j]$中最不舒服的那一天的感受值$*[i, j]$中每一天感受值的和。现在给出kkk在连续$N$天中的感受值，请问，在哪一段时间，kkk感觉最舒适？">
+<meta name="description" content="kkk做了一个人体感觉分析器。每一天，人都有一个感受值 $A_i$ ， $A_i$ 越大，表示人感觉越舒适。在一段时间 $[i, j]$ 内，人的舒适程度定义为 $[i, j]$ 中最不舒服的那一天的感受值$*[i, j]$ 中每一天感受值的和。现在给出 kkk在连续 $N$ 天中的感受值，请问，在哪一段时间，kkk感觉最舒适？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[洛谷P2422] 良好的感觉">
 <meta property="og:url" content="http://www.zxyer.xyz/2020/02/04/[%E6%B4%9B%E8%B0%B7P2422]-%E8%89%AF%E5%A5%BD%E7%9A%84%E6%84%9F%E8%A7%89/index.html">
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
-<meta property="og:description" content="kkk做了一个人体感觉分析器。每一天，人都有一个感受值$A_i$，$A_i$越大，表示人感觉越舒适。在一段时间$[i, j]$内，人的舒适程度定义为$[i, j]$中最不舒服的那一天的感受值$*[i, j]$中每一天感受值的和。现在给出kkk在连续$N$天中的感受值，请问，在哪一段时间，kkk感觉最舒适？">
+<meta property="og:description" content="kkk做了一个人体感觉分析器。每一天，人都有一个感受值 $A_i$ ， $A_i$ 越大，表示人感觉越舒适。在一段时间 $[i, j]$ 内，人的舒适程度定义为 $[i, j]$ 中最不舒服的那一天的感受值$*[i, j]$ 中每一天感受值的和。现在给出 kkk在连续 $N$ 天中的感受值，请问，在哪一段时间，kkk感觉最舒适？">
 <meta property="article:published_time" content="2020-02-04T15:38:22.000Z">
-<meta property="article:modified_time" content="2020-02-17T14:23:13.035Z">
+<meta property="article:modified_time" content="2020-10-04T05:35:13.802Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="洛谷">
 <meta property="article:tag" content="单调栈">
@@ -396,18 +396,18 @@
       
 
       
-        <p>kkk做了一个人体感觉分析器。每一天，人都有一个感受值$A_i$，$A_i$越大，表示人感觉越舒适。在一段时间$[i, j]$内，人的舒适程度定义为$[i, j]$中最不舒服的那一天的感受值$*[i, j]$中每一天感受值的和。现在给出kkk在连续$N$天中的感受值，请问，在哪一段时间，kkk感觉最舒适？ </p>
+        <p>kkk做了一个人体感觉分析器。每一天，人都有一个感受值 $A_i$ ， $A_i$ 越大，表示人感觉越舒适。在一段时间 $[i, j]$ 内，人的舒适程度定义为 $[i, j]$ 中最不舒服的那一天的感受值$*[i, j]$ 中每一天感受值的和。现在给出 kkk在连续 $N$ 天中的感受值，请问，在哪一段时间，kkk感觉最舒适？ </p>
 <a id="more"></a>
 <h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>对于$30\%$的数据，$1&lt;=N&lt;=100$</p>
 <p>对于$70\%$的数据，$1&lt;=N&lt;=2000$</p>
 <p>对于$100\%$的数据，$1&lt;=N&lt;=100000$，$1&lt;=感受值&lt;=1000000$</p>
 <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P2422" target="_blank" rel="noopener">P2422 良好的感觉</a></p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>标签是单调队列，然而正规来讲应该是单调栈。</p>
-<p>定义$f[i]$表示$a[i]$为最小感受值得最大舒适程度。</p>
-<p>易得$f[i]=(sum[r_i]-sum[l_i])*a[i]$。</p>
-<p>其中$r_i$表示$a[i]$右面第一个比$a[i]$小的数的下标，$l_i$同理。</p>
+<p>定义 $f[i]$ 表示 $a[i]$ 为最小感受值得最大舒适程度。</p>
+<p>易得 $f[i]=(sum[r_i]-sum[l_i])*a[i]$ 。</p>
+<p>其中 $r_i$ 表示 $a[i]$ 右面第一个比 $a[i]$ 小的数的下标， $l_i$ 同理。</p>
 <p>并没有什么前置要求，因此是个单向操作，于是就不需要用双端队列（单调队列）了，单调栈即可。</p>
-<p>维护一个单调递增的单调栈，栈顶为最小值，当入栈的数$i$比栈顶$j$小时，说明$i$就是$j$右面的第一个比$j$小的数，$j$左面的第一个比$j$小的数即为栈顶下面的数；若栈只有一层，则$j$为当前所有入过栈元素的最小值。维护答案，$j$弹出栈顶，$i$入栈。</p>
+<p>维护一个单调递增的单调栈，栈顶为最小值，当入栈的数 $i$ 比栈顶 $j$ 小时，说明 $i$ 就是 $j$ 右面的第一个比 $j$ 小的数， $j$ 左面的第一个比 $j$ 小的数即为栈顶下面的数；若栈只有一层，则 $j$ 为当前所有入过栈元素的最小值。维护答案， $j$ 弹出栈顶， $i$ 入栈。</p>
 <p>当每个元素都操作后，需要再次检验栈是否为空，若不为空，则再次进行上述操作，直至栈为空。</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line">ll a[N],sum[N],ans=<span class="number">0</span>;</span><br><span class="line"><span class="built_in">stack</span> &lt;<span class="keyword">int</span>&gt; s;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">		sum[i]=sum[i<span class="number">-1</span>]+a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">		<span class="keyword">while</span>(!s.empty()&amp;&amp;a[i]&lt;a[s.top()]) &#123;</span><br><span class="line">			ll p=a[s.top()],t;</span><br><span class="line">			s.pop();</span><br><span class="line">			t=s.empty()?<span class="number">0</span>:s.top();</span><br><span class="line">			ans=max(ans,(sum[i<span class="number">-1</span>]-sum[t])*p);</span><br><span class="line">		&#125;</span><br><span class="line">		s.push(i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(!s.empty()) &#123;</span><br><span class="line">		ll p=a[s.top()],t;</span><br><span class="line">		s.pop();</span><br><span class="line">		t=s.empty()?<span class="number">0</span>:s.top();</span><br><span class="line">		ans=max(ans,(sum[n]-sum[t])*p);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -535,7 +535,7 @@
               
                 <a href="/is-zxy.github.io/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">203</span>
+                  <span class="site-state-item-count">204</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
