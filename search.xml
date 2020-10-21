@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>[洛谷P1654] OSU!</title>
+      <link href="/is-zxy.github.io/2020/10/22/%5B%E6%B4%9B%E8%B0%B7P1654%5D-OSU/"/>
+      <url>/is-zxy.github.io/2020/10/22/%5B%E6%B4%9B%E8%B0%B7P1654%5D-OSU/</url>
+      
+        <content type="html"><![CDATA[<p>osu 是一款群众喜闻乐见的休闲软件。</p><p>我们可以把osu的规则简化与改编成以下的样子:</p><p>一共有 $n$ 次操作，每次操作只有成功与失败之分，成功对应 $1$，失败对应 $0$，$n$ 次操作对应为 $1$ 个长度为 $n$ 的 $01$ 串。在这个串中连续的 $X$ 个 $1$ 可以贡献 $X^3$ 的分数，这 $X$ 个 $1$ 不能被其他连续的 $1$ 所包含（也就是极长的一串 $1$ ，具体见样例解释）</p><p>现在给出 $n$ ，以及每个操作的成功率，请你输出期望分数，输出四舍五入后保留 $1$ 位小数。</p><a id="more"></a><h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>$n\le 10^5$</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P1654" target="_blank" rel="noopener">P1654 OSU!</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>定义 $f_3(n)$ 表示完成第 $n$ 次操作后的期望分数。</p><p>现在来推一推这个东西。</p><p>定义 $g_3(n,S)$ 表示完成第 $n$ 次操作后，形成的 $01$ 串形态为 $S$ 时的分数。</p><p>定义 $P(S)$ 表示完成第 $n$ 次操作后，形成的 $01$ 串形态为 $S$ 的概率。</p><p>定义 $l_S$ 表示形成的 $01$ 串形态为 $S$ ，该形态下以 $n$ 位为末尾的极长的一串 $1$ 的长度。</p><p>那么显然有 </p><script type="math/tex; mode=display">f_3(n)=\sum_{S}g_3(n,S)\cdot P(S)</script><p>分别考虑第 $n$ 位位 $0$ 或 $1$ 时的贡献。</p><p>当第 $n$ 位为 $0$ ，形态为 $S$ 时，此时显然 $l_S=0$ ，那么此时对分数的贡献为</p><script type="math/tex; mode=display">g_3(n-1,S')</script><p>当第 $n$ 位为 $1$ ，形态为 $S$ 时，此时 $l_S=l_{S’}+1$ ，那么此时对分数的贡献为</p><script type="math/tex; mode=display">g_3(n-1,S')+l_S^3-l_{S'}^3=g_3(n-1,S')+3l_{S'}^2+3l_{S'}+1</script><p>那么分别乘上其概率，可得</p><script type="math/tex; mode=display">\begin{align}f_3(n) &= \sum_{S'}\Bigg(\Big[g_3(n-1,S')+3l_{S'}^2+3l_{S'}+1\Big]\cdot P(S')\cdot p_n+g_3(n-1,S')\cdot P(S')\cdot (1-p_n)\Bigg) \\&= \sum_{S'}\Bigg(\Big[3l_{S'}^2+3l_{S'}+1\Big]\cdot P(S')\cdot p_n+g_3(n-1,S')\cdot P(S')\Bigg) \\&= 3p_n\sum_{S'}l_{S'}^2\cdot P(S')+3p_n\sum_{S'}l_{S'}\cdot P(S')+p_n\sum_{S'}P(S')+\sum_{S'}g_3(n-1,S')\cdot P(S')\end{align}</script><p>而显然有 </p><script type="math/tex; mode=display">\sum_{S'}P(S')=1</script><p>则</p><script type="math/tex; mode=display">f_3(n)=3p_n\sum_{S'}l_{S'}^2\cdot P(S')+3p_n\sum_{S'}l_{S'}\cdot P(S')+p_n+\sum_{S'}g_3(n-1,S')\cdot P(S')</script><p>即</p><script type="math/tex; mode=display">f_3(n)=f_3(n-1)+3p_n\sum_{S'}l_{S'}^2\cdot P(S')+3p_n\sum_{S'}l_{S'}\cdot P(S')+p_n</script><p>这样就得到了一个递推式。</p><p>发现其实上式的第二项与第三项就是贡献由长度的三次方变为二次方与一次方的期望分数，<strong>且末尾为 $1$</strong> 。</p><p>于是定义 $f_2(n)$ 表示贡献为长度的二次方，末尾为 $1$ 时的期望分数， $f_1(n)$ 表示贡献为长度的一次方，末尾为 $1$ 时的期望分数。</p><p>那么</p><script type="math/tex; mode=display">f_3(n)=f_3(n-1)+3p_n\cdot f_2(n-1)+3p_n\cdot f_1(n-1)+p_n</script><p>定义 $g_2(n,S)$ 表示完成前 $n$ 个操作， $01$ 串形态为 $S$ 时的以第 $i$ 位为结尾的极长 $1$ 串的长度的二次方； $g_1(n,S)$ 与此类似，长度的一次方。</p><p>此时由于求的是 <strong>末尾为 $1$ </strong>，因此无需考虑为 $0$ 的概率。</p><p>于是此时的贡献为</p><script type="math/tex; mode=display">\begin{align}\Big[g_2(n-1,S')+2l_{S'}+1\Big]P(S')\cdot p_n =p_n\cdot P(S')\cdot g_2(n-1,S')+2l_{S'}\cdot P(S')\cdot p_n+P(S')\cdot p_n\end{align}</script><p>则</p><script type="math/tex; mode=display">f_2(n)=p_n\sum_{S'}P(S')\cdot g_2(n-1,S')+2p_n\sum_{S'}P(S')\cdot l_{S'}+p_n\sum_{S'}P(S')</script><p>而</p><script type="math/tex; mode=display">f_2(n)=\sum_{S}g_2(n,S)\cdot P(S)</script><p>则</p><script type="math/tex; mode=display">f_2(n)=p_n\cdot f_2(n-1)+2p_n\cdot f_1(n-1)+p_n</script><p>这样便推得 $f_2$ 的递推式。</p><p>只剩下 $f_1$ 了。</p><p>也是同样的方法。</p><p>此时的贡献为 </p><script type="math/tex; mode=display">\Big[g_1(n-1,S')+1\Big]P(S')\cdot p_n=g_1(n-1,S')\cdot P(S')\cdot p_n+P(S')\cdot p_n</script><p>则</p><script type="math/tex; mode=display">f_1(n)=p_n\sum_{S')}g_1(n-1,S')\cdot P(S')+p_n</script><p>而 </p><script type="math/tex; mode=display">f_1(n)=\sum_{S}g_1(n,S)\cdot P(S)</script><p>则</p><script type="math/tex; mode=display">f_1(n)=p_n\cdot f_1(n-1)+p_n</script><p>那么 $f_1$ 的递推式也出来了。</p><p>那么直接 $O(n)$ 递推即可。</p><p>整理一下。</p><script type="math/tex; mode=display">\begin{align}f_3(n)&=f_3(n-1)+3p_n\cdot f_2(n-1)+3p_n\cdot f_1(n-1)+p_n\\f_2(n)&=p_n\cdot f_2(n-1)+2p_n\cdot f_1(n-1)+p_n\\f_1(n)&=p_n\cdot f_1(n-1)+p_n\end{align}</script><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">double</span> p[N],f1[N],f2[N],f3[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%lf"</span>,&amp;p[i]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) f1[i]=p[i]*f1[i<span class="number">-1</span>]+p[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) f2[i]=p[i]*f2[i<span class="number">-1</span>]+<span class="number">2</span>*p[i]*f1[i<span class="number">-1</span>]+p[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) f3[i]=f3[i<span class="number">-1</span>]+<span class="number">3</span>*p[i]*f2[i<span class="number">-1</span>]+<span class="number">3</span>*p[i]*f1[i<span class="number">-1</span>]+p[i];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.1lf\n"</span>,f3[n]);</span><br><span class="line"></span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 洛谷 </tag>
+            
+            <tag> 期望 </tag>
+            
+            <tag> 递推 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>[洛谷P3810] 【模板】三维偏序（陌上花开）</title>
       <link href="/is-zxy.github.io/2020/10/13/%5B%E6%B4%9B%E8%B0%B7P3810%5D-%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E4%B8%89%E7%BB%B4%E5%81%8F%E5%BA%8F%EF%BC%88%E9%99%8C%E4%B8%8A%E8%8A%B1%E5%BC%80%EF%BC%89/"/>
       <url>/is-zxy.github.io/2020/10/13/%5B%E6%B4%9B%E8%B0%B7P3810%5D-%E3%80%90%E6%A8%A1%E6%9D%BF%E3%80%91%E4%B8%89%E7%BB%B4%E5%81%8F%E5%BA%8F%EF%BC%88%E9%99%8C%E4%B8%8A%E8%8A%B1%E5%BC%80%EF%BC%89/</url>
@@ -4005,9 +4034,9 @@
       
         <tags>
             
-            <tag> 动态规划 </tag>
-            
             <tag> 斜率优化 </tag>
+            
+            <tag> 动态规划 </tag>
             
         </tags>
       
