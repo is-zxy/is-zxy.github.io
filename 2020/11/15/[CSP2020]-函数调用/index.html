@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/is-zxy.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/is-zxy.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/is-zxy.github.io/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/is-zxy.github.io/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/is-zxy.github.io/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/is-zxy.github.io/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/is-zxy.github.io/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数学,CSP,拓扑排序," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="函数是各种编程语言中一项重要的概念，借助函数，我们总可以将复杂的任务分解成一个个相对简单的子任务，直到细化为十分简单的基础操作，从而使代码的组织更加严密、更加有条理。然而，过多的函数调用也会导致额外的开销，影响程序的运行效率。 某数据库应用程序提供了若干函数用以维护数据。已知这些函数的功能可分为三类：  将数据中的指定元素加上一个值； 将数据中的每一个元素乘以一个相同值； 依次执行若干次函数调用，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[CSP2020] 函数调用">
+<meta property="og:url" content="http://www.zxyer.xyz/2020/11/15/[CSP2020]-%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/index.html">
+<meta property="og:site_name" content="Zxyer&#39;s Blog">
+<meta property="og:description" content="函数是各种编程语言中一项重要的概念，借助函数，我们总可以将复杂的任务分解成一个个相对简单的子任务，直到细化为十分简单的基础操作，从而使代码的组织更加严密、更加有条理。然而，过多的函数调用也会导致额外的开销，影响程序的运行效率。 某数据库应用程序提供了若干函数用以维护数据。已知这些函数的功能可分为三类：  将数据中的指定元素加上一个值； 将数据中的每一个元素乘以一个相同值； 依次执行若干次函数调用，">
+<meta property="article:published_time" content="2020-11-15T15:14:27.000Z">
+<meta property="article:modified_time" content="2020-11-15T15:16:00.430Z">
+<meta property="article:author" content="Yuzuriha_Inori">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="CSP">
+<meta property="article:tag" content="拓扑排序">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/is-zxy.github.io/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.zxyer.xyz/2020/11/15/[CSP2020]-函数调用/"/>
+
+
+
+
+
+  <title>[CSP2020] 函数调用 | Zxyer's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/is-zxy.github.io/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zxyer's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/is-zxy.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/is-zxy.github.io/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/is-zxy.github.io/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/is-zxy.github.io/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/is-zxy.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/is-zxy.github.io/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-link"></i> <br />
+            
+            友链
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.zxyer.xyz/is-zxy.github.io/2020/11/15/%5BCSP2020%5D-%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yuzuriha_Inori">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/is-zxy.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zxyer's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[CSP2020] 函数调用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-15T23:14:27+08:00">
+                2020-11-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/is-zxy.github.io/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>函数是各种编程语言中一项重要的概念，借助函数，我们总可以将复杂的任务分解成一个个相对简单的子任务，直到细化为十分简单的基础操作，从而使代码的组织更加严密、更加有条理。然而，过多的函数调用也会导致额外的开销，影响程序的运行效率。</p>
+<p>某数据库应用程序提供了若干函数用以维护数据。已知这些函数的功能可分为三类：</p>
+<ol>
+<li>将数据中的指定元素加上一个值；</li>
+<li>将数据中的每一个元素乘以一个相同值；</li>
+<li><strong>依次</strong>执行若干次函数调用，保证不会出现递归（即不会直接或间接地调用本身）。</li>
+</ol>
+<p>在使用该数据库应用时，用户可一次性输入要调用的函数序列（一个函数可能被调用多次），在<strong>依次</strong>执行完序列中的函数后，系统中的数据被加以更新。某一天，小 A 在应用该数据库程序处理数据时遇到了困难：由于频繁而低效的函数调用，系统在执行操作时进入了无响应的状态，他只好强制结束了数据库程序。为了计算出正确数据，小 A 查阅了软件的文档，了解到每个函数的具体功能信息，现在他想请你根据这些信息帮他计算出更新后的数据应该是多少。</p>
+<a id="more"></a>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">测试点编号</th>
+<th style="text-align:center">$n, m, Q \le$</th>
+<th style="text-align:center">$\sum C_j$</th>
+<th style="text-align:center">其他特殊限制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$1 \sim 2$</td>
+<td style="text-align:center">$1000$</td>
+<td style="text-align:center">$= m - 1$</td>
+<td style="text-align:center">函数调用关系构成一棵树</td>
+</tr>
+<tr>
+<td style="text-align:center">$3 \sim 4$</td>
+<td style="text-align:center">$1000$</td>
+<td style="text-align:center">$\le 100$</td>
+<td style="text-align:center">无</td>
+</tr>
+<tr>
+<td style="text-align:center">$5 \sim 6$</td>
+<td style="text-align:center">$20000$</td>
+<td style="text-align:center">$\le 40000$</td>
+<td style="text-align:center">不含第 $2$ 类函数或不含第 $1$ 类函数</td>
+</tr>
+<tr>
+<td style="text-align:center">$7$</td>
+<td style="text-align:center">$20000$</td>
+<td style="text-align:center">$= 0$</td>
+<td style="text-align:center">无</td>
+</tr>
+<tr>
+<td style="text-align:center">$8 \sim 9$</td>
+<td style="text-align:center">$20000$</td>
+<td style="text-align:center">$= m - 1$</td>
+<td style="text-align:center">函数调用关系构成一棵树</td>
+</tr>
+<tr>
+<td style="text-align:center">$10 \sim 11$</td>
+<td style="text-align:center">$20000$</td>
+<td style="text-align:center">$\le 2 \times 10^5$</td>
+<td style="text-align:center">无</td>
+</tr>
+<tr>
+<td style="text-align:center">$12 \sim 13$</td>
+<td style="text-align:center">$10^5$</td>
+<td style="text-align:center">$\le 2 \times 10^5$</td>
+<td style="text-align:center">不含第 $2$ 类函数或不含第 $1$ 类函数</td>
+</tr>
+<tr>
+<td style="text-align:center">$14$</td>
+<td style="text-align:center">$10^5$</td>
+<td style="text-align:center">$= 0$</td>
+<td style="text-align:center">无</td>
+</tr>
+<tr>
+<td style="text-align:center">$15 \sim 16$</td>
+<td style="text-align:center">$10^5$</td>
+<td style="text-align:center">$= m - 1$</td>
+<td style="text-align:center">函数调用关系构成一棵树</td>
+</tr>
+<tr>
+<td style="text-align:center">$17 \sim 18$</td>
+<td style="text-align:center">$10^5$</td>
+<td style="text-align:center">$\le 5 \times 10^5$</td>
+<td style="text-align:center">无</td>
+</tr>
+<tr>
+<td style="text-align:center">$19 \sim 20$</td>
+<td style="text-align:center">$10^5$</td>
+<td style="text-align:center">$\le 10^6$</td>
+<td style="text-align:center">无</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.luogu.com.cn/problem/P7077" target="_blank" rel="noopener">函数调用</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>首先显然函数之间的调用关系构成一个 $\mathrm{DAG}$ 。</p>
+<p>那么自然而然的有一个暴力的思路：构出图后，每个函数进行一遍 dfs ，倒序遍历其遍历的函数。这里倒序的原因是计算一个 $t=2$ 的操作对其前面的 $t=1$ 的操作的影响；顺序+乘法逆元处理 $t=2,v=0$ 的情况有些麻烦。具体操作如下：</p>
+<ul>
+<li>每个函数一个 <code>vector</code>，存二元组 $(pos,plus)$ ，表示将位置 $pos$ 加上 $plus$ 。每个函数一个 $mul_i$ 记录过程中全局乘的值。令当前的函数为 $i$ ，当前被处理的函数为 $root$ 。</li>
+<li>若当前的函数 $i$ 的 $t=1$ ，则将二元组 $(p_i,v_i\times mul_i)$ 存入函数 $root$ 的 <code>vector</code> 。</li>
+<li>若当前的函数 $i$ 的 $t=2$ ，则将 $mul_{root}\times v_i$ 。</li>
+<li>若当前的函数 $i$ 的 $t=3$ ，则倒序进入函数 $i$ 所调用的函数。</li>
+</ul>
+<p>这样便得到了一个 35pts（洛谷民间数据）的 TLE+MLE 算法。</p>
+<p>容易发现，该过程中有很多的重复操作，一个点可能被遍历多次。</p>
+<p>于是可以考虑拓扑排序，但是是在反向边的图上进行的。每个函数处理后就进行标记，这样遇到上述操作的 $t=3$ 的情况，直接将函数 $i$ 存的所有二元组的 $plus$ 值乘上 $mul_{root}$ 后存入函数 $root$ 的 <code>vector</code> 中，然后将 $mul_{root}$ 乘上 $mul_i$ 。</p>
+<p>还能优化吗？和教练讨论了一番后，教练提供了一个优化方法。</p>
+<p>容易发现，直接将一个函数的所有二元组存入到另一个函数的 <code>vector</code> 中这一操作，可能有很多的二元组的 $pos$ 相同，而这些二元组显然可以压到一个二元组内，这样便达成了空间优化。</p>
+<p>于是可以想到开一个二元组数组记录位置 $pos$ 在 <code>vector</code> 中的下标，达到 $O(1)$ 修改。</p>
+<p>这样便可以得到一个 50pts（洛谷民间数据）的算法，仍然是 TLE+MLE。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 998244353</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DEBUG printf(<span class="meta-string">" vzyx &amp; tqzer AK IOI\n"</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ll w=<span class="number">1</span>,x=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">char</span> ch=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) w=<span class="number">-1</span>;ch=getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line">	<span class="keyword">return</span> w*x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,q;</span><br><span class="line">ll a[N],mul[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> t,p;</span><br><span class="line">	ll v;</span><br><span class="line">&#125;f[N];</span><br><span class="line"><span class="keyword">int</span> in[N],out[N];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; g[N],fg[N];</span><br><span class="line"><span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>,ll&gt; &gt; opt[N];</span><br><span class="line"></span><br><span class="line">pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; rec[N];</span><br><span class="line"><span class="keyword">bool</span> vh[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> root)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(vh[u]) &#123;</span><br><span class="line">		<span class="keyword">int</span> len=opt[u].size();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> pos=opt[u][i].first;</span><br><span class="line">			ll plus=opt[u][i].second;</span><br><span class="line">			<span class="keyword">if</span>(rec[pos].first==root) (opt[root][rec[pos].second].second+=plus*mul[root]%mod)%=mod;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				rec[pos].first=root;</span><br><span class="line">				opt[root].push_back(make_pair(pos,plus*mul[root]%mod));</span><br><span class="line">				rec[pos].second=opt[root].size()<span class="number">-1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		(mul[root]*=mul[u])%=mod;</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(f[u].t==<span class="number">1</span>) &#123;opt[root].push_back(make_pair(f[u].p,f[u].v*mul[root]%mod));rec[f[u].p]=make_pair(root,opt[root].size()<span class="number">-1</span>);<span class="keyword">return</span> ;&#125;</span><br><span class="line">		<span class="keyword">if</span>(f[u].t==<span class="number">2</span>) &#123;(mul[root]*=f[u].v)%=mod;<span class="keyword">return</span> ;&#125;</span><br><span class="line">		<span class="keyword">int</span> len=g[u].size();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=len<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--) dfs(g[u][i],root);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; topo;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">toposort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; que;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) <span class="keyword">if</span>(!out[i]) que.push(i),topo.push_back(i);</span><br><span class="line">	<span class="keyword">while</span>(!que.empty()) &#123;</span><br><span class="line">		<span class="keyword">int</span> u=que.front();</span><br><span class="line">		que.pop();</span><br><span class="line">		<span class="keyword">int</span> len=fg[u].size();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++) &#123;</span><br><span class="line">			out[fg[u][i]]--;</span><br><span class="line">			<span class="keyword">if</span>(!out[fg[u][i]]) que.push(fg[u][i]),topo.push_back(fg[u][i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) mul[i]=<span class="number">1</span>;</span><br><span class="line">	toposort();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++) dfs(topo[i],topo[i]),vh[topo[i]]=<span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	n=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) a[i]=read();</span><br><span class="line">	m=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line">		f[i].t=read();</span><br><span class="line">		<span class="keyword">if</span>(f[i].t==<span class="number">1</span>) f[i].p=read(),f[i].v=read();</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(f[i].t==<span class="number">2</span>) f[i].v=read();</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">int</span> c=read();</span><br><span class="line">			<span class="keyword">while</span>(c--) &#123;</span><br><span class="line">				<span class="keyword">int</span> j=read();</span><br><span class="line">				g[i].push_back(j);</span><br><span class="line">				fg[j].push_back(i);</span><br><span class="line">				in[j]++;</span><br><span class="line">				out[i]++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	q=read();</span><br><span class="line">		</span><br><span class="line">	init();</span><br><span class="line">	<span class="keyword">while</span>(q--) &#123;</span><br><span class="line">		<span class="keyword">int</span> id=read();</span><br><span class="line">		<span class="keyword">int</span> len=opt[id].size();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) (a[i]*=mul[id])%=mod;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++) (a[opt[id][i].first]+=opt[id][i].second)%=mod;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">printf</span>(<span class="string">"%lld "</span>,a[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>容易发现其实没有必要处理每一个函数，只需要倒序处理需要调用的函数即可。</p>
+<p>教练写了这个优化，且存下标直接用的数组，然而我不会实现。这个算法是 70pts（洛谷民间数据），应该是暴力的极限。？</p>
+<p>发现自己的 50pts 算法没有过了数据点 #5 和 #6，但是 #12 和 #13 没有过。</p>
+<p>于是思考 “不含第 $2$ 类函数或不含第 $1$ 类函数” 的情况怎么搞。</p>
+<ul>
+<li><p>只有第 $1$ 类函数。</p>
+<p>也就是操作只有单点加。</p>
+<p>那么问题就转化为一个单点加的函数被调用了多少次。</p>
+<p>令一个函数 $i$ 被调用的次数为 $dp_i$ ，那么算出所有的 $dp_i$ 之后只需遍历所有的函数，若函数类型为 $1$ ，则将对应位置 $p_i$ 加上 $dp_i\times v_i$ 即可。</p>
+<p>目前的问题就是如何求出 $dp_i$ 。</p>
+<p>正如其名，可以 DP 求。</p>
+<p>建完图后，将 $dp_{f_i}$ 均赋为 $1$ 。</p>
+<p>然后因为是个 DAG ，所以考虑拓扑排序进行 DP 。</p>
+<p>简单的来说，对于一个点 $u$ ，其所有指向它的点为 $v_i$ ，那么</p>
+<script type="math/tex; mode=display">
+dp_u=\sum dp[v_i]</script><p>于是一遍拓扑排序就可以求出所有的 $dp_i$ 。</p>
+</li>
+<li><p>只有第 $2$ 类函数。</p>
+<p>这个比较好搞。</p>
+<p>定义 $mul_i$ 表示调用函数 $i$ 后全局所乘的值，其初值均为 $1$ ，对于所有函数类型为 $2$ 的函数 $i$ ，其初值为 $v_i$ 。</p>
+<p>那么显然直接反向图上拓扑排序转移即可。</p>
+</li>
+</ul>
+<p>于是写完这俩就可以得到 60pts （洛谷民间数据）的 TLE+MLE 算法。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 998244353</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DEBUG printf(<span class="meta-string">" vzyx &amp; tqzer AK IOI\n"</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ll w=<span class="number">1</span>,x=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">char</span> ch=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) w=<span class="number">-1</span>;ch=getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line">	<span class="keyword">return</span> w*x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,q,type=<span class="number">-1</span>;</span><br><span class="line">ll a[N],mul[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> t,p;</span><br><span class="line">	ll v;</span><br><span class="line">&#125;f[N];</span><br><span class="line"><span class="keyword">int</span> out[N],in[N];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; g[N],fg[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> bf&#123;</span><br><span class="line">	pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; rec[N];</span><br><span class="line">	<span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>,ll&gt; &gt; opt[N];</span><br><span class="line">	<span class="keyword">bool</span> vh[N];</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> root)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(vh[u]) &#123;</span><br><span class="line">			<span class="keyword">int</span> len=opt[u].size();</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++) &#123;</span><br><span class="line">				<span class="keyword">int</span> pos=opt[u][i].first;</span><br><span class="line">				ll plus=opt[u][i].second;</span><br><span class="line">				<span class="keyword">if</span>(rec[pos].first==root) (opt[root][rec[pos].second].second+=plus*mul[root]%mod)%=mod;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					rec[pos].first=root;</span><br><span class="line">					opt[root].push_back(make_pair(pos,plus*mul[root]%mod));</span><br><span class="line">					rec[pos].second=opt[root].size()<span class="number">-1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			(mul[root]*=mul[u])%=mod;</span><br><span class="line">			<span class="keyword">return</span> ;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(f[u].t==<span class="number">1</span>) &#123;opt[root].push_back(make_pair(f[u].p,f[u].v*mul[root]%mod));rec[f[u].p]=make_pair(root,opt[root].size()<span class="number">-1</span>);<span class="keyword">return</span> ;&#125;</span><br><span class="line">			<span class="keyword">if</span>(f[u].t==<span class="number">2</span>) &#123;(mul[root]*=f[u].v)%=mod;<span class="keyword">return</span> ;&#125;</span><br><span class="line">			<span class="keyword">int</span> len=g[u].size();</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=len<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--) dfs(g[u][i],root);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; topo;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">toposort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; que;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) <span class="keyword">if</span>(!out[i]) que.push(i),topo.push_back(i);</span><br><span class="line">		<span class="keyword">while</span>(!que.empty()) &#123;</span><br><span class="line">			<span class="keyword">int</span> u=que.front();</span><br><span class="line">			que.pop();</span><br><span class="line">			<span class="keyword">int</span> len=fg[u].size();</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++) &#123;</span><br><span class="line">				out[fg[u][i]]--;</span><br><span class="line">				<span class="keyword">if</span>(!out[fg[u][i]]) que.push(fg[u][i]),topo.push_back(fg[u][i]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		toposort();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++) dfs(topo[i],topo[i]),vh[topo[i]]=<span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">while</span>(q--) &#123;</span><br><span class="line">			<span class="keyword">int</span> id=read();</span><br><span class="line">			<span class="keyword">int</span> len=opt[id].size();</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) (a[i]*=mul[id])%=mod;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++) (a[opt[id][i].first]+=opt[id][i].second)%=mod;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ll dp[N];</span><br><span class="line"><span class="keyword">namespace</span> subtask1&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">toposort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; que;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) <span class="keyword">if</span>(!in[i]) que.push(i);</span><br><span class="line">		<span class="keyword">while</span>(!que.empty()) &#123;</span><br><span class="line">			<span class="keyword">int</span> u=que.front();</span><br><span class="line">			que.pop();</span><br><span class="line">			<span class="keyword">int</span> len=g[u].size();</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++) &#123;</span><br><span class="line">				in[g[u][i]]--;</span><br><span class="line">				(dp[g[u][i]]+=dp[u])%=mod;</span><br><span class="line">				<span class="keyword">if</span>(!in[g[u][i]]) que.push(g[u][i]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=q;i++) dp[read()]++;</span><br><span class="line">		toposort();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) <span class="keyword">if</span>(f[i].t==<span class="number">1</span>) (a[f[i].p]+=f[i].v*dp[i]%mod)%=mod;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> subtask2&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">toposort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; que;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) <span class="keyword">if</span>(!out[i]) mul[i]*=f[i].v,que.push(i);</span><br><span class="line">		<span class="keyword">while</span>(!que.empty()) &#123;</span><br><span class="line">			<span class="keyword">int</span> u=que.front();</span><br><span class="line">			que.pop();</span><br><span class="line">			<span class="keyword">int</span> len=fg[u].size();</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++) &#123;</span><br><span class="line">				out[fg[u][i]]--;</span><br><span class="line">				(mul[fg[u][i]]*=mul[u])%=mod;</span><br><span class="line">				<span class="keyword">if</span>(!out[fg[u][i]]) que.push(fg[u][i]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		toposort();</span><br><span class="line">		ll M=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=q;i++) (M*=mul[read()])%=mod;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) (a[i]*=M)%=mod;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) mul[i]=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	n=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) a[i]=read();</span><br><span class="line">	m=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line">		f[i].t=read();</span><br><span class="line">		<span class="keyword">if</span>(f[i].t==<span class="number">1</span>&amp;&amp;type==<span class="number">2</span>) type=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(f[i].t==<span class="number">2</span>&amp;&amp;type==<span class="number">1</span>) type=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(f[i].t==<span class="number">1</span>&amp;&amp;type==<span class="number">-1</span>) type=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(f[i].t==<span class="number">2</span>&amp;&amp;type==<span class="number">-1</span>) type=<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(f[i].t==<span class="number">1</span>) f[i].p=read(),f[i].v=read();</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(f[i].t==<span class="number">2</span>) f[i].v=read();</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">int</span> c=read();</span><br><span class="line">			<span class="keyword">while</span>(c--) &#123;</span><br><span class="line">				<span class="keyword">int</span> j=read();</span><br><span class="line">				g[i].push_back(j);</span><br><span class="line">				fg[j].push_back(i);</span><br><span class="line">				out[i]++;</span><br><span class="line">				in[j]++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	q=read();</span><br><span class="line">	</span><br><span class="line">	init();</span><br><span class="line">	<span class="keyword">if</span>(type==<span class="number">0</span>) bf::work();</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(type==<span class="number">1</span>) subtask1::work();</span><br><span class="line">	<span class="keyword">else</span> subtask2::work();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">printf</span>(<span class="string">"%lld "</span>,a[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其实若要优化时间，那么就需要将最终的操作转化为一次全局乘，若干次单点加即可。</p>
+<p>上面的两个特殊点已经给了些提示。</p>
+<p>需要统计每个函数的贡献。全局乘 $m$ ，对于单点加，看成是进行了 $m$ 次单点加操作。</p>
+<p>类似上面“只有第 $2$ 类函数” 的做法，统计出调用函数 $i$ 后的全局乘 $mul_i$ 。</p>
+<p>单点加操作只会被其后面的全局乘所影响。因此考虑做出操作序列 $f_i$ 的后缀积 $Fmul_i$ 。</p>
+<p>类似上面“只有第 $1$ 类函数” 的做法，令 $dp_i$ 表示函数 $i$ 被调用的次数，对于非第 $1$ 类函数的函数 $i$ ， $dp_i$ 只是一个过程量。根据后缀积 $Fmul$ 可统计出其初值。</p>
+<p>然后正向拓扑排序求出真正的 $dp_i$ ，注意第三类函数的调用也要倒过来。该处具体过程如下：</p>
+<ul>
+<li>对于函数 $u$ 及其所调用的函数 $v$ ，将 $dp_v$ 加上 $dp_u$ 。因为函数 $u$ 被乘了 $dp_u$ ，所以对 $v$ 中的单点加的贡献即为 $dp_u$ ，因此直接加上，原理是乘法分配律。</li>
+<li>然后将 $dp_u$ 乘上 $mul_v$ 。这个很好理解，调用了 $v$ 后， $v$ 的全局乘会影响其之前的操作。</li>
+</ul>
+<p>做完后将所有类型为 $1$ 的函数 $i$ 的 $p_i$ 位置上的数加上 $dp_i\times v_i$ 即可。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 100010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 998244353</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DEBUG printf(<span class="meta-string">" vzyx &amp; tqzer AK IOI\n"</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ll w=<span class="number">1</span>,x=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">char</span> ch=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) w=<span class="number">-1</span>;ch=getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line">	<span class="keyword">return</span> w*x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,q,F[N];</span><br><span class="line">ll a[N],mul[N],dp[N],Fmul[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> t,p;</span><br><span class="line">	ll v;</span><br><span class="line">&#125;f[N];</span><br><span class="line"><span class="keyword">int</span> in[N],out[N];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; g[N],fg[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">toposort1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; que;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) <span class="keyword">if</span>(f[i].t==<span class="number">2</span>) mul[i]=f[i].v;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) <span class="keyword">if</span>(!out[i]) que.push(i);</span><br><span class="line">	<span class="keyword">while</span>(!que.empty()) &#123;</span><br><span class="line">		<span class="keyword">int</span> u=que.front();</span><br><span class="line">		que.pop();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;fg[u].size();i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> v=fg[u][i];</span><br><span class="line">			(mul[v]*=mul[u])%=mod;</span><br><span class="line">			out[v]--;</span><br><span class="line">			<span class="keyword">if</span>(!out[v]) que.push(v);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">toposort2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; que;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) <span class="keyword">if</span>(!in[i]) que.push(i);</span><br><span class="line">	<span class="keyword">while</span>(!que.empty()) &#123;</span><br><span class="line">		<span class="keyword">int</span> u=que.front();</span><br><span class="line">		que.pop();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=g[u].size()<span class="number">-1</span>;~i;i--) &#123;</span><br><span class="line">			<span class="keyword">int</span> v=g[u][i];</span><br><span class="line">			(dp[v]+=dp[u])%=mod;</span><br><span class="line">			(dp[u]*=mul[v])%=mod;</span><br><span class="line">			in[v]--;</span><br><span class="line">			<span class="keyword">if</span>(!in[v]) que.push(v);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) mul[i]=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	n=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) a[i]=read();</span><br><span class="line">	m=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line">		f[i].t=read();</span><br><span class="line">		<span class="keyword">if</span>(f[i].t==<span class="number">1</span>) f[i].p=read(),f[i].v=read();</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(f[i].t==<span class="number">2</span>) f[i].v=read();</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">int</span> c=read();</span><br><span class="line">			<span class="keyword">while</span>(c--) &#123;</span><br><span class="line">				<span class="keyword">int</span> j=read();</span><br><span class="line">				g[i].push_back(j);</span><br><span class="line">				fg[j].push_back(i);</span><br><span class="line">				in[j]++;</span><br><span class="line">				out[i]++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	q=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=q;i++) F[i]=read();</span><br><span class="line">	</span><br><span class="line">	init();</span><br><span class="line">	toposort1();</span><br><span class="line">	Fmul[q+<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=q;i;i--) &#123;</span><br><span class="line">		Fmul[i]=Fmul[i+<span class="number">1</span>]*mul[F[i]]%mod;</span><br><span class="line">		(dp[F[i]]+=Fmul[i+<span class="number">1</span>])%=mod;</span><br><span class="line">	&#125;</span><br><span class="line">	toposort2();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) (a[i]*=Fmul[<span class="number">1</span>])%=mod;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) <span class="keyword">if</span>(f[i].t==<span class="number">1</span>) (a[f[i].p]+=dp[i]*f[i].v%mod)%=mod;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">printf</span>(<span class="string">"%lld "</span>,a[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/is-zxy.github.io/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+          
+            <a href="/is-zxy.github.io/tags/CSP/" rel="tag"># CSP</a>
+          
+            <a href="/is-zxy.github.io/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" rel="tag"># 拓扑排序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/is-zxy.github.io/2020/11/11/%5BCSP2020%5D-%E5%84%92%E7%95%A5%E6%97%A5/" rel="next" title="[CSP2020] 儒略日">
+                <i class="fa fa-chevron-left"></i> [CSP2020] 儒略日
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/is-zxy.github.io/images/avatar.gif"
+                alt="Yuzuriha_Inori" />
+            
+              <p class="site-author-name" itemprop="name">Yuzuriha_Inori</p>
+              <p class="site-description motion-element" itemprop="description">长存不灭的过去，逐渐消逝的未来。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/is-zxy.github.io/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">215</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/is-zxy.github.io/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/is-zxy.github.io/tags/index.html">
+                  <span class="site-state-item-count">116</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/is-zxy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://space.bilibili.com/87893082" target="_blank" title="bilibili">
+                      
+                        <i class="fa fa-fw fa-play-circle"></i>bilibili</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="tencent://message/?uin=1459501249" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i>QQ</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.luogu.com.cn/user/71936" target="_blank" title="luogu">
+                      
+                        <i class="fa fa-fw fa-link"></i>luogu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          ﻿<!-- none-select-br -->
+
+<p></p>
+
+<!-- hitokoto -->
+
+<div class="hitokoto-title">
+	<i class="fa fa-paragraph"></i>
+	<b>一言</b>
+</div>
+
+<div id="hitokoto">:D 获取中...</div>
+<i id="hitofrom">:D 获取中...</i>
+
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      hitokoto.innerText = '\xa0\xa0\xa0\xa0\xa0\xa0\xa0' + data.hitokoto;
+      var hitofrom = document.getElementById('hitofrom');
+      hitofrom.innerText = "——" + data.from + '\xa0'; 
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+</script>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据范围"><span class="nav-number">1.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">2.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yuzuriha_Inori</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/is-zxy.github.io/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/is-zxy.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/is-zxy.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/is-zxy.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/is-zxy.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/is-zxy.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/is-zxy.github.io/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/is-zxy.github.io/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/is-zxy.github.io/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/is-zxy.github.io/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/is-zxy.github.io/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/is-zxy.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/is-zxy.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/is-zxy.github.io/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/is-zxy.github.io/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+	<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+	<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+	<script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+<script src="https://zxyer.xyz/js/src/Sakura.js"></script>
+  
+  
+    
+  
+
+<script src="/is-zxy.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/is-zxy.github.io/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":350},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
