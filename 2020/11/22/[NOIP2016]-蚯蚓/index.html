@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="Day2 T2 蚯蚓本题中，我们将用符号 $\lfloor c \rfloor$ 表示对 $c$ 向下取整，例如：$\lfloor 3.0 \rfloor &#x3D; \lfloor 3.1 \rfloor &#x3D; \lfloor 3.9 \rfloor &#x3D; 3$ 。 蛐蛐国最近蚯蚓成灾了！隔壁跳蚤国的跳蚤也拿蚯蚓们没办法，蛐蛐国王只好去请神刀手来帮他们消灭蚯蚓。 蛐蛐国里现在共有 $n$ 只蚯蚓（$n$ 为">
+<meta name="description" content="本题中，我们将用符号 $\lfloor c \rfloor$ 表示对 $c$ 向下取整，例如：$\lfloor 3.0 \rfloor &#x3D; \lfloor 3.1 \rfloor &#x3D; \lfloor 3.9 \rfloor &#x3D; 3$ 。 蛐蛐国最近蚯蚓成灾了！隔壁跳蚤国的跳蚤也拿蚯蚓们没办法，蛐蛐国王只好去请神刀手来帮他们消灭蚯蚓。 蛐蛐国里现在共有 $n$ 只蚯蚓（$n$ 为正整数）。每只蚯蚓拥">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[NOIP2016] 蚯蚓">
 <meta property="og:url" content="http://www.zxyer.xyz/2020/11/22/[NOIP2016]-%E8%9A%AF%E8%9A%93/index.html">
 <meta property="og:site_name" content="Zxyer&#39;s Blog">
-<meta property="og:description" content="Day2 T2 蚯蚓本题中，我们将用符号 $\lfloor c \rfloor$ 表示对 $c$ 向下取整，例如：$\lfloor 3.0 \rfloor &#x3D; \lfloor 3.1 \rfloor &#x3D; \lfloor 3.9 \rfloor &#x3D; 3$ 。 蛐蛐国最近蚯蚓成灾了！隔壁跳蚤国的跳蚤也拿蚯蚓们没办法，蛐蛐国王只好去请神刀手来帮他们消灭蚯蚓。 蛐蛐国里现在共有 $n$ 只蚯蚓（$n$ 为">
+<meta property="og:description" content="本题中，我们将用符号 $\lfloor c \rfloor$ 表示对 $c$ 向下取整，例如：$\lfloor 3.0 \rfloor &#x3D; \lfloor 3.1 \rfloor &#x3D; \lfloor 3.9 \rfloor &#x3D; 3$ 。 蛐蛐国最近蚯蚓成灾了！隔壁跳蚤国的跳蚤也拿蚯蚓们没办法，蛐蛐国王只好去请神刀手来帮他们消灭蚯蚓。 蛐蛐国里现在共有 $n$ 只蚯蚓（$n$ 为正整数）。每只蚯蚓拥">
 <meta property="og:image" content="http://www.zxyer.xyz/is-zxy.github.io/2020/11/22/[NOIP2016]-%E8%9A%AF%E8%9A%93/3458.png">
 <meta property="article:published_time" content="2020-11-21T16:37:42.000Z">
-<meta property="article:modified_time" content="2020-11-21T16:39:53.384Z">
+<meta property="article:modified_time" content="2020-11-21T16:47:03.011Z">
 <meta property="article:author" content="Yuzuriha_Inori">
 <meta property="article:tag" content="NOIP">
 <meta property="article:tag" content="优先队列">
@@ -400,7 +400,7 @@
       
 
       
-        <h2 id="Day2-T2-蚯蚓"><a href="#Day2-T2-蚯蚓" class="headerlink" title="Day2 T2 蚯蚓"></a>Day2 T2 蚯蚓</h2><p>本题中，我们将用符号 $\lfloor c \rfloor$ 表示对 $c$ 向下取整，例如：$\lfloor 3.0 \rfloor = \lfloor 3.1 \rfloor = \lfloor 3.9 \rfloor = 3$ 。</p>
+        <p>本题中，我们将用符号 $\lfloor c \rfloor$ 表示对 $c$ 向下取整，例如：$\lfloor 3.0 \rfloor = \lfloor 3.1 \rfloor = \lfloor 3.9 \rfloor = 3$ 。</p>
 <p>蛐蛐国最近蚯蚓成灾了！隔壁跳蚤国的跳蚤也拿蚯蚓们没办法，蛐蛐国王只好去请神刀手来帮他们消灭蚯蚓。</p>
 <p>蛐蛐国里现在共有 $n$ 只蚯蚓（$n$ 为正整数）。每只蚯蚓拥有长度，我们设第 $i$ 只蚯蚓的长度为 $a_i$ $(i=1,2,\dots,n)$，并保证所有的长度都是非负整数（即：可能存在长度为 $0$ 的蚯蚓）。</p>
 <p>每一秒，神刀手会在所有的蚯蚓中，准确地找到最长的那一只（如有多个则任选一个）将其切成两半。神刀手切开蚯蚓的位置由常数 $p$（是满足 $0 &lt; p &lt; 1$ 的有理数）决定，设这只蚯蚓长度为 $x$，神刀手会将其切成两只长度分别为 $\lfloor px \rfloor$ 和 $x - \lfloor px \rfloor$ 的蚯蚓。特殊地，如果这两个数的其中一个等于 $0$，则这个长度为 $0$ 的蚯蚓也会被保留。此外，除了刚刚产生的两只新蚯蚓，其余蚯蚓的长度都会增加 $q$（是一个非负整常数）。</p>
@@ -676,7 +676,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Day2-T2-蚯蚓"><span class="nav-number">1.</span> <span class="nav-text">Day2 T2 蚯蚓</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据范围"><span class="nav-number">1.1.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">1.2.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">1.3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.4.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据范围"><span class="nav-number">1.</span> <span class="nav-text">数据范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">2.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>

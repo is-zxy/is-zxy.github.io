@@ -542,7 +542,7 @@
 
       
         
-          <h2 id="Day1-T2-时间复杂度"><a href="#Day1-T2-时间复杂度" class="headerlink" title="Day1 T2 时间复杂度"></a>Day1 T2 时间复杂度</h2><p>小明正在学习一种新的编程语言 A++，刚学会循环语句的他激动地写了好多程序并给出了他自己算出的时间复杂度，可他的编程老师实在不想一个一个检查小明的程序， 于是你的机会来啦！下面请你编写程序来判断小明对他的每个程序给出的时间复杂度是否正确。</p>
+          <p>小明正在学习一种新的编程语言 A++，刚学会循环语句的他激动地写了好多程序并给出了他自己算出的时间复杂度，可他的编程老师实在不想一个一个检查小明的程序， 于是你的机会来啦！下面请你编写程序来判断小明对他的每个程序给出的时间复杂度是否正确。</p>
 <p>A++语言的循环结构如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">F i x y</span><br><span class="line">    循环体</span><br><span class="line">E</span><br></pre></td></tr></table></figure>
 <p>其中<code>F i x y</code>表示新建变量 $i$（变量 $i$ 不可与未被销毁的变量重名）并初始化为 $x$， 然后判断 $i$ 和 $y$ 的大小关系，若 $i$ 小于等于 $y$ 则进入循环，否则不进入。每次循环结束后 $i$ 都会被修改成 $i +1$，一旦 $i$ 大于 $y$ 终止循环。</p>
@@ -694,7 +694,7 @@
 
       
         
-          <h2 id="Day2-T2-蚯蚓"><a href="#Day2-T2-蚯蚓" class="headerlink" title="Day2 T2 蚯蚓"></a>Day2 T2 蚯蚓</h2><p>本题中，我们将用符号 $\lfloor c \rfloor$ 表示对 $c$ 向下取整，例如：$\lfloor 3.0 \rfloor = \lfloor 3.1 \rfloor = \lfloor 3.9 \rfloor = 3$ 。</p>
+          <p>本题中，我们将用符号 $\lfloor c \rfloor$ 表示对 $c$ 向下取整，例如：$\lfloor 3.0 \rfloor = \lfloor 3.1 \rfloor = \lfloor 3.9 \rfloor = 3$ 。</p>
 <p>蛐蛐国最近蚯蚓成灾了！隔壁跳蚤国的跳蚤也拿蚯蚓们没办法，蛐蛐国王只好去请神刀手来帮他们消灭蚯蚓。</p>
 <p>蛐蛐国里现在共有 $n$ 只蚯蚓（$n$ 为正整数）。每只蚯蚓拥有长度，我们设第 $i$ 只蚯蚓的长度为 $a_i$ $(i=1,2,\dots,n)$，并保证所有的长度都是非负整数（即：可能存在长度为 $0$ 的蚯蚓）。</p>
 <p>每一秒，神刀手会在所有的蚯蚓中，准确地找到最长的那一只（如有多个则任选一个）将其切成两半。神刀手切开蚯蚓的位置由常数 $p$（是满足 $0 &lt; p &lt; 1$ 的有理数）决定，设这只蚯蚓长度为 $x$，神刀手会将其切成两只长度分别为 $\lfloor px \rfloor$ 和 $x - \lfloor px \rfloor$ 的蚯蚓。特殊地，如果这两个数的其中一个等于 $0$，则这个长度为 $0$ 的蚯蚓也会被保留。此外，除了刚刚产生的两只新蚯蚓，其余蚯蚓的长度都会增加 $q$（是一个非负整常数）。</p>
@@ -850,7 +850,7 @@
 
       
         
-          <h2 id="Day2-T1-组合数问题"><a href="#Day2-T1-组合数问题" class="headerlink" title="Day2 T1 组合数问题"></a>Day2 T1 组合数问题</h2><p>组合数 $\binom{n}{m}$ 表示的是从 $n$ 个物品中选出 $m$ 个物品的方案数。举个例子，从 $(1,2,3)$ 三个物品中选择两个物品可以有 $(1,2),(1,3),(2,3)$ 这三种选择方法。根据组合数的定义，我们可以给出计算组合数 $\binom{n}{m}$ 的一般公式：</p>
+          <p>组合数 $\binom{n}{m}$ 表示的是从 $n$ 个物品中选出 $m$ 个物品的方案数。举个例子，从 $(1,2,3)$ 三个物品中选择两个物品可以有 $(1,2),(1,3),(2,3)$ 这三种选择方法。根据组合数的定义，我们可以给出计算组合数 $\binom{n}{m}$ 的一般公式：</p>
 <script type="math/tex; mode=display">
 \binom{n}{m}=\frac{n!}{m!(n-m)!}</script><p>其中 $n!=1\times2\times\cdots\times n$ ；特别地，定义 $0!=1$ 。</p>
 <p>小葱想知道如果给定 $n,m$ 和 $k$ ，对于所有的 $0\leq i\leq n,0\leq j\leq \min \left ( i, m \right )$ 有多少对 $(i,j)$ 满足 $k|\binom{i}{j}$ 。</p>
